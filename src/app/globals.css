@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap');
 @import "tailwindcss";
 
 :root {
   --teal: #469695;
+  --teal-deep: #357878;
   --navy: #0A3660;
   --cream: #FEFDF8;
   --white: #FFFFFF;
@@ -22,6 +23,45 @@ h1, h2, h3, h4, h5, h6 {
 
 .font-lora {
   font-family: 'Lora', serif;
+}
+
+/* Warm photo treatment — applied to all Melissa photography */
+.photo-warm {
+  filter: brightness(0.97) contrast(1.05) saturate(0.9) sepia(0.06);
+}
+
+/* Tracked-caps section label overline */
+.section-label {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+/* Display stat numbers — layout-level typography */
+.stat-display {
+  font-family: 'Lato', sans-serif;
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  user-select: none;
+}
+
+/* Lora italic lede — emotional hook before section content */
+.lora-lede {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: clamp(18px, 2vw, 22px);
+  line-height: 1.65;
+}
+
+/* Large pull quote */
+.pull-quote {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: clamp(20px, 2.5vw, 28px);
+  line-height: 1.5;
 }
 
 .sr-only {

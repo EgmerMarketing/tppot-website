@@ -10,7 +10,7 @@ type ButtonProps = {
 };
 
 export default function Button({ href, onClick, variant = 'primary', children, className = '', external }: ButtonProps) {
-  const base = 'inline-flex items-center justify-center px-6 py-3 rounded-lg font-bold text-base transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2';
+  const base = 'inline-flex items-center justify-center px-7 py-3.5 rounded-full font-bold text-base transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2';
   const variants = {
     primary: 'bg-[#469695] text-white hover:bg-[#3a7e7d] focus:ring-[#469695]',
     secondary: 'bg-[#0A3660] text-white hover:bg-[#082c50] focus:ring-[#0A3660]',
