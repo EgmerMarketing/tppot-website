@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Mail, Send } from "lucide-react";
+import { Mail } from "lucide-react";
 import { breadcrumbSchema } from "@/lib/schema";
+import ContactForm from "@/components/contact/ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -55,89 +56,7 @@ export default function ContactPage() {
       <section className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16 pb-24 md:pb-32">
         <div className="grid md:grid-cols-2 gap-16">
           {/* Form */}
-          <div className="bg-white rounded-2xl shadow-sm shadow-[#0A3660]/4 p-8 md:p-10">
-            <h2 className="text-xl font-bold text-[#0A3660] mb-6 font-serif">
-              Or Send a Message
-            </h2>
-            <form action="#" method="POST" className="space-y-6">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-bold text-[#0A3660] mb-2 font-sans"
-                >
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  className="w-full border border-[#D4D0CC] rounded-lg p-3 text-[#0A3660] font-sans text-sm bg-white focus:border-[#469695] focus:ring-2 focus:ring-[#469695]/20 outline-none transition-colors"
-                  placeholder="Your full name"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-bold text-[#0A3660] mb-2 font-sans"
-                >
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  className="w-full border border-[#D4D0CC] rounded-lg p-3 text-[#0A3660] font-sans text-sm bg-white focus:border-[#469695] focus:ring-2 focus:ring-[#469695]/20 outline-none transition-colors"
-                  placeholder="you@example.com"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="journey"
-                  className="block text-sm font-bold text-[#0A3660] mb-2 font-sans"
-                >
-                  Where are you in your postpartum OT journey?
-                </label>
-                <select
-                  id="journey"
-                  name="journey"
-                  className="w-full border border-[#D4D0CC] rounded-lg p-3 text-[#0A3660] font-sans text-sm bg-white focus:border-[#469695] focus:ring-2 focus:ring-[#469695]/20 outline-none transition-colors"
-                >
-                  <option value="">Select one</option>
-                  <option value="exploring">Just Exploring</option>
-                  <option value="ready">Ready to Start</option>
-                  <option value="practicing">Already Practicing</option>
-                </select>
-              </div>
-
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-bold text-[#0A3660] mb-2 font-sans"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={5}
-                  className="w-full border border-[#D4D0CC] rounded-lg p-3 text-[#0A3660] font-sans text-sm bg-white focus:border-[#469695] focus:ring-2 focus:ring-[#469695]/20 outline-none transition-colors resize-vertical"
-                  placeholder="Tell me a little about what you're looking for..."
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="inline-flex items-center gap-2.5 bg-[#357574] text-white px-7 py-4 rounded-xl font-bold text-[15px] hover:bg-[#0A3660] transition-colors font-sans w-full justify-center"
-              >
-                <Send className="w-4 h-4" strokeWidth={2} />
-                Send Message
-              </button>
-            </form>
-          </div>
+          <ContactForm />
 
           {/* Info */}
           <div className="space-y-10">
