@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Mail, Calendar, Send, ExternalLink } from "lucide-react";
+import Script from "next/script";
+import { Mail, Send, ExternalLink } from "lucide-react";
 import { breadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Contact | The Postpartum OT",
+  title: "Contact",
   description:
     "Book a free 15 minute strategy call or send a message. Get in touch with Melissa O'Neal about postpartum OT mentorship.",
 };
@@ -12,8 +13,10 @@ export default function ContactPage() {
   return (
     <main className="bg-[#FAF7F2]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([{ name: "Home", url: "https://thepostpartumot.com" }, { name: "Contact", url: "https://thepostpartumot.com/contact" }])) }} />
-      <section className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16 py-24 md:py-32">
-        <div className="text-center mb-16">
+
+      {/* Hero */}
+      <section className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16 pt-24 md:pt-32 pb-12">
+        <div className="text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-[#0A3660] mb-4 font-serif">
             Let&apos;s Talk
           </h1>
@@ -21,10 +24,41 @@ export default function ContactPage() {
             Book a free 15 minute strategy call or send a message
           </p>
         </div>
+      </section>
 
+      {/* Calendar Booking */}
+      <section className="max-w-[900px] mx-auto px-6 md:px-12 lg:px-16 pb-16">
+        <div className="bg-white rounded-2xl shadow-sm shadow-[#0A3660]/4 p-6 md:p-10">
+          <h2 className="text-2xl font-bold text-[#0A3660] mb-2 font-serif text-center">
+            Book Your Free Strategy Call
+          </h2>
+          <p className="text-[15px] text-[#6B6560] font-serif text-center mb-8">
+            15 minutes with Melissa. No pressure, no pitch. Just a real conversation about where you are and where you want to go.
+          </p>
+
+          {/* Kartra Calendar Embed */}
+          <div
+            className="js_kt_asset_embed js_kartra_trackable_object"
+            data-kt-type="calendar"
+            data-kt-embed="inline"
+            data-kt-value="dXxQLb3reMCp"
+            data-kt-owner="BrWMNBXg"
+          />
+          <Script
+            src="https://app.kartra.com/js/build/front/embed/calendar.js"
+            strategy="afterInteractive"
+          />
+        </div>
+      </section>
+
+      {/* Form + Info */}
+      <section className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16 pb-24 md:pb-32">
         <div className="grid md:grid-cols-2 gap-16">
           {/* Form */}
           <div className="bg-white rounded-2xl shadow-sm shadow-[#0A3660]/4 p-8 md:p-10">
+            <h2 className="text-xl font-bold text-[#0A3660] mb-6 font-serif">
+              Or Send a Message
+            </h2>
             <form action="#" method="POST" className="space-y-6">
               <div>
                 <label
@@ -127,20 +161,6 @@ export default function ContactPage() {
                     </p>
                   </div>
                 </a>
-
-                <a href="#" className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 rounded-xl bg-[#469695]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#469695]/20 transition-colors">
-                    <Calendar className="w-5 h-5 text-[#469695]" strokeWidth={1.5} />
-                  </div>
-                  <div>
-                    <p className="text-sm font-bold text-[#0A3660] font-sans">
-                      Book a Free Strategy Call
-                    </p>
-                    <p className="text-sm text-[#6B6560] font-serif">
-                      15 minutes, no pressure, no pitch
-                    </p>
-                  </div>
-                </a>
               </div>
             </div>
 
@@ -150,21 +170,27 @@ export default function ContactPage() {
               </h3>
               <div className="flex gap-4">
                 <a
-                  href="#"
-                  aria-label="Facebook"
+                  href="https://www.facebook.com/groups/1967522367025806"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook Community"
                   className="w-12 h-12 rounded-xl bg-[#469695]/10 flex items-center justify-center hover:bg-[#469695]/20 transition-colors"
                 >
                   <ExternalLink className="w-5 h-5 text-[#469695]" strokeWidth={1.5} />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.instagram.com/thepostpartumot/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label="Instagram"
                   className="w-12 h-12 rounded-xl bg-[#469695]/10 flex items-center justify-center hover:bg-[#469695]/20 transition-colors"
                 >
                   <ExternalLink className="w-5 h-5 text-[#469695]" strokeWidth={1.5} />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/company/raising-bundle/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label="LinkedIn"
                   className="w-12 h-12 rounded-xl bg-[#469695]/10 flex items-center justify-center hover:bg-[#469695]/20 transition-colors"
                 >
