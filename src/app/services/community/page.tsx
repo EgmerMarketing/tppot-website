@@ -134,7 +134,7 @@ export default function CommunityPage() {
             and let the community know where you are on your postpartum OT journey.
           </p>
           <Link
-            href="https://www.facebook.com/groups/thepostpartumot"
+            href="https://www.facebook.com/groups/1967522367025806"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2.5 bg-[#469695] text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-[#357574] transition-all hover:shadow-lg hover:shadow-[#469695]/25 font-sans"

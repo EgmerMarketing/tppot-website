@@ -12,7 +12,7 @@ const navLinks = [
 ];
 
 const socialLinks = [
-  { label: "Facebook Community", href: "https://www.facebook.com/groups/thepostpartumot" },
+  { label: "Facebook Community", href: "https://www.facebook.com/groups/1967522367025806" },
   { label: "Instagram", href: "https://www.instagram.com/thepostpartumot" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/thepostpartumot" },
 ];
