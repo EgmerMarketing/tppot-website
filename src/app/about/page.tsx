@@ -161,21 +161,117 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Origin Story Placeholder */}
+      {/* Origin Story */}
       <section className="bg-[#E6F0F0]">
-        <div className="max-w-[800px] mx-auto px-6 py-24 md:py-32 text-center">
-          <p className="text-[#469695] font-bold text-xs tracking-[0.2em] uppercase mb-6 font-sans">
+        <div className="max-w-[900px] mx-auto px-6 py-24 md:py-32">
+          <p className="text-[#469695] font-bold text-xs tracking-[0.2em] uppercase mb-6 font-sans text-center">
             The Story
           </p>
-          <h2 className="text-3xl md:text-[40px] font-bold leading-[1.15] text-[#0A3660] mb-8 font-serif">
-            How it all started
+          <h2 className="text-3xl md:text-[40px] font-bold leading-[1.15] text-[#0A3660] mb-12 font-serif text-center">
+            Why I built this
           </h2>
-          <div className="bg-white rounded-2xl shadow-md shadow-[#0A3660]/6 p-10 md:p-14">
-            <p className="text-[17px] text-[#6B6560] leading-relaxed font-serif">
-              [PLACEHOLDER: Origin story section. Waiting on X Factor email content from Melissa. This section will
-              tell the personal story of why Melissa started The Postpartum OT and what drives her mission to help
-              other clinicians build practices that serve new families.]
-            </p>
+
+          <div className="space-y-16">
+            {/* The Moment */}
+            <div className="bg-white rounded-2xl shadow-md shadow-[#0A3660]/6 p-8 md:p-12">
+              <h3 className="text-xl font-bold text-[#0A3660] mb-6 font-serif">The moment it clicked</h3>
+              <div className="space-y-5 font-serif text-[17px] text-[#6B6560] leading-relaxed">
+                <p>
+                  It wasn&apos;t one big dramatic moment. It was more like a pattern I couldn&apos;t unsee anymore.
+                </p>
+                <p>
+                  I kept working with moms who were struggling in ways that weren&apos;t being addressed.
+                  Physically, emotionally, functionally inside their own homes. And it felt like the system
+                  just moved on after birth, while they were left trying to figure everything out on their own.
+                </p>
+                <p className="text-[#0A3660] font-medium border-l-2 border-[#469695] pl-5">
+                  I remember thinking, we&apos;re missing such a huge part of care here. Not just rehab.
+                  Not just mental health. But real, day to day support for how a mom actually lives after
+                  bringing a baby home.
+                </p>
+                <p>
+                  That&apos;s when it shifted from &ldquo;this is part of what I do&rdquo; to
+                  &ldquo;this is what I need to build.&rdquo;
+                </p>
+              </div>
+            </div>
+
+            {/* What 10+ Years Taught */}
+            <div className="bg-white rounded-2xl shadow-md shadow-[#0A3660]/6 p-8 md:p-12">
+              <h3 className="text-xl font-bold text-[#0A3660] mb-6 font-serif">What a decade of postpartum care taught me</h3>
+              <div className="space-y-5 font-serif text-[17px] text-[#6B6560] leading-relaxed">
+                <p>
+                  Postpartum care isn&apos;t something you can learn from a checklist or certification.
+                  You can&apos;t fully understand it until you&apos;ve been in someone&apos;s home.
+                  Seeing the dynamics, the overwhelm, the exhaustion, the identity shift happening in real time.
+                </p>
+                <p>
+                  I&apos;ve learned that what moms say they need and what they actually need are often
+                  very different. And I&apos;ve learned how to bridge that gap in a way that feels
+                  supportive, not clinical or overwhelming.
+                </p>
+                <p>
+                  Building a postpartum practice is completely different than just knowing postpartum care.
+                  There&apos;s a whole layer of trust building, communication, boundaries, and real world
+                  problem solving that no course really prepares you for.
+                </p>
+              </div>
+            </div>
+
+            {/* Why Mentorship */}
+            <div className="bg-white rounded-2xl shadow-md shadow-[#0A3660]/6 p-8 md:p-12">
+              <h3 className="text-xl font-bold text-[#0A3660] mb-6 font-serif">Why mentorship, not courses</h3>
+              <div className="space-y-5 font-serif text-[17px] text-[#6B6560] leading-relaxed">
+                <p>
+                  Because this work is personal.
+                </p>
+                <p>
+                  When I was figuring it out, what I needed wasn&apos;t more information.
+                  I needed someone to say, &ldquo;you&apos;re on the right track&rdquo; or
+                  &ldquo;try it this way instead.&rdquo;
+                </p>
+                <p>
+                  There are so many nuances in postpartum care and in building a business around it
+                  that don&apos;t fit into modules. Every clinician comes in with different experiences,
+                  different confidence levels, different life situations.
+                </p>
+                <p className="text-[#0A3660] font-medium border-l-2 border-[#469695] pl-5">
+                  Mentorship lets me meet them where they are and help them move forward in a way
+                  that actually works for their life. Not just what looks good on paper.
+                </p>
+              </div>
+            </div>
+
+            {/* What Surprises Her */}
+            <div className="bg-white rounded-2xl shadow-md shadow-[#0A3660]/6 p-8 md:p-12">
+              <h3 className="text-xl font-bold text-[#0A3660] mb-6 font-serif">What surprises me about what mentees value</h3>
+              <div className="space-y-5 font-serif text-[17px] text-[#6B6560] leading-relaxed">
+                <p>
+                  Honestly, it&apos;s how much they value the reassurance.
+                </p>
+                <p>
+                  I expected people to come for strategies or frameworks. But what they really hold onto
+                  is having someone in their corner who understands both the clinical side and the
+                  emotional side of building something new.
+                </p>
+                <p className="text-[#0A3660] font-medium border-l-2 border-[#469695] pl-5">
+                  A lot of them just haven&apos;t had someone say, &ldquo;you can do this,
+                  and here&apos;s how.&rdquo; And that part ends up being just as important
+                  as anything I teach.
+                </p>
+              </div>
+            </div>
+
+            {/* The One Liner */}
+            <div className="bg-[#061D37] rounded-2xl p-8 md:p-12 text-center">
+              <blockquote className="text-xl md:text-2xl font-serif font-medium text-white leading-relaxed max-w-2xl mx-auto">
+                &ldquo;I didn&apos;t just study postpartum care. I&apos;ve spent years inside it.
+                Inside homes, inside conversations, inside the real life moments that don&apos;t make it
+                into textbooks. And now I help other professionals step into that work with clarity and
+                confidence, so they don&apos;t have to figure it out alone.&rdquo;
+              </blockquote>
+              <p className="text-[#469695] font-sans font-bold text-sm mt-6">Melissa O&apos;Neal, OTR/L, PCES</p>
+            </div>
           </div>
         </div>
       </section>
