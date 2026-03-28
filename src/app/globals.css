@@ -1,37 +1,56 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
 @import "tailwindcss";
 
 :root {
+  --background: #FAF7F2;
+  --foreground: #0A3660;
   --teal: #469695;
+  --teal-dark: #357574;
   --navy: #0A3660;
-  --cream: #FEFDF8;
-  --white: #FFFFFF;
+  --navy-light: #1A4A7A;
+  --navy-dark: #061D37;
+  --teal-light: #E6F0F0;
+  --cream: #FAF7F2;
+  --warm-gray: #6B6560;
+  --font-size-base: 16px;
+  --font-family-heading: var(--font-lora), Georgia, serif;
+  --font-family-body: var(--font-lato), system-ui, sans-serif;
+  --accent: #469695;
+}
+
+/* High contrast mode (Accessibility Toolbar) */
+.high-contrast {
+  --background: #000000;
+  --foreground: #FFFFFF;
+  --accent: #5CEBEA;
+}
+
+/* Dyslexia mode (Accessibility Toolbar) */
+.dyslexia-font {
+  --font-family-heading: 'OpenDyslexic', sans-serif;
+  --font-family-body: 'OpenDyslexic', sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-teal: var(--teal);
+  --color-navy: var(--navy);
+  --color-navy-light: var(--navy-light);
+  --color-teal-light: var(--teal-light);
+  --color-off-white: var(--off-white);
+  --font-sans: var(--font-lato);
+  --font-serif: var(--font-lora);
 }
 
 body {
-  background-color: var(--cream);
-  font-family: 'Lato', sans-serif;
-  color: var(--navy);
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Lato', sans-serif;
-  font-weight: 700;
-  color: var(--navy);
-}
-
-.font-lora {
-  font-family: 'Lora', serif;
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

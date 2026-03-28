@@ -1,77 +1,96 @@
-import type { Metadata } from 'next';
-import Image from 'next/image';
-import Link from 'next/link';
-import ReaderContent from '@/components/ReaderContent';
-import { company } from '@/lib/company';
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'Blog | The Postpartum OT',
-  description: 'Articles, insights, and practical guidance for clinicians and families navigating the postpartum period. From Melissa O\'Neal, OTR/L.',
-  alternates: { canonical: `${company.url}/blog` },
+  title: "Blog | The Postpartum OT",
+  description:
+    "Insights for OTs building postpartum practices. Articles on clinical practice, business strategy, and maternal health.",
 };
 
 const posts = [
-  { title: 'How to Stop Second-Guessing Yourself', slug: 'stop-second-guessing-serve-moms-with-confidence', image: 'blog-stop-second-guessing.jpg', category: 'Confidence & Mindset', excerpt: "The families who need you don't need you to be perfect. They need you to be present. Here's how to move past self-doubt." },
-  { title: "Why Knowing What to Do Isn't Enough: The Confidence Gap", slug: 'confidence-gap-postpartum-ots', image: 'blog-confidence-gap.jpg', category: 'Confidence & Mindset', excerpt: "You have the knowledge. What's missing is confidence. How to bridge the gap and start helping families today." },
-  { title: 'From Overwhelmed to In Control', slug: 'build-confidence-postpartum-care-professional', image: 'blog-overwhelmed-to-in-control.jpg', category: 'Confidence & Mindset', excerpt: 'Feeling paralyzed about starting your postpartum practice? A step-by-step guide to building confidence through action.' },
-  { title: 'The OT Advantage: Mom and Baby Classes', slug: 'ot-advantage-mom-baby-classes', image: 'blog-ot-advantage-mom-baby-classes.jpg', category: 'Postpartum Practice Building', excerpt: 'Why OTs are perfectly positioned to run mom and baby classes — and how to get started.' },
-  { title: 'Why the Questions We Ask Families Matter', slug: 'questions-we-ask-families-matter', image: 'blog-questions-we-ask-families.jpg', category: 'Clinical Skills', excerpt: 'Transform routine check-ins into meaningful conversations with postpartum families.' },
-  { title: 'Self-Settling vs. Self-Soothing', slug: 'self-settling-vs-self-soothing', image: 'blog-self-settling-vs-self-soothing.jpg', category: 'Clinical Skills', excerpt: "The neuroscience behind infant sleep — why 'self-soothing' is a myth and what clinicians should teach families instead." },
-  { title: 'Getting Paid for Your Postpartum OT Services', slug: 'getting-paid-postpartum-ot-services', image: 'melissa-oneal-postpartum-ot-founder.jpg', category: 'Postpartum Practice Building', excerpt: "Can you bill for postpartum OT? Yes. Here's your guide to insurance, private pay, and hybrid billing models." },
-  { title: 'The Invisible Weight: Mental Load of New Motherhood', slug: 'invisible-weight-mental-load-motherhood', image: 'blog-invisible-weight-mental-load.jpg', category: 'For Moms & Caregivers', excerpt: 'The mental load of new motherhood goes far beyond diaper changes. Understanding the cognitive burden and how to support it.' },
-  { title: 'Creating Moments That Matter: Supporting New Mothers', slug: 'creating-moments-that-matter-new-mothers', image: 'blog-creating-moments-that-matter.jpg', category: 'Clinical Skills', excerpt: 'Practical strategies for healthcare providers to create meaningful connections with postpartum families.' },
-  { title: 'Being YOU is Your Superpower: Why Authenticity Beats Conformity', slug: 'authenticity-beats-conformity-business', image: 'blog-authenticity-beats-conformity.jpg', category: 'Postpartum Practice Building', excerpt: "In a crowded market, your unique approach to postpartum care isn't a limitation — it's your superpower." },
-  { title: 'The Power of Showing Up: Why OTs Are Needed in Postpartum Care', slug: 'power-of-showing-up-ots-postpartum', image: 'blog-power-of-showing-up.png', category: 'Postpartum Practice Building', excerpt: "Imposter syndrome holding you back? Your OT training and desire to help are more powerful than your doubts." },
-  { title: 'Welcome to The Postpartum OT', slug: 'welcome-to-the-postpartum-ot', image: 'blog-power-of-showing-up.png', category: 'About', excerpt: "Meet Melissa O'Neal, OTR/L, and discover how The Postpartum OT is transforming care for families." },
+  {
+    slug: "tummy-time-and-milestones",
+    title: "Tummy Time and Milestones: What to Expect",
+    date: "March 20, 2026",
+    excerpt:
+      "New parents hear about tummy time constantly but rarely get the full picture. Here is what developmental milestones actually look like in the first year and how OTs can guide families through the process with confidence.",
+  },
+  {
+    slug: "infant-massage-regulation-bonding",
+    title: "The Power of Touch: Infant Massage for Regulation and Bonding",
+    date: "March 13, 2026",
+    excerpt:
+      "Infant massage is more than a soothing technique. Research shows it supports nervous system regulation, strengthens the parent child bond, and gives OTs a powerful tool for early intervention with postpartum families.",
+  },
+  {
+    slug: "understanding-postpartum-mood-disorders",
+    title: "More Than Baby Blues: Understanding Postpartum Mood Disorders",
+    date: "March 6, 2026",
+    excerpt:
+      "One in five mothers experience a postpartum mood disorder, yet most never receive treatment. OTs are uniquely positioned to recognize the signs and connect families with the support they need.",
+  },
+  {
+    slug: "self-settling-vs-self-soothing",
+    title: "Self Settling vs Self Soothing: What Professionals Need to Know",
+    date: "February 27, 2026",
+    excerpt:
+      "These terms get used interchangeably but they describe very different developmental processes. Understanding the distinction changes how you guide parents and the recommendations you make.",
+  },
+  {
+    slug: "getting-paid-postpartum-ot",
+    title: "Getting Paid for Your Postpartum OT Services",
+    date: "February 20, 2026",
+    excerpt:
+      "Insurance billing, cash pay models, hybrid approaches. A practical look at how postpartum OTs are structuring their revenue and what actually works in different practice settings.",
+  },
+  {
+    slug: "understanding-mental-load",
+    title: "The Invisible Weight: Understanding the Mental Load",
+    date: "February 13, 2026",
+    excerpt:
+      "The mental load is not just a social media buzzword. It is a measurable barrier to occupational performance that OTs can assess, address, and help families navigate with evidence informed strategies.",
+  },
 ];
-
-const categoryColors: Record<string, string> = {
-  'Confidence & Mindset': 'bg-purple-100 text-purple-700',
-  'Postpartum Practice Building': 'bg-teal-100 text-teal-700',
-  'Clinical Skills': 'bg-blue-100 text-blue-700',
-  'For Moms & Caregivers': 'bg-pink-100 text-pink-700',
-  'About': 'bg-gray-100 text-gray-700',
-};
 
 export default function BlogPage() {
   return (
-    <>
-      <ReaderContent title="The Postpartum OT Blog" />
+    <main className="bg-[#FAF7F2]">
+      <section className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16 py-24 md:py-32">
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-bold text-[#0A3660] mb-4 font-serif">
+            Blog
+          </h1>
+          <p className="text-lg text-[#6B6560] font-serif max-w-lg mx-auto">
+            Insights for OTs building postpartum practices
+          </p>
+        </div>
 
-      <section className="bg-[#0A3660] text-white py-16">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-4">From the Blog</h2>
-          <p className="text-gray-200 font-lora italic">Insights for clinicians and families navigating the postpartum world.</p>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {posts.map((post) => (
+            <article
+              key={post.slug}
+              className="bg-white rounded-2xl shadow-sm shadow-[#0A3660]/4 hover:shadow-md transition-shadow overflow-hidden flex flex-col"
+            >
+              <div className="p-7 flex flex-col flex-1">
+                <p className="text-xs text-[#6B6560] font-sans mb-3">
+                  {post.date}
+                </p>
+                <h2 className="font-serif text-[#0A3660] font-bold text-lg mb-3 leading-snug">
+                  {post.title}
+                </h2>
+                <p className="font-serif text-[#6B6560] text-sm leading-relaxed line-clamp-3 flex-1">
+                  {post.excerpt}
+                </p>
+                <a
+                  href={`/blog/${post.slug}`}
+                  className="text-[#469695] font-sans font-bold text-sm mt-5 inline-block hover:text-[#357574] transition-colors"
+                >
+                  Read more
+                </a>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
-
-      <section className="py-16 bg-[#FEFDF8]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {posts.map((post) => (
-              <Link key={post.slug} href={`/blog/${post.slug}`} className="group bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
-                <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src={`/images/${post.image}`}
-                    alt={post.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="p-6">
-                  <span className={`text-xs font-bold px-2 py-1 rounded-full ${categoryColors[post.category] || 'bg-gray-100 text-gray-600'}`}>
-                    {post.category}
-                  </span>
-                  <h3 className="font-bold text-[#0A3660] mt-3 mb-2 leading-snug group-hover:text-[#469695] transition-colors">
-                    {post.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm font-lora leading-relaxed">{post.excerpt}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-    </>
+    </main>
   );
 }

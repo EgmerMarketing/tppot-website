@@ -1,87 +1,189 @@
-'use client';
-import { Mail, Instagram, Facebook, Youtube, Linkedin } from 'lucide-react';
-import ReaderContent from '@/components/ReaderContent';
-import { company } from '@/lib/company';
+import type { Metadata } from "next";
+import { Mail, Calendar, Send, ExternalLink } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Contact | The Postpartum OT",
+  description:
+    "Book a free 15 minute strategy call or send a message. Get in touch with Melissa O'Neal about postpartum OT mentorship.",
+};
 
 export default function ContactPage() {
   return (
-    <>
-      <ReaderContent title="Contact The Postpartum OT" />
-
-      <section className="bg-[#0A3660] text-white py-20">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-6">Reach Out — You Don&apos;t Have to Do This Alone</h2>
-          <p className="text-lg font-lora italic text-gray-200">
-            Whether you&apos;re exploring ways to start your postpartum practice or refining your existing approach, I&apos;m here to help.
+    <main className="bg-[#FAF7F2]">
+      <section className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16 py-24 md:py-32">
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-bold text-[#0A3660] mb-4 font-serif">
+            Let&apos;s Talk
+          </h1>
+          <p className="text-lg text-[#6B6560] font-serif max-w-lg mx-auto">
+            Book a free 15 minute strategy call or send a message
           </p>
         </div>
-      </section>
 
-      <section className="py-16 bg-[#FEFDF8]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12">
-          {/* Contact form */}
-          <div>
-            <h2 className="text-2xl font-black text-[#0A3660] mb-2">Send a Message</h2>
-            <p className="text-gray-600 font-lora mb-6 text-sm">I&apos;ll be in touch within 1–2 business days.</p>
-            <form className="space-y-4" onSubmit={e => e.preventDefault()}>
+        <div className="grid md:grid-cols-2 gap-16">
+          {/* Form */}
+          <div className="bg-white rounded-2xl shadow-sm shadow-[#0A3660]/4 p-8 md:p-10">
+            <form action="#" method="POST" className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-bold text-[#0A3660] mb-1">Name <span className="text-red-500">*</span></label>
-                <input id="name" type="text" required className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#469695]" />
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-bold text-[#0A3660] mb-2 font-sans"
+                >
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  className="w-full border border-[#D4D0CC] rounded-lg p-3 text-[#0A3660] font-sans text-sm bg-white focus:border-[#469695] focus:ring-2 focus:ring-[#469695]/20 outline-none transition-colors"
+                  placeholder="Your full name"
+                />
               </div>
+
               <div>
-                <label htmlFor="email" className="block text-sm font-bold text-[#0A3660] mb-1">Email <span className="text-red-500">*</span></label>
-                <input id="email" type="email" required className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#469695]" />
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-bold text-[#0A3660] mb-2 font-sans"
+                >
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  className="w-full border border-[#D4D0CC] rounded-lg p-3 text-[#0A3660] font-sans text-sm bg-white focus:border-[#469695] focus:ring-2 focus:ring-[#469695]/20 outline-none transition-colors"
+                  placeholder="you@example.com"
+                />
               </div>
+
               <div>
-                <label htmlFor="subject" className="block text-sm font-bold text-[#0A3660] mb-1">Subject</label>
-                <select id="subject" className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#469695] bg-white">
-                  <option value="">Select a topic...</option>
-                  <option value="general">General Inquiry</option>
-                  <option value="mentorship">Mentorship</option>
-                  <option value="speaking">Speaking / Media</option>
-                  <option value="collaboration">Collaboration</option>
-                  <option value="other">Other</option>
+                <label
+                  htmlFor="journey"
+                  className="block text-sm font-bold text-[#0A3660] mb-2 font-sans"
+                >
+                  Where are you in your postpartum OT journey?
+                </label>
+                <select
+                  id="journey"
+                  name="journey"
+                  className="w-full border border-[#D4D0CC] rounded-lg p-3 text-[#0A3660] font-sans text-sm bg-white focus:border-[#469695] focus:ring-2 focus:ring-[#469695]/20 outline-none transition-colors"
+                >
+                  <option value="">Select one</option>
+                  <option value="exploring">Just Exploring</option>
+                  <option value="ready">Ready to Start</option>
+                  <option value="practicing">Already Practicing</option>
                 </select>
               </div>
+
               <div>
-                <label htmlFor="message" className="block text-sm font-bold text-[#0A3660] mb-1">Message <span className="text-red-500">*</span></label>
-                <textarea id="message" required rows={5} className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#469695] resize-none" />
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-bold text-[#0A3660] mb-2 font-sans"
+                >
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={5}
+                  className="w-full border border-[#D4D0CC] rounded-lg p-3 text-[#0A3660] font-sans text-sm bg-white focus:border-[#469695] focus:ring-2 focus:ring-[#469695]/20 outline-none transition-colors resize-vertical"
+                  placeholder="Tell me a little about what you're looking for..."
+                />
               </div>
-              <button type="submit" className="bg-[#469695] text-white px-8 py-3 rounded-lg font-bold hover:bg-[#3a7e7d] transition-colors w-full">
+
+              <button
+                type="submit"
+                className="inline-flex items-center gap-2.5 bg-[#357574] text-white px-7 py-4 rounded-xl font-bold text-[15px] hover:bg-[#0A3660] transition-colors font-sans w-full justify-center"
+              >
+                <Send className="w-4 h-4" strokeWidth={2} />
                 Send Message
               </button>
             </form>
           </div>
 
-          {/* Booking + Social */}
-          <div>
-            <h2 className="text-2xl font-black text-[#0A3660] mb-2">Schedule a Free Consultation</h2>
-            <p className="text-gray-600 font-lora mb-4 text-sm">Ready to talk about mentorship or speaking? Book a time directly.</p>
-            {/* KARTRA_EMBED: Booking calendar widget */}
-            <div className="bg-gray-100 rounded-2xl p-8 text-center text-gray-400 italic text-sm mb-10">
-              [Booking calendar — Kartra embed coming soon]
+          {/* Info */}
+          <div className="space-y-10">
+            <div>
+              <h2 className="text-xl font-bold text-[#0A3660] mb-6 font-serif">
+                Other Ways to Connect
+              </h2>
+
+              <div className="space-y-6">
+                <a
+                  href="mailto:hello@thepostpartumot.com"
+                  className="flex items-center gap-4 group"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-[#469695]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#469695]/20 transition-colors">
+                    <Mail className="w-5 h-5 text-[#469695]" strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-[#0A3660] font-sans">Email Directly</p>
+                    <p className="text-sm text-[#6B6560] font-serif">
+                      hello@thepostpartumot.com
+                    </p>
+                  </div>
+                </a>
+
+                <a href="#" className="flex items-center gap-4 group">
+                  <div className="w-12 h-12 rounded-xl bg-[#469695]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#469695]/20 transition-colors">
+                    <Calendar className="w-5 h-5 text-[#469695]" strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-[#0A3660] font-sans">
+                      Book a Free Strategy Call
+                    </p>
+                    <p className="text-sm text-[#6B6560] font-serif">
+                      15 minutes, no pressure, no pitch
+                    </p>
+                  </div>
+                </a>
+              </div>
             </div>
 
-            <h2 className="text-2xl font-black text-[#0A3660] mb-4">Find Me Online</h2>
-            <ul className="space-y-3">
-              {[
-                { icon: <Mail size={18} />, label: 'hello@thepostpartumot.com', href: 'mailto:hello@thepostpartumot.com' },
-                { icon: <Instagram size={18} />, label: '@thepostpartumot', href: company.social.instagram },
-                { icon: <Facebook size={18} />, label: 'The Postpartum OT Community', href: company.social.facebook },
-                { icon: <Youtube size={18} />, label: 'The Postpartum OT YouTube', href: company.social.youtube },
-                { icon: <Linkedin size={18} />, label: 'Melissa O\'Neal', href: company.social.linkedin },
-              ].map((item) => (
-                <li key={item.label}>
-                  <a href={item.href} target={item.href.startsWith('mailto') ? undefined : '_blank'} rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-[#469695] hover:text-[#3a7e7d] font-semibold text-sm transition-colors">
-                    {item.icon} {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <div>
+              <h3 className="text-sm font-bold text-[#0A3660] uppercase tracking-wider mb-5 font-sans">
+                Follow Along
+              </h3>
+              <div className="flex gap-4">
+                <a
+                  href="#"
+                  aria-label="Facebook"
+                  className="w-12 h-12 rounded-xl bg-[#469695]/10 flex items-center justify-center hover:bg-[#469695]/20 transition-colors"
+                >
+                  <ExternalLink className="w-5 h-5 text-[#469695]" strokeWidth={1.5} />
+                </a>
+                <a
+                  href="#"
+                  aria-label="Instagram"
+                  className="w-12 h-12 rounded-xl bg-[#469695]/10 flex items-center justify-center hover:bg-[#469695]/20 transition-colors"
+                >
+                  <ExternalLink className="w-5 h-5 text-[#469695]" strokeWidth={1.5} />
+                </a>
+                <a
+                  href="#"
+                  aria-label="LinkedIn"
+                  className="w-12 h-12 rounded-xl bg-[#469695]/10 flex items-center justify-center hover:bg-[#469695]/20 transition-colors"
+                >
+                  <ExternalLink className="w-5 h-5 text-[#469695]" strokeWidth={1.5} />
+                </a>
+              </div>
+            </div>
+
+            <div className="bg-[#E6F0F0] rounded-2xl p-8">
+              <p className="text-[15px] text-[#0A3660] font-medium leading-relaxed font-serif">
+                &ldquo;I respond to every message personally. If you&apos;re
+                thinking about postpartum OT, I&apos;d love to hear where you
+                are and where you want to go.&rdquo;
+              </p>
+              <p className="text-sm font-bold text-[#469695] mt-4 font-sans">
+                Melissa O&apos;Neal, OTR/L, PCES
+              </p>
+            </div>
           </div>
         </div>
       </section>
-    </>
+    </main>
   );
 }
