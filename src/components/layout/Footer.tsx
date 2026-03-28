@@ -98,22 +98,22 @@ export default function Footer() {
           </p>
           <nav aria-label="Legal" className="flex gap-6">
             <Link
-              href="/privacy"
+              href="/legal"
               className="font-sans text-[13px] text-[#FAF7F2]/50 transition hover:text-[#FAF7F2]/80"
             >
-              Privacy Policy
+              Legal
             </Link>
             <Link
-              href="/terms"
+              href="/legal/privacy-policy"
+              className="font-sans text-[13px] text-[#FAF7F2]/50 transition hover:text-[#FAF7F2]/80"
+            >
+              Privacy
+            </Link>
+            <Link
+              href="/legal/terms-and-conditions"
               className="font-sans text-[13px] text-[#FAF7F2]/50 transition hover:text-[#FAF7F2]/80"
             >
               Terms
-            </Link>
-            <Link
-              href="/accessibility"
-              className="font-sans text-[13px] text-[#FAF7F2]/50 transition hover:text-[#FAF7F2]/80"
-            >
-              Accessibility
             </Link>
           </nav>
         </div>

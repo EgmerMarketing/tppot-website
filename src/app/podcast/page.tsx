@@ -107,17 +107,22 @@ export default function PodcastPage() {
         {/* Episode List */}
         <div className="space-y-4 mb-16">
           {episodes.map((ep) => (
-            <Link
+            <div
               key={ep.number}
-              href={ep.blog}
-              className="group bg-white rounded-2xl shadow-sm shadow-[#0A3660]/4 hover:shadow-md hover:shadow-[#0A3660]/8 transition-shadow p-6 flex items-center gap-5 block"
+              className="bg-white rounded-2xl shadow-sm shadow-[#0A3660]/4 hover:shadow-md hover:shadow-[#0A3660]/8 transition-shadow p-6 flex items-center gap-5"
             >
-              <div className="w-14 h-14 rounded-xl bg-[#469695]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#469695] transition-colors">
+              <a
+                href="https://podcasts.apple.com/us/podcast/functional-fourth-trimester/id1881077069"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Listen to Episode ${ep.number} on Apple Podcasts`}
+                className="group w-14 h-14 rounded-xl bg-[#469695]/10 flex items-center justify-center flex-shrink-0 hover:bg-[#469695] transition-colors"
+              >
                 <Play
                   className="w-6 h-6 text-[#469695] group-hover:text-white transition-colors"
                   strokeWidth={1.5}
                 />
-              </div>
+              </a>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-3 mb-1">
                   <p className="text-[11px] text-[#469695] font-bold tracking-wider uppercase font-sans">
@@ -126,15 +131,14 @@ export default function PodcastPage() {
                   <span className="text-[11px] text-[#6B6560] font-sans">{ep.date}</span>
                   <span className="text-[11px] text-[#6B6560] font-sans">{ep.duration}</span>
                 </div>
-                <p className="text-[15px] font-bold text-[#0A3660] font-sans">
+                <Link href={ep.blog} className="text-[15px] font-bold text-[#0A3660] font-sans hover:text-[#469695] transition-colors">
                   {ep.title}
-                </p>
+                </Link>
               </div>
-              <ChevronRight
-                className="w-5 h-5 text-[#0A3660]/20 group-hover:text-[#469695] transition-colors flex-shrink-0"
-                strokeWidth={2}
-              />
-            </Link>
+              <Link href={ep.blog} aria-label="Read show notes" className="text-[11px] text-[#469695] font-sans font-bold hover:text-[#357574] transition-colors flex-shrink-0 hidden md:block">
+                Show Notes
+              </Link>
+            </div>
           ))}
         </div>
 
