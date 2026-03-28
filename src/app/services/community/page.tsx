@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "The Postpartum OT Community | Free for OTs",
   description:
     "Join 600+ occupational therapists in The Postpartum OT community. Free peer support, shared resources, clinical discussions, and live events.",
+  robots: { index: false, follow: false },
 };
 
 const offerings = [

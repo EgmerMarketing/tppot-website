@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Services | The Postpartum OT",
   description:
     "Find your path forward with mentorship from The Postpartum OT. Programs for new practitioners, growing practices, and a free community of 600+ OTs.",
+  robots: { index: false, follow: false },
 };
 
 function TealCheck() {

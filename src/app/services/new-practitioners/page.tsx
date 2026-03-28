@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "New Practitioners Mentorship | The Postpartum OT",
   description:
     "Start your postpartum OT practice from scratch with 1:1 mentorship from Melissa O'Neal. Get a clear roadmap, clinical confidence, and your first clients.",
+  robots: { index: false, follow: false },
 };
 
 function TealCheck() {

@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Growing Practices Mentorship | The Postpartum OT",
   description:
     "Scale your postpartum OT practice with strategic mentorship from Melissa O'Neal. Revenue growth, marketing systems, and operational guidance.",
+  robots: { index: false, follow: false },
 };
 
 function TealCheck() {
