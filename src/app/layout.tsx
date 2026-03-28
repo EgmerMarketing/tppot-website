@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Lato, Lora } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import { organizationSchema, personSchema, websiteSchema } from "@/lib/schema";
 import "./globals.css";
 
 const lato = Lato({
@@ -32,6 +33,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${lato.variable} ${lora.variable} h-full antialiased`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema()) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema()) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema()) }}
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-[#FAF7F2] text-[#0A3660]">
         <a
           href="#main"
