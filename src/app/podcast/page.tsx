@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Headphones, Play, ChevronRight } from "lucide-react";
+import { breadcrumbSchema, podcastSeriesSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "The Functional Fourth Trimester Podcast | The Postpartum OT",
@@ -37,6 +38,8 @@ const episodes = [
 export default function PodcastPage() {
   return (
     <main className="bg-[#FAF7F2]">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([{ name: "Home", url: "https://thepostpartumot.com" }, { name: "Podcast", url: "https://thepostpartumot.com/podcast" }])) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(podcastSeriesSchema()) }} />
       <section className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16 py-24 md:py-32">
         <div className="max-w-2xl mb-16">
           <p className="text-[#469695] font-bold text-xs tracking-[0.2em] uppercase mb-6 font-sans">

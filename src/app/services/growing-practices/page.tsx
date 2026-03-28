@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Calendar, CheckCircle } from "lucide-react";
+import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Growing Practices Mentorship | The Postpartum OT",
@@ -49,6 +50,8 @@ const steps = [
 export default function GrowingPracticesPage() {
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([{ name: "Home", url: "https://thepostpartumot.com" }, { name: "Services", url: "https://thepostpartumot.com/services" }, { name: "Growing Practices", url: "https://thepostpartumot.com/services/growing-practices" }])) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema("Growing Practices Mentorship", "Strategic guidance for established OTs scaling their postpartum practice", "https://thepostpartumot.com/services/growing-practices")) }} />
       {/* Hero */}
       <section className="relative bg-[#061D37] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#061D37] via-[#0A3660] to-[#0d4a82]" />

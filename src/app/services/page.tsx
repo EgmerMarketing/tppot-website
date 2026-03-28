@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Calendar, Rocket, TrendingUp, Users } from "lucide-react";
+import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Services | The Postpartum OT",
@@ -71,6 +72,10 @@ const tiers = [
 export default function ServicesPage() {
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([{ name: "Home", url: "https://thepostpartumot.com" }, { name: "Services", url: "https://thepostpartumot.com/services" }])) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema("New Practitioners Mentorship", "Personal mentorship for occupational therapists starting a postpartum practice", "https://thepostpartumot.com/services/new-practitioners")) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema("Growing Practices Mentorship", "Strategic guidance for OTs scaling an existing postpartum practice", "https://thepostpartumot.com/services/growing-practices")) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema("Community Membership", "Free community of 600+ occupational therapists building postpartum practices", "https://thepostpartumot.com/services/community")) }} />
       {/* Hero */}
       <section className="bg-[#E6F0F0]">
         <div className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16 py-24 md:py-32 text-center">

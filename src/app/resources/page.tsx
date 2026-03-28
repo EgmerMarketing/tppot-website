@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Download, BookOpen, Headphones, Calendar, CheckCircle } from "lucide-react";
+import { breadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Free Resources | The Postpartum OT",
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
 export default function ResourcesPage() {
   return (
     <main className="bg-[#FAF7F2]">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([{ name: "Home", url: "https://thepostpartumot.com" }, { name: "Resources", url: "https://thepostpartumot.com/resources" }])) }} />
       <section className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16 py-24 md:py-32">
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-[#0A3660] mb-4 font-serif">

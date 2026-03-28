@@ -11,6 +11,7 @@ import {
   Star,
   Users,
 } from "lucide-react";
+import { breadcrumbSchema } from "@/lib/schema";
 
 /* ─── Hero ─── */
 function Hero() {
@@ -364,6 +365,7 @@ function FinalCTA() {
 export default function Home() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([{ name: "Home", url: "https://thepostpartumot.com" }])) }} />
       <Hero />
       <SocialProof />
       <ProblemStatement />

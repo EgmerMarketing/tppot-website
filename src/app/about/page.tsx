@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Award, Calendar, GraduationCap, Heart, Lightbulb, Shield } from "lucide-react";
+import { breadcrumbSchema, personSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "About Melissa O'Neal | The Postpartum OT",
@@ -20,6 +21,8 @@ function TealCheck() {
 export default function AboutPage() {
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([{ name: "Home", url: "https://thepostpartumot.com" }, { name: "About", url: "https://thepostpartumot.com/about" }])) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema()) }} />
       {/* Hero */}
       <section className="relative bg-[#061D37] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#061D37] via-[#0A3660] to-[#0d4a82]" />

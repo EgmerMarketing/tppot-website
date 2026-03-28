@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Calendar } from "lucide-react";
+import { breadcrumbSchema, faqSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "FAQ | The Postpartum OT",
@@ -90,9 +91,13 @@ const categories: FAQCategory[] = [
   },
 ];
 
+const allFaqs = categories.flatMap((cat) => cat.items);
+
 export default function FAQPage() {
   return (
     <main className="bg-[#FAF7F2]">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([{ name: "Home", url: "https://thepostpartumot.com" }, { name: "FAQ", url: "https://thepostpartumot.com/faq" }])) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(allFaqs)) }} />
       <section className="max-w-[900px] mx-auto px-6 md:px-12 py-24 md:py-32">
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-[#0A3660] mb-4 font-serif">

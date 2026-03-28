@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Calendar } from "lucide-react";
+import { breadcrumbSchema, articleSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Matrescence: The Transformation of Becoming a Mother | The Postpartum OT",
@@ -10,6 +11,8 @@ export const metadata: Metadata = {
 export default function MatrescencePage() {
   return (
     <main className="bg-[#FAF7F2]">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([{ name: "Home", url: "https://thepostpartumot.com" }, { name: "Matrescence", url: "https://thepostpartumot.com/matrescence" }])) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema({ headline: "Matrescence: The Transformation of Becoming a Mother", description: "A comprehensive guide to matrescence from an occupational therapy perspective", datePublished: "2026-03-28", dateModified: "2026-03-28", keywords: ["matrescence", "occupational therapy", "postpartum", "identity transition", "fourth trimester"] })) }} />
       <article className="max-w-[720px] mx-auto px-6 py-24 md:py-32">
         {/* Header */}
         <header className="mb-12">

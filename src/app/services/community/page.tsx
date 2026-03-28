@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Heart, MessageCircle, BookOpen, Users, CalendarDays, Share2 } from "lucide-react";
+import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "The Postpartum OT Community | Free for OTs",
@@ -44,6 +45,8 @@ const offerings = [
 export default function CommunityPage() {
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([{ name: "Home", url: "https://thepostpartumot.com" }, { name: "Services", url: "https://thepostpartumot.com/services" }, { name: "Community", url: "https://thepostpartumot.com/services/community" }])) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema("The Postpartum OT Community", "Free community of 600+ occupational therapists sharing resources and support", "https://thepostpartumot.com/services/community")) }} />
       {/* Hero */}
       <section className="relative bg-[#061D37] overflow-hidden">
         <div className="absolute inset-0 opacity-5">
