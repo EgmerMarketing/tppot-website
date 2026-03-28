@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Headphones, Play, ChevronRight } from "lucide-react";
 import { breadcrumbSchema, podcastSeriesSchema } from "@/lib/schema";
 
@@ -10,28 +11,53 @@ export const metadata: Metadata = {
 
 const episodes = [
   {
+    number: 7,
+    title: "Tummy Time and Milestones: What to Expect in the Early Months",
+    date: "Mar 19, 2026",
+    duration: "27 min",
+    blog: "/blog/tummy-time-and-milestones",
+  },
+  {
     number: 6,
-    title: "Building Confidence in Your First Postpartum Cases",
+    title: "Beyond Outnumbered: Practical Survival Strategies for Parents of Multiples",
+    date: "Mar 15, 2026",
+    duration: "29 min",
+    blog: "/blog/beyond-outnumbered",
   },
   {
     number: 5,
-    title: "What OT School Didn't Teach You About Maternal Mental Health",
+    title: "The Power of Touch: How Infant Massage Supports Regulation and Bonding",
+    date: "Mar 8, 2026",
+    duration: "24 min",
+    blog: "/blog/the-power-of-touch",
   },
   {
     number: 4,
-    title: "The Business Side: Pricing, Insurance, and Getting Paid",
+    title: "From Chaos to Calm: Simple Sleep Strategies for New Parents",
+    date: "Feb 28, 2026",
+    duration: "19 min",
+    blog: "/blog/how-the-nervous-system-impacts-infant-sleep",
   },
   {
     number: 3,
-    title: "Understanding the Fourth Trimester Through an OT Lens",
+    title: "Wired and Tired: How the Nervous System Shapes Infant Sleep",
+    date: "Feb 28, 2026",
+    duration: "18 min",
+    blog: "/blog/how-the-nervous-system-impacts-infant-sleep",
   },
   {
     number: 2,
-    title: "From Peds to Postpartum: Making the Transition",
+    title: "More Than Baby Blues: Understanding Postpartum Mood and Anxiety Disorders",
+    date: "Feb 28, 2026",
+    duration: "28 min",
+    blog: "/blog/more-than-baby-blues",
   },
   {
     number: 1,
-    title: "Why Postpartum OT Matters More Than Ever",
+    title: "Welcome to Functional Fourth Trimester: Rethinking Daily Life After Birth",
+    date: "Feb 28, 2026",
+    duration: "6 min",
+    blog: "/blog/welcome-to-functional-fourth-trimester",
   },
 ];
 
@@ -81,9 +107,10 @@ export default function PodcastPage() {
         {/* Episode List */}
         <div className="space-y-4 mb-16">
           {episodes.map((ep) => (
-            <div
+            <Link
               key={ep.number}
-              className="group bg-white rounded-2xl shadow-sm shadow-[#0A3660]/4 hover:shadow-md hover:shadow-[#0A3660]/8 transition-shadow p-6 flex items-center gap-5 cursor-pointer"
+              href={ep.blog}
+              className="group bg-white rounded-2xl shadow-sm shadow-[#0A3660]/4 hover:shadow-md hover:shadow-[#0A3660]/8 transition-shadow p-6 flex items-center gap-5 block"
             >
               <div className="w-14 h-14 rounded-xl bg-[#469695]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#469695] transition-colors">
                 <Play
@@ -92,9 +119,13 @@ export default function PodcastPage() {
                 />
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-[11px] text-[#469695] font-bold tracking-wider uppercase mb-1 font-sans">
-                  Episode {ep.number}
-                </p>
+                <div className="flex items-center gap-3 mb-1">
+                  <p className="text-[11px] text-[#469695] font-bold tracking-wider uppercase font-sans">
+                    Episode {ep.number}
+                  </p>
+                  <span className="text-[11px] text-[#6B6560] font-sans">{ep.date}</span>
+                  <span className="text-[11px] text-[#6B6560] font-sans">{ep.duration}</span>
+                </div>
                 <p className="text-[15px] font-bold text-[#0A3660] font-sans">
                   {ep.title}
                 </p>
@@ -103,7 +134,7 @@ export default function PodcastPage() {
                 className="w-5 h-5 text-[#0A3660]/20 group-hover:text-[#469695] transition-colors flex-shrink-0"
                 strokeWidth={2}
               />
-            </div>
+            </Link>
           ))}
         </div>
 
