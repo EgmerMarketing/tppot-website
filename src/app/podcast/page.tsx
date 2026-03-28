@@ -59,14 +59,18 @@ export default function PodcastPage() {
         {/* Platform Links */}
         <div className="flex flex-wrap gap-4 mb-16">
           <a
-            href="#"
+            href="https://podcasts.apple.com/us/podcast/functional-fourth-trimester/id1881077069"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2.5 bg-[#061D37] text-white px-6 py-3.5 rounded-xl font-bold text-sm hover:bg-[#0A3660] transition-colors font-sans"
           >
             <Headphones className="w-4 h-4" strokeWidth={2} />
             Apple Podcasts
           </a>
           <a
-            href="#"
+            href="https://open.spotify.com/show/0yuF6uerJGVWdhgysa7Ug3"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2.5 border-2 border-[#0A3660]/15 text-[#0A3660] px-6 py-3.5 rounded-xl font-bold text-sm hover:border-[#0A3660]/30 transition-colors font-sans"
           >
             <Headphones className="w-4 h-4" strokeWidth={2} />
