@@ -38,11 +38,11 @@ function Hero() {
               Moms deserve more than a six week checkup. You know that. Personal mentorship from a clinician with 10+ years in the trenches.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href="/contact" className="inline-flex items-center justify-center gap-2.5 bg-[#469695] text-white px-7 py-4 rounded-xl font-bold text-[15px] hover:bg-[#357574] transition-all hover:shadow-lg hover:shadow-[#469695]/25 font-sans">
+              <a href="/contact" className="inline-flex items-center justify-center gap-2.5 bg-white text-[#0A3660] px-7 py-4 rounded-xl font-bold text-[15px] hover:bg-[#E6F0F0] transition-all shadow-lg shadow-black/20 font-sans">
                 <Calendar className="w-4 h-4" strokeWidth={2} />
                 Book Your Free Strategy Call
               </a>
-              <a href="/resources" className="inline-flex items-center justify-center gap-2.5 text-white/70 px-7 py-4 font-bold text-[15px] hover:text-white transition-colors font-sans">
+              <a href="/resources" className="inline-flex items-center justify-center gap-2.5 border-2 border-white/30 text-white px-7 py-4 rounded-xl font-bold text-[15px] hover:bg-white/10 hover:border-white/50 transition-all font-sans">
                 <Download className="w-4 h-4" strokeWidth={2} />
                 Get the Starter Kit
               </a>
@@ -333,7 +333,7 @@ function Community() {
           A community of clinicians who share resources, ask real questions,
           celebrate wins, and support each other through the hard parts.
         </p>
-        <a href="#" className="inline-flex items-center gap-2.5 bg-[#469695] text-white px-7 py-4 rounded-xl font-bold text-[15px] hover:bg-[#357574] transition-colors font-sans">
+        <a href="https://www.facebook.com/groups/1967522367025806" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2.5 bg-white text-[#0A3660] px-7 py-4 rounded-xl font-bold text-[15px] hover:bg-[#E6F0F0] transition-all shadow-lg shadow-black/20 font-sans">
           <Users className="w-4 h-4" strokeWidth={2} />Join the Community
         </a>
       </div>
@@ -353,7 +353,7 @@ function FinalCTA() {
         <p className="text-[17px] text-[#6B6560] leading-relaxed mb-10 font-serif">
           Book a free 15 minute strategy call. No pressure, no pitch. Just a conversation about where you are and where you want to go.
         </p>
-        <a href="#" className="inline-flex items-center gap-2.5 bg-[#469695] text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-[#357574] transition-all hover:shadow-lg hover:shadow-[#469695]/25 font-sans">
+        <a href="/contact" className="inline-flex items-center gap-2.5 bg-[#357574] text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-[#0A3660] transition-all shadow-lg shadow-[#0A3660]/15 font-sans">
           <Calendar className="w-5 h-5" strokeWidth={2} />Book Your Free Strategy Call
         </a>
       </div>
