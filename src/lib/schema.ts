@@ -19,7 +19,7 @@ export function organizationSchema() {
     sameAs: [
       'https://www.instagram.com/thepostpartumot',
       'https://www.facebook.com/groups/1967522367025806',
-      'https://www.linkedin.com/in/melissaonealot',
+      'https://www.linkedin.com/company/raising-bundle/',
       'https://www.youtube.com/@thepostpartumot',
     ],
   };
@@ -45,7 +45,7 @@ export function personSchema() {
     ],
     sameAs: [
       'https://www.instagram.com/thepostpartumot',
-      'https://www.linkedin.com/in/melissaonealot',
+      'https://www.linkedin.com/company/raising-bundle/',
     ],
     worksFor: {
       '@id': `${BASE_URL}/#organization`,
