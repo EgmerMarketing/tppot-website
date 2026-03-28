@@ -80,11 +80,11 @@ export default async function BlogPostPage({ params }: PageProps) {
       })) }} />
 
       {/* Hero */}
-      <section className="relative py-20 lg:py-28 bg-[#061D37]">
+      <section className="relative pt-28 pb-20 lg:pt-32 lg:pb-28 bg-[#061D37]">
         <div className="relative max-w-[720px] mx-auto px-6">
           <Link
             href="/blog"
-            className="inline-flex items-center text-[#469695] hover:text-white mb-8 transition-colors font-sans text-sm font-bold"
+            className="inline-flex items-center text-[#469695] hover:text-white mb-6 transition-colors font-sans text-sm font-bold"
           >
             <svg className="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -92,9 +92,11 @@ export default async function BlogPostPage({ params }: PageProps) {
             Back to Blog
           </Link>
 
-          <span className="text-xs text-[#469695] font-sans font-bold bg-[#469695]/10 px-3 py-1 rounded mb-4 inline-block">
-            {post.category}
-          </span>
+          <div className="mb-5">
+            <span className="text-xs text-[#469695] font-sans font-bold bg-[#469695]/10 px-3 py-1 rounded">
+              {post.category}
+            </span>
+          </div>
 
           <h1 className="text-3xl lg:text-4xl font-bold text-white mb-6 font-serif leading-tight">
             {post.title}
