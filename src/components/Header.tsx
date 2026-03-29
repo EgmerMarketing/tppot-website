@@ -17,7 +17,7 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll);
   }, [transparent]);
 
-  const isSolid = !transparent || scrolled;
+  const isSolid = !transparent || scrolled || open;
 
   return (
     <header
