@@ -128,6 +128,13 @@ export default function ReviewFunnel({
         <p className="text-xs text-gray-600 mt-4">
           Opens Google in a new tab. Takes about 30 seconds.
         </p>
+
+        <button
+          onClick={() => { setStep("rate"); setRating(0); }}
+          className="text-xs text-gray-600 hover:text-gray-400 transition-colors mt-3 block mx-auto"
+        >
+          Change my rating
+        </button>
       </div>
     );
   }
@@ -187,6 +194,13 @@ export default function ReviewFunnel({
         <p className="text-xs text-gray-600 mt-4 text-center">
           This goes directly to the business owner. It will not be posted publicly.
         </p>
+
+        <button
+          onClick={() => { setStep("rate"); setRating(0); }}
+          className="text-xs text-gray-600 hover:text-gray-400 transition-colors mt-3 block mx-auto"
+        >
+          Change my rating
+        </button>
       </div>
     );
   }
