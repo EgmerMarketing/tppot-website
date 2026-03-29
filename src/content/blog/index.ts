@@ -20,16 +20,12 @@ import { post9 } from './the-ot-advantage';
 import { post10 } from './from-overwhelmed-to-in-control';
 import { post11 } from './why-knowing-what-to-do-isnt-enough';
 import { post12 } from './how-to-stop-second-guessing';
-import { post13 } from './welcome-to-functional-fourth-trimester';
 import { post14 } from './how-the-nervous-system-impacts-infant-sleep';
 import { post15 } from './more-than-baby-blues';
-import { post16 } from './the-power-of-touch';
-import { post17 } from './beyond-outnumbered';
-import { post18 } from './tummy-time-and-milestones';
 
 export const blogPosts: BlogPost[] = [
   post1, post2, post3, post4, post5, post6, post7, post8, post9,
-  post10, post11, post12, post13, post14, post15, post16, post17, post18,
+  post10, post11, post12, post14, post15,
 ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 export function getBlogBySlug(slug: string): BlogPost | undefined {

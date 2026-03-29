@@ -15,21 +15,21 @@ const episodes = [
     title: "Tummy Time and Milestones: What to Expect in the Early Months",
     date: "Mar 19, 2026",
     duration: "27 min",
-    blog: "/blog/tummy-time-and-milestones",
+    blog: "https://functionalfourthtrimester.com/blog/tummy-time-and-milestones",
   },
   {
     number: 6,
     title: "Beyond Outnumbered: Practical Survival Strategies for Parents of Multiples",
     date: "Mar 15, 2026",
     duration: "29 min",
-    blog: "/blog/beyond-outnumbered",
+    blog: "https://functionalfourthtrimester.com/blog/beyond-outnumbered",
   },
   {
     number: 5,
     title: "The Power of Touch: How Infant Massage Supports Regulation and Bonding",
     date: "Mar 8, 2026",
     duration: "24 min",
-    blog: "/blog/the-power-of-touch",
+    blog: "https://functionalfourthtrimester.com/blog/the-power-of-touch",
   },
   {
     number: 4,
@@ -57,7 +57,7 @@ const episodes = [
     title: "Welcome to Functional Fourth Trimester: Rethinking Daily Life After Birth",
     date: "Feb 28, 2026",
     duration: "6 min",
-    blog: "/blog/welcome-to-functional-fourth-trimester",
+    blog: "https://functionalfourthtrimester.com/blog/welcome-to-functional-fourth-trimester",
   },
 ];
 
