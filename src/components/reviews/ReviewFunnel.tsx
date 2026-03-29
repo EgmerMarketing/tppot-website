@@ -131,7 +131,7 @@ export default function ReviewFunnel({
 
         <button
           onClick={() => { setStep("rate"); setRating(0); }}
-          className="text-xs text-gray-600 hover:text-gray-400 transition-colors mt-3 block mx-auto"
+          className="text-sm text-gray-400 hover:text-white underline transition-colors mt-3 block mx-auto"
         >
           Change my rating
         </button>
@@ -197,7 +197,7 @@ export default function ReviewFunnel({
 
         <button
           onClick={() => { setStep("rate"); setRating(0); }}
-          className="text-xs text-gray-600 hover:text-gray-400 transition-colors mt-3 block mx-auto"
+          className="text-sm text-gray-400 hover:text-white underline transition-colors mt-3 block mx-auto"
         >
           Change my rating
         </button>
