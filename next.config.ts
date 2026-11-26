@@ -12,6 +12,9 @@ const nextConfig: NextConfig = {
     ];
   },
   images: {
+    remotePatterns: [
+      { protocol: "https", hostname: "i.ytimg.com", pathname: "/vi/**" },
+    ],
     domains: ['thepostpartumot.com'],
     minimumCacheTTL: 2678400,
     deviceSizes: [640, 828, 1200, 1920],

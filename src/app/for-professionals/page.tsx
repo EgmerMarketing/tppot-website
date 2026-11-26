@@ -3,9 +3,26 @@ import Link from "next/link";
 import PageHeader from "@/components/site/PageHeader";
 import NeedsMelissa from "@/components/site/NeedsMelissa";
 import { LearnMore } from "@/components/site/Scan";
+import YoutubeFacade from "@/components/site/YoutubeFacade";
 import JsonLd from "@/components/site/JsonLd";
-import { breadcrumbSchema } from "@/lib/schema";
+import { breadcrumbSchema, videoObjectSchema } from "@/lib/schema";
 import { SITE_URL } from "@/lib/site";
+
+const youtubeTitle =
+  "Website Accessibility and Occupational Therapy | Melissa O’Neal | The Modern Healthcare Lab";
+const youtubeUrl = "https://www.youtube.com/watch?v=IxN_xZoQPl0";
+const youtubeId = "IxN_xZoQPl0";
+const youtubeThumb = "https://i.ytimg.com/vi/IxN_xZoQPl0/hqdefault.jpg";
+
+const episodeTitle =
+  "Bringing Care to the Home: How In-Home OT Transforms Postpartum Recovery";
+const episodeUrl =
+  "https://www.buzzsprout.com/1971868/episodes/16741171-bringing-care-to-the-home-how-in-home-ot-transforms-postpartum-recovery";
+
+const courseTitle =
+  "The Fourth Trimester: How Occupational Therapy Can Transform Postpartum Care";
+const courseUrl =
+  "https://readysetconnect.com/courses/the-fourth-trimester-how-occupational-therapy-can-transform-postpartum-care/";
 
 const title = "Postpartum OT Resources for Healthcare Professionals";
 
@@ -43,11 +60,66 @@ export default function ForProfessionalsPage() {
           { name: "For Professionals", url: `${SITE_URL}/for-professionals` },
         ])}
       />
+      <JsonLd
+        data={videoObjectSchema({
+          name: youtubeTitle,
+          description: "YouTube video from ReadySetConnect.",
+          thumbnailUrl: youtubeThumb,
+          embedUrl: `https://www.youtube-nocookie.com/embed/${youtubeId}`,
+          url: youtubeUrl,
+          publisherName: "ReadySetConnect",
+          publisherUrl: "https://www.youtube.com/@readysetconnect1842",
+        })}
+      />
       <PageHeader
         title={title}
         lede="This page is for occupational therapists and other clinicians. Nothing here is a live checkout."
       />
       <div className="family-copy mx-auto max-w-[760px] px-6 md:px-8">
+        <h2>What has Melissa shared?</h2>
+        <p>Three items from other sites. Titles are copied from those pages.</p>
+        <ul className="mt-4 grid gap-4">
+          <li className="rounded-xl border border-[#0A3660]/15 bg-white p-4">
+            <p className="font-sans text-lg font-bold text-[#0A3660]">{youtubeTitle}</p>
+            <p className="mt-1 font-serif text-base text-black">YouTube video from ReadySetConnect.</p>
+            <div className="mt-3">
+              <YoutubeFacade videoId={youtubeId} title={youtubeTitle} thumbnailUrl={youtubeThumb} />
+            </div>
+            <p className="mt-3">
+              <a href={youtubeUrl} target="_blank" rel="noopener noreferrer">
+                Watch on YouTube
+              </a>
+            </p>
+          </li>
+          <li className="rounded-xl border border-[#0A3660]/15 bg-white p-4">
+            <p className="font-sans text-lg font-bold text-[#0A3660]">{episodeTitle}</p>
+            <p className="mt-1 font-serif text-base text-black">
+              OTs in Pelvic Health Podcast. March 24, 2025. Season 1, episode 119. 32:17.
+            </p>
+            <p className="mt-3">
+              <a href={episodeUrl} target="_blank" rel="noopener noreferrer">
+                Listen to the episode
+              </a>
+            </p>
+          </li>
+          <li className="rounded-xl border border-[#0A3660]/15 bg-white p-4">
+            <p className="font-sans text-lg font-bold text-[#0A3660]">{courseTitle}</p>
+            <p className="mt-1 font-serif text-base text-black">
+              Instructor: Melissa O’Neal OTR/L. ReadySetConnect course.
+            </p>
+            <p className="mt-3">
+              <a href={courseUrl} target="_blank" rel="noopener noreferrer">
+                Open the course page
+              </a>
+            </p>
+            <LearnMore summary="Course description from ReadySetConnect">
+              <p>
+                The postpartum period, often called the “fourth trimester,” is a crucial yet frequently overlooked phase of maternal recovery and family adjustment. Occupational therapists are uniquely positioned to support mothers and families during this time, addressing challenges related to sleep, feeding, mental health, role transitions, and infant development. This webinar explores how postpartum care aligns with OT’s scope of practice according to the OTPF-4 framework, providing evidence-based strategies to enhance maternal and family well-being. Participants will gain practical knowledge to understand and address the functional needs of postpartum families.
+              </p>
+            </LearnMore>
+          </li>
+        </ul>
+
         <h2>Which options exist?</h2>
         <p>Four ideas are listed. None is approved, and there is no price.</p>
         <ul className="mt-4 grid gap-3 sm:grid-cols-2">

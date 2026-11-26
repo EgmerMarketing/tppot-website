@@ -124,6 +124,31 @@ export function articleSchema(opts: {
   };
 }
 
+export function videoObjectSchema(opts: {
+  name: string;
+  description: string;
+  thumbnailUrl: string;
+  embedUrl: string;
+  url: string;
+  publisherName: string;
+  publisherUrl: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name: opts.name,
+    description: opts.description,
+    thumbnailUrl: opts.thumbnailUrl,
+    embedUrl: opts.embedUrl,
+    url: opts.url,
+    publisher: {
+      "@type": "Organization",
+      name: opts.publisherName,
+      url: opts.publisherUrl,
+    },
+  };
+}
+
 export function podcastSeriesSchema() {
   return {
     "@context": "https://schema.org",
