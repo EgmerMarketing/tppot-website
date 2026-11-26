@@ -20,6 +20,9 @@ export default function PartnersPage() {
       primary="podcast"
       capsule="Take a real shift. Do not wait to be asked for every step. Check your own sleep and mood too."
       episodes={[]}
+      guides={[
+        { href: "/resources/better-questions", label: "Better questions than how are you?" },
+      ]}
     >
       <KeyPoints
         items={[

@@ -1,4 +1,5 @@
 import { escapeHtml, isEmail } from "@/lib/contact";
+import { professionalHandout } from "@/lib/handouts";
 
 const NAME_MAX = 100;
 
@@ -7,6 +8,9 @@ export type SignupPayload = {
   email: string;
   community: boolean;
   podcast: boolean;
+  resourceId?: string;
+  resourceTitle?: string;
+  downloadUrl?: string;
 };
 
 export type SignupParseResult =
@@ -51,6 +55,26 @@ export function parseSignup(body: unknown): SignupParseResult {
     return { kind: "invalid", error: "Please enter a valid email address.", field: "email" };
   }
 
+  const resourceRaw = typeof body.resource === "string" ? body.resource.trim() : "";
+  let resourceId: string | undefined;
+  let resourceTitle: string | undefined;
+  let downloadUrl: string | undefined;
+  if (resourceRaw) {
+    const handout = professionalHandout(resourceRaw);
+    if (!handout || !handout.gated) {
+      return { kind: "invalid", error: "That file is not available from this form." };
+    }
+    if (!flag(body.consent)) {
+      return {
+        kind: "invalid",
+        error: "Check the box so Melissa may receive your email and the file name.",
+      };
+    }
+    resourceId = handout.id;
+    resourceTitle = handout.title;
+    downloadUrl = handout.file;
+  }
+
   return {
     kind: "valid",
     data: {
@@ -58,6 +82,9 @@ export function parseSignup(body: unknown): SignupParseResult {
       email,
       community: flag(body.community),
       podcast: flag(body.podcast),
+      resourceId,
+      resourceTitle,
+      downloadUrl,
     },
   };
 }
@@ -81,28 +108,33 @@ export function buildSignupEmail(
   ].filter(Boolean);
 
   const interestText = interests.length > 0 ? interests.join(", ") : "email only, no box checked";
+  const resourceLine = data.resourceTitle
+    ? `Handout requested: ${data.resourceTitle}`
+    : "";
 
   return {
     from,
     to,
     replyTo: data.email,
-    subject: "Website signup | The Postpartum OT",
+    subject: data.resourceTitle
+      ? `Handout request | ${data.resourceTitle}`
+      : "Website signup | The Postpartum OT",
     html: `
       <div style="font-family: Georgia, serif; color: #0A3660; line-height: 1.5;">
-        <h1 style="font-size: 20px;">New parent signup from the website</h1>
-        <p>This is not a confirmed mailing-list subscription. The email tool is not connected yet. Reply if you want to confirm with them yourself.</p>
-        <p><strong>First name:</strong> ${escapeHtml(name)}</p>
+        <h1 style="font-size: 20px;">${data.resourceTitle ? "Handout request from the website" : "New parent signup from the website"}</h1>
+        <p>This is not a confirmed mailing-list subscription. No email series is running. Reply if you want to confirm with them yourself.</p>
+        <p><strong>Name:</strong> ${escapeHtml(name)}</p>
         <p><strong>Email:</strong> <a href="mailto:${escapeHtml(data.email)}">${escapeHtml(data.email)}</a></p>
-        <p><strong>Boxes checked:</strong> ${escapeHtml(interestText)}</p>
+        ${resourceLine ? `<p><strong>${escapeHtml(resourceLine)}</strong></p>` : `<p><strong>Boxes checked:</strong> ${escapeHtml(interestText)}</p>`}
       </div>
     `.trim(),
     text: [
-      "New parent signup from the website",
-      "This is not a confirmed mailing-list subscription. The email tool is not connected yet.",
+      data.resourceTitle ? "Handout request from the website" : "New parent signup from the website",
+      "This is not a confirmed mailing-list subscription. No email series is running.",
       "",
-      `First name: ${name}`,
+      `Name: ${name}`,
       `Email: ${data.email}`,
-      `Boxes checked: ${interestText}`,
+      resourceLine || `Boxes checked: ${interestText}`,
     ].join("\n"),
   };
 }

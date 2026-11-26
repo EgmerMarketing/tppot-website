@@ -5,6 +5,7 @@ import { episodes } from "@/lib/podcast";
 import { SITE_URL, topicLinks } from "@/lib/site";
 import { breadcrumbSchema, faqSchema } from "@/lib/schema";
 import JsonLd from "@/components/site/JsonLd";
+import Section from "@/components/ui/Section";
 import CtaRow from "@/components/site/CtaRow";
 import CrisisLines from "@/components/site/CrisisLines";
 import EmailSignup from "@/components/site/EmailSignup";
@@ -58,59 +59,59 @@ const homeFaqs = [
 const cards = [
   { href: "/podcast", title: "Podcast", text: "Functional Fourth Trimester" },
   { href: "/community", title: "Community", text: "Waitlist first. Three questions to join." },
-  { href: "/resources", title: "Free resources", text: "Files are not uploaded yet." },
+  { href: "/resources", title: "Free resources", text: "Family guides and one travel handout are ready." },
 ];
 
 export default function Home() {
   const hero = HERO_OPTIONS[ACTIVE_HERO_OPTION];
 
   return (
-    <div className="bg-white">
+    <div>
       <JsonLd data={breadcrumbSchema([{ name: "Home", url: SITE_URL }])} />
       <JsonLd data={faqSchema(homeFaqs)} />
 
-      <section className="mx-auto grid max-w-[1120px] gap-10 px-6 py-12 md:px-8 md:py-16 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
-        <div>
-          <h1 className="font-sans text-4xl font-bold leading-tight text-[#0A3660] md:text-5xl">
-            {HOME_H1}
-          </h1>
-          <p className="mt-6 font-serif text-lg leading-relaxed text-black">{hero.text}</p>
-          <CtaRow primary="waitlist" />
-          <p className="mt-4 font-serif text-base leading-relaxed text-black">{DISCLAIMER_CRISIS}</p>
-        </div>
-        <div className="rounded-3xl bg-[#eef6f6] p-4 sm:p-6">
-          <ul className="grid gap-3">
-            {cards.map((card) => (
-              <li key={card.href}>
-                <Link href={card.href} className="block rounded-2xl bg-white p-5 hover:outline hover:outline-[#0A3660]">
-                  <p className="font-sans text-lg font-bold text-[#0A3660]">{card.title}</p>
-                  <p className="mt-1 font-serif text-base text-black">{card.text}</p>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section className="bg-[#FAF7F2]">
-        <div className="mx-auto max-w-[1120px] px-6 py-14 md:px-8">
-          <h2 className="max-w-3xl font-sans text-3xl font-bold leading-tight text-[#0A3660]">
-            Postpartum help for the things that feel hardest right now
-          </h2>
-          <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {topicLinks.map((topic) => (
-              <li key={topic.href}>
-                <Link href={topic.href} className="flex h-full flex-col rounded-2xl bg-white p-5">
-                  <p className="font-sans text-lg font-bold text-[#0A3660]">{topic.title}</p>
-                  <p className="mt-2 font-serif text-base leading-relaxed text-black">{topic.text}</p>
-                </Link>
-              </li>
-            ))}
-          </ul>
+      <section className="band-teal-deep bg-teal-deep text-white">
+        <div className="mx-auto grid max-w-[1120px] gap-10 px-6 py-12 md:px-8 md:py-16 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
+          <div>
+            <h1 className="font-sans text-4xl font-bold leading-tight text-white md:text-5xl">
+              {HOME_H1}
+            </h1>
+            <p className="mt-6 font-serif text-lg leading-relaxed text-white">{hero.text}</p>
+            <CtaRow primary="waitlist" />
+            <p className="mt-4 font-serif text-base leading-relaxed text-white">{DISCLAIMER_CRISIS}</p>
+          </div>
+          <div>
+            <ul className="grid gap-3">
+              {cards.map((card) => (
+                <li key={card.href}>
+                  <Link href={card.href} className="surface-card block rounded-2xl bg-white p-5">
+                    <p className="font-sans text-lg font-bold text-[#0A3660]">{card.title}</p>
+                    <p className="mt-1 font-serif text-base text-black">{card.text}</p>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1120px] px-6 py-14 md:px-8">
+      <Section variant="navy" aria-labelledby="home-topics">
+        <h2 id="home-topics" className="max-w-3xl font-sans text-3xl font-bold leading-tight text-white">
+          Postpartum help for the things that feel hardest right now
+        </h2>
+        <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {topicLinks.map((topic) => (
+            <li key={topic.href}>
+              <Link href={topic.href} className="surface-card flex h-full flex-col rounded-2xl bg-white p-5">
+                <p className="font-sans text-lg font-bold text-[#0A3660]">{topic.title}</p>
+                <p className="mt-2 font-serif text-base leading-relaxed text-black">{topic.text}</p>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      <Section variant="cream">
         <EpisodeList
           heading="Listen to the Functional Fourth Trimester postpartum podcast"
           episodes={episodes.slice(0, 3)}
@@ -120,10 +121,13 @@ export default function Home() {
             All episodes on this site
           </Link>
         </p>
-      </section>
+      </Section>
 
-      <section className="bg-[#eef6f6]" id="waitlist">
-        <div className="mx-auto max-w-[760px] px-6 py-14 md:px-8">
+      <Section variant="teal" id="waitlist" width="prose" aria-labelledby="home-circle">
+        <h2 id="home-circle" className="font-sans text-3xl font-bold leading-tight text-white">
+          The Functional Fourth Trimester Circle
+        </h2>
+        <div className="surface-card mt-6 rounded-2xl bg-white p-6 text-black">
           <p className="font-serif text-lg leading-relaxed text-black">
             The Circle is a private Facebook group that started November 18, 2026. The email waitlist is how you hear what is still unconfirmed.
           </p>
@@ -135,7 +139,7 @@ export default function Home() {
               [NEEDS MELISSA: whether a member count may be shown. Live session platform, start date, price, sign-up, and replays.]
             </NeedsMelissa>
           </LearnMore>
-          <div className="mt-6 rounded-2xl bg-white p-6">
+          <div className="mt-6">
             <EmailSignup
               idPrefix="home"
               heading="Join the waitlist for the Functional Fourth Trimester community"
@@ -143,34 +147,34 @@ export default function Home() {
             <CircleJoinLink />
           </div>
         </div>
-      </section>
+      </Section>
 
-      <section className="mx-auto max-w-[1120px] px-6 py-14 md:px-8">
+      <Section variant="cream">
         <h2 className="font-sans text-3xl font-bold text-[#0A3660]">Where are the free postpartum resources?</h2>
         <p className="mt-2 max-w-2xl font-serif text-base text-black">
-          Plan and checklist slots are ready. The files are not. Crisis pages never ask for email.
+          Family guides and a travel handout are ready. Other files are not. Crisis pages never ask for email.
         </p>
         <p className="mt-4">
           <Link href="/resources" className="font-sans text-sm font-bold text-[#0A3660] underline">
             Open the resources library
           </Link>
         </p>
-      </section>
+      </Section>
 
-      <section className="bg-[#FAF7F2]">
-        <div className="mx-auto grid max-w-[1120px] items-center gap-8 px-6 py-14 md:px-8 md:grid-cols-[180px_1fr]">
+      <Section variant="navy">
+        <div className="grid items-center gap-8 md:grid-cols-[180px_1fr]">
           <div
-            className="flex aspect-[4/5] w-full max-w-[180px] items-center justify-center rounded-2xl bg-[#eef6f6]"
+            className="surface-card flex aspect-[4/5] w-full max-w-[180px] items-center justify-center rounded-2xl bg-white"
             role="img"
             aria-label="Photo of Melissa O'Neal is not on the site yet"
           >
             <span className="font-sans text-4xl font-bold text-[#0A3660]" aria-hidden="true">MO</span>
           </div>
           <div>
-            <h2 className="font-sans text-3xl font-bold leading-tight text-[#0A3660]">
+            <h2 className="font-sans text-3xl font-bold leading-tight text-white">
               Meet Melissa O&apos;Neal, OTR/L, postpartum occupational therapist
             </h2>
-            <p className="mt-2 font-serif text-base text-black">
+            <p className="mt-2 font-serif text-base text-white">
               Melissa O&apos;Neal, OTR/L, shares education for daily life after birth. Her story is not published yet.
             </p>
             <LearnMore summary="Story placeholder">
@@ -178,14 +182,14 @@ export default function Home() {
                 [Melissa&apos;s story here. Third person, in her own words. Do not publish a years-of-experience number, her child&apos;s name, or an Ability Village role until she approves them.]
               </NeedsMelissa>
             </LearnMore>
-            <Link href="/about" className="font-sans text-sm font-bold text-[#0A3660] underline">
+            <Link href="/about" className="font-sans text-sm font-bold text-white underline">
               About Melissa
             </Link>
           </div>
         </div>
-      </section>
+      </Section>
 
-      <section className="mx-auto max-w-[760px] px-6 py-14 md:px-8">
+      <Section variant="cream" width="prose">
         <h2 className="font-sans text-3xl font-bold text-[#0A3660]">Postpartum questions new parents ask</h2>
         <div className="mt-6 space-y-8">
           {homeFaqs.map((faq) => (
@@ -203,9 +207,9 @@ export default function Home() {
             More questions
           </Link>
         </p>
-      </section>
+      </Section>
 
-      <section className="border-t-4 border-[#0A3660] bg-white" aria-labelledby="home-help">
+      <section className="band-white border-t-4 border-teal-deep bg-white" aria-labelledby="home-help">
         <div className="mx-auto max-w-[760px] px-6 py-10 md:px-8">
           <h2 id="home-help" className="font-sans text-3xl font-bold text-[#0A3660]">
             Need help now

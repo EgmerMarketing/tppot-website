@@ -45,9 +45,9 @@ export default function AccessibilityPage() {
         </LearnMore>
         <h2>Known limits</h2>
         <ul>
-          <li>The header logo is the transparent primary mark. A photo is not on the site yet.</li>
+          <li>The header uses the long horizontal logo. A photo is not on the site yet.</li>
           <li>Some older blog posts were written for occupational therapists. Their wording was not rewritten.</li>
-          <li>Handout files are not uploaded, so those cards cannot be downloaded.</li>
+          <li>Some family guides are on the site. Other handout files are still placeholders.</li>
           <li>The email signup does not yet send an automated confirmation.</li>
           <li>Podcast audio plays on Apple Podcasts, Spotify, or YouTube, not in a player on this site. We do not control captions on those apps.</li>
           <li>No video is embedded on this site today.</li>

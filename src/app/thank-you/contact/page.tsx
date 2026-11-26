@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import DisclaimerLine from "@/components/site/DisclaimerLine";
+import PageHeader from "@/components/site/PageHeader";
 
 export const metadata: Metadata = {
   title: "Message received",
@@ -9,9 +9,12 @@ export const metadata: Metadata = {
 
 export default function ContactThanksPage() {
   return (
-    <article className="mx-auto max-w-[760px] px-6 py-16 md:px-8">
-      <h1 className="font-sans text-4xl font-bold text-[#0A3660]">Message received</h1>
-      <DisclaimerLine />
+    <article className="bg-cream pb-16">
+      <PageHeader
+        title="Message received"
+        disclaimer="Your note is not an emergency line. In a crisis, call or text 988."
+      />
+      <div className="mx-auto max-w-[760px] px-6 md:px-8">
       <p className="mt-4 font-serif text-lg leading-relaxed text-black">
         Your note is on its way to Melissa. This form is not monitored as an emergency line.
         If you need help now, call or text 988, or call 911.
@@ -24,6 +27,7 @@ export default function ContactThanksPage() {
           Back to the home page
         </Link>
       </p>
+      </div>
     </article>
   );
 }

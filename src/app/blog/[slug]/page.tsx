@@ -84,7 +84,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       })) }} />
 
       {/* Hero */}
-      <section className="relative pt-28 pb-20 lg:pt-32 lg:pb-28 bg-[#061D37]">
+      <section className="band-teal-deep relative bg-teal-deep pb-20 pt-16 lg:pb-28 lg:pt-20">
         <div className="relative max-w-[720px] mx-auto px-6">
           <Link
             href="/blog"

@@ -14,6 +14,7 @@ import {
   episodes,
 } from "@/lib/podcast";
 import { SITE_URL } from "@/lib/site";
+import Section from "@/components/ui/Section";
 
 const title = "The Postpartum Podcast for New Parents: Functional Fourth Trimester";
 
@@ -31,7 +32,7 @@ const groups: { heading: string; numbers: number[] }[] = [
 
 export default function PodcastPage() {
   return (
-    <article className="bg-[#FAF7F2] pb-16">
+    <article className="bg-cream">
       <JsonLd data={breadcrumbSchema([{ name: "Home", url: SITE_URL }, { name: "Podcast", url: `${SITE_URL}/podcast` }])} />
       <JsonLd data={podcastSeriesSchema()} />
       <PageHeader
@@ -86,10 +87,12 @@ export default function PodcastPage() {
           </LearnMore>
         </section>
         <Byline />
-        <div className="mt-10 rounded-2xl bg-white p-6">
+      </div>
+      <Section variant="navy" width="prose">
+        <div className="surface-card rounded-2xl bg-white p-6 text-black">
           <EmailSignup idPrefix="podcast" heading="Get new episodes in your inbox" />
         </div>
-      </div>
+      </Section>
     </article>
   );
 }

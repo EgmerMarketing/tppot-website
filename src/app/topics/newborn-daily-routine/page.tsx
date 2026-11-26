@@ -21,6 +21,9 @@ export default function DailyRoutinePage() {
       primary="waitlist"
       capsule="You need a short list you can repeat, and a clear idea of who does what."
       episodes={episodesFor("daily")}
+      guides={[
+        { href: "/resources/adhd-and-new-parenthood", label: "ADHD and new parenthood: practical support" },
+      ]}
     >
       <KeyPoints
         items={[

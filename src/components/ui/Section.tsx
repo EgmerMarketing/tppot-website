@@ -1,17 +1,28 @@
-type SectionVariant = "cream" | "teal-light" | "white" | "navy-dark";
+type SectionVariant = "cream" | "white" | "teal" | "teal-deep" | "navy";
+type SectionWidth = "wide" | "prose";
 
 interface SectionProps {
   children: React.ReactNode;
   className?: string;
   id?: string;
   variant?: SectionVariant;
+  width?: SectionWidth;
+  "aria-labelledby"?: string;
 }
 
 const variantStyles: Record<SectionVariant, string> = {
-  cream: "bg-[#FAF7F2]",
-  "teal-light": "bg-[#E6F0F0]",
-  white: "bg-white",
-  "navy-dark": "bg-[#061D37] text-[#FAF7F2]",
+  cream: "band-cream bg-cream text-black",
+  white: "band-white bg-white text-black",
+  /* Brand teal. White text here must be a large heading. */
+  teal: "band-teal bg-teal text-white",
+  /* Dark teal #2f6b6a. White text at body size is 6.12:1. */
+  "teal-deep": "band-teal-deep bg-teal-deep text-white",
+  navy: "band-navy bg-navy text-white",
+};
+
+const widthStyles: Record<SectionWidth, string> = {
+  wide: "max-w-[1120px]",
+  prose: "max-w-[760px]",
 };
 
 export default function Section({
@@ -19,15 +30,16 @@ export default function Section({
   className = "",
   id,
   variant = "cream",
+  width = "wide",
+  "aria-labelledby": labelledBy,
 }: SectionProps) {
   return (
     <section
       id={id}
-      className={`py-24 md:py-32 ${variantStyles[variant]} ${className}`}
+      aria-labelledby={labelledBy}
+      className={`py-12 md:py-16 ${variantStyles[variant]} ${className}`}
     >
-      <div className="mx-auto max-w-[1280px] px-6 md:px-12 lg:px-16">
-        {children}
-      </div>
+      <div className={`mx-auto px-6 md:px-8 ${widthStyles[width]}`}>{children}</div>
     </section>
   );
 }

@@ -1,9 +1,9 @@
 import Link from "next/link";
 
 const primary =
-  "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0A3660] px-5 py-3 text-center font-sans text-sm font-bold text-white underline-offset-4 hover:bg-[#061D37]";
+  "btn-solid inline-flex min-h-11 items-center justify-center rounded-xl px-5 py-3 text-center font-sans text-sm font-bold";
 const secondary =
-  "inline-flex min-h-11 items-center justify-center rounded-xl border-2 border-[#0A3660] bg-white px-5 py-3 text-center font-sans text-sm font-bold text-[#0A3660] hover:bg-[#eef6f6]";
+  "btn-outline inline-flex min-h-11 items-center justify-center rounded-xl px-5 py-3 text-center font-sans text-sm font-bold";
 
 export default function CtaRow({
   primary: primaryKind = "podcast",

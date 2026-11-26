@@ -21,6 +21,9 @@ export default function SleepPage() {
       primary="podcast"
       capsule="Newborn nights are broken sleep. The plan is which adult is resting, not a sleep-training method."
       episodes={episodesFor("sleep")}
+      guides={[
+        { href: "/resources/night-weaning", label: "A gentle guide to night weaning (9 months+)" },
+      ]}
       help={
         <aside className="mt-6 rounded-2xl border-2 border-[#0A3660] bg-white p-5" aria-label="Sleep safety">
           <p className="font-sans text-lg font-bold text-[#0A3660]">Before you change how the baby sleeps</p>

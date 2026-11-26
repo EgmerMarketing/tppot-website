@@ -8,6 +8,7 @@ import { KeyPoints, LearnMore } from "@/components/site/Scan";
 import JsonLd from "@/components/site/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 import { SITE_URL } from "@/lib/site";
+import Section from "@/components/ui/Section";
 
 const title = "Online Postpartum Support Group for New Parents: Functional Fourth Trimester Circle";
 
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
 
 export default function CommunityPage() {
   return (
-    <article className="bg-[#FAF7F2] pb-16">
+    <article className="bg-cream">
       <JsonLd data={breadcrumbSchema([{ name: "Home", url: SITE_URL }, { name: "Community", url: `${SITE_URL}/community` }])} />
       <PageHeader
         title={title}
@@ -51,12 +52,17 @@ export default function CommunityPage() {
           <Link href="/need-help-now">Need Help Now</Link>.
         </p>
 
-        <h2 id="waitlist">Join the waitlist</h2>
-        <div className="rounded-2xl bg-white p-6">
+      </div>
+      <Section variant="navy" width="prose" id="waitlist" aria-labelledby="community-waitlist">
+        <h2 id="community-waitlist" className="font-sans text-3xl font-bold text-white">
+          Join the waitlist
+        </h2>
+        <div className="surface-card mt-6 rounded-2xl bg-white p-6 text-black">
           <EmailSignup idPrefix="community" heading="Join the waitlist for the community, coming soon" />
           <CircleJoinLink />
         </div>
-
+      </Section>
+      <div className="family-copy mx-auto max-w-[760px] px-6 py-12 md:px-8">
         <h2>Will sessions be recorded?</h2>
         <p>Nothing is promised about replays.</p>
         <LearnMore summary="Consent and the app">

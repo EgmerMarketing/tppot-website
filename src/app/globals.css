@@ -3,9 +3,11 @@
 :root {
   --background: #FAF7F2;
   --foreground: #000000;
+  /* Brand teal. White text is 3.47:1, so use it only for large headings. */
   --teal: #469695;
   --teal-dark: #357574;
-  /* Small teal text only. Not a confirmed brand color. 6.12:1 on white. */
+  /* Dark teal. White text is 6.12:1. Hero cards and any small white text on teal. */
+  --teal-deep: #2f6b6a;
   --tppot-teal-text: #2f6b6a;
   --navy: #0A3660;
   --navy-light: #1A4A7A;
@@ -37,9 +39,11 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-teal: var(--teal);
+  --color-teal-deep: var(--teal-deep);
   --color-navy: var(--navy);
   --color-navy-light: var(--navy-light);
   --color-teal-light: var(--teal-light);
+  --color-cream: var(--cream);
   --color-off-white: var(--off-white);
   --font-sans: var(--font-lato);
   --font-serif: var(--font-lora);
@@ -60,8 +64,81 @@ h1, h2, h3 {
   outline-offset: 3px;
 }
 
-.site-footer :focus-visible {
+.site-footer :focus-visible,
+.band-teal-deep .btn-solid:focus-visible,
+.band-teal-deep .btn-outline:focus-visible,
+.band-navy .btn-solid:focus-visible,
+.band-navy .btn-outline:focus-visible,
+.band-teal .btn-solid:focus-visible,
+.band-teal .btn-outline:focus-visible,
+.band-teal-deep .surface-card:focus-visible,
+.band-navy .surface-card:focus-visible,
+.band-teal .surface-card:focus-visible,
+.panel-navy .surface-card:focus-visible {
   outline-color: #ffffff;
+}
+
+.surface-card :focus-visible {
+  outline-color: #0A3660;
+}
+
+.btn-solid {
+  background-color: #0A3660;
+  color: #ffffff;
+}
+
+.btn-solid:hover {
+  background-color: #061D37;
+}
+
+.btn-outline {
+  border: 2px solid #0A3660;
+  background-color: #ffffff;
+  color: #0A3660;
+}
+
+.btn-outline:hover {
+  background-color: #eef6f6;
+}
+
+/* Navy fill on #2f6b6a is 2.01:1. Cream buttons keep the label at 11.5:1. */
+.band-teal-deep .btn-solid,
+.band-navy .btn-solid,
+.band-teal .btn-solid {
+  background-color: #FAF7F2;
+  color: #0A3660;
+}
+
+.band-teal-deep .btn-solid:hover,
+.band-navy .btn-solid:hover,
+.band-teal .btn-solid:hover {
+  background-color: #ffffff;
+}
+
+.band-teal-deep .btn-outline,
+.band-navy .btn-outline,
+.band-teal .btn-outline {
+  border-color: #ffffff;
+  background-color: transparent;
+  color: #ffffff;
+}
+
+.band-teal-deep .btn-outline:hover,
+.band-navy .btn-outline:hover,
+.band-teal .btn-outline:hover {
+  background-color: #ffffff;
+  color: #0A3660;
+}
+
+.surface-card .btn-solid {
+  background-color: #0A3660;
+  color: #ffffff;
+}
+
+.surface-card .btn-outline {
+  border-color: #0A3660;
+  background-color: #ffffff;
+  color: #0A3660;
 }
 
 .family-copy h2 {
@@ -88,10 +165,50 @@ h1, h2, h3 {
   text-underline-offset: 3px;
 }
 
-.family-copy ul:not([class]) {
+.family-copy ul:not([class]),
+.family-copy ol {
   margin-top: 0.75rem;
   padding-left: 1.25rem;
+}
+
+.family-copy ul:not([class]) {
   list-style: disc;
+}
+
+.family-copy ol {
+  list-style: decimal;
+}
+
+.write-line {
+  border-bottom: 1px solid #0a3660;
+  height: 2.25rem;
+  margin-top: 0.35rem;
+}
+
+@media print {
+  .no-print,
+  .draft-badge {
+    display: none !important;
+  }
+
+  body,
+  .family-guide,
+  .band-teal-deep,
+  .band-cream,
+  .band-navy,
+  .band-teal,
+  .band-white {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .band-teal-deep h1,
+  .band-teal-deep p,
+  .band-teal-deep a,
+  .family-copy h2,
+  .family-copy a {
+    color: #000 !important;
+  }
 }
 
 details.learn-more > summary {

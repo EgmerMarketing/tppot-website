@@ -1,10 +1,10 @@
 export function KeyPoints({ items }: { items: string[] }) {
   return (
-    <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+    <ul className="panel-navy mt-6 grid gap-3 rounded-2xl bg-navy p-3 sm:grid-cols-2 sm:p-4">
       {items.map((item) => (
         <li
           key={item}
-          className="rounded-xl border border-[#0A3660]/15 bg-white px-4 py-3 font-serif text-base leading-snug text-black"
+          className="surface-card rounded-xl bg-white px-4 py-3 font-serif text-base leading-snug text-black"
         >
           {item}
         </li>

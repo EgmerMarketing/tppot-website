@@ -8,6 +8,7 @@ import { articleSchema, breadcrumbSchema } from "@/lib/schema";
 import { SITE_URL, UPDATED } from "@/lib/site";
 import type { Episode } from "@/lib/podcast";
 import EpisodeList from "@/components/site/EpisodeList";
+import Section from "@/components/ui/Section";
 
 export default function TopicLayout({
   title,
@@ -18,6 +19,7 @@ export default function TopicLayout({
   primary,
   help,
   episodes,
+  guides,
   children,
 }: {
   title: string;
@@ -28,12 +30,13 @@ export default function TopicLayout({
   primary: "podcast" | "waitlist";
   help?: React.ReactNode;
   episodes?: Episode[];
+  guides?: { href: string; label: string }[];
   children: React.ReactNode;
 }) {
   const url = `${SITE_URL}${path}`;
 
   return (
-    <article className="bg-[#FAF7F2] pb-16">
+    <article className="bg-cream">
       <JsonLd
         data={breadcrumbSchema([
           { name: "Home", url: SITE_URL },
@@ -62,18 +65,32 @@ export default function TopicLayout({
         <section className="mt-10">
           <h2 className="font-sans text-2xl font-bold text-[#0A3660]">Where are the free handouts?</h2>
           <p className="mt-2 font-serif text-base text-black">
-            Files are not uploaded yet.{" "}
-            <Link href="/resources" className="font-bold text-[#0A3660] underline">
+            Family guides on this site are free to read. One travel handout is a direct download. Other files are still placeholders. Safety pages are never behind a signup.
+          </p>
+          {guides && guides.length > 0 && (
+            <ul className="mt-3 space-y-2 font-sans text-sm font-bold">
+              {guides.map((guide) => (
+                <li key={guide.href}>
+                  <Link href={guide.href} className="text-[#0A3660] underline">
+                    {guide.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+          <p className="mt-3">
+            <Link href="/resources" className="font-sans text-sm font-bold text-[#0A3660] underline">
               Open the library
             </Link>
-            . Safety pages are never behind a signup.
           </p>
         </section>
         <Byline />
-        <div className="mt-10 rounded-2xl bg-[#eef6f6] p-6" id="signup">
+      </div>
+      <Section variant="navy" width="prose" id="signup">
+        <div className="surface-card rounded-2xl bg-white p-6 text-black">
           <EmailSignup idPrefix={`topic-${path.replace(/\W+/g, "-")}`} />
         </div>
-      </div>
+      </Section>
     </article>
   );
 }

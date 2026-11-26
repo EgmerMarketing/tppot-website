@@ -22,6 +22,15 @@ const nextConfig: NextConfig = {
   },
   async headers() {
     return [
+      ...[
+        "/resources/ot-adhd-postpartum-assessments.pdf",
+        "/resources/adhd-postpartum-intake-questionnaire.pdf",
+        "/resources/postpartum-care-conversation-starters.pdf",
+        "/resources/night-weaning-guide.pdf",
+      ].map((source) => ({
+        source,
+        headers: [{ key: "X-Robots-Tag", value: "noindex" }],
+      })),
       {
         source: "/(.*)",
         headers: [

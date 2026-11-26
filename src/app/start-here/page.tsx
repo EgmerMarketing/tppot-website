@@ -9,6 +9,7 @@ import { KeyPoints, LearnMore } from "@/components/site/Scan";
 import JsonLd from "@/components/site/JsonLd";
 import { articleSchema, breadcrumbSchema } from "@/lib/schema";
 import { episodes } from "@/lib/podcast";
+import Section from "@/components/ui/Section";
 import { SITE_URL, UPDATED } from "@/lib/site";
 
 const title = "The Fourth Trimester, Week by Week: What to Expect and What Helps";
@@ -20,7 +21,7 @@ export const metadata: Metadata = { title, description };
 export default function StartHerePage() {
   const url = `${SITE_URL}/start-here`;
   return (
-    <article className="bg-[#FAF7F2] pb-16">
+    <article className="bg-cream">
       <JsonLd data={breadcrumbSchema([{ name: "Home", url: SITE_URL }, { name: "Start Here", url }])} />
       <JsonLd data={articleSchema({ headline: title, description, datePublished: UPDATED, url })} />
       <PageHeader
@@ -109,10 +110,12 @@ export default function StartHerePage() {
           episodes={[episodes[6], episodes[3], episodes[5]].filter(Boolean)}
         />
         <Byline />
-        <div className="mt-10 rounded-2xl bg-white p-6">
+      </div>
+      <Section variant="navy" width="prose">
+        <div className="surface-card rounded-2xl bg-white p-6 text-black">
           <EmailSignup idPrefix="start-here" />
         </div>
-      </div>
+      </Section>
     </article>
   );
 }

@@ -11,7 +11,7 @@ export default function Footer() {
   const showSignup = pathname !== "/need-help-now";
 
   return (
-    <footer className="site-footer bg-[#061D37] text-white" role="contentinfo">
+    <footer className="no-print site-footer bg-[#061D37] text-white" role="contentinfo">
       <div className="border-b border-white/15">
         <p className="mx-auto max-w-[1280px] px-6 py-4 font-serif text-base text-white md:px-8">
           Healthcare professional?{" "}
@@ -24,13 +24,14 @@ export default function Footer() {
 
       <div className="mx-auto grid max-w-[1280px] gap-10 px-6 py-12 md:px-8 lg:grid-cols-[1.2fr_0.8fr]">
         <div>
-          <Link href="/" className="inline-flex rounded-xl bg-[#FAF7F2] p-2">
+          <Link href="/" className="mb-6 inline-flex rounded-xl bg-[#FAF7F2] p-2">
             <Image
-              src="/images/logo-primary.png"
+              src="/images/logo-long.png"
               alt="The Postpartum OT"
-              width={1589}
-              height={1148}
-              className="h-14 w-[78px]"
+              width={1933}
+              height={471}
+              sizes="164px"
+              className="h-10 w-[164px]"
             />
           </Link>
           {showSignup ? (

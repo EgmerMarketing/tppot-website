@@ -4,6 +4,8 @@ import PageHeader from "@/components/site/PageHeader";
 import NeedsMelissa from "@/components/site/NeedsMelissa";
 import { LearnMore } from "@/components/site/Scan";
 import YoutubeFacade from "@/components/site/YoutubeFacade";
+import ResourceGate from "@/components/site/ResourceGate";
+import { PROFESSIONAL_HANDOUTS } from "@/lib/handouts";
 import JsonLd from "@/components/site/JsonLd";
 import { breadcrumbSchema, videoObjectSchema } from "@/lib/schema";
 import { SITE_URL } from "@/lib/site";
@@ -78,8 +80,8 @@ export default function ForProfessionalsPage() {
       <div className="family-copy mx-auto max-w-[760px] px-6 md:px-8">
         <h2>What has Melissa shared?</h2>
         <p>Three items from other sites. Titles are copied from those pages.</p>
-        <ul className="mt-4 grid gap-4">
-          <li className="rounded-xl border border-[#0A3660]/15 bg-white p-4">
+        <ul className="panel-navy mt-4 grid gap-4 rounded-2xl bg-navy p-3">
+          <li className="surface-card rounded-xl bg-white p-4">
             <p className="font-sans text-lg font-bold text-[#0A3660]">{youtubeTitle}</p>
             <p className="mt-1 font-serif text-base text-black">YouTube video from ReadySetConnect.</p>
             <div className="mt-3">
@@ -91,7 +93,7 @@ export default function ForProfessionalsPage() {
               </a>
             </p>
           </li>
-          <li className="rounded-xl border border-[#0A3660]/15 bg-white p-4">
+          <li className="surface-card rounded-xl bg-white p-4">
             <p className="font-sans text-lg font-bold text-[#0A3660]">{episodeTitle}</p>
             <p className="mt-1 font-serif text-base text-black">
               OTs in Pelvic Health Podcast. March 24, 2025. Season 1, episode 119. 32:17.
@@ -102,7 +104,7 @@ export default function ForProfessionalsPage() {
               </a>
             </p>
           </li>
-          <li className="rounded-xl border border-[#0A3660]/15 bg-white p-4">
+          <li className="surface-card rounded-xl bg-white p-4">
             <p className="font-sans text-lg font-bold text-[#0A3660]">{courseTitle}</p>
             <p className="mt-1 font-serif text-base text-black">
               Instructor: Melissa O’Neal OTR/L. ReadySetConnect course.
@@ -120,11 +122,29 @@ export default function ForProfessionalsPage() {
           </li>
         </ul>
 
+        <h2>Handouts</h2>
+        <p>One file is a direct download. The others are free with your email. Melissa gets your address and the file name. There is no email series.</p>
+        <ul className="panel-navy mt-4 grid gap-3 rounded-2xl bg-navy p-3">
+          {PROFESSIONAL_HANDOUTS.map((handout) => (
+            <li key={handout.id} className="surface-card rounded-xl bg-white p-4">
+              <p className="font-sans text-lg font-bold text-[#0A3660]">{handout.title}</p>
+              <p className="mt-1 font-serif text-base text-black">{handout.summary}</p>
+              {handout.gated ? (
+                <ResourceGate id={handout.id} title={handout.title} />
+              ) : (
+                <p className="mt-3">
+                  <a href={handout.file}>Download. No email.</a>
+                </p>
+              )}
+            </li>
+          ))}
+        </ul>
+
         <h2>Which options exist?</h2>
         <p>Four ideas are listed. None is approved, and there is no price.</p>
-        <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+        <ul className="panel-navy mt-4 grid gap-3 rounded-2xl bg-navy p-3 sm:grid-cols-2">
           {offers.map((offer) => (
-            <li key={offer.name} className="rounded-xl border border-[#0A3660]/15 bg-white p-4">
+            <li key={offer.name} className="surface-card rounded-xl bg-white p-4">
               <p className="font-sans font-bold text-[#0A3660]">{offer.name}</p>
               <LearnMore summary="Status">
                 <NeedsMelissa>{offer.note}</NeedsMelissa>

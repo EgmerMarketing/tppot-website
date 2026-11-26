@@ -23,21 +23,22 @@ export default function BlogPage() {
   }));
 
   return (
-    <main className="bg-[#FAF7F2]">
+    <main className="bg-cream">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([{ name: "Home", url: "https://thepostpartumot.com" }, { name: "Blog", url: "https://thepostpartumot.com/blog" }])) }} />
-      <section className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16 py-24 md:py-32">
-        <div className="mb-12 max-w-3xl">
-          <h1 className="mb-4 font-sans text-4xl font-bold text-[#0A3660] md:text-5xl">
+      <header className="band-teal-deep bg-teal-deep text-white">
+        <div className="mx-auto max-w-[1120px] px-6 py-12 md:px-8 md:py-16">
+          <h1 className="max-w-3xl font-sans text-4xl font-bold text-white md:text-5xl">
             Postpartum Questions, Answered by an Occupational Therapist
           </h1>
-          <p className="font-serif text-base text-black">
+          <p className="mt-4 font-serif text-base text-white">
             Educational information, not medical or professional advice.
           </p>
-          <p className="mt-4 font-serif text-lg text-black">
+          <p className="mt-4 max-w-3xl font-serif text-lg text-white">
             By Melissa O&apos;Neal, OTR/L. Older posts for occupational therapists are unchanged. If you need help now, use Need help now.
           </p>
         </div>
-
+      </header>
+      <section className="band-cream mx-auto max-w-[1280px] px-6 py-12 md:px-12 md:py-16">
         <BlogFilter posts={posts} categories={categories} />
       </section>
     </main>

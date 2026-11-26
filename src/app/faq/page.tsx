@@ -77,9 +77,9 @@ const faqs = [
   },
   {
     question: "Where are the free handouts?",
-    short: "On the resources page. The files are not uploaded yet.",
+    short: "On the resources page. Family guides are free to read.",
     answer:
-      "The resources page is the library. The files are not uploaded yet, so the cards are placeholders. Safety information is never behind a signup.",
+      "The resources page lists free family guides and a free travel handout. Other family files are still placeholders. Professional PDFs are on For Professionals. Four of those ask for an email before the link appears. Safety information is never behind a signup.",
     href: "/resources",
     hrefLabel: "Resources",
   },

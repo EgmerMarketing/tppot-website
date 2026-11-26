@@ -144,9 +144,9 @@ export default function ResourceLibrary() {
         </fieldset>
       </div>
 
-      <ul className="mt-8 grid gap-4">
+      <ul className="panel-navy mt-8 grid gap-4 rounded-2xl bg-navy p-4">
         {visible.map((item) => (
-          <li key={item.title} className="rounded-2xl border border-[#0A3660]/15 bg-white p-5">
+          <li key={item.title} className="surface-card rounded-2xl bg-white p-5">
             <p className="font-sans text-xs font-bold uppercase tracking-wide text-[#2f6b6a]">
               {item.topic} · {item.audience}
             </p>

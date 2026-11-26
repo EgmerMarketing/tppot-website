@@ -77,14 +77,21 @@ export async function POST(request: Request) {
 
   try {
     const resend = new Resend(apiKey);
-    const { error } = await resend.emails.send({
-      from: email.from,
-      to: email.to,
-      replyTo: email.replyTo,
-      subject: email.subject,
-      html: email.html,
-      text: email.text,
-    });
+    const day = new Date().toISOString().slice(0, 10);
+    const purpose = parsed.data.resourceId ?? "waitlist";
+    const { error } = await resend.emails.send(
+      {
+        from: email.from,
+        to: email.to,
+        replyTo: email.replyTo,
+        subject: email.subject,
+        html: email.html,
+        text: email.text,
+      },
+      {
+        idempotencyKey: `website-signup/${purpose}/${parsed.data.email.toLowerCase().slice(0, 80)}/${day}`,
+      },
+    );
 
     if (error) {
       console.error("Signup Resend error:", error.name, error.message);
@@ -95,5 +102,8 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: FRIENDLY_SEND_ERROR }, { status: 502 });
   }
 
-  return NextResponse.json({ success: true });
+  return NextResponse.json({
+    success: true,
+    ...(parsed.data.downloadUrl ? { downloadUrl: parsed.data.downloadUrl } : {}),
+  });
 }

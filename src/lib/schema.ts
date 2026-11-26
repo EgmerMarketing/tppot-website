@@ -11,7 +11,7 @@ export function organizationSchema() {
     name: "The Postpartum OT",
     legalName: "Postpartum OT LLC",
     url: BASE_URL,
-    logo: `${BASE_URL}/images/logo-primary.png`,
+    logo: `${BASE_URL}/images/logo-long.png`,
     founder: {
       "@id": `${BASE_URL}/#melissa-oneal`,
     },

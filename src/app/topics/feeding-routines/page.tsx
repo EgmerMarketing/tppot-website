@@ -21,6 +21,10 @@ export default function FeedingPage() {
       primary="waitlist"
       capsule="This page is the household rhythm around feeding, not latch or milk-supply technique."
       episodes={episodes.filter((episode) => episode.number === 1).slice(0, 1)}
+      guides={[
+        { href: "/blog/tips-to-travel-postpartum", label: "Tips for traveling postpartum" },
+        { href: "/resources/tips-to-travel-postpartum.pdf", label: "Download the travel handout" },
+      ]}
     >
       <KeyPoints
         items={[

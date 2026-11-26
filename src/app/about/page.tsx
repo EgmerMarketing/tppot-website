@@ -48,7 +48,7 @@ export default function AboutPage() {
               [NEEDS MELISSA: a headshot you approve. Personal photos already on the old site are not used. No stock or AI photo. Initials are the fallback.]
             </NeedsMelissa>
             <NeedsMelissa>
-              [NEEDS MELISSA: an SVG logo, if you want one. The header uses the transparent primary PNG.]
+              [NEEDS MELISSA: an SVG logo, if you want one. The header uses the long horizontal PNG.]
             </NeedsMelissa>
             <NeedsMelissa>
               [Melissa&apos;s story here. Third person, from her own answers. Do not publish the unapproved draft, her child&apos;s name, or any years-of-experience number.]

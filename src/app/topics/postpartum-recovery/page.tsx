@@ -21,6 +21,9 @@ export default function RecoveryPage() {
       primary="podcast"
       capsule="Recovery does not follow one clock. Ask your own provider what fits your body."
       episodes={episodesFor("recovery")}
+      guides={[
+        { href: "/resources/your-top-postpartum-questions", label: "Your top postpartum questions, answered" },
+      ]}
     >
       <KeyPoints
         items={[

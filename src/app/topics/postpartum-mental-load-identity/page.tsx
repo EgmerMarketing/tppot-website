@@ -21,6 +21,10 @@ export default function MentalLoadPage() {
       primary="waitlist"
       capsule="The mental load is the list other people do not see. Feeling unlike yourself is not a grade, and it is not a diagnosis."
       episodes={episodesFor("mood")}
+      guides={[
+        { href: "/resources/adhd-and-new-parenthood", label: "ADHD and new parenthood: practical support" },
+        { href: "/resources/adhd-postpartum-check-in", label: "ADHD postpartum check-in" },
+      ]}
       help={
         <aside className="mt-6 rounded-2xl border-2 border-[#0A3660] bg-white p-5">
           <p className="font-sans text-lg font-bold text-[#0A3660]">If this is more than a heavy day</p>

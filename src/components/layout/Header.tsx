@@ -10,16 +10,17 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[#0A3660]/10 bg-[#FAF7F2]/95 backdrop-blur">
+    <header className="no-print sticky top-0 z-50 border-b-4 border-teal-deep bg-cream/95 backdrop-blur">
       <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-4 px-4 py-3 md:px-8">
         <Link href="/" className="inline-flex shrink-0 items-center">
           <Image
-            src="/images/logo-primary.png"
+            src="/images/logo-long.png"
             alt="The Postpartum OT"
-            width={1589}
-            height={1148}
+            width={1933}
+            height={471}
             priority
-            className="h-11 w-[61px] md:h-14 md:w-[78px]"
+            sizes="(max-width: 768px) 148px, 197px"
+            className="h-9 w-[148px] md:h-12 md:w-[197px]"
           />
         </Link>
 

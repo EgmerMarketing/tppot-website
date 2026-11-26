@@ -78,6 +78,10 @@ export default function WhatIsPage() {
           </NeedsMelissa>
         </LearnMore>
 
+        <p>
+          A plain-language version of a therapist handout is on{" "}
+          <Link href="/resources/your-top-postpartum-questions">your top postpartum questions</Link>.
+        </p>
         <EpisodeList episodes={[episodes[6]]} />
         <p>
           More of the podcast is on the <Link href="/podcast">podcast page</Link>.
