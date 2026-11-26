@@ -4,6 +4,7 @@ import Byline from "@/components/site/Byline";
 import EmailSignup from "@/components/site/EmailSignup";
 import EpisodeList from "@/components/site/EpisodeList";
 import NeedsMelissa from "@/components/site/NeedsMelissa";
+import { LearnMore } from "@/components/site/Scan";
 import JsonLd from "@/components/site/JsonLd";
 import { breadcrumbSchema, podcastSeriesSchema } from "@/lib/schema";
 import {
@@ -35,12 +36,17 @@ export default function PodcastPage() {
       <JsonLd data={podcastSeriesSchema()} />
       <PageHeader
         title={title}
-        lede="Functional Fourth Trimester is Melissa O'Neal's podcast for parents figuring out daily life after birth. The episodes below are the ones already linked from this website."
+        lede="Melissa O'Neal, OTR/L, hosts Functional Fourth Trimester. These are the episodes already linked from this site."
       />
       <div className="mx-auto max-w-[760px] px-6 md:px-8">
-        <NeedsMelissa>
-          [NEEDS MELISSA: how often new episodes come out, and whether functionalfourthtrimester.com stays separate or folds into this page. Show notes still link there.]
-        </NeedsMelissa>
+        <LearnMore summary="Publishing notes">
+          <NeedsMelissa>
+            [NEEDS MELISSA: how often new episodes come out, and whether functionalfourthtrimester.com stays separate or folds into this page. Show notes still link there.]
+          </NeedsMelissa>
+          <NeedsMelissa>
+            [NEEDS MELISSA: an embedded player, if you want one on this page. None is embedded, so the inactive Kartra player is not here.]
+          </NeedsMelissa>
+        </LearnMore>
 
         <h2 className="mt-8 font-sans text-2xl font-bold text-[#0A3660]">
           Listen on Apple Podcasts, Spotify or YouTube
@@ -50,37 +56,34 @@ export default function PodcastPage() {
           <li><a className="text-[#0A3660] underline" href={SPOTIFY_PODCAST_URL}>Spotify</a></li>
           <li><a className="text-[#0A3660] underline" href={YOUTUBE_CHANNEL_URL}>YouTube</a></li>
         </ul>
-        <NeedsMelissa>
-          [NEEDS MELISSA: an embedded player, if you want one on this page. None is embedded, so the inactive Kartra player is not here.]
-        </NeedsMelissa>
-
-        <EpisodeList heading="Latest Functional Fourth Trimester episodes" episodes={episodes.slice(0, 3)} />
+        <EpisodeList heading="What are the latest episodes?" episodes={episodes.slice(0, 3)} />
 
         <h2 className="mt-10 font-sans text-2xl font-bold text-[#0A3660]">
-          Postpartum podcast episodes by topic
+          Which episodes fit which topic?
         </h2>
-        {groups.map((group) => (
-          <EpisodeList
-            key={group.heading}
-            heading={group.heading}
-            episodes={episodes.filter((episode) => group.numbers.includes(episode.number))}
-          />
-        ))}
-        <p className="mt-4 font-serif text-base text-black">
-          Topic labels above are only a way to browse these seven episodes. They are not a full catalog.
-        </p>
+        <p className="mt-2 font-serif text-base text-black">Seven episodes are linked here. This is not a full catalog.</p>
+        <LearnMore summary="Browse by topic">
+          {groups.map((group) => (
+            <EpisodeList
+              key={group.heading}
+              heading={group.heading}
+              episodes={episodes.filter((episode) => group.numbers.includes(episode.number))}
+            />
+          ))}
+        </LearnMore>
 
         <section className="mt-10">
           <h2 className="font-sans text-2xl font-bold text-[#0A3660]">
-            About the host, Melissa O&apos;Neal, OTR/L
+            Who is the host?
           </h2>
-          <p className="mt-3 font-serif text-lg leading-relaxed text-black">
-            Melissa O&apos;Neal, OTR/L, is the occupational therapist who hosts the show. A longer
-            introduction waits on her own wording.
+          <p className="mt-2 font-serif text-base text-black">
+            Melissa O&apos;Neal, OTR/L. A longer introduction waits on her own wording.
           </p>
-          <NeedsMelissa>
-            [Melissa&apos;s story here. Host bio in the third person. No years-of-experience number until she confirms one.]
-          </NeedsMelissa>
+          <LearnMore summary="Host bio placeholder">
+            <NeedsMelissa>
+              [Melissa&apos;s story here. Host bio in the third person. No years-of-experience number until she confirms one.]
+            </NeedsMelissa>
+          </LearnMore>
         </section>
         <Byline />
         <div className="mt-10 rounded-2xl bg-white p-6">

@@ -34,9 +34,7 @@ export default function BlogPage() {
             Educational information, not medical or professional advice.
           </p>
           <p className="mt-4 font-serif text-lg text-black">
-            By Melissa O&apos;Neal, OTR/L. Some posts below were written for occupational therapists
-            before this site turned toward families. Those posts are unchanged, including their
-            addresses. If you need help now, use Need help now in the header.
+            By Melissa O&apos;Neal, OTR/L. Older posts for occupational therapists are unchanged. If you need help now, use Need help now.
           </p>
         </div>
 

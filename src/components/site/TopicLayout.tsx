@@ -60,13 +60,13 @@ export default function TopicLayout({
         <div className="family-copy">{children}</div>
         {episodes && episodes.length > 0 && <EpisodeList episodes={episodes} />}
         <section className="mt-10">
-          <h2 className="font-sans text-2xl font-bold text-[#0A3660]">Free handouts for this topic</h2>
-          <p className="mt-3 font-serif text-lg leading-relaxed text-black">
-            Handout files are not on the site yet. The{" "}
+          <h2 className="font-sans text-2xl font-bold text-[#0A3660]">Where are the free handouts?</h2>
+          <p className="mt-2 font-serif text-base text-black">
+            Files are not uploaded yet.{" "}
             <Link href="/resources" className="font-bold text-[#0A3660] underline">
-              resources library
-            </Link>{" "}
-            shows the slots. Safety information is never behind a signup.
+              Open the library
+            </Link>
+            . Safety pages are never behind a signup.
           </p>
         </section>
         <Byline />

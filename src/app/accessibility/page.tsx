@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageHeader from "@/components/site/PageHeader";
 import NeedsMelissa from "@/components/site/NeedsMelissa";
+import { KeyPoints, LearnMore } from "@/components/site/Scan";
 import JsonLd from "@/components/site/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 import { SITE_URL } from "@/lib/site";
@@ -25,19 +26,23 @@ export default function AccessibilityPage() {
       />
       <PageHeader
         title={title}
-        lede="We want parents to be able to read, resize, and use this site with a keyboard or a screen reader. This page describes that aim. It is not an audit result and not a claim that every page already meets a standard."
+        lede="The aim is a site parents can resize, read, and use with a keyboard. This is not an audit or a certification."
       />
       <div className="family-copy mx-auto max-w-[760px] px-6 md:px-8">
-        <h2>What we are building toward</h2>
-        <p>
-          The target is WCAG 2.2 Level AA. Pages use one main heading, allow pinch-zoom, and keep
-          body text in black or navy. Teal is for large areas, icons, and borders. A darker teal
-          is used only for small labels, and Melissa has not signed off on that color yet. Buttons
-          and text fields are at least 44 pixels tall. Focus is visible.
-        </p>
-        <NeedsMelissa>
-          [NEEDS MELISSA: is the darker teal #2f6b6a OK for small text? It is in the site as one token, --tppot-teal-text, and it is not a confirmed brand color.]
-        </NeedsMelissa>
+        <h2>What are we aiming for?</h2>
+        <KeyPoints
+          items={[
+            "Target: WCAG 2.2 Level AA. This is not a certification.",
+            "One heading, zoom allowed, navy or black text.",
+            "Buttons and fields are at least 44 pixels tall.",
+          ]}
+        />
+        <LearnMore summary="Color note">
+          <p>Teal is for large areas, icons, and borders. A darker teal is used only for small labels.</p>
+          <NeedsMelissa>
+            [NEEDS MELISSA: is the darker teal #2f6b6a OK for small text? It is in the site as one token, --tppot-teal-text, and it is not a confirmed brand color.]
+          </NeedsMelissa>
+        </LearnMore>
         <h2>Known limits</h2>
         <ul>
           <li>The header is a text wordmark until a logo works on a light background.</li>

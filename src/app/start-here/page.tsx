@@ -5,6 +5,7 @@ import CtaRow from "@/components/site/CtaRow";
 import Byline from "@/components/site/Byline";
 import EmailSignup from "@/components/site/EmailSignup";
 import EpisodeList from "@/components/site/EpisodeList";
+import { KeyPoints, LearnMore } from "@/components/site/Scan";
 import JsonLd from "@/components/site/JsonLd";
 import { articleSchema, breadcrumbSchema } from "@/lib/schema";
 import { episodes } from "@/lib/podcast";
@@ -24,81 +25,87 @@ export default function StartHerePage() {
       <JsonLd data={articleSchema({ headline: title, description, datePublished: UPDATED, url })} />
       <PageHeader
         title={title}
-        lede="Many people use “fourth trimester” for about the first 12 weeks after birth, when sleep, feeding, and your sense of yourself are all in motion. It is a map for the weeks, not a test you pass."
+        lede="People often use “fourth trimester” for about the first 12 weeks after birth. It is a map, not a test."
       />
       <div className="mx-auto max-w-[760px] px-6 md:px-8">
+        <KeyPoints
+          items={[
+            "Weeks 0 to 6: short sleeps, frequent feeding, a smaller list.",
+            "Weeks 6 to 12: easier is not a date you missed.",
+            "Months 3 to 12: change the routine when it stops fitting.",
+            "Partners: take a block of time where you are the one who is on.",
+            "Safe sleep comes from your baby’s clinician, not this page.",
+          ]}
+        />
         <CtaRow primary="podcast" />
 
         <section className="mt-10">
           <h2 className="font-sans text-2xl font-bold text-[#0A3660]">What is the fourth trimester?</h2>
-          <p className="mt-3 font-serif text-lg leading-relaxed text-black">
-            The fourth trimester is a name for the early weeks after birth, often counted as about
-            twelve weeks. You and the baby are both learning the day. Occupational therapy looks at
-            that day: rest, feeding, and the jobs of home. It does not replace your provider, and it
-            does not decide what is medically normal for your body.
-          </p>
+          <p className="mt-2 font-serif text-base text-black">About twelve weeks when you and the baby are both learning the day.</p>
+          <LearnMore>
+            <p>
+              Occupational therapy looks at that day: rest, feeding, and the jobs of home. It does not
+              replace your provider, and it does not decide what is medically normal for your body.
+            </p>
+          </LearnMore>
         </section>
 
-        <section className="mt-10">
+        <section className="mt-8">
           <h2 className="font-sans text-2xl font-bold text-[#0A3660]">
-            Weeks 0 to 6 postpartum: what to expect and what helps
+            Weeks 0 to 6: what helps?
           </h2>
-          <p className="mt-3 font-serif text-lg leading-relaxed text-black">
-            These weeks are often short sleeps, frequent feeding, and a home that does not run the
-            way it did. What helps is a smaller list: food for the adults, a plan for who is awake,
-            and one person you can text. Follow your baby&apos;s clinician and the{" "}
-            <a className="font-bold text-[#0A3660] underline" href="https://safetosleep.nichd.nih.gov/">
-              Safe to Sleep campaign
-            </a>{" "}
-            for where the baby sleeps. This page does not set medical milestones.
-          </p>
+          <p className="mt-2 font-serif text-base text-black">Food for the adults, a plan for who is awake, and one person you can text.</p>
+          <LearnMore>
+            <p>
+              These weeks are often short sleeps and a home that does not run the way it did. Follow
+              your baby&apos;s clinician and the{" "}
+              <a href="https://safetosleep.nichd.nih.gov/">Safe to Sleep campaign</a> for where the baby
+              sleeps. This page does not set medical milestones.
+            </p>
+          </LearnMore>
         </section>
 
-        <section className="mt-10">
+        <section className="mt-8">
           <h2 className="font-sans text-2xl font-bold text-[#0A3660]">
-            Weeks 6 to 12: when does it get easier with a newborn?
+            Weeks 6 to 12: when does it get easier?
           </h2>
-          <p className="mt-3 font-serif text-lg leading-relaxed text-black">
-            Some families feel a bit of rhythm here. Some do not, and that is not a failure. Easier
-            is not a morning on the calendar. If you have a postpartum visit, use it to say how you
-            are doing, not only how the baby is growing. If sadness, fear, or exhaustion is past
-            what you can carry, go to{" "}
-            <Link href="/need-help-now" className="font-bold text-[#0A3660] underline">Need Help Now</Link>.
-          </p>
+          <p className="mt-2 font-serif text-base text-black">Some families feel a rhythm here. Some do not. That is not a failure.</p>
+          <LearnMore>
+            <p>
+              If you have a postpartum visit, use it to say how you are doing, not only how the baby is
+              growing. If sadness, fear, or exhaustion is past what you can carry, go to{" "}
+              <Link href="/need-help-now">Need Help Now</Link>.
+            </p>
+          </LearnMore>
         </section>
 
-        <section className="mt-10">
+        <section className="mt-8">
           <h2 className="font-sans text-2xl font-bold text-[#0A3660]">
-            Months 3 to 12: finding your new normal
+            Months 3 to 12: what is the new normal?
           </h2>
-          <p className="mt-3 font-serif text-lg leading-relaxed text-black">
-            Work, other children, and your own plans come back into the day at different times.
-            Change the routine when it stops fitting. Returning to work, as a set of practical
-            questions, is on the{" "}
-            <Link href="/topics/newborn-daily-routine" className="font-bold text-[#0A3660] underline">
-              newborn daily routine
-            </Link>{" "}
-            page.
-          </p>
+          <p className="mt-2 font-serif text-base text-black">Work and other plans come back at different times. Change the routine when it stops fitting.</p>
+          <LearnMore>
+            <p>
+              Returning to work is on the{" "}
+              <Link href="/topics/newborn-daily-routine">newborn daily routine</Link> page.
+            </p>
+          </LearnMore>
         </section>
 
-        <section className="mt-10">
+        <section className="mt-8">
           <h2 className="font-sans text-2xl font-bold text-[#0A3660]">
-            Fourth trimester help for dads and partners
+            How can dads and partners help in the fourth trimester?
           </h2>
-          <p className="mt-3 font-serif text-lg leading-relaxed text-black">
-            Partners are in the fourth trimester too. A useful shift is a block of time where you
-            are the one who is on, not a helper waiting for instructions. Grandparents help most
-            when they ask which single job would lighten today. More is on the{" "}
-            <Link href="/topics/dads-and-partners" className="font-bold text-[#0A3660] underline">
-              dads and partners
-            </Link>{" "}
-            page.
-          </p>
+          <p className="mt-2 font-serif text-base text-black">Take a shift. Grandparents help most by asking which one job would lighten today.</p>
+          <LearnMore>
+            <p>
+              More is on the <Link href="/topics/dads-and-partners">dads and partners</Link> page.
+            </p>
+          </LearnMore>
         </section>
 
         <EpisodeList
-          heading="Episodes by stage"
+          heading="Which episodes match these weeks?"
           episodes={[episodes[6], episodes[3], episodes[5]].filter(Boolean)}
         />
         <Byline />

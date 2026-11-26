@@ -50,31 +50,31 @@ export const topicLinks = [
   {
     href: "/topics/postpartum-sleep",
     title: "Postpartum sleep deprivation",
-    text: "Getting through newborn nights, including how adults can take shifts.",
+    text: "Trade night shifts. Safe sleep stays with your pediatrician.",
   },
   {
     href: "/topics/feeding-routines",
     title: "Feeding routines and pumping",
-    text: "The schedule around breastfeeding, pumping, and bottles. Latch questions go to a lactation consultant.",
+    text: "Who does which part. Latch questions go to a lactation consultant.",
   },
   {
     href: "/topics/newborn-daily-routine",
     title: "Newborn daily routine",
-    text: "How to get anything done with a baby at home, including a return to work.",
+    text: "A short list for the day, including going back to work.",
   },
   {
     href: "/topics/postpartum-recovery",
     title: "Postpartum recovery",
-    text: "How long it can take, what to ask your provider, and where C-section care stays with your clinician.",
+    text: "No single clock. C-section rules stay with your clinician.",
   },
   {
     href: "/topics/postpartum-mental-load-identity",
     title: "Postpartum mental load and identity",
-    text: "The invisible list, and feeling like yourself. Urgent mood help lives on Need Help Now.",
+    text: "The invisible list. Urgent mood help is on Need Help Now.",
   },
   {
     href: "/topics/dads-and-partners",
     title: "Help for dads and partners",
-    text: "How partners, grandparents, and other caregivers can carry a real part of the day.",
+    text: "Take a real shift. Grandparents can ask which one job helps.",
   },
 ] as const;

@@ -62,12 +62,8 @@ export default function EmailSignup({
     <form onSubmit={onSubmit} className="space-y-4" noValidate={false}>
       <h2 className="font-sans text-2xl font-bold leading-snug text-[#0A3660]">{heading}</h2>
       <p className="font-serif text-base leading-relaxed text-black">
-        Email is required. First name is optional. Leave health details out of this form.
-        Nothing is checked for you.
+        Email is required. Leave health details out. Nothing is checked for you.
       </p>
-      <NeedsMelissa>
-        [NEEDS MELISSA: which email tool replaces Kartra, how often you will write, and the welcome email. This form emails your inbox through Resend. It does not add people to an automated list, and double opt-in is not running yet.]
-      </NeedsMelissa>
 
       <div className="absolute h-px w-px overflow-hidden" aria-hidden="true">
         <label htmlFor={`${idPrefix}-hp`}>Company website</label>
@@ -117,15 +113,22 @@ export default function EmailSignup({
         </label>
       </fieldset>
       <p className="font-serif text-sm leading-relaxed text-black">
-        Unsubscribe anytime once a list exists. Read the{" "}
         <Link href="/legal/privacy-policy" className="font-bold text-[#0A3660] underline">
-          privacy policy
+          Privacy policy
         </Link>
-        .{" "}
-        <span className="font-sans text-sm font-bold text-[#0A3660]">
-          [NEEDS MELISSA: update the privacy policy for this signup.]
-        </span>
+        . Unsubscribe anytime once a list exists.
       </p>
+      <details className="learn-more rounded-xl border border-[#0A3660]/20 bg-[#eef6f6]">
+        <summary>How this signup works</summary>
+        <div className="space-y-3 px-4 pb-4">
+          <NeedsMelissa>
+            [NEEDS MELISSA: which email tool replaces Kartra, how often you will write, and the welcome email. This form emails your inbox through Resend. It does not add people to an automated list, and double opt-in is not running yet.]
+          </NeedsMelissa>
+          <NeedsMelissa>
+            [NEEDS MELISSA: update the privacy policy for this signup.]
+          </NeedsMelissa>
+        </div>
+      </details>
       {status === "error" && (
         <p id={errorId} role="alert" className="rounded-lg border border-[#0A3660] bg-white p-3 font-sans text-sm text-black">
           {error}

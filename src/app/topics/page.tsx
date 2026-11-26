@@ -25,7 +25,7 @@ export default function TopicsPage() {
       />
       <PageHeader
         title={title}
-        lede="Six pages, one subject each. They are general education from an occupational therapy point of view. Your provider still answers what is going on in your body."
+        lede="Six pages, one subject each. Your provider still answers what is going on in your body."
       />
       <div className="mx-auto max-w-[1120px] px-6 md:px-8">
         <CtaRow primary="waitlist" />

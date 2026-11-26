@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageHeader from "@/components/site/PageHeader";
 import NeedsMelissa from "@/components/site/NeedsMelissa";
+import { LearnMore } from "@/components/site/Scan";
 import JsonLd from "@/components/site/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 import { SITE_URL } from "@/lib/site";
@@ -44,49 +45,51 @@ export default function ForProfessionalsPage() {
       />
       <PageHeader
         title={title}
-        lede="This website is for moms, dads, and caregivers. This is the one page for occupational therapists and other healthcare professionals. Nothing on it is a live checkout."
+        lede="This page is for occupational therapists and other clinicians. Nothing here is a live checkout."
       />
       <div className="family-copy mx-auto max-w-[760px] px-6 md:px-8">
-        <p>
-          Older professional paths, including mentorship service pages and the mom-and-baby webinar
-          replay URL, now land here. The webinar itself is not embedded, because the old links were
-          not reliable.
-        </p>
-        <NeedsMelissa>
-          [NEEDS MELISSA: which professional offers stay. Mentorship, the mom-and-baby webinar replay, and the professional Facebook group are an open question, not a menu you can buy today.]
-        </NeedsMelissa>
-
-        <h2>Four options, none of them approved yet</h2>
-        <ul>
+        <h2>Which options exist?</h2>
+        <p>Four ideas are listed. None is approved, and there is no price.</p>
+        <ul className="mt-4 grid gap-3 sm:grid-cols-2">
           {offers.map((offer) => (
-            <li key={offer.name}>
+            <li key={offer.name} className="rounded-xl border border-[#0A3660]/15 bg-white p-4">
               <p className="font-sans font-bold text-[#0A3660]">{offer.name}</p>
-              <NeedsMelissa>{offer.note}</NeedsMelissa>
+              <LearnMore summary="Status">
+                <NeedsMelissa>{offer.note}</NeedsMelissa>
+              </LearnMore>
             </li>
           ))}
         </ul>
+        <LearnMore summary="What still has to be decided">
+          <p>
+            Older paths, including mentorship pages and the mom-and-baby webinar replay URL, now land here. The webinar is not embedded.
+          </p>
+          <NeedsMelissa>
+            [NEEDS MELISSA: which professional offers stay. Mentorship, the mom-and-baby webinar replay, and the professional Facebook group are an open question, not a menu you can buy today.]
+          </NeedsMelissa>
+        </LearnMore>
         <p>
           There is no application form until Melissa says these options exist. Use the{" "}
           <Link href="/contact">contact form</Link> if you need to write to her, and please do not
           include a patient&apos;s health details.
         </p>
 
-        <h2>Professional Facebook group</h2>
+        <h2>Which Facebook group is for clinicians?</h2>
         <p>
-          The previous version of this site linked a Facebook group for occupational therapists.
-          Facebook is secondary here. Do not send people to that old group. The Functional Fourth
-          Trimester Circle is a different, private group. Parents, caregivers, and healthcare and
-          birth professionals request to join from the Community page, and three questions are
-          required for approval.
-        </p>
-        <p>
+          Not the parent Circle.{" "}
           <a href="https://www.facebook.com/groups/1967522367025806">
-            Facebook group previously linked from this site
+            Group previously linked from this site
           </a>
+          .
         </p>
-        <NeedsMelissa>
-          [NEEDS MELISSA: confirm this is the professional group, that the link should stay, and what the group should be called.]
-        </NeedsMelissa>
+        <LearnMore summary="How the two groups differ">
+          <p>
+            The Circle welcomes parents, caregivers, and healthcare and birth professionals. They request to join from the Community page, and three questions are required for approval.
+          </p>
+          <NeedsMelissa>
+            [NEEDS MELISSA: confirm this is the professional group, that the link should stay, and what the group should be called.]
+          </NeedsMelissa>
+        </LearnMore>
       </div>
     </article>
   );

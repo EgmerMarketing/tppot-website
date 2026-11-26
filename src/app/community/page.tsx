@@ -4,6 +4,7 @@ import PageHeader from "@/components/site/PageHeader";
 import EmailSignup from "@/components/site/EmailSignup";
 import CircleJoinLink from "@/components/site/CircleJoinLink";
 import NeedsMelissa from "@/components/site/NeedsMelissa";
+import { KeyPoints, LearnMore } from "@/components/site/Scan";
 import JsonLd from "@/components/site/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 import { SITE_URL } from "@/lib/site";
@@ -22,37 +23,33 @@ export default function CommunityPage() {
       <JsonLd data={breadcrumbSchema([{ name: "Home", url: SITE_URL }, { name: "Community", url: `${SITE_URL}/community` }])} />
       <PageHeader
         title={title}
-        lede="The Circle welcomes parents, caregivers, and healthcare and birth professionals. It is not a crisis service. If you need someone now, use Need Help Now before you think about joining a group."
+        lede="Parents, caregivers, and healthcare and birth professionals can request to join. If you need someone now, use Need Help Now first."
       />
       <div className="family-copy mx-auto max-w-[760px] px-6 md:px-8">
         <h2>What is the Functional Fourth Trimester Circle?</h2>
-        <p>
-          The Functional Fourth Trimester Circle is a private Facebook group that started on November 18, 2026.
-          The order of the build is the group, then live calls, then an app. No member count is shown.
-          The email waitlist below is the way to hear from Melissa. Requesting to join Facebook is separate, and approval requires three short answers.
-        </p>
-        <NeedsMelissa>
-          [NEEDS MELISSA: whether a member count may be shown, and any group rules beyond the membership questions. Do not send parents to the old professional group.]
-        </NeedsMelissa>
+        <KeyPoints
+          items={[
+            "Private Facebook group, started November 18, 2026.",
+            "Three questions are required before a request is approved.",
+            "The email waitlist is how you hear from Melissa.",
+            "Live calls are listed Wednesdays, 11:00 to 11:30 AM Mountain Time.",
+          ]}
+        />
+        <LearnMore summary="What is still unconfirmed">
+          <p>The build order is the group, then live calls, then an app. No member count is shown. This page does not say the live sessions have started, what they cost, or where to click to join.</p>
+          <NeedsMelissa>
+            [NEEDS MELISSA: whether a member count may be shown, and the exact wording of the three questions if it should be published. Do not send people to the old professional Facebook group.]
+          </NeedsMelissa>
+          <NeedsMelissa>
+            [NEEDS MELISSA: platform, start date, free or paid, how to sign up, whether replays exist, and guest experts.]
+          </NeedsMelissa>
+        </LearnMore>
 
-        <h2>Functional Fourth Trimester Live: weekly postpartum expert sessions</h2>
+        <h2>What if I feel alone right now?</h2>
         <p>
-          Live sessions are listed for Wednesdays, 11:00 to 11:30 AM Mountain Time. This page does
-          not say the sessions have started, what they cost, or where to click to join.
+          A group is not a crisis line. Call or text <a href="tel:988">988</a>, or open{" "}
+          <Link href="/need-help-now">Need Help Now</Link>.
         </p>
-        <NeedsMelissa>
-          [NEEDS MELISSA: platform, start date, free or paid, how to sign up, whether replays exist, and guest experts. No event listing is published until those are confirmed.]
-        </NeedsMelissa>
-
-        <h2>Why online postpartum support helps when you feel alone</h2>
-        <aside className="rounded-2xl border-2 border-[#0A3660] bg-white p-5">
-          <p>
-            Other parents can make a hard week feel less private. A group is not medical care, and
-            it is not a place to wait if you are in crisis. Call or text{" "}
-            <a href="tel:988">988</a>, or open{" "}
-            <Link href="/need-help-now">Need Help Now</Link>.
-          </p>
-        </aside>
 
         <h2 id="waitlist">Join the waitlist</h2>
         <div className="rounded-2xl bg-white p-6">
@@ -60,13 +57,16 @@ export default function CommunityPage() {
           <CircleJoinLink />
         </div>
 
-        <h2>Recording and consent</h2>
-        <NeedsMelissa>
-          [NEEDS MELISSA: the consent note for live sessions and any recordings. Nothing is promised about replays.]
-        </NeedsMelissa>
-        <NeedsMelissa>
-          [NEEDS MELISSA: what an app waitlist may promise. The app is phase 2 and has no page.]
-        </NeedsMelissa>
+        <h2>Will sessions be recorded?</h2>
+        <p>Nothing is promised about replays.</p>
+        <LearnMore summary="Consent and the app">
+          <NeedsMelissa>
+            [NEEDS MELISSA: the consent note for live sessions and any recordings.]
+          </NeedsMelissa>
+          <NeedsMelissa>
+            [NEEDS MELISSA: what an app waitlist may promise. The app is phase 2 and has no page.]
+          </NeedsMelissa>
+        </LearnMore>
       </div>
     </article>
   );

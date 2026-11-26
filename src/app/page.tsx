@@ -11,6 +11,7 @@ import EmailSignup from "@/components/site/EmailSignup";
 import CircleJoinLink from "@/components/site/CircleJoinLink";
 import EpisodeList from "@/components/site/EpisodeList";
 import NeedsMelissa from "@/components/site/NeedsMelissa";
+import { LearnMore } from "@/components/site/Scan";
 import { DISCLAIMER_CRISIS } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -24,35 +25,40 @@ export const metadata: Metadata = {
 const homeFaqs = [
   {
     question: "How long does postpartum recovery take?",
+    short: "There is no single clock.",
     answer:
       "There is no single clock. Some daily tasks ease in a few weeks, and some take longer. A checkup is a visit, not a finish line. Your own provider can say what fits your body.",
   },
   {
     question: "When does it get easier with a newborn?",
+    short: "In pieces, not on one date.",
     answer:
       "Easier usually shows up in pieces: a longer sleep stretch, a feeding rhythm, or a day that feels familiar. It is not a date you can miss. If you are suffering, not just tired, use Need Help Now.",
   },
   {
     question: "How do I get anything done with a newborn?",
+    short: "Feed, diaper, eat, and one rest.",
     answer:
       "Shrink the day to feeding, diapers, your own food, and one rest. A routine is a short list you can repeat, not a perfect schedule.",
   },
   {
     question: "How can a partner help postpartum?",
+    short: "Take a real shift, including at night.",
     answer:
       "Take a real shift, including at night, and handle a task without waiting to be assigned every step. Partners can call or text 988, and family members can use 1-833-TLC-MAMA.",
   },
   {
     question: "What is postpartum occupational therapy?",
+    short: "Help with the daily jobs after birth.",
     answer:
       "Occupational therapy helps people do the daily activities that matter to them. After birth, that can include sleep, feeding routines, and getting through the day. It is not a substitute for your own medical provider.",
   },
 ];
 
 const cards = [
-  { href: "/podcast", title: "Podcast", text: "Functional Fourth Trimester, for new parents." },
-  { href: "/community", title: "Community, coming soon", text: "Join the email waitlist, or request to join. Three questions are required for approval." },
-  { href: "/resources", title: "Free resources", text: "Plan and checklist slots. Files are not uploaded yet." },
+  { href: "/podcast", title: "Podcast", text: "Functional Fourth Trimester" },
+  { href: "/community", title: "Community", text: "Waitlist first. Three questions to join." },
+  { href: "/resources", title: "Free resources", text: "Files are not uploaded yet." },
 ];
 
 export default function Home() {
@@ -119,13 +125,16 @@ export default function Home() {
       <section className="bg-[#eef6f6]" id="waitlist">
         <div className="mx-auto max-w-[760px] px-6 py-14 md:px-8">
           <p className="font-serif text-lg leading-relaxed text-black">
-            The Functional Fourth Trimester Circle is a private Facebook group that started November 18, 2026.
-            Live sessions are listed for Wednesdays, 11:00 to 11:30 AM Mountain Time. The platform and
-            cost are not confirmed. The email waitlist is how you hear when those details are ready.
+            The Circle is a private Facebook group that started November 18, 2026. The email waitlist is how you hear what is still unconfirmed.
           </p>
-          <NeedsMelissa>
-            [NEEDS MELISSA: whether a member count may be shown. Live session platform, start date, price, sign-up, and replays.]
-          </NeedsMelissa>
+          <LearnMore summary="Live sessions and open details">
+            <p>
+              Live sessions are listed for Wednesdays, 11:00 to 11:30 AM Mountain Time. The platform and cost are not confirmed.
+            </p>
+            <NeedsMelissa>
+              [NEEDS MELISSA: whether a member count may be shown. Live session platform, start date, price, sign-up, and replays.]
+            </NeedsMelissa>
+          </LearnMore>
           <div className="mt-6 rounded-2xl bg-white p-6">
             <EmailSignup
               idPrefix="home"
@@ -137,10 +146,9 @@ export default function Home() {
       </section>
 
       <section className="mx-auto max-w-[1120px] px-6 py-14 md:px-8">
-        <h2 className="font-sans text-3xl font-bold text-[#0A3660]">Free postpartum resources for new parents</h2>
-        <p className="mt-4 max-w-2xl font-serif text-lg leading-relaxed text-black">
-          The library has slots for a postpartum plan, checklists, and notes for partners and grandparents.
-          The files are not uploaded yet. Crisis information is open and does not ask for your email.
+        <h2 className="font-sans text-3xl font-bold text-[#0A3660]">Where are the free postpartum resources?</h2>
+        <p className="mt-2 max-w-2xl font-serif text-base text-black">
+          Plan and checklist slots are ready. The files are not. Crisis pages never ask for email.
         </p>
         <p className="mt-4">
           <Link href="/resources" className="font-sans text-sm font-bold text-[#0A3660] underline">
@@ -162,13 +170,14 @@ export default function Home() {
             <h2 className="font-sans text-3xl font-bold leading-tight text-[#0A3660]">
               Meet Melissa O&apos;Neal, OTR/L, postpartum occupational therapist
             </h2>
-            <p className="mt-4 font-serif text-lg leading-relaxed text-black">
-              Melissa O&apos;Neal, OTR/L, is the occupational therapist behind The Postpartum OT.
-              She shares educational support for the ordinary, hard parts of life after birth.
+            <p className="mt-2 font-serif text-base text-black">
+              Melissa O&apos;Neal, OTR/L, shares education for daily life after birth. Her story is not published yet.
             </p>
-            <NeedsMelissa>
-              [Melissa&apos;s story here. Third person, in her own words. Do not publish a years-of-experience number, her child&apos;s name, or an Ability Village role until she approves them.]
-            </NeedsMelissa>
+            <LearnMore summary="Story placeholder">
+              <NeedsMelissa>
+                [Melissa&apos;s story here. Third person, in her own words. Do not publish a years-of-experience number, her child&apos;s name, or an Ability Village role until she approves them.]
+              </NeedsMelissa>
+            </LearnMore>
             <Link href="/about" className="font-sans text-sm font-bold text-[#0A3660] underline">
               About Melissa
             </Link>
@@ -182,7 +191,10 @@ export default function Home() {
           {homeFaqs.map((faq) => (
             <div key={faq.question}>
               <h3 className="font-sans text-xl font-bold text-[#0A3660]">{faq.question}</h3>
-              <p className="mt-2 font-serif text-lg leading-relaxed text-black">{faq.answer}</p>
+              <p className="mt-2 font-serif text-base text-black">{faq.short}</p>
+              <LearnMore>
+                <p>{faq.answer}</p>
+              </LearnMore>
             </div>
           ))}
         </div>

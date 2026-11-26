@@ -4,6 +4,7 @@ import PageHeader from "@/components/site/PageHeader";
 import CtaRow from "@/components/site/CtaRow";
 import Byline from "@/components/site/Byline";
 import NeedsMelissa from "@/components/site/NeedsMelissa";
+import { KeyPoints, LearnMore } from "@/components/site/Scan";
 import JsonLd from "@/components/site/JsonLd";
 import { breadcrumbSchema, personSchema } from "@/lib/schema";
 import { SHOW_ABILITY_VILLAGE, SITE_URL } from "@/lib/site";
@@ -23,7 +24,7 @@ export default function AboutPage() {
       <JsonLd data={personSchema()} />
       <PageHeader
         title={title}
-        lede="Melissa O'Neal, OTR/L, is the occupational therapist behind this site. The personal story, the photo, and any credential beyond OTR/L are not filled in until she approves them."
+        lede="Melissa O'Neal, OTR/L, is the occupational therapist behind this site. Her story and any other credential are not filled in yet."
       />
       <div className="mx-auto grid max-w-[1120px] gap-10 px-6 md:px-8 lg:grid-cols-[220px_1fr]">
         <div
@@ -34,45 +35,54 @@ export default function AboutPage() {
           <span className="font-sans text-5xl font-bold text-[#0A3660]" aria-hidden="true">MO</span>
         </div>
         <div className="family-copy">
-          <NeedsMelissa>
-            [NEEDS MELISSA: a headshot you approve. Personal photos already on the old site are not used. No stock or AI photo. Initials are the fallback.]
-          </NeedsMelissa>
-          <NeedsMelissa>
-            [NEEDS MELISSA: a navy or SVG logo. The file in this repo sits on a black box, so the header uses a text wordmark.]
-          </NeedsMelissa>
-
-          <h2>Why Melissa O&apos;Neal focuses on daily life after birth</h2>
-          <NeedsMelissa>
-            [Melissa&apos;s story here. Third person, from her own answers. Do not publish the unapproved draft, her child&apos;s name, or any years-of-experience number.]
-          </NeedsMelissa>
-          <p>
-            What can be said now is limited on purpose. She is an occupational therapist, OTR/L,
-            and this site is her educational home for parents, dads, and caregivers. The work she
-            describes in public materials is daily life after birth: sleep, feeding routines, and
-            the jobs of a household. A fuller story waits on her words.
-          </p>
-
-          <h2>Credentials and training</h2>
-          <p>Shown because it is the credential this redesign was told to treat as sourced: OTR/L.</p>
-          <NeedsMelissa>
-            [NEEDS MELISSA: which state licenses may appear, CDRAC, OT degree and school, Certified Breastfeeding Specialist, and PCES. None of those are shown. PCES seals from the old site are not displayed.]
-          </NeedsMelissa>
-
-          <h2>A partnership note that is not cleared</h2>
-          {SHOW_ABILITY_VILLAGE ? (
+          <KeyPoints
+            items={[
+              "Credential shown: OTR/L.",
+              "Daily life after birth: sleep, feeding routines, household jobs.",
+              "No photo yet. The header is a text wordmark.",
+              "She hosts Functional Fourth Trimester.",
+            ]}
+          />
+          <LearnMore summary="Photo, logo, and story notes">
             <NeedsMelissa>
-              [NEEDS MELISSA: the flag is on, but there is still no approved Ability Village sentence or badge in the code. Do not publish a title.]
+              [NEEDS MELISSA: a headshot you approve. Personal photos already on the old site are not used. No stock or AI photo. Initials are the fallback.]
             </NeedsMelissa>
-          ) : (
             <NeedsMelissa>
-              [PENDING: Ability Village wording is not cleared. Do not publish a badge, a Director title, or the partner name as a live partnership until Melissa and Adam approve. This block is the placeholder. The public badge is off.]
+              [NEEDS MELISSA: a navy or SVG logo. The file in this repo sits on a black box, so the header uses a text wordmark.]
             </NeedsMelissa>
-          )}
+            <NeedsMelissa>
+              [Melissa&apos;s story here. Third person, from her own answers. Do not publish the unapproved draft, her child&apos;s name, or any years-of-experience number.]
+            </NeedsMelissa>
+          </LearnMore>
 
-          <h2>Host of the Functional Fourth Trimester podcast</h2>
+          <h2>Why does Melissa focus on daily life after birth?</h2>
+          <p>A fuller story waits on her own words. What is public is the daily work of a household after birth.</p>
+
+          <h2>Which credentials are shown?</h2>
+          <p>OTR/L only.</p>
+          <LearnMore summary="Credentials still to confirm">
+            <NeedsMelissa>
+              [NEEDS MELISSA: which state licenses may appear, CDRAC, OT degree and school, Certified Breastfeeding Specialist, and PCES. None of those are shown. PCES seals from the old site are not displayed.]
+            </NeedsMelissa>
+          </LearnMore>
+
+          <h2>Is a partnership listed?</h2>
+          <p>No. Nothing is cleared to publish.</p>
+          <LearnMore summary="Partnership placeholder">
+            {SHOW_ABILITY_VILLAGE ? (
+              <NeedsMelissa>
+                [NEEDS MELISSA: the flag is on, but there is still no approved Ability Village sentence or badge in the code. Do not publish a title.]
+              </NeedsMelissa>
+            ) : (
+              <NeedsMelissa>
+                [PENDING: Ability Village wording is not cleared. Do not publish a badge, a Director title, or the partner name as a live partnership until Melissa and Adam approve. This block is the placeholder. The public badge is off.]
+              </NeedsMelissa>
+            )}
+          </LearnMore>
+
+          <h2>Where can I hear her?</h2>
           <p>
-            Melissa hosts Functional Fourth Trimester. You can listen from the{" "}
-            <Link href="/podcast">podcast page</Link>. How often new episodes come out is not stated here.
+            She hosts Functional Fourth Trimester. Listen on the <Link href="/podcast">podcast page</Link>.
           </p>
           <CtaRow primary="podcast" />
           <Byline />

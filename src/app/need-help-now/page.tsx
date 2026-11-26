@@ -3,6 +3,7 @@ import Link from "next/link";
 import PageHeader from "@/components/site/PageHeader";
 import CrisisLines from "@/components/site/CrisisLines";
 import { ClinicianReview } from "@/components/site/NeedsMelissa";
+import { LearnMore } from "@/components/site/Scan";
 import JsonLd from "@/components/site/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 import { SITE_URL } from "@/lib/site";
@@ -36,63 +37,64 @@ export default function NeedHelpNowPage() {
 
         <section className="mt-12">
           <h2 className="font-sans text-2xl font-bold text-[#0A3660]">
-            Postpartum anxiety vs depression: signs it&apos;s time to get help
+            Postpartum anxiety vs depression: when should I get help?
           </h2>
-          <p className="mt-3 font-serif text-lg leading-relaxed text-black">
-            Sadness, worry, and not feeling like yourself can show up after birth. This site does
-            not sort those feelings into a diagnosis. If they are heavy, lasting, or scaring you,
-            talk with your provider or call the maternal mental health support line at
-            1-833-852-6262. HRSA&apos;s page describes signs their counselors hear about. If you
-            might act on thoughts of harm, call or text 988 now.
+          <p className="mt-2 font-serif text-base text-black">
+            If sadness or worry is heavy or scaring you, call your provider or 1-833-852-6262. If you might act on thoughts of harm, call or text 988 now.
           </p>
-          <p className="mt-3">
-            <a
-              className="font-sans text-sm font-bold text-[#0A3660] underline"
-              href="https://mchb.hrsa.gov/programs-impact/national-maternal-mental-health-hotline"
-            >
-              National Maternal Mental Health Hotline at HRSA
-            </a>
-          </p>
-          <ClinicianReview>
-            [CLINICIAN REVIEW: B3, intrusive thoughts. Do not publish wording about intrusive thoughts until a clinician reviews it. This is a placeholder, not parent education.]
-          </ClinicianReview>
+          <LearnMore>
+            <p>
+              This site does not sort those feelings into a diagnosis.{" "}
+              <a href="https://mchb.hrsa.gov/programs-impact/national-maternal-mental-health-hotline">
+                HRSA describes signs their counselors hear about
+              </a>
+              .
+            </p>
+            <ClinicianReview>
+              [CLINICIAN REVIEW: B3, intrusive thoughts. Do not publish wording about intrusive thoughts until a clinician reviews it. This is a placeholder, not parent education.]
+            </ClinicianReview>
+          </LearnMore>
         </section>
 
         <section className="mt-10">
           <h2 className="font-sans text-2xl font-bold text-[#0A3660]">
-            How to ask for help with postpartum depression
+            How do I ask for help?
           </h2>
-          <p className="mt-3 font-serif text-lg leading-relaxed text-black">
-            You can say, “I am not okay, and I need you to stay while I call.” You do not need the
-            perfect words. Ask a partner, a friend, or your provider. If you are alone, call or
-            text 988, or the support line at 1-833-852-6262. A volunteer or counselor is there for
-            that call. This page is not treatment.
+          <p className="mt-2 font-serif text-base text-black">
+            You can say, “I am not okay, and I need you to stay while I call.”
           </p>
+          <LearnMore>
+            <p>
+              You do not need the perfect words. Ask a partner, a friend, or your provider. If you are
+              alone, call or text 988, or the support line at 1-833-852-6262. This page is not treatment.
+            </p>
+          </LearnMore>
         </section>
 
         <section className="mt-10">
           <h2 className="font-sans text-2xl font-bold text-[#0A3660]">
             Urgent warning signs: call 911 or 988 now
           </h2>
-          <p className="mt-3 font-serif text-lg leading-relaxed text-black">
-            Call 911 if you, your baby, or someone with you may be in immediate danger, including
-            a medical emergency. Call or text 988 if you are in emotional crisis or thinking about
-            harming yourself or someone else. This page does not publish a symptom checklist.
-            Your own provider can tell you which body symptoms they want you to report.
-          </p>
+          <ul className="mt-3 list-disc space-y-2 pl-5 font-serif text-base text-black">
+            <li>Call 911 if you, your baby, or someone with you may be in immediate danger.</li>
+            <li>Call or text 988 if you are in emotional crisis or thinking about harm.</li>
+          </ul>
+          <LearnMore>
+            <p>
+              This page does not publish a symptom checklist. Your own provider can tell you which body symptoms they want you to report.
+            </p>
+          </LearnMore>
         </section>
 
         <section className="mt-10">
           <h2 className="font-sans text-2xl font-bold text-[#0A3660]">Help for dads and partners</h2>
-          <p className="mt-3 font-serif text-lg leading-relaxed text-black">
-            Partners and family members can call or text 988, call 911, and use 1-833-TLC-MAMA.
-            HRSA says partners and family are encouraged to contact the maternal mental health
-            hotline. More everyday ideas are on the{" "}
-            <Link href="/topics/dads-and-partners" className="font-bold text-[#0A3660] underline">
-              dads and partners
-            </Link>{" "}
-            page. That page is not a crisis service.
+          <p className="mt-2 font-serif text-base text-black">
+            Partners and family can use 988, 911, and 1-833-TLC-MAMA.{" "}
+            <Link href="/topics/dads-and-partners" className="font-bold text-[#0A3660] underline">Everyday ideas for dads and partners</Link>.
           </p>
+          <LearnMore>
+            <p>HRSA says partners and family are encouraged to contact the maternal mental health hotline. That page is not a crisis service.</p>
+          </LearnMore>
         </section>
       </div>
     </article>

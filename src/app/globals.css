@@ -88,10 +88,31 @@ h1, h2, h3 {
   text-underline-offset: 3px;
 }
 
-.family-copy ul {
+.family-copy ul:not([class]) {
   margin-top: 0.75rem;
   padding-left: 1.25rem;
   list-style: disc;
+}
+
+details.learn-more > summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-lato), system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #0a3660;
+}
+
+/* display:flex on summary can stop the browser from hiding the rest. */
+details.learn-more:not([open]) > :not(summary) {
+  display: none;
+}
+
+details.learn-more > summary::-webkit-details-marker {
+  display: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

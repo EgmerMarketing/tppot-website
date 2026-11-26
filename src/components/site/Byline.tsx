@@ -1,5 +1,6 @@
 import { UPDATED } from "@/lib/site";
 import NeedsMelissa from "@/components/site/NeedsMelissa";
+import { LearnMore } from "@/components/site/Scan";
 
 export default function Byline() {
   return (
@@ -8,11 +9,13 @@ export default function Byline() {
         By Melissa O&apos;Neal, OTR/L
       </p>
       <p className="mt-1 font-serif text-base text-black">
-        Page updated <time dateTime={UPDATED}>November 26, 2026</time>.
+        Updated <time dateTime={UPDATED}>November 26, 2026</time>. Not marked as clinically reviewed.
       </p>
-      <NeedsMelissa>
-        [NEEDS MELISSA: reviewed date. This page is not marked as clinically reviewed until you confirm a date.]
-      </NeedsMelissa>
+      <LearnMore summary="Review date">
+        <NeedsMelissa>
+          [NEEDS MELISSA: reviewed date. This page is not marked as clinically reviewed until you confirm a date.]
+        </NeedsMelissa>
+      </LearnMore>
     </div>
   );
 }

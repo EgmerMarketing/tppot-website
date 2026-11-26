@@ -20,7 +20,7 @@ export default function ResourcesPage() {
       <JsonLd data={breadcrumbSchema([{ name: "Home", url: SITE_URL }, { name: "Resources", url: `${SITE_URL}/resources` }])} />
       <PageHeader
         title={title}
-        lede="These handouts are meant to be free and open. The files themselves are not uploaded yet, so you will see placeholders instead of downloads. You never have to give an email to read safety information."
+        lede="The handouts are free. The files are not uploaded yet. Safety information never asks for your email."
       />
       <div className="mx-auto grid max-w-[1120px] gap-10 px-6 md:px-8 lg:grid-cols-[1.3fr_0.7fr]">
         <ResourceLibrary />
