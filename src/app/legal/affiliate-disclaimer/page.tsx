@@ -30,13 +30,13 @@ export default function AffiliateDisclaimerPage() {
         <nav aria-label="Breadcrumb" className="mb-10">
           <ol className="flex items-center gap-2 text-sm font-sans text-[#6B6560]">
             <li>
-              <Link href="/" className="text-[#469695] hover:underline">
+              <Link href="/" className="text-[#0A3660] underline">
                 Home
               </Link>
             </li>
             <li aria-hidden="true">/</li>
             <li>
-              <Link href="/legal" className="text-[#469695] hover:underline">
+              <Link href="/legal" className="text-[#0A3660] underline">
                 Legal
               </Link>
             </li>
@@ -45,7 +45,7 @@ export default function AffiliateDisclaimerPage() {
           </ol>
         </nav>
 
-        <h1 className="text-4xl md:text-5xl font-bold text-[#0A3660] mb-4 font-serif">
+        <h1 className="text-4xl md:text-5xl font-bold text-[#0A3660] mb-4 font-sans">
           Affiliate Marketing Disclaimer
         </h1>
         <p className="text-[#6B6560] font-serif mb-12">
@@ -100,7 +100,7 @@ export default function AffiliateDisclaimerPage() {
             <strong className="text-[#0A3660]">Email:</strong>{" "}
             <a
               href="mailto:melissa@thepostpartumot.com"
-              className="text-[#469695] hover:underline"
+              className="text-[#0A3660] underline"
             >
               melissa@thepostpartumot.com
             </a>

@@ -4,9 +4,9 @@ import { blogPosts } from "@/content/blog";
 import BlogFilter from "@/components/blog/BlogFilter";
 
 export const metadata: Metadata = {
-  title: "Blog",
+  title: "Postpartum Questions, Answered by an Occupational Therapist",
   description:
-    "Insights for OTs building postpartum practices. Articles on clinical practice, business strategy, and maternal health.",
+    "Notes from Melissa O'Neal, OTR/L. Some earlier posts were written for occupational therapists and are unchanged. Newer pages on this site are for parents.",
 };
 
 export default function BlogPage() {
@@ -26,12 +26,17 @@ export default function BlogPage() {
     <main className="bg-[#FAF7F2]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([{ name: "Home", url: "https://thepostpartumot.com" }, { name: "Blog", url: "https://thepostpartumot.com/blog" }])) }} />
       <section className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16 py-24 md:py-32">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-[#0A3660] mb-4 font-serif">
-            Blog
+        <div className="mb-12 max-w-3xl">
+          <h1 className="mb-4 font-sans text-4xl font-bold text-[#0A3660] md:text-5xl">
+            Postpartum Questions, Answered by an Occupational Therapist
           </h1>
-          <p className="text-lg text-[#6B6560] font-serif max-w-lg mx-auto">
-            Insights for OTs building postpartum practices
+          <p className="font-serif text-base text-black">
+            Educational information, not medical or professional advice.
+          </p>
+          <p className="mt-4 font-serif text-lg text-black">
+            By Melissa O&apos;Neal, OTR/L. Some posts below were written for occupational therapists
+            before this site turned toward families. Those posts are unchanged, including their
+            addresses. If you need help now, use Need help now in the header.
           </p>
         </div>
 

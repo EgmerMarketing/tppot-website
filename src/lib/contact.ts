@@ -13,15 +13,19 @@ export const FRIENDLY_SEND_ERROR = `We couldn't send your message right now. Ple
 
 export const RATE_LIMIT_ERROR = `Too many messages were sent from this connection. Please wait a few minutes and try again, or email ${PUBLIC_INBOX}.`;
 
-/** Matches the three stages in the homepage "mentorship journey" section. */
+/** Why someone is writing. Legacy keys stay valid so an old cached form still submits. */
 const JOURNEY_LABELS: Record<string, string> = {
-  curious: "Curious Clinician",
-  launching: "Confident Launcher",
-  growing: "Growing Practitioner",
-  // Previous option values, accepted so a cached page still submits cleanly.
-  exploring: "Just Exploring",
-  ready: "Ready to Start",
-  practicing: "Already Practicing",
+  family: "Parent or caregiver",
+  podcast: "Podcast",
+  community: "Community waitlist",
+  professional: "Healthcare professional",
+  other: "Something else",
+  curious: "Curious Clinician (legacy)",
+  launching: "Confident Launcher (legacy)",
+  growing: "Growing Practitioner (legacy)",
+  exploring: "Just Exploring (legacy)",
+  ready: "Ready to Start (legacy)",
+  practicing: "Already Practicing (legacy)",
 };
 
 const EMAIL_RE = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -184,7 +188,7 @@ export function parseContactSubmission(body: unknown): ContactParseResult {
     if (typeof journeyRaw !== "string" || !JOURNEY_LABELS[journeyRaw]) {
       return {
         kind: "invalid",
-        error: "Please choose a mentorship journey stage from the list.",
+        error: "Please choose a reason from the list.",
         field: "journey",
       };
     }
@@ -225,7 +229,7 @@ export function buildContactEmail(
         <h1 style="font-size: 20px; margin: 0 0 16px;">New inquiry from the website</h1>
         <p><strong>Name:</strong> ${safeName}</p>
         <p><strong>Email:</strong> <a href="mailto:${safeEmail}">${safeEmail}</a></p>
-        <p><strong>Mentorship journey:</strong> ${safeJourney}</p>
+        <p><strong>Reason for writing:</strong> ${safeJourney}</p>
         <p><strong>Message:</strong></p>
         <p style="white-space: pre-wrap; margin-top: 0;">${safeMessage}</p>
         <p style="color: #6B6560; font-size: 13px;">Reply to this email to respond directly to ${safeName}.</p>
@@ -236,7 +240,7 @@ export function buildContactEmail(
       "",
       `Name: ${data.name}`,
       `Email: ${data.email}`,
-      `Mentorship journey: ${data.journeyLabel}`,
+      `Reason for writing: ${data.journeyLabel}`,
       "",
       data.message,
       "",

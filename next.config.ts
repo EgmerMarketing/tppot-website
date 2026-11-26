@@ -1,6 +1,16 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      { source: "/services", destination: "/for-professionals", statusCode: 301 },
+      { source: "/services/:path*", destination: "/for-professionals", statusCode: 301 },
+      { source: "/mom-baby-webinar-replay", destination: "/for-professionals", statusCode: 301 },
+      { source: "/mom-baby-webinar-replay/:path*", destination: "/for-professionals", statusCode: 301 },
+      { source: "/free-resources", destination: "/resources", statusCode: 301 },
+      { source: "/free-resources/:path*", destination: "/resources", statusCode: 301 },
+    ];
+  },
   images: {
     domains: ['thepostpartumot.com'],
     minimumCacheTTL: 2678400,

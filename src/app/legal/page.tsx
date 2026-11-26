@@ -57,7 +57,7 @@ export default function LegalPage() {
       />
       <section className="max-w-[900px] mx-auto px-6 md:px-12 py-24 md:py-32">
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-[#0A3660] mb-4 font-serif">
+          <h1 className="text-4xl md:text-5xl font-bold text-[#0A3660] mb-4 font-sans">
             Legal
           </h1>
           <p className="text-lg text-[#6B6560] font-serif max-w-lg mx-auto">
@@ -78,7 +78,7 @@ export default function LegalPage() {
               <p className="font-serif text-[#6B6560] text-sm mb-4">
                 {page.description}
               </p>
-              <span className="text-[#469695] font-sans font-bold text-sm">
+              <span className="text-[#0A3660] font-sans font-bold text-sm">
                 Read more
               </span>
             </Link>

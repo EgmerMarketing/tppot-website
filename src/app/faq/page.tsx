@@ -1,169 +1,126 @@
 import type { Metadata } from "next";
-import { Calendar } from "lucide-react";
+import Link from "next/link";
+import PageHeader from "@/components/site/PageHeader";
+import CtaRow from "@/components/site/CtaRow";
+import JsonLd from "@/components/site/JsonLd";
+import NeedsMelissa from "@/components/site/NeedsMelissa";
 import { breadcrumbSchema, faqSchema } from "@/lib/schema";
+import { SITE_URL } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "FAQ | The Postpartum OT",
-  description:
-    "Frequently asked questions about postpartum OT mentorship, community, and building your practice with The Postpartum OT.",
-};
+const title = "Postpartum Questions New Parents Ask Most, Answered";
 
-interface FAQItem {
-  question: string;
-  answer: string;
-}
-
-interface FAQCategory {
-  title: string;
-  items: FAQItem[];
-}
-
-const categories: FAQCategory[] = [
+const faqs = [
   {
-    title: "Getting Started",
-    items: [
-      {
-        question: "Do I need specific certifications to work in postpartum OT?",
-        answer:
-          "You do not need a specific certification to start working with postpartum families. Your OT license gives you the scope to address functional concerns in this population. That said, specialized training helps you feel confident and credible. Mentorship helps you understand what training is worth your time and money and what you can learn through experience.",
-      },
-      {
-        question: "I'm still in OT school. Is it too early to start learning about this?",
-        answer:
-          "It is never too early. In fact, starting to learn about postpartum OT while you are still in school gives you a significant advantage. You can seek out fieldwork placements, start building your knowledge base, and enter the workforce with a clearer direction than most new grads.",
-      },
-      {
-        question: "What does a typical postpartum OT practice look like?",
-        answer:
-          "Every practice looks different depending on your community, your interests, and your business model. Some OTs work in home health visiting new moms. Others build private practices focused on infant development, feeding, or maternal mental health. Some combine postpartum work with pelvic health or pediatrics. Mentorship helps you figure out which model fits you.",
-      },
-    ],
+    question: "How long does postpartum recovery take?",
+    answer:
+      "There is no single timeline. Some daily tasks ease in a few weeks, and some take longer. A checkup is a visit, not a finish line. Your provider can say what fits your body. Read the recovery page for what an occupational therapist looks at in the day.",
+    href: "/topics/postpartum-recovery",
+    hrefLabel: "Postpartum recovery",
   },
   {
-    title: "Mentorship",
-    items: [
-      {
-        question: "How is mentorship different from an online course?",
-        answer:
-          "Courses give you information. Mentorship gives you direction. When you work with a mentor, you get personalized guidance based on your specific situation, your market, your skills, and your goals. You can ask questions and get real answers in real time instead of rewatching a module and hoping it applies to you.",
-      },
-      {
-        question: "What does a mentorship session look like?",
-        answer:
-          "Sessions are one on one video calls where we dig into whatever is most pressing for you. That might be building your referral network, refining your clinical approach, figuring out pricing, or working through a challenging case. There is no rigid curriculum because your needs are unique.",
-      },
-      {
-        question: "How long does mentorship typically last?",
-        answer:
-          "There is no fixed timeline. Some OTs need a few focused sessions to get unstuck. Others benefit from ongoing support as they build and grow their practice over months. We will figure out together what makes sense for where you are.",
-      },
-    ],
+    question: "When does it get easier with a newborn?",
+    answer:
+      "Easier usually arrives in pieces, not on one morning. Nights, feeding, and your sense of yourself can each shift on their own. Start Here walks the fourth trimester in three stretches. If you are suffering, not just tired, use Need Help Now.",
+    href: "/start-here",
+    hrefLabel: "Start Here",
   },
   {
-    title: "Community",
-    items: [
-      {
-        question: "What is the OT community and how do I join?",
-        answer:
-          "The community is a group of 600+ occupational therapists who are interested in or actively building postpartum practices. It is a place to ask questions, share wins, find resources, and connect with others who understand exactly what you are going through. You can join through our website.",
-      },
-      {
-        question: "Is the community only for experienced postpartum OTs?",
-        answer:
-          "Not at all. The community includes everyone from students and new grads who are curious about the field to experienced clinicians with thriving practices. That range is part of what makes it valuable. You will learn from people at every stage.",
-      },
-    ],
+    question: "How do I get anything done with a newborn?",
+    answer:
+      "Shrink the day to feeding, diapers, your own food, and one rest. A routine is a short list you can repeat. Ask for help with one named task.",
+    href: "/topics/newborn-daily-routine",
+    hrefLabel: "Newborn daily routine",
   },
   {
-    title: "Business Building",
-    items: [
-      {
-        question: "Can I do postpartum OT work within my current job?",
-        answer:
-          "Absolutely. You do not have to leave your current position to start incorporating postpartum focused services. Many OTs begin by adding postpartum components to their existing caseload, whether that is in home health, pediatrics, or outpatient settings. Mentorship can help you identify opportunities within your current role.",
-      },
-      {
-        question: "How do I get referrals for postpartum OT services?",
-        answer:
-          "Referrals come from building relationships with the people who already serve your target population: OBGYNs, midwives, pediatricians, lactation consultants, pelvic floor PTs, and doulas. The key is education. Most providers do not know what OT can offer postpartum families. When you show them, referrals follow. Mentorship includes specific strategies and scripts for building these connections.",
-      },
-    ],
+    question: "What is postpartum occupational therapy?",
+    answer:
+      "Occupational therapy helps people do the daily activities that matter to them. After birth, that can include sleep, feeding routines, and getting through the day. It does not replace your doctor, midwife, or mental health clinician.",
+    href: "/what-is-postpartum-occupational-therapy",
+    hrefLabel: "What is postpartum OT?",
+  },
+  {
+    question: "How can a dad or partner help?",
+    answer:
+      "Take a real shift, including the night, and do a task without waiting for a new list. Check your own sleep and mood. Partners can call or text 988, and family members can use 1-833-TLC-MAMA, which is a support line, not a crisis line.",
+    href: "/topics/dads-and-partners",
+    hrefLabel: "Dads and partners",
+  },
+  {
+    question: "Where do I get help if I am not okay right now?",
+    answer:
+      "If you are in crisis, call or text 988. If you or the baby may be in danger, call 911. For support that is not a crisis line, call or text 1-833-852-6262. This website cannot respond to emergencies.",
+    href: "/need-help-now",
+    hrefLabel: "Need Help Now",
+  },
+  {
+    question: "Is this medical advice?",
+    answer:
+      "No. The Postpartum OT shares educational information. It is not medical or professional advice, and it is not a substitute for care from your own provider.",
+    href: "/disclaimer",
+    hrefLabel: "Disclaimer",
+  },
+  {
+    question: "How do I join the community?",
+    answer:
+      "The Functional Fourth Trimester Circle is a Facebook group that started November 18, 2026. The public link, cost, and rules are not posted yet. Use the waitlist and you will be told when those details are ready. Live sessions are listed for Wednesdays, 11:00 to 11:30 AM Mountain Time. Platform and price are not confirmed.",
+    href: "/community",
+    hrefLabel: "Community",
+  },
+  {
+    question: "Where are the free handouts?",
+    answer:
+      "The resources page is the library. The files are not uploaded yet, so the cards are placeholders. Safety information is never behind a signup.",
+    href: "/resources",
+    hrefLabel: "Resources",
+  },
+  {
+    question: "I am a healthcare professional. Where do I go?",
+    answer:
+      "This site is for families. Professional options are on the For Professionals page, linked from the footer. Which offers are open, and any prices, are not approved yet.",
+    href: "/for-professionals",
+    hrefLabel: "For Professionals",
   },
 ];
 
-const allFaqs = categories.flatMap((cat) => cat.items);
+export const metadata: Metadata = {
+  title,
+  description:
+    "Short answers to postpartum questions new parents ask, with links to the page that goes further. Educational information, not medical advice.",
+};
 
-export default function FAQPage() {
+export default function FaqPage() {
   return (
-    <main className="bg-[#FAF7F2]">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([{ name: "Home", url: "https://thepostpartumot.com" }, { name: "FAQ", url: "https://thepostpartumot.com/faq" }])) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(allFaqs)) }} />
-      <section className="max-w-[900px] mx-auto px-6 md:px-12 py-24 md:py-32">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-[#0A3660] mb-4 font-serif">
-            Frequently Asked Questions
-          </h1>
-          <p className="text-lg text-[#6B6560] font-serif max-w-lg mx-auto">
-            Answers to the questions we hear most from OTs exploring the postpartum space
-          </p>
-        </div>
-
-        <div className="space-y-12">
-          {categories.map((category) => (
-            <div key={category.title}>
-              <h3 className="text-xl font-bold text-[#0A3660] mb-6 font-sans">
-                {category.title}
-              </h3>
-              <div className="space-y-3">
-                {category.items.map((item) => (
-                  <details
-                    key={item.question}
-                    className="bg-white rounded-xl border border-[#E6F0F0] p-5 group"
-                  >
-                    <summary className="font-sans font-bold text-[#0A3660] cursor-pointer list-none flex items-center justify-between gap-4">
-                      <span>{item.question}</span>
-                      <svg
-                        className="w-5 h-5 text-[#469695] flex-shrink-0 transition-transform group-open:rotate-45"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M12 5v14M5 12h14"
-                        />
-                      </svg>
-                    </summary>
-                    <p className="mt-4 font-serif text-[#6B6560] text-[15px] leading-relaxed">
-                      {item.answer}
-                    </p>
-                  </details>
-                ))}
-              </div>
-            </div>
+    <article className="bg-[#FAF7F2] pb-16">
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", url: SITE_URL },
+          { name: "FAQ", url: `${SITE_URL}/faq` },
+        ])}
+      />
+      <JsonLd data={faqSchema(faqs.map(({ question, answer }) => ({ question, answer })))} />
+      <PageHeader
+        title={title}
+        lede="Short answers, then a link to the page that owns the topic. Nothing here is a diagnosis."
+      />
+      <div className="mx-auto max-w-[760px] px-6 md:px-8">
+        <CtaRow primary="podcast" />
+        <div className="mt-10 space-y-8">
+          {faqs.map((faq) => (
+            <section key={faq.question}>
+              <h2 className="font-sans text-2xl font-bold text-[#0A3660]">{faq.question}</h2>
+              <p className="mt-2 font-serif text-lg leading-relaxed text-black">{faq.answer}</p>
+              <p className="mt-2">
+                <Link href={faq.href} className="font-sans text-sm font-bold text-[#0A3660] underline">
+                  {faq.hrefLabel}
+                </Link>
+              </p>
+            </section>
           ))}
         </div>
-
-        {/* CTA */}
-        <div className="bg-[#E6F0F0] rounded-2xl p-8 md:p-12 text-center mt-16">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#0A3660] mb-4 font-serif">
-            Still have questions?
-          </h2>
-          <p className="text-[17px] text-[#6B6560] leading-relaxed mb-8 max-w-lg mx-auto font-serif">
-            The best way to get answers specific to your situation is to talk it
-            through. Book a free 15 minute call and ask anything.
-          </p>
-          <a
-            href="/contact"
-            className="inline-flex items-center gap-2.5 bg-[#357574] text-white px-7 py-4 rounded-xl font-bold text-[15px] hover:bg-[#0A3660] transition-colors font-sans"
-          >
-            <Calendar className="w-4 h-4" strokeWidth={2} />
-            Book a Free Call
-          </a>
-        </div>
-      </section>
-    </main>
+        <NeedsMelissa>
+          [NEEDS MELISSA: anonymized questions from parents or the Circle, if you want them added. None are invented here.]
+        </NeedsMelissa>
+      </div>
+    </article>
   );
 }

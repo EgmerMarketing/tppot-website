@@ -57,10 +57,10 @@ export default function BlogFilter({ posts, categories }: BlogFilterProps) {
         <div className="flex flex-wrap justify-center gap-2">
           <button
             onClick={() => setActiveCategory("All")}
-            className={`px-4 py-2 rounded-xl text-sm font-bold font-sans transition-colors ${
+            className={`min-h-11 rounded-xl px-4 py-2 font-sans text-sm font-bold ${
               activeCategory === "All"
-                ? "bg-[#469695] text-white"
-                : "bg-white text-[#6B6560] border border-[#E6F0F0] hover:border-[#469695] hover:text-[#469695]"
+                ? "bg-[#0A3660] text-white"
+                : "border border-[#0A3660] bg-white text-black"
             }`}
           >
             All
@@ -69,11 +69,11 @@ export default function BlogFilter({ posts, categories }: BlogFilterProps) {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 rounded-xl text-sm font-bold font-sans transition-colors ${
-                activeCategory === cat
-                  ? "bg-[#469695] text-white"
-                  : "bg-white text-[#6B6560] border border-[#E6F0F0] hover:border-[#469695] hover:text-[#469695]"
-              }`}
+            className={`min-h-11 rounded-xl px-4 py-2 font-sans text-sm font-bold ${
+              activeCategory === cat
+                ? "bg-[#0A3660] text-white"
+                : "border border-[#0A3660] bg-white text-black"
+            }`}
             >
               {cat}
             </button>
@@ -92,7 +92,7 @@ export default function BlogFilter({ posts, categories }: BlogFilterProps) {
               setSearch("");
               setActiveCategory("All");
             }}
-            className="mt-4 text-[#469695] font-sans font-bold text-sm hover:text-[#357574] transition-colors"
+            className="mt-4 inline-flex min-h-11 items-center font-sans text-sm font-bold text-[#0A3660] underline"
           >
             Clear filters
           </button>
@@ -113,19 +113,19 @@ export default function BlogFilter({ posts, categories }: BlogFilterProps) {
                       year: "numeric",
                     })}
                   </p>
-                  <span className="text-xs text-[#469695] font-sans font-bold bg-[#469695]/10 px-2 py-0.5 rounded">
+                  <span className="rounded bg-[#eef6f6] px-2 py-0.5 font-sans text-xs font-bold text-[#2f6b6a]">
                     {post.category}
                   </span>
                 </div>
                 <h2 className="font-serif text-[#0A3660] font-bold text-lg mb-3 leading-snug">
                   {post.title}
                 </h2>
-                <p className="font-serif text-[#6B6560] text-sm leading-relaxed line-clamp-3 flex-1">
+                <p className="flex-1 font-serif text-sm leading-relaxed text-black line-clamp-3">
                   {post.excerpt}
                 </p>
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="text-[#469695] font-sans font-bold text-sm mt-5 inline-block hover:text-[#357574] transition-colors"
+                  className="mt-5 inline-flex min-h-11 items-center font-sans text-sm font-bold text-[#0A3660] underline"
                 >
                   Read more
                 </Link>

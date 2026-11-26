@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Lato, Lora } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -17,13 +17,18 @@ const lora = Lora({
   weight: ["400", "500", "600"],
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
   title: {
     template: "%s | The Postpartum OT",
-    default: "The Postpartum OT | Melissa O'Neal",
+    default: "Postpartum Support for New Moms and Dads from an Occupational Therapist",
   },
   description:
-    "Personal mentorship for occupational therapists building postpartum practices. 10+ years of clinical experience. 600+ OT community.",
+    "Postpartum support for new moms, dads, and caregivers from Melissa O'Neal, OTR/L. Educational information about sleep, feeding, recovery, and daily life. Not medical advice.",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -57,10 +62,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema()) }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-[#FAF7F2] text-[#0A3660]">
+      <body className="min-h-full flex flex-col bg-[#FAF7F2] text-black">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-xl focus:bg-[#357574] focus:px-6 focus:py-3 focus:font-sans focus:text-[15px] focus:font-bold focus:text-white"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-xl focus:bg-[#0A3660] focus:px-6 focus:py-3 focus:font-sans focus:text-[15px] focus:font-bold focus:text-white"
         >
           Skip to content
         </a>
