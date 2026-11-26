@@ -45,7 +45,7 @@ export default function AccessibilityPage() {
         </LearnMore>
         <h2>Known limits</h2>
         <ul>
-          <li>The header is a text wordmark until a logo works on a light background.</li>
+          <li>The header logo is the transparent primary mark. A photo is not on the site yet.</li>
           <li>Some older blog posts were written for occupational therapists. Their wording was not rewritten.</li>
           <li>Handout files are not uploaded, so those cards cannot be downloaded.</li>
           <li>The email signup does not yet send an automated confirmation.</li>

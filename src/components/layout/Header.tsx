@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { mainNav } from "@/lib/site";
 
@@ -11,8 +12,15 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-[#0A3660]/10 bg-[#FAF7F2]/95 backdrop-blur">
       <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-4 px-4 py-3 md:px-8">
-        <Link href="/" className="font-sans text-lg font-bold leading-tight text-[#0A3660]">
-          The Postpartum OT
+        <Link href="/" className="inline-flex shrink-0 items-center">
+          <Image
+            src="/images/logo-primary.png"
+            alt="The Postpartum OT"
+            width={1589}
+            height={1148}
+            priority
+            className="h-11 w-[61px] md:h-14 md:w-[78px]"
+          />
         </Link>
 
         <div className="flex items-center gap-3">

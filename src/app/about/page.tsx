@@ -39,7 +39,7 @@ export default function AboutPage() {
             items={[
               "Credential shown: OTR/L.",
               "Daily life after birth: sleep, feeding routines, household jobs.",
-              "No photo yet. The header is a text wordmark.",
+              "No photo yet. The header uses the transparent logo.",
               "She hosts Functional Fourth Trimester.",
             ]}
           />
@@ -48,7 +48,7 @@ export default function AboutPage() {
               [NEEDS MELISSA: a headshot you approve. Personal photos already on the old site are not used. No stock or AI photo. Initials are the fallback.]
             </NeedsMelissa>
             <NeedsMelissa>
-              [NEEDS MELISSA: a navy or SVG logo. The file in this repo sits on a black box, so the header uses a text wordmark.]
+              [NEEDS MELISSA: an SVG logo, if you want one. The header uses the transparent primary PNG.]
             </NeedsMelissa>
             <NeedsMelissa>
               [Melissa&apos;s story here. Third person, from her own answers. Do not publish the unapproved draft, her child&apos;s name, or any years-of-experience number.]

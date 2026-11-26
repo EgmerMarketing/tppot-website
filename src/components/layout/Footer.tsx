@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import EmailSignup from "@/components/site/EmailSignup";
 import { DISCLAIMER_FULL, footerNav } from "@/lib/site";
@@ -23,6 +24,15 @@ export default function Footer() {
 
       <div className="mx-auto grid max-w-[1280px] gap-10 px-6 py-12 md:px-8 lg:grid-cols-[1.2fr_0.8fr]">
         <div>
+          <Link href="/" className="inline-flex rounded-xl bg-[#FAF7F2] p-2">
+            <Image
+              src="/images/logo-primary.png"
+              alt="The Postpartum OT"
+              width={1589}
+              height={1148}
+              className="h-14 w-[78px]"
+            />
+          </Link>
           {showSignup ? (
             <div className="rounded-2xl bg-white p-6 text-black">
               <EmailSignup idPrefix="footer" />
