@@ -15,7 +15,7 @@ This is education, not medical or professional advice. In a crisis, call or text
 - What is postpartum occupational therapy: https://thepostpartumot.com/what-is-postpartum-occupational-therapy
 - Podcast, Functional Fourth Trimester: https://thepostpartumot.com/podcast
 - Community email waitlist: https://thepostpartumot.com/community
-- Functional Fourth Trimester Circle, a private Facebook group (secondary to the email waitlist; request to join): https://www.facebook.com/share/g/1FN3qz8DcJ/?mibextid=wwXIfr
+- Functional Fourth Trimester Circle, a private Facebook group for parents, caregivers, and healthcare and birth professionals (secondary to the email waitlist; request to join, three questions required for approval): https://www.facebook.com/share/g/1FN3qz8DcJ/?mibextid=wwXIfr
 - Free resources: https://thepostpartumot.com/resources
 - FAQ: https://thepostpartumot.com/faq
 - About: https://thepostpartumot.com/about

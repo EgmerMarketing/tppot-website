@@ -13,7 +13,7 @@ const title = "Online Postpartum Support Group for New Parents: Functional Fourt
 export const metadata: Metadata = {
   title,
   description:
-    "The Functional Fourth Trimester Circle is a private Facebook group for parents that started November 18, 2026. Join the email waitlist, or request to join the group.",
+    "The Functional Fourth Trimester Circle is a private Facebook group for parents, caregivers, and healthcare and birth professionals. Join the email waitlist, or request to join and answer three questions.",
 };
 
 export default function CommunityPage() {
@@ -22,14 +22,14 @@ export default function CommunityPage() {
       <JsonLd data={breadcrumbSchema([{ name: "Home", url: SITE_URL }, { name: "Community", url: `${SITE_URL}/community` }])} />
       <PageHeader
         title={title}
-        lede="The Circle is for parents and caregivers. It is not a crisis service. If you need someone now, use Need Help Now before you think about joining a group."
+        lede="The Circle welcomes parents, caregivers, and healthcare and birth professionals. It is not a crisis service. If you need someone now, use Need Help Now before you think about joining a group."
       />
       <div className="family-copy mx-auto max-w-[760px] px-6 md:px-8">
         <h2>What is the Functional Fourth Trimester Circle?</h2>
         <p>
           The Functional Fourth Trimester Circle is a private Facebook group that started on November 18, 2026.
           The order of the build is the group, then live calls, then an app. No member count is shown.
-          The email waitlist below is the way to hear from Melissa. Requesting to join Facebook is optional.
+          The email waitlist below is the way to hear from Melissa. Requesting to join Facebook is separate, and approval requires three short answers.
         </p>
         <NeedsMelissa>
           [NEEDS MELISSA: whether a member count may be shown, and any group rules beyond the membership questions. Do not send parents to the old professional group.]

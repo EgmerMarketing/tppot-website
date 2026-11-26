@@ -1,12 +1,9 @@
 import { CIRCLE_FACEBOOK_URL } from "@/lib/site";
 
-/** Secondary to the email waitlist. The group is private and asks a few questions. */
+/** Secondary to the email waitlist. Three questions are required before a request is approved. */
 export default function CircleJoinLink() {
   return (
     <div className="mt-4">
-      <p className="font-serif text-base leading-relaxed text-black">
-        The Circle is a private Facebook group. A few short questions help keep it a safe space for parents.
-      </p>
       <p className="mt-3">
         <a
           href={CIRCLE_FACEBOOK_URL}
@@ -16,6 +13,9 @@ export default function CircleJoinLink() {
         >
           Request to join
         </a>
+      </p>
+      <p className="mt-3 font-serif text-base leading-relaxed text-black">
+        Answer three quick questions so we can keep the group safe and promotion-free. Approval depends on those answers. Parents, caregivers, and healthcare and birth professionals are welcome.
       </p>
     </div>
   );

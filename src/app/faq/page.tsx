@@ -62,7 +62,7 @@ const faqs = [
   {
     question: "How do I join the community?",
     answer:
-      "The Functional Fourth Trimester Circle is a private Facebook group that started November 18, 2026. Join the email waitlist to hear from Melissa. You can also request to join the group. A few short questions help keep it a safe space for parents. Live sessions are listed for Wednesdays, 11:00 to 11:30 AM Mountain Time. Platform and price are not confirmed.",
+      "The Functional Fourth Trimester Circle is a private Facebook group that started November 18, 2026. It welcomes parents, caregivers, and healthcare and birth professionals. Join the email waitlist to hear from Melissa. You can also request to join. Answering three quick questions is required for approval, so the group stays safe and promotion-free. Live sessions are listed for Wednesdays, 11:00 to 11:30 AM Mountain Time. Platform and price are not confirmed.",
     href: "/community",
     hrefLabel: "Community",
   },

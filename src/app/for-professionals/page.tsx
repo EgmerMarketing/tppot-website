@@ -74,8 +74,10 @@ export default function ForProfessionalsPage() {
         <h2>Professional Facebook group</h2>
         <p>
           The previous version of this site linked a Facebook group for occupational therapists.
-          Facebook is secondary here. Parents should not be sent to that group. The parent Circle
-          is a different, private group. They request to join from the Community page.
+          Facebook is secondary here. Do not send people to that old group. The Functional Fourth
+          Trimester Circle is a different, private group. Parents, caregivers, and healthcare and
+          birth professionals request to join from the Community page, and three questions are
+          required for approval.
         </p>
         <p>
           <a href="https://www.facebook.com/groups/1967522367025806">

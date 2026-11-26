@@ -51,7 +51,7 @@ const homeFaqs = [
 
 const cards = [
   { href: "/podcast", title: "Podcast", text: "Functional Fourth Trimester, for new parents." },
-  { href: "/community", title: "Community, coming soon", text: "Join the email waitlist. You can also request to join the private group." },
+  { href: "/community", title: "Community, coming soon", text: "Join the email waitlist, or request to join. Three questions are required for approval." },
   { href: "/resources", title: "Free resources", text: "Plan and checklist slots. Files are not uploaded yet." },
 ];
 
