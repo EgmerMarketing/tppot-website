@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageHeader from "@/components/site/PageHeader";
 import EmailSignup from "@/components/site/EmailSignup";
+import CircleJoinLink from "@/components/site/CircleJoinLink";
 import NeedsMelissa from "@/components/site/NeedsMelissa";
 import JsonLd from "@/components/site/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
@@ -12,7 +13,7 @@ const title = "Online Postpartum Support Group for New Parents: Functional Fourt
 export const metadata: Metadata = {
   title,
   description:
-    "The Functional Fourth Trimester Circle is a parent community that started as a Facebook group on November 18, 2026. Join the waitlist. The public link is not posted yet.",
+    "The Functional Fourth Trimester Circle is a private Facebook group for parents that started November 18, 2026. Join the email waitlist, or request to join the group.",
 };
 
 export default function CommunityPage() {
@@ -26,12 +27,12 @@ export default function CommunityPage() {
       <div className="family-copy mx-auto max-w-[760px] px-6 md:px-8">
         <h2>What is the Functional Fourth Trimester Circle?</h2>
         <p>
-          The Functional Fourth Trimester Circle is a Facebook group that started on November 18, 2026.
-          The order of the build is the group, then live calls, then an app. The public link is not
-          on this site yet, and no member count is shown.
+          The Functional Fourth Trimester Circle is a private Facebook group that started on November 18, 2026.
+          The order of the build is the group, then live calls, then an app. No member count is shown.
+          The email waitlist below is the way to hear from Melissa. Requesting to join Facebook is optional.
         </p>
         <NeedsMelissa>
-          [NEEDS MELISSA: Circle link, public or private, group rules, and whether a member count may ever be shown. Facebook stays secondary. Do not send parents to the old professional group.]
+          [NEEDS MELISSA: whether a member count may be shown, and any group rules beyond the membership questions. Do not send parents to the old professional group.]
         </NeedsMelissa>
 
         <h2>Functional Fourth Trimester Live: weekly postpartum expert sessions</h2>
@@ -56,6 +57,7 @@ export default function CommunityPage() {
         <h2 id="waitlist">Join the waitlist</h2>
         <div className="rounded-2xl bg-white p-6">
           <EmailSignup idPrefix="community" heading="Join the waitlist for the community, coming soon" />
+          <CircleJoinLink />
         </div>
 
         <h2>Recording and consent</h2>

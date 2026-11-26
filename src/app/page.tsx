@@ -8,6 +8,7 @@ import JsonLd from "@/components/site/JsonLd";
 import CtaRow from "@/components/site/CtaRow";
 import CrisisLines from "@/components/site/CrisisLines";
 import EmailSignup from "@/components/site/EmailSignup";
+import CircleJoinLink from "@/components/site/CircleJoinLink";
 import EpisodeList from "@/components/site/EpisodeList";
 import NeedsMelissa from "@/components/site/NeedsMelissa";
 import { DISCLAIMER_CRISIS } from "@/lib/site";
@@ -50,7 +51,7 @@ const homeFaqs = [
 
 const cards = [
   { href: "/podcast", title: "Podcast", text: "Functional Fourth Trimester, for new parents." },
-  { href: "/community", title: "Community, coming soon", text: "Join the waitlist. The public link is not posted yet." },
+  { href: "/community", title: "Community, coming soon", text: "Join the email waitlist. You can also request to join the private group." },
   { href: "/resources", title: "Free resources", text: "Plan and checklist slots. Files are not uploaded yet." },
 ];
 
@@ -118,18 +119,19 @@ export default function Home() {
       <section className="bg-[#eef6f6]" id="waitlist">
         <div className="mx-auto max-w-[760px] px-6 py-14 md:px-8">
           <p className="font-serif text-lg leading-relaxed text-black">
-            The Functional Fourth Trimester Circle is a Facebook group that started November 18, 2026.
-            Live sessions are listed for Wednesdays, 11:00 to 11:30 AM Mountain Time. The public link,
-            platform, and cost are not confirmed, so the waitlist is the way to hear when it opens.
+            The Functional Fourth Trimester Circle is a private Facebook group that started November 18, 2026.
+            Live sessions are listed for Wednesdays, 11:00 to 11:30 AM Mountain Time. The platform and
+            cost are not confirmed. The email waitlist is how you hear when those details are ready.
           </p>
           <NeedsMelissa>
-            [NEEDS MELISSA: Circle link, whether the group is public, rules, and whether a member count may be shown. Live session platform, start date, price, sign-up, and replays.]
+            [NEEDS MELISSA: whether a member count may be shown. Live session platform, start date, price, sign-up, and replays.]
           </NeedsMelissa>
           <div className="mt-6 rounded-2xl bg-white p-6">
             <EmailSignup
               idPrefix="home"
               heading="Join the waitlist for the Functional Fourth Trimester community"
             />
+            <CircleJoinLink />
           </div>
         </div>
       </section>

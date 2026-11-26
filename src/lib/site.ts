@@ -6,6 +6,10 @@ export const SHOW_ABILITY_VILLAGE = false;
 
 export const SITE_URL = "https://thepostpartumot.com";
 
+/** Private parent group. Membership questions are part of joining. Not the professional group. */
+export const CIRCLE_FACEBOOK_URL =
+  "https://www.facebook.com/share/g/1FN3qz8DcJ/?mibextid=wwXIfr";
+
 export const UPDATED = "2026-11-26";
 
 export const DISCLAIMER_SHORT =

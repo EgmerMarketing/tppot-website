@@ -75,7 +75,7 @@ export default function ForProfessionalsPage() {
         <p>
           The previous version of this site linked a Facebook group for occupational therapists.
           Facebook is secondary here. Parents should not be sent to that group. The parent Circle
-          is a different group, and its link is not published.
+          is a different, private group. They request to join from the Community page.
         </p>
         <p>
           <a href="https://www.facebook.com/groups/1967522367025806">
