@@ -16,7 +16,7 @@ const lato = Lato({
 const lora = Lora({
   variable: "--font-lora",
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400"],
   style: ["normal", "italic"],
   display: "swap",
 });
@@ -65,11 +65,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         />
       </head>
       <body className="flex min-h-dvh flex-col">
-        <div className="aura" aria-hidden="true" />
         <div className="grain" aria-hidden="true" />
         <a
           href="#main"
-          className="sr-only rounded-full bg-btn px-5 py-3 font-sans text-sm font-bold text-btn-fg focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70]"
+          className="btn btn-primary sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70]"
         >
           Skip to content
         </a>

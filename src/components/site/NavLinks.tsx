@@ -7,7 +7,7 @@ import { mainNav } from "@/lib/nav";
 export default function NavLinks() {
   const pathname = usePathname();
   return (
-    <ul className="flex items-center gap-1">
+    <ul className="flex items-center gap-7">
       {mainNav.map((item) => {
         const current = pathname === item.href || pathname.startsWith(`${item.href}/`);
         return (
@@ -15,7 +15,7 @@ export default function NavLinks() {
             <Link
               href={item.href}
               aria-current={current ? "page" : undefined}
-              className="relative inline-flex min-h-11 items-center rounded-full px-3 font-sans text-[0.92rem] text-ink transition-colors duration-300 hover:bg-tint hover:text-heading aria-[current=page]:font-bold aria-[current=page]:text-heading"
+              className="nav-link inline-flex min-h-11 items-center font-sans text-[0.9375rem] tracking-[0.005em] text-ink transition-colors duration-200 hover:text-heading aria-[current=page]:font-bold aria-[current=page]:text-heading"
             >
               {item.label}
             </Link>

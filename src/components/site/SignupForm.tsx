@@ -2,15 +2,29 @@
 
 import { useId, useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Check, LoaderCircle } from "lucide-react";
+import { Check, LoaderCircle } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 type Status = "idle" | "sending" | "done" | "error";
 
-export default function SignupForm({ source, submitLabel = "Join the waitlist" }: { source: string; submitLabel?: string }) {
+/**
+ * Shared email signup. tone "card" sits on a white or night surface; tone
+ * "navy" sits on the navy footer in both themes (Maren 9.12).
+ */
+export default function SignupForm({
+  source,
+  submitLabel = "Join the waitlist",
+  tone = "card",
+}: {
+  source: string;
+  submitLabel?: string;
+  tone?: "card" | "navy";
+}) {
   const id = useId();
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string>("");
   const [emailError, setEmailError] = useState(false);
+  const navy = tone === "navy";
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -47,27 +61,38 @@ export default function SignupForm({ source, submitLabel = "Join the waitlist" }
 
   if (status === "done") {
     return (
-      <div role="status" className="flex items-start gap-4 rounded-[1.25rem] bg-tint p-6">
-        <span className="grid size-10 shrink-0 place-items-center rounded-full bg-btn text-btn-fg">
+      <div
+        role="status"
+        className={cn("flex items-start gap-4 rounded-frame-card p-6", navy ? "bg-white/8" : "bg-chip")}
+      >
+        <span className={cn("grid size-10 shrink-0 place-items-center rounded-frame", navy ? "bg-white text-navy" : "bg-navy text-white")}>
           <Check aria-hidden="true" strokeWidth={2} className="size-5" />
         </span>
         <div>
-          <p className="font-sans text-[1.05rem] font-bold text-heading">You&apos;re on the list.</p>
-          <p className="mt-1 text-muted">Thank you. You&apos;ll hear from Melissa when there&apos;s something to send.</p>
+          <p className={cn("font-sans text-[1.05rem] font-bold", navy ? "text-on-navy" : "text-heading")}>You&apos;re on the list.</p>
+          <p className={cn("mt-1", navy ? "text-on-navy-muted" : "text-muted")}>
+            Thank you. You&apos;ll hear from Melissa when there&apos;s something to send.
+          </p>
         </div>
       </div>
     );
   }
 
-  const inputClass =
-    "mt-2 block h-12 w-full rounded-xl border border-line-strong bg-surface px-4 font-sans text-base text-ink transition-[border-color,box-shadow] duration-300 placeholder:text-muted focus:border-heading focus:outline-none focus:ring-4 focus:ring-[color-mix(in_oklab,var(--accent)_22%,transparent)] aria-[invalid=true]:border-[#b42318]";
+  const labelClass = cn("font-sans text-[0.9375rem] font-bold", navy ? "text-on-navy" : "text-heading");
+  const hintClass = cn("font-normal", navy ? "text-on-navy-muted" : "text-muted");
+  const inputClass = cn(
+    "mt-2 block h-[52px] w-full rounded-frame-input border-[1.5px] px-4 font-sans text-base transition-[border-color,box-shadow] duration-200 focus:outline-none focus:ring-4 focus:ring-[rgb(70_150_149/0.25)]",
+    navy
+      ? "border-transparent bg-white text-[#13202b] focus:border-[#8fd0ce] aria-[invalid=true]:border-[#fda29b]"
+      : "border-[var(--field-border)] bg-surface text-ink focus:border-heading dark:focus:border-[#8fd0ce] aria-[invalid=true]:border-error",
+  );
 
   return (
     <form onSubmit={onSubmit} noValidate className="grid gap-5">
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
-          <label htmlFor={`${id}-email`} className="font-sans text-[0.95rem] font-bold text-heading">
-            Email <span className="font-normal text-muted">(required)</span>
+          <label htmlFor={`${id}-email`} className={labelClass}>
+            Email <span className={hintClass}>(required)</span>
           </label>
           <input
             id={`${id}-email`}
@@ -81,8 +106,8 @@ export default function SignupForm({ source, submitLabel = "Join the waitlist" }
           />
         </div>
         <div>
-          <label htmlFor={`${id}-name`} className="font-sans text-[0.95rem] font-bold text-heading">
-            First name <span className="font-normal text-muted">(optional)</span>
+          <label htmlFor={`${id}-name`} className={labelClass}>
+            First name <span className={hintClass}>(optional)</span>
           </label>
           <input id={`${id}-name`} name="firstName" type="text" autoComplete="given-name" className={inputClass} />
         </div>
@@ -94,11 +119,14 @@ export default function SignupForm({ source, submitLabel = "Join the waitlist" }
           { name: "community", label: "Tell me when the community opens" },
           { name: "updates", label: "Send me new podcast episodes and handouts" },
         ].map((option) => (
-          <label key={option.name} className="flex min-h-11 cursor-pointer items-center gap-3 font-sans text-[0.98rem] text-ink">
+          <label
+            key={option.name}
+            className={cn("flex min-h-11 cursor-pointer items-center gap-3 font-sans text-[0.98rem]", navy ? "text-on-navy" : "text-ink")}
+          >
             <input
               type="checkbox"
               name={option.name}
-              className="size-5 shrink-0 cursor-pointer rounded-md accent-[var(--btn-bg)]"
+              className={cn("size-5 shrink-0 cursor-pointer", navy ? "accent-[#8fd0ce]" : "accent-[var(--btn-bg)]")}
             />
             {option.label}
           </label>
@@ -112,29 +140,19 @@ export default function SignupForm({ source, submitLabel = "Join the waitlist" }
       </div>
 
       {status === "error" && (
-        <p id={`${id}-error`} role="alert" className="font-sans text-[0.95rem] font-bold text-[#b42318] [[data-theme=dark]_&]:text-[#fda29b]">
+        <p id={`${id}-error`} role="alert" className={cn("font-sans text-[0.95rem] font-bold", navy ? "text-[#fda29b]" : "text-error")}>
           {error}
         </p>
       )}
 
       <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-        <button
-          type="submit"
-          disabled={status === "sending"}
-          className="group inline-flex h-12 items-center gap-3 rounded-full bg-btn pl-6 pr-1.5 font-sans text-[0.98rem] font-bold text-btn-fg transition-transform duration-300 ease-(--ease-press) active:scale-[0.98] disabled:opacity-70"
-        >
+        <button type="submit" disabled={status === "sending"} className={cn("btn", navy ? "btn-on-navy" : "btn-primary")}>
           {status === "sending" ? "Sending" : submitLabel}
-          <span className="grid size-9 place-items-center rounded-full bg-[color-mix(in_oklab,var(--btn-fg)_16%,transparent)] transition-transform duration-300 ease-(--ease-out-soft) group-hover:translate-x-0.5">
-            {status === "sending" ? (
-              <LoaderCircle aria-hidden="true" strokeWidth={2} className="size-4 animate-spin" />
-            ) : (
-              <ArrowRight aria-hidden="true" strokeWidth={2} className="size-4" />
-            )}
-          </span>
+          {status === "sending" && <LoaderCircle aria-hidden="true" strokeWidth={2} className="size-4 animate-spin" />}
         </button>
-        <p className="font-sans text-[0.88rem] text-muted">
+        <p className={cn("font-sans text-[0.875rem]", navy ? "text-on-navy-muted" : "text-muted")}>
           Unsubscribe anytime. Read the{" "}
-          <Link href="/privacy" className="text-heading underline underline-offset-4">
+          <Link href="/privacy" className={cn("tlink", navy ? "text-on-navy" : "text-heading")}>
             privacy policy
           </Link>
           .

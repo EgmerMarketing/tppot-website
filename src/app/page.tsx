@@ -37,14 +37,20 @@ export default async function HomePage() {
       <Resources />
       <MeetMelissa />
       <Questions />
-      <HelpNow />
-      <p className="mx-auto mt-14 max-w-[84rem] px-4 font-sans text-[1rem] text-muted sm:px-6 lg:px-10">
-        Healthcare professional?{" "}
-        <Link href="/for-professionals" className="font-bold text-heading underline underline-offset-4">
-          Find postpartum OT resources
-        </Link>
-        .
-      </p>
+      {/* Teal help band: help lines and the professional line. The navy footer
+          slides under its bottom-left corner. */}
+      <div className="band band-teal band-upper">
+        <div className="mx-auto max-w-[84rem] px-4 sm:px-6 lg:px-10">
+          <HelpNow />
+          <p className="mt-14 border-t border-[rgb(6_23_38/0.25)] pt-6 font-sans text-[1rem]">
+            Healthcare professional?{" "}
+            <Link href="/for-professionals" className="tlink">
+              Find postpartum OT resources
+            </Link>
+            .
+          </p>
+        </div>
+      </div>
     </>
   );
 }

@@ -16,11 +16,13 @@ export default function EpisodePlayer({
   src,
   title,
   size = "md",
+  tone = "canvas",
   className,
 }: {
   src: string;
   title: string;
   size?: "md" | "lg";
+  tone?: "canvas" | "navy";
   className?: string;
 }) {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -70,8 +72,9 @@ export default function EpisodePlayer({
         onClick={toggle}
         aria-label={`${playing ? "Pause" : "Play"} episode: ${title}`}
         className={cn(
-          "relative grid shrink-0 place-items-center rounded-full bg-btn text-btn-fg transition-transform duration-300 ease-(--ease-press) hover:scale-[1.04] active:scale-[0.96]",
-          big ? "size-14" : "size-12",
+          "relative grid shrink-0 place-items-center rounded-full transition-transform duration-300 ease-(--ease-out-soft) hover:scale-[1.04] active:scale-[0.96]",
+          tone === "navy" ? "bg-white text-navy" : "bg-btn text-btn-fg",
+          big ? "size-[60px]" : "size-[52px]",
         )}
       >
         <svg aria-hidden="true" viewBox="0 0 48 48" className="absolute inset-0 size-full -rotate-90">
@@ -80,7 +83,7 @@ export default function EpisodePlayer({
             cy="24"
             r="22.5"
             fill="none"
-            stroke="currentColor"
+            stroke={tone === "navy" ? "#8fd0ce" : "currentColor"}
             strokeOpacity={0.9}
             strokeWidth={1.5}
             strokeDasharray={141.4}
@@ -95,7 +98,7 @@ export default function EpisodePlayer({
           <Play aria-hidden="true" strokeWidth={1.75} className="size-5 translate-x-[1px]" />
         )}
       </button>
-      <p className="font-sans text-[0.9rem] tabular-nums text-muted" aria-live="off">
+      <p className={cn("font-sans text-[0.875rem] tabular-nums", tone === "navy" ? "text-on-navy-muted" : "text-muted")} aria-live="off">
         {playing || time > 0 ? (
           <>
             {clock(time)} <span aria-hidden="true">/</span> {clock(duration)}

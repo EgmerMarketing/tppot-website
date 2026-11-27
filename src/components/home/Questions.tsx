@@ -29,18 +29,18 @@ export const homeQuestions = [
 
 export default function Questions() {
   return (
-    <section aria-labelledby="questions-title" className="mx-auto max-w-[84rem] px-4 py-20 sm:px-6 lg:px-10 lg:py-28">
+    <section aria-labelledby="questions-title" className="mx-auto max-w-[84rem] px-4 pb-[72px] pt-20 sm:px-6 lg:px-10 lg:pb-28 lg:pt-28">
       <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-4">
           <div className="lg:sticky lg:top-28">
-            <BlurFade inView direction="up" offset={14} duration={0.8}>
-              <h2 id="questions-title" className="text-[2.1rem] leading-[1.12] sm:text-[2.6rem]">
+            <BlurFade inView direction="up" offset={12} duration={0.6}>
+              <h2 id="questions-title" className="t-h2">
                 Postpartum questions new parents ask
               </h2>
-              <p className="mt-5 max-w-[36ch] text-[1.05rem] text-muted">
+              <p className="t-lead mt-5 max-w-[36ch] text-muted">
                 Short, honest answers. Each one is a starting point, not a substitute for your own provider.
               </p>
-              <Link href="/faq" className="mt-6 inline-flex min-h-11 items-center font-sans text-[1rem] font-bold text-heading underline underline-offset-4">
+              <Link href="/faq" className="tlink mt-6 inline-flex min-h-11 items-center text-heading">
                 More questions and answers
               </Link>
             </BlurFade>
@@ -48,13 +48,11 @@ export default function Questions() {
         </div>
 
         <div className="grid gap-4 lg:col-span-7 lg:col-start-6">
-          {homeQuestions.map((item, i) => (
-            <BlurFade key={item.q} inView direction="up" offset={14} delay={0.04 * i} duration={0.8}>
-              <article className="rounded-[1.5rem] bg-surface p-7 ring-1 ring-line sm:p-9">
-                <h3 className="font-serif text-[1.4rem] font-medium leading-snug sm:text-[1.55rem]">{item.q}</h3>
-                <p className="mt-3 text-[1.05rem] leading-[1.75] text-muted">{item.a}</p>
-              </article>
-            </BlurFade>
+          {homeQuestions.map((item) => (
+            <article key={item.q} className="rounded-frame-card border border-line bg-surface p-7 sm:p-9">
+              <h3 className="t-h3">{item.q}</h3>
+              <p className="mt-3 text-[1.0625rem] leading-[1.75] text-ink">{item.a}</p>
+            </article>
           ))}
         </div>
       </div>

@@ -2,30 +2,37 @@
 
 /*
   The Postpartum OT design tokens.
-  Direction: quiet luxury (awesome-design "refined"), brand colors override the
-  style file's blue and purple: teal #469695 and navy #0A3660 come from the
-  client brand guide, so they are not default reaches.
-  Neutral is a cool teal-tinted white, not cream, so the page does not fall into
-  the warm paper plus brass palette.
+  Source: DESIGN-DIRECTION-family-first-2026-11-26.md (Maren), built on the
+  client brand guide: teal #469695, navy #0A3660, white, black; Lato Bold
+  headings, Lora Regular sub-headings.
+  Two values are derived tints of brand teal for contrast, not brand colors:
+  #8FD0CE and #5AA6A5 (pending Melissa's approval).
 
-  Contrast (WCAG 2.x, computed 2026-11-26):
+  Contrast (WCAG 2.x, computed 2026-11-26)
   Light
-    ink #13202B on bg #F7FAFA ........ 15.77:1 body text
-    navy #0A3660 on bg #F7FAFA ....... 11.71:1 headings, buttons, links
-    navy #0A3660 on tint #EEF6F6 ..... 11.20:1
-    muted #4A5B69 on bg #F7FAFA ...... 6.69:1 secondary text
-    muted #4A5B69 on tint #EEF6F6 .... 6.40:1
-    white on navy button ............. 12.28:1
-    teal #469695 on bg #F7FAFA ....... 3.30:1 large text (24px+), icons, borders only
+    ink #13202B on bg #F7FAFA ............ 15.77  body
+    navy #0A3660 on bg #F7FAFA ........... 11.71  body
+    muted #4A5B69 on bg #F7FAFA .......... 6.69   body
+    teal #469695 on bg #F7FAFA ........... 3.30   large text (40px+) and icons only
+    navy #0A3660 on chip #E6F0F0 ......... 10.58  chip icons (teal on chip 2.99: never)
+    white on navy button ................. 12.28
+    white on navy hover #0D4378 .......... 10.04
+    #C3D4E1 on navy ...................... 8.09
+    #8FD0CE on navy ...................... 7.07
+    #061726 on teal ...................... 5.23   all text on teal bands
+    #061726 on teal hover #5AA6A5 ........ 6.42
+    white on #061726 (button on teal) .... 18.13
+    error #B42318 on white ............... 6.57
   Dark
-    text #E8F0F2 on bg #061726 ....... 15.69:1
-    text #E8F0F2 on surface #0B2238 .. 13.98:1
-    muted #A7BAC5 on bg #061726 ...... 9.04:1
-    muted #A7BAC5 on surface #0B2238 . 8.06:1
-    teal #469695 on bg #061726 ....... 5.23:1 brand teal is readable text here
-    teal #469695 on surface #0B2238 .. 4.66:1
-    bg #061726 on teal button ........ 5.23:1
-  Never: teal text on navy #0A3660 (3.54:1).
+    ink #E8F0F2 on bg #061726 ............ 15.69
+    heading #F2F7F8 on bg #061726 ........ 16.78
+    muted #A7BAC5 on bg #061726 .......... 9.04
+    #8FD0CE on bg #061726 ................ 10.43
+    #8FD0CE on surface #0B2238 ........... 9.29
+    #E8F0F2 on footer #030D17 ............ 16.93
+    #A7BAC5 on footer #030D17 ............ 9.75
+    error #FDA29B on #0A3660 ............. 6.33 (on #030D17 10.07)
+  Never: teal text on navy (3.54), white or navy text on teal (3.47, 3.54).
 */
 
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
@@ -33,124 +40,464 @@
 :root {
   --bg: #f7fafa;
   --surface: #ffffff;
-  --tint: #eef6f6;
+  --chip: #e6f0f0;
   --ink: #13202b;
   --heading: #0a3660;
   --muted: #4a5b69;
-  --accent: #469695;
-  --accent-ink: #0a3660;
-  --line: rgb(10 54 96 / 0.1);
-  --line-strong: rgb(10 54 96 / 0.18);
+  --accent-display: #469695;
+  --icon: #469695;
+  --icon-on-chip: #0a3660;
+  --line: rgb(10 54 96 / 0.12);
+  --field-border: #4a5b69;
   --btn-bg: #0a3660;
+  --btn-bg-hover: #0d4378;
   --btn-fg: #ffffff;
-  --shadow: 0 1px 1px rgb(10 54 96 / 0.04), 0 12px 40px -12px rgb(10 54 96 / 0.14);
-  --aura-a: rgb(70 150 149 / 0.16);
-  --aura-b: rgb(10 54 96 / 0.08);
+  --echo: #469695;
   --focus: #0a3660;
+  --band-navy: #0a3660;
+  --band-teal: #469695;
+  --band-footer: #0a3660;
+  --on-navy: #ffffff;
+  --on-navy-muted: #c3d4e1;
+  --on-navy-accent: #8fd0ce;
+  --on-teal: #061726;
+  --error: #b42318;
+  --ring-gap: var(--bg);
+  --hero-glow: radial-gradient(46rem 32rem at 80% 28%, rgb(70 150 149 / 0.16), transparent 65%);
+
+  --seam: 96px;
+  --band-pad-y: 112px;
+  --r-band: 0 var(--seam) 0 var(--seam);
   color-scheme: light;
 }
 
 [data-theme="dark"] {
   --bg: #061726;
   --surface: #0b2238;
-  --tint: #0e2840;
+  --chip: #0e2840;
   --ink: #e8f0f2;
   --heading: #f2f7f8;
   --muted: #a7bac5;
-  --accent: #469695;
-  --accent-ink: #469695;
-  --line: rgb(232 240 242 / 0.09);
-  --line-strong: rgb(232 240 242 / 0.16);
+  --accent-display: #8fd0ce;
+  --icon: #8fd0ce;
+  --icon-on-chip: #8fd0ce;
+  --line: rgb(232 240 242 / 0.1);
+  --field-border: #a7bac5;
   --btn-bg: #469695;
+  --btn-bg-hover: #5aa6a5;
   --btn-fg: #061726;
-  --shadow: 0 1px 1px rgb(0 0 0 / 0.2), 0 16px 48px -16px rgb(0 0 0 / 0.55);
-  --aura-a: rgb(70 150 149 / 0.14);
-  --aura-b: rgb(70 150 149 / 0.05);
+  --echo: #8fd0ce;
   --focus: #8fd0ce;
+  --band-footer: #030d17;
+  --on-navy: #f2f7f8;
+  --error: #fda29b;
+  --hero-glow: radial-gradient(46rem 32rem at 80% 28%, rgb(70 150 149 / 0.14), transparent 65%),
+    radial-gradient(40rem 30rem at 10% 0%, rgb(10 54 96 / 0.55), transparent 70%);
   color-scheme: dark;
+}
+
+@media (max-width: 1023px) {
+  :root {
+    --band-pad-y: 88px;
+  }
+}
+
+@media (max-width: 639px) {
+  :root {
+    --seam: 48px;
+    --band-pad-y: 72px;
+  }
 }
 
 @theme inline {
   --color-bg: var(--bg);
   --color-surface: var(--surface);
-  --color-tint: var(--tint);
+  --color-chip: var(--chip);
   --color-ink: var(--ink);
   --color-heading: var(--heading);
   --color-muted: var(--muted);
-  --color-accent: var(--accent);
-  --color-accent-ink: var(--accent-ink);
+  --color-accent-display: var(--accent-display);
+  --color-icon: var(--icon);
+  --color-icon-chip: var(--icon-on-chip);
   --color-line: var(--line);
-  --color-line-strong: var(--line-strong);
   --color-btn: var(--btn-bg);
   --color-btn-fg: var(--btn-fg);
-  /* Brand fonts. Lora (brand body font) also sets the display headings for a
-     quieter, editorial register; Lato (brand heading font) carries H3s, labels,
-     navigation and buttons. */
+  --color-echo: var(--echo);
+  --color-navy: var(--band-navy);
+  --color-teal: var(--band-teal);
+  --color-footer: var(--band-footer);
+  --color-on-navy: var(--on-navy);
+  --color-on-navy-muted: var(--on-navy-muted);
+  --color-on-navy-accent: var(--on-navy-accent);
+  --color-on-teal: var(--on-teal);
+  --color-error: var(--error);
   --font-serif: var(--font-lora), ui-serif, Georgia, serif;
   --font-sans: var(--font-lato), ui-sans-serif, system-ui, sans-serif;
   --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-press: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* House shape: the logo frame corner. Square top-left and bottom-right,
+   rounded top-right and bottom-left. */
+@utility rounded-frame {
+  border-radius: 0 14px 0 14px;
+}
+@utility rounded-frame-input {
+  border-radius: 0 12px 0 12px;
+}
+@utility rounded-frame-sm {
+  border-radius: 0 22px 0 22px;
+}
+@utility rounded-frame-card {
+  border-radius: 0 28px 0 28px;
+}
+@utility rounded-band {
+  border-radius: var(--r-band);
 }
 
 @layer base {
-html {
-  background: var(--bg);
-  -webkit-text-size-adjust: 100%;
-  scroll-padding-top: 6rem;
+  html {
+    background: var(--bg);
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-serif);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2 {
+    font-family: var(--font-sans);
+    color: var(--heading);
+    font-weight: 700;
+    text-wrap: balance;
+  }
+
+  h3 {
+    font-family: var(--font-serif);
+    color: var(--heading);
+    font-weight: 400;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 4px;
+  }
+
+  ::selection {
+    background: rgb(70 150 149 / 0.3);
+  }
 }
 
-body {
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--font-serif);
-  font-size: 1.0625rem;
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  transition: background-color 0.4s var(--ease-out-soft), color 0.4s var(--ease-out-soft);
+/* Component classes sit in the components layer so Tailwind utilities
+   (sr-only, w-full, spacing) can still override them. */
+@layer components {
+/* Type scale (Maren, section 4) */
+.t-h1 {
+  font-size: clamp(2.5rem, 1.35rem + 3.2vw, 3.9rem);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
 }
-
-h1,
-h2 {
+.t-h1-audience {
   font-family: var(--font-serif);
-  color: var(--heading);
-  font-weight: 500;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.06em;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--accent-display);
+}
+.t-h2 {
+  font-size: clamp(2rem, 1.3rem + 2.3vw, 3.5rem);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+}
+.t-h2-band {
+  font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem);
+  line-height: 1.1;
   letter-spacing: -0.015em;
-  text-wrap: balance;
+}
+.t-h3-feature {
+  font-size: clamp(1.875rem, 1.4rem + 1.4vw, 2.5rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+.t-h3 {
+  font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.625rem);
+  line-height: 1.25;
+  letter-spacing: -0.005em;
+}
+.t-lead {
+  font-size: clamp(1.125rem, 1rem + 0.45vw, 1.3rem);
+  line-height: 1.6;
+}
+.t-num {
+  font-size: clamp(3.25rem, 2.4rem + 2.6vw, 4.75rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
 }
 
-h3 {
+/* Frame button (section 8). Surface context sets --ring-gap. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 52px;
+  padding-inline: 28px;
+  border-radius: 0 14px 0 14px;
   font-family: var(--font-sans);
-  color: var(--heading);
   font-weight: 700;
-  text-wrap: balance;
+  font-size: 1rem;
+  letter-spacing: 0.005em;
+  line-height: 1;
+  white-space: nowrap;
+  border: 1.5px solid transparent;
+  transition:
+    background-color 200ms,
+    color 200ms,
+    border-color 200ms,
+    box-shadow 220ms var(--ease-out-soft),
+    transform 80ms;
 }
-
-p {
-  text-wrap: pretty;
+.btn:active {
+  transform: translateY(1px);
 }
-
-:focus-visible {
-  outline: 2px solid var(--focus);
-  outline-offset: 3px;
-  border-radius: 6px;
-}
-
-::selection {
-  background: rgb(70 150 149 / 0.28);
-}
-}
-
-/* Soft ambient light behind the page. Fixed and non-interactive so it never
-   repaints while scrolling. */
-.aura {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
+.btn:disabled {
+  opacity: 0.6;
   pointer-events: none;
-  background:
-    radial-gradient(60rem 40rem at 85% -10%, var(--aura-a), transparent 60%),
-    radial-gradient(50rem 36rem at -10% 30%, var(--aura-b), transparent 60%);
+}
+@media (pointer: fine) {
+  .btn:hover {
+    box-shadow:
+      0 0 0 4px var(--ring-gap),
+      0 0 0 5.5px var(--btn-echo, var(--echo));
+  }
+}
+.btn-primary {
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+}
+.btn-primary:hover {
+  background: var(--btn-bg-hover);
+}
+.btn-secondary {
+  background: transparent;
+  border-color: var(--heading);
+  color: var(--heading);
+}
+[data-theme="dark"] .btn-secondary {
+  border-color: #a7bac5;
+}
+.btn-secondary:hover {
+  background: var(--heading);
+  color: var(--bg);
+  border-color: var(--heading);
+}
+.btn-on-navy {
+  background: #ffffff;
+  color: #0a3660;
+  --btn-echo: #8fd0ce;
+}
+.btn-on-navy:hover {
+  background: #e6f0f0;
+}
+.btn-on-teal {
+  background: #061726;
+  color: #ffffff;
+  --btn-echo: #061726;
+}
+.btn-on-teal:hover {
+  background: #0a3660;
+}
+
+/* Text links (section 8) */
+.tlink {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.28em;
+  text-decoration-color: var(--link-underline, var(--echo));
+  transition: text-decoration-color 200ms, text-decoration-thickness 200ms;
+}
+.tlink:hover {
+  text-decoration-thickness: 2px;
+  text-decoration-color: currentColor;
+}
+.arrow-link svg {
+  transition: transform 260ms var(--ease-out-soft);
+}
+.arrow-link:hover svg {
+  transform: translateX(3px);
+}
+}
+
+/* Logo swap by theme */
+.logo-on-dark {
+  display: none;
+}
+[data-theme="dark"] .logo-on-light {
+  display: none;
+}
+[data-theme="dark"] .logo-on-dark {
+  display: block;
+}
+
+/* Header nav underline */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 8px;
+  height: 1.5px;
+  background: var(--echo);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 260ms var(--ease-out-soft);
+}
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+.nav-link[aria-current="page"]::after {
+  transform: scaleX(1);
+  background: var(--heading);
+}
+
+/* Bands and seams (section 7) */
+.band {
+  position: relative;
+  border-radius: var(--r-band);
+  padding-block: var(--band-pad-y);
+}
+.band-upper {
+  z-index: 2;
+}
+.band-lower {
+  z-index: 1;
+  /* Its own top-right corner hides under the band above, so it stays square
+     and does not take the seam animation. */
+  border-top-right-radius: 0;
+  animation: none !important;
+  margin-top: calc(var(--seam) * -1);
+  padding-top: calc(var(--seam) + var(--band-pad-y));
+}
+.band-navy {
+  background: var(--band-navy);
+  color: var(--on-navy);
+  --ring-gap: var(--band-navy);
+  --link-underline: #8fd0ce;
+}
+[data-theme="dark"] .band-navy {
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06);
+}
+.band-teal {
+  background: var(--band-teal);
+  color: var(--on-teal);
+  --ring-gap: var(--band-teal);
+  --link-underline: #061726;
+}
+.band-footer {
+  background: var(--band-footer);
+  color: var(--on-navy);
+  --ring-gap: var(--band-footer);
+  --link-underline: #8fd0ce;
+}
+.band-navy :is(h2, h3),
+.band-footer :is(h2, h3) {
+  color: var(--on-navy);
+}
+.band-teal :is(h2, h3) {
+  color: var(--on-teal);
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .band {
+      animation: seam-settle linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+  }
+}
+@keyframes seam-settle {
+  from {
+    border-top-right-radius: calc(var(--seam) * 2);
+  }
+}
+
+/* Hero glow, scoped to the hero */
+.hero-glow {
+  background: var(--hero-glow);
+}
+
+/* Hero frame line: the logo frame drawn large, tracing itself in. */
+@property --sweep {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 360deg;
+}
+.frame-line {
+  border: 1.5px solid var(--echo);
+  border-radius: 0 40px 0 40px;
+  -webkit-mask: conic-gradient(from -90deg, #000 var(--sweep), transparent 0);
+  mask: conic-gradient(from -90deg, #000 var(--sweep), transparent 0);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .frame-line {
+    animation:
+      frame-draw 1200ms var(--ease-out-soft) 300ms both,
+      frame-fade 600ms ease-out 300ms both;
+  }
+}
+@keyframes frame-draw {
+  from {
+    --sweep: 0deg;
+  }
+  to {
+    --sweep: 360deg;
+  }
+}
+@keyframes frame-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+/* Bracket P seal in the community band */
+.seal {
+  position: absolute;
+  width: 420px;
+  aspect-ratio: 1;
+  right: -72px;
+  bottom: -64px;
+  background: #061726;
+  opacity: 0.08;
+  pointer-events: none;
+  -webkit-mask: url(/brand/mark-bracket-p-black.png) center / contain no-repeat;
+  mask: url(/brand/mark-bracket-p-black.png) center / contain no-repeat;
+}
+@media (max-width: 639px) {
+  .seal {
+    width: 240px;
+    right: -40px;
+    bottom: -24px;
+  }
 }
 
 /* Fine paper grain, fixed so it costs nothing on scroll. */
@@ -159,12 +506,79 @@ p {
   inset: 0;
   z-index: 60;
   pointer-events: none;
-  opacity: 0.035;
+  opacity: 0.03;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
-
 [data-theme="dark"] .grain {
   opacity: 0.05;
+}
+
+/* Header: solid by default; settles into a soft blur after 8px of scroll
+   where scroll-driven animation is supported. */
+.site-header {
+  background: var(--bg);
+}
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .site-header {
+      animation: header-settle linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 8px;
+    }
+  }
+}
+@keyframes header-settle {
+  to {
+    background: color-mix(in oklab, var(--bg) 92%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 1px 0 var(--line);
+  }
+}
+
+/* Mobile menu entrance */
+.mobile-menu::backdrop {
+  background: transparent;
+}
+.mobile-menu[open] {
+  animation: menu-in 0.45s var(--ease-out-soft);
+}
+.mobile-menu[open] .menu-item {
+  animation: menu-item-in 0.6s var(--ease-out-soft) both;
+  animation-delay: calc(0.06s + var(--i) * 0.045s);
+}
+@keyframes menu-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes menu-item-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+/* Handout rail: native scroll snap, edge fade on wide screens. */
+.rail {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+  scroll-padding-inline: 1rem;
+}
+@media (min-width: 1024px) {
+  .rail {
+    padding-inline: max(2.5rem, calc((100vw - 84rem) / 2 + 2.5rem));
+    scroll-padding-inline: max(2.5rem, calc((100vw - 84rem) / 2 + 2.5rem));
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 96px), transparent);
+    mask-image: linear-gradient(to right, #000 calc(100% - 96px), transparent);
+  }
+}
+
+/* Theme switch: circular reveal from the toggle (View Transitions API). */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -175,77 +589,5 @@ p {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-  }
-}
-
-/* Header: solid surface by default. Where scroll-driven animation is
-   supported, it starts clear over the hero and settles into the surface as
-   the page scrolls, with no JavaScript. */
-.site-header {
-  background: color-mix(in oklab, var(--bg) 82%, transparent);
-  backdrop-filter: blur(16px) saturate(140%);
-  -webkit-backdrop-filter: blur(16px) saturate(140%);
-  border-bottom: 1px solid var(--line);
-}
-
-@supports (animation-timeline: scroll()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .site-header {
-      animation: header-settle linear both;
-      animation-timeline: scroll(root);
-      animation-range: 0 96px;
-    }
-  }
-}
-
-@keyframes header-settle {
-  from {
-    background: transparent;
-    border-bottom-color: transparent;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-  }
-}
-
-/* Mobile menu entrance */
-.mobile-menu::backdrop {
-  background: transparent;
-}
-
-.mobile-menu[open] {
-  animation: menu-in 0.5s var(--ease-out-soft);
-}
-
-.mobile-menu[open] .menu-item {
-  animation: menu-item-in 0.6s var(--ease-out-soft) both;
-  animation-delay: calc(0.06s + var(--i) * 0.045s);
-}
-
-@keyframes menu-in {
-  from {
-    opacity: 0;
-  }
-}
-
-@keyframes menu-item-in {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-}
-
-/* Handout rail: native scroll snap, thin themed scrollbar. */
-.rail {
-  scrollbar-width: thin;
-  scrollbar-color: var(--line-strong) transparent;
-  scroll-padding-inline: 1rem;
-}
-
-/* Line the first handout up with the page container on wide screens while
-   the rail still bleeds to the right edge. */
-@media (min-width: 1024px) {
-  .rail {
-    padding-inline: max(2.5rem, calc((100vw - 84rem) / 2 + 2.5rem));
-    scroll-padding-inline: max(2.5rem, calc((100vw - 84rem) / 2 + 2.5rem));
   }
 }

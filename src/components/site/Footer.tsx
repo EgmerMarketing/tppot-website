@@ -1,43 +1,48 @@
 import Link from "next/link";
-import Wordmark from "@/components/site/Wordmark";
+import Logo from "@/components/site/Logo";
 import SignupForm from "@/components/site/SignupForm";
 import { footerNav, mainNav } from "@/lib/nav";
 import { PODCAST } from "@/lib/schema";
 
+const linkClass =
+  "inline-flex min-h-11 items-center font-sans text-[0.9375rem] text-on-navy-muted decoration-on-navy-accent underline-offset-4 transition-colors hover:text-on-navy hover:underline sm:min-h-10";
+
+/* Navy footer in both themes (#030D17 in dark). It slides 96px under the teal
+   help band above it, so the band's curved corner shows navy beneath. */
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="mt-24 border-t border-line bg-surface/60">
-      <div className="mx-auto max-w-[84rem] px-4 pb-10 pt-16 sm:px-6 lg:px-10 lg:pt-24">
+    <footer className="band-footer band-lower relative pb-10" style={{ paddingTop: "calc(var(--seam) + 96px)" }}>
+      <div className="mx-auto max-w-[84rem] px-4 sm:px-6 lg:px-10">
         <div className="grid gap-14 lg:grid-cols-[1.1fr_1fr] lg:gap-20">
           <section aria-labelledby="footer-signup">
-            <h2 id="footer-signup" className="max-w-[22ch] text-[1.75rem] leading-[1.2] sm:text-[2.1rem]">
+            <h2 id="footer-signup" className="t-h2-band max-w-[22ch]">
               Get new episodes, free handouts and the community launch date.
             </h2>
             <div className="mt-8 max-w-xl">
-              <SignupForm source="footer" submitLabel="Sign me up" />
+              <SignupForm source="footer" submitLabel="Sign me up" tone="navy" />
             </div>
           </section>
 
           <div className="grid grid-cols-2 gap-10 sm:grid-cols-3">
-            <nav aria-label="Explore" className="col-span-1">
-              <h2 className="font-sans text-[0.95rem] font-bold text-heading">Explore</h2>
-              <ul className="mt-4 grid gap-1">
+            <nav aria-label="Explore">
+              <h2 className="font-sans text-[0.9375rem] font-bold">Explore</h2>
+              <ul className="mt-4 grid gap-0.5">
                 {mainNav.map((item) => (
                   <li key={item.href}>
-                    <Link href={item.href} className="inline-flex min-h-10 items-center font-sans text-[0.95rem] text-muted transition-colors hover:text-heading">
+                    <Link href={item.href} className={linkClass}>
                       {item.label}
                     </Link>
                   </li>
                 ))}
               </ul>
             </nav>
-            <nav aria-label="More" className="col-span-1">
-              <h2 className="font-sans text-[0.95rem] font-bold text-heading">More</h2>
-              <ul className="mt-4 grid gap-1">
+            <nav aria-label="More">
+              <h2 className="font-sans text-[0.9375rem] font-bold">More</h2>
+              <ul className="mt-4 grid gap-0.5">
                 {footerNav.map((item) => (
                   <li key={item.href}>
-                    <Link href={item.href} className="inline-flex min-h-10 items-center font-sans text-[0.95rem] text-muted transition-colors hover:text-heading">
+                    <Link href={item.href} className={linkClass}>
                       {item.label}
                     </Link>
                   </li>
@@ -45,15 +50,15 @@ export default function Footer() {
               </ul>
             </nav>
             <div className="col-span-2 sm:col-span-1">
-              <h2 className="font-sans text-[0.95rem] font-bold text-heading">Listen</h2>
-              <ul className="mt-4 grid gap-1">
+              <h2 className="font-sans text-[0.9375rem] font-bold">Listen</h2>
+              <ul className="mt-4 grid gap-0.5">
                 <li>
-                  <a href={PODCAST.apple} className="inline-flex min-h-10 items-center font-sans text-[0.95rem] text-muted transition-colors hover:text-heading">
+                  <a href={PODCAST.apple} className={linkClass}>
                     Apple Podcasts
                   </a>
                 </li>
                 <li>
-                  <a href={PODCAST.spotify} className="inline-flex min-h-10 items-center font-sans text-[0.95rem] text-muted transition-colors hover:text-heading">
+                  <a href={PODCAST.spotify} className={linkClass}>
                     Spotify
                   </a>
                 </li>
@@ -62,12 +67,12 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 grid gap-6 border-t border-line pt-8 lg:grid-cols-[auto_1fr] lg:items-start lg:gap-16">
-          <Wordmark />
-          <p className="max-w-[70ch] font-sans text-[0.9rem] leading-relaxed text-muted">
+        <div className="mt-16 grid gap-8 border-t border-white/14 pt-10 lg:grid-cols-[auto_1fr] lg:items-start lg:gap-16">
+          <Logo variant="on-dark" className="[--logo-h:52px]" />
+          <p className="max-w-[70ch] font-sans text-[0.875rem] leading-relaxed text-on-navy-muted">
             The Postpartum OT shares educational information. It isn&apos;t medical or professional advice. Talk with your own provider about your care. In crisis, call or text{" "}
-            <a href="tel:988" className="font-bold text-heading underline underline-offset-4">988</a>; in an emergency, call{" "}
-            <a href="tel:911" className="font-bold text-heading underline underline-offset-4">911</a>.
+            <a href="tel:988" className="tlink text-on-navy">988</a>; in an emergency, call{" "}
+            <a href="tel:911" className="tlink text-on-navy">911</a>.
             <span className="mt-3 block">&copy; {year} Postpartum OT LLC</span>
           </p>
         </div>
