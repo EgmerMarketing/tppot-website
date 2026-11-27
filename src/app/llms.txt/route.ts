@@ -1,34 +1,25 @@
 export function GET() {
   const content = `# The Postpartum OT
 
-> Personal mentorship for occupational therapists building postpartum practices.
+> Postpartum support for new moms and dads from an occupational therapist, Melissa O'Neal, OTR/L.
 
-## About
-The Postpartum OT was founded by Melissa O'Neal, OTR/L, PCES, an occupational therapist with over 10 years of clinical experience in postpartum care. The program offers 1:1 mentorship, group support, and a community of 600+ OTs who are building or growing postpartum practices.
-
-## Services
-- New Practitioners Mentorship: 1:1 mentorship for OTs starting a postpartum practice
-- Growing Practices Mentorship: Strategic guidance for OTs scaling an existing practice
-- Community Membership: Free community of 600+ occupational therapists
-
-## Key Topics
-- Postpartum care and recovery
-- Matrescence (the identity transition of becoming a mother)
-- Infant development and feeding
-- Maternal mental health
-- Practice building for OTs
-- Fourth trimester support
+## What this site covers
+- Postpartum sleep deprivation and infant sleep
+- Feeding routines and pumping
+- Newborn daily routines
+- Postpartum recovery and daily tasks
+- Postpartum mental load and identity
+- Help for dads and partners
 
 ## Podcast
-The Functional Fourth Trimester: Weekly conversations about building a postpartum practice. Available on Apple Podcasts and Spotify.
+Functional Fourth Trimester: honest conversations about life after a baby, hosted by Melissa O'Neal, OTR/L. Available on Apple Podcasts and Spotify.
+
+## Important
+The Postpartum OT shares educational information. It is not medical or professional advice. In crisis, call or text 988; in an emergency, call 911.
 
 ## Contact
 - Email: hello@thepostpartumot.com
 - Website: https://thepostpartumot.com`;
 
-  return new Response(content, {
-    headers: {
-      'Content-Type': 'text/plain',
-    },
-  });
+  return new Response(content, { headers: { "Content-Type": "text/plain; charset=utf-8" } });
 }

@@ -1,113 +1,93 @@
-const BASE_URL = 'https://thepostpartumot.com';
+/**
+ * Structured data. Only confirmed facts go here: Melissa's OTR/L is the one
+ * credential confirmed in the family-first plan (Nov 22, 2026). Years of
+ * experience, community size, CDRAC, CBS, PCES and the Ability Village role stay
+ * out until Melissa confirms them.
+ */
+
+export const BASE_URL = "https://thepostpartumot.com";
+
+export const PODCAST = {
+  name: "Functional Fourth Trimester",
+  feed: "https://api.riverside.com/hosting/bAWbeIns.rss",
+  apple: "https://podcasts.apple.com/us/podcast/functional-fourth-trimester/id1881077069",
+  spotify: "https://open.spotify.com/show/0yuF6uerJGVWdhgysa7Ug3",
+};
 
 export function organizationSchema() {
   return {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    '@id': `${BASE_URL}/#organization`,
-    name: 'The Postpartum OT',
-    legalName: 'Postpartum OT LLC',
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${BASE_URL}/#organization`,
+    name: "The Postpartum OT",
+    legalName: "Postpartum OT LLC",
     url: BASE_URL,
-    logo: `${BASE_URL}/images/logo.png`,
-    founder: {
-      '@id': `${BASE_URL}/#melissa-oneal`,
-    },
+    founder: { "@id": `${BASE_URL}/#melissa-oneal` },
     description:
-      'Personal mentorship for occupational therapists building postpartum practices. 10+ years of clinical experience. 600+ OT community.',
-    email: 'hello@thepostpartumot.com',
-    areaServed: 'US',
-    sameAs: [
-      'https://www.instagram.com/thepostpartumot',
-      'https://www.facebook.com/groups/1967522367025806',
-      'https://www.linkedin.com/company/raising-bundle/',
-      'https://www.youtube.com/@thepostpartumot',
-    ],
+      "Postpartum support for new moms and dads from an occupational therapist: sleep, feeding, recovery, routines and daily life after a baby.",
+    email: "hello@thepostpartumot.com",
+    areaServed: "US",
+    sameAs: [PODCAST.apple, PODCAST.spotify],
   };
 }
 
 export function personSchema() {
   return {
-    '@context': 'https://schema.org',
-    '@type': 'Person',
-    '@id': `${BASE_URL}/#melissa-oneal`,
-    name: 'Melissa O\'Neal',
-    jobTitle: 'Occupational Therapist and Postpartum Specialist',
-    credentials: ['OTR/L', 'PCES'],
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": `${BASE_URL}/#melissa-oneal`,
+    name: "Melissa O'Neal",
+    honorificSuffix: "OTR/L",
+    jobTitle: "Occupational Therapist",
     knowsAbout: [
-      'Postpartum care',
-      'Occupational therapy',
-      'Maternal mental health',
-      'Infant development',
-      'Feeding support',
-      'Matrescence',
-      'Fourth trimester recovery',
-      'Practice building for OTs',
+      "Postpartum support",
+      "Occupational therapy",
+      "Fourth trimester",
+      "Newborn daily routines",
+      "Infant sleep",
+      "Feeding routines",
     ],
-    sameAs: [
-      'https://www.instagram.com/thepostpartumot',
-      'https://www.linkedin.com/company/raising-bundle/',
-    ],
-    worksFor: {
-      '@id': `${BASE_URL}/#organization`,
-    },
+    worksFor: { "@id": `${BASE_URL}/#organization` },
   };
 }
 
 export function websiteSchema() {
   return {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    '@id': `${BASE_URL}/#website`,
-    name: 'The Postpartum OT',
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${BASE_URL}/#website`,
+    name: "The Postpartum OT",
     url: BASE_URL,
-    publisher: {
-      '@id': `${BASE_URL}/#organization`,
-    },
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: `${BASE_URL}/search?q={search_term_string}`,
-      'query-input': 'required name=search_term_string',
-    },
+    inLanguage: "en-US",
+    publisher: { "@id": `${BASE_URL}/#organization` },
+  };
+}
+
+export function podcastSeriesSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "PodcastSeries",
+    "@id": `${BASE_URL}/#podcast`,
+    name: PODCAST.name,
+    url: `${BASE_URL}/podcast`,
+    webFeed: PODCAST.feed,
+    description:
+      "Honest conversations about life after a baby, with occupational therapist Melissa O'Neal, OTR/L, and guests.",
+    author: { "@id": `${BASE_URL}/#melissa-oneal` },
+    publisher: { "@id": `${BASE_URL}/#organization` },
+    sameAs: [PODCAST.apple, PODCAST.spotify],
   };
 }
 
 export function breadcrumbSchema(items: { name: string; url: string }[]) {
   return {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
     itemListElement: items.map((item, index) => ({
-      '@type': 'ListItem',
+      "@type": "ListItem",
       position: index + 1,
       name: item.name,
       item: item.url,
-    })),
-  };
-}
-
-export function serviceSchema(name: string, description: string, url: string) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    name,
-    description,
-    url,
-    provider: {
-      '@id': `${BASE_URL}/#melissa-oneal`,
-    },
-  };
-}
-
-export function faqSchema(faqs: { question: string; answer: string }[]) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqs.map((faq) => ({
-      '@type': 'Question',
-      name: faq.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.answer,
-      },
     })),
   };
 }
@@ -117,40 +97,17 @@ export function articleSchema(opts: {
   description: string;
   datePublished: string;
   dateModified: string;
-  image?: string;
-  keywords?: string[];
+  url: string;
 }) {
   return {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
+    "@context": "https://schema.org",
+    "@type": "Article",
     headline: opts.headline,
     description: opts.description,
     datePublished: opts.datePublished,
     dateModified: opts.dateModified,
-    ...(opts.image && { image: opts.image }),
-    ...(opts.keywords && { keywords: opts.keywords }),
-    author: {
-      '@id': `${BASE_URL}/#melissa-oneal`,
-    },
-    publisher: {
-      '@id': `${BASE_URL}/#organization`,
-    },
-  };
-}
-
-export function podcastSeriesSchema() {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'PodcastSeries',
-    name: 'The Functional Fourth Trimester',
-    url: `${BASE_URL}/podcast`,
-    description:
-      'Weekly conversations about building a postpartum occupational therapy practice.',
-    author: {
-      '@id': `${BASE_URL}/#melissa-oneal`,
-    },
-    publisher: {
-      '@id': `${BASE_URL}/#organization`,
-    },
+    mainEntityOfPage: opts.url,
+    author: { "@id": `${BASE_URL}/#melissa-oneal` },
+    publisher: { "@id": `${BASE_URL}/#organization` },
   };
 }
