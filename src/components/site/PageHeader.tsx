@@ -19,7 +19,7 @@ export default function PageHeader({
       <div className="mx-auto max-w-[760px] px-6 py-12 md:px-8 md:py-16">
         {crumbs.length > 0 && (
           <nav aria-label="Breadcrumb" className="mb-6">
-            <ol className="flex flex-wrap items-center gap-2 font-sans text-sm text-white">
+            <ol className="flex flex-wrap items-center gap-2 font-sans text-base text-white">
               <li>
                 <Link href="/" className="font-bold text-white underline underline-offset-4">
                   Home

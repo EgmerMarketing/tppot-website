@@ -84,7 +84,7 @@ function Chip({
       type="button"
       aria-pressed={pressed}
       onClick={onClick}
-      className={`inline-flex min-h-11 items-center rounded-full px-4 font-sans text-sm font-bold ${
+      className={`inline-flex min-h-11 items-center rounded-full px-4 font-sans text-base font-bold ${
         pressed ? "bg-[#0A3660] text-white" : "border-2 border-[#0A3660] bg-white text-[#0A3660]"
       }`}
     >
@@ -113,7 +113,7 @@ export default function ResourceLibrary() {
     <div id="library">
       <div className="space-y-4">
         <fieldset>
-          <legend className="mb-2 font-sans text-sm font-bold text-[#0A3660]">Stage</legend>
+          <legend className="mb-2 font-sans text-base font-bold text-[#0A3660]">Stage</legend>
           <div className="flex flex-wrap gap-2">
             {stages.map((item) => (
               <Chip key={item} pressed={stage === item} onClick={() => setStage(item)}>
@@ -123,7 +123,7 @@ export default function ResourceLibrary() {
           </div>
         </fieldset>
         <fieldset>
-          <legend className="mb-2 font-sans text-sm font-bold text-[#0A3660]">Topic</legend>
+          <legend className="mb-2 font-sans text-base font-bold text-[#0A3660]">Topic</legend>
           <div className="flex flex-wrap gap-2">
             {topics.map((item) => (
               <Chip key={item} pressed={topic === item} onClick={() => setTopic(item)}>
@@ -133,7 +133,7 @@ export default function ResourceLibrary() {
           </div>
         </fieldset>
         <fieldset>
-          <legend className="mb-2 font-sans text-sm font-bold text-[#0A3660]">Audience</legend>
+          <legend className="mb-2 font-sans text-base font-bold text-[#0A3660]">Audience</legend>
           <div className="flex flex-wrap gap-2">
             {audiences.map((item) => (
               <Chip key={item} pressed={audience === item} onClick={() => setAudience(item)}>
@@ -147,14 +147,14 @@ export default function ResourceLibrary() {
       <ul className="panel-navy mt-8 grid gap-4 rounded-2xl bg-navy p-4">
         {visible.map((item) => (
           <li key={item.title} className="surface-card rounded-2xl bg-white p-5">
-            <p className="font-sans text-xs font-bold uppercase tracking-wide text-[#2f6b6a]">
+            <p className="font-sans text-base font-bold text-[#2f6b6a]">
               {item.topic} · {item.audience}
             </p>
             <h3 className="mt-2 font-sans text-xl font-bold text-[#0A3660]">{item.title}</h3>
             <p className="mt-2 font-serif text-base leading-relaxed text-black">{item.summary}</p>
             {item.safety ? (
               <p className="mt-4">
-                <Link href="/need-help-now" className="font-sans text-sm font-bold text-[#0A3660] underline">
+                <Link href="/need-help-now" className="font-sans text-base font-bold text-[#0A3660] underline">
                   Open Need Help Now. No signup.
                 </Link>
               </p>
@@ -166,7 +166,7 @@ export default function ResourceLibrary() {
                 <button
                   type="button"
                   disabled
-                  className="inline-flex min-h-11 cursor-not-allowed items-center rounded-xl border-2 border-[#0A3660]/30 px-4 font-sans text-sm font-bold text-[#0A3660]"
+                  className="inline-flex min-h-11 cursor-not-allowed items-center rounded-xl border-2 border-[#0A3660]/30 px-4 font-sans text-base font-bold text-[#0A3660]"
                 >
                   Handout file not added yet
                 </button>

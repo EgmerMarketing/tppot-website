@@ -90,7 +90,7 @@ export default function ReviewFunnel({
           ))}
         </div>
 
-        <p className="text-sm text-gray-500">
+        <p className="text-base text-gray-500">
           Tap a star to rate your experience
         </p>
       </div>
@@ -125,13 +125,13 @@ export default function ReviewFunnel({
           Leave a Google Review
         </a>
 
-        <p className="text-xs text-gray-600 mt-4">
+        <p className="text-base text-gray-600 mt-4">
           Opens Google in a new tab. Takes about 30 seconds.
         </p>
 
         <button
           onClick={() => { setStep("rate"); setRating(0); }}
-          className="text-sm text-gray-400 hover:text-white underline transition-colors mt-3 block mx-auto"
+          className="text-base text-gray-400 hover:text-white underline transition-colors mt-3 block mx-auto"
         >
           Change my rating
         </button>
@@ -152,7 +152,7 @@ export default function ReviewFunnel({
 
         <form onSubmit={handleFeedbackSubmit} className="space-y-4">
           <div>
-            <label htmlFor="feedback-name" className="block text-sm font-medium text-gray-300 mb-1">
+            <label htmlFor="feedback-name" className="block text-base font-medium text-gray-300 mb-1">
               Your Name (optional)
             </label>
             <input
@@ -165,7 +165,7 @@ export default function ReviewFunnel({
           </div>
 
           <div>
-            <label htmlFor="feedback-message" className="block text-sm font-medium text-gray-300 mb-1">
+            <label htmlFor="feedback-message" className="block text-base font-medium text-gray-300 mb-1">
               What could we have done better?
             </label>
             <textarea
@@ -191,13 +191,13 @@ export default function ReviewFunnel({
           </button>
         </form>
 
-        <p className="text-xs text-gray-600 mt-4 text-center">
+        <p className="text-base text-gray-600 mt-4 text-center">
           This goes directly to the business owner. It will not be posted publicly.
         </p>
 
         <button
           onClick={() => { setStep("rate"); setRating(0); }}
-          className="text-sm text-gray-400 hover:text-white underline transition-colors mt-3 block mx-auto"
+          className="text-base text-gray-400 hover:text-white underline transition-colors mt-3 block mx-auto"
         >
           Change my rating
         </button>

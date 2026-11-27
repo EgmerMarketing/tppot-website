@@ -120,7 +120,7 @@ export default function ContactForm() {
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-6 text-sm font-bold text-[#0A3660] font-sans underline"
+          className="mt-6 text-base font-bold text-[#0A3660] font-sans underline"
         >
           Send another message
         </button>
@@ -133,7 +133,7 @@ export default function ContactForm() {
       <h2 className="text-xl font-bold text-[#0A3660] mb-2 font-sans">
         Send a message
       </h2>
-      <p className="text-sm text-black font-serif mb-6">
+      <p className="text-base text-black font-serif mb-6">
         Fields marked with <span aria-hidden="true">*</span>
         <span className="sr-only">an asterisk</span> are required. Please do not include
         personal health details. For urgent help, call or text 988.
@@ -159,7 +159,7 @@ export default function ContactForm() {
         <div>
           <label
             htmlFor="name"
-            className="block text-sm font-bold text-[#0A3660] mb-2 font-sans"
+            className="block text-base font-bold text-[#0A3660] mb-2 font-sans"
           >
             Name <span aria-hidden="true">*</span>
           </label>
@@ -179,7 +179,7 @@ export default function ContactForm() {
         <div>
           <label
             htmlFor="email"
-            className="block text-sm font-bold text-[#0A3660] mb-2 font-sans"
+            className="block text-base font-bold text-[#0A3660] mb-2 font-sans"
           >
             Email <span aria-hidden="true">*</span>
           </label>
@@ -200,7 +200,7 @@ export default function ContactForm() {
         <div>
           <label
             htmlFor="journey"
-            className="block text-sm font-bold text-[#0A3660] mb-2 font-sans"
+            className="block text-base font-bold text-[#0A3660] mb-2 font-sans"
           >
             What is this about?
           </label>
@@ -217,7 +217,7 @@ export default function ContactForm() {
             <option value="professional">I&apos;m a healthcare professional</option>
             <option value="other">Something else</option>
           </select>
-          <p id="journey-hint" className="mt-2 text-xs text-black font-serif">
+          <p id="journey-hint" className="mt-2 text-base text-black font-serif">
             Optional. This is not a health question.
           </p>
         </div>
@@ -225,7 +225,7 @@ export default function ContactForm() {
         <div>
           <label
             htmlFor="message"
-            className="block text-sm font-bold text-[#0A3660] mb-2 font-sans"
+            className="block text-base font-bold text-[#0A3660] mb-2 font-sans"
           >
             Message <span aria-hidden="true">*</span>
           </label>
@@ -249,7 +249,7 @@ export default function ContactForm() {
             className="bg-red-50 border border-red-200 rounded-lg p-4 outline-none"
             role="alert"
           >
-            <p className="text-sm text-red-700 font-sans">{errorMessage}</p>
+            <p className="text-base text-red-700 font-sans">{errorMessage}</p>
           </div>
         )}
 

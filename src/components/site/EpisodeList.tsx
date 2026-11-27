@@ -19,11 +19,11 @@ export default function EpisodeList({
       <ul className="mt-4 space-y-3">
         {episodes.map((episode) => (
           <li key={episode.number} className="rounded-2xl border border-[#0A3660]/15 bg-white p-4">
-            <p className="font-sans text-sm font-bold text-[#2f6b6a]">
+            <p className="font-sans text-base font-bold text-[#2f6b6a]">
               Episode {episode.number} · {formatEpisodeDate(episode.date)} · {episode.duration}
             </p>
             <p className="mt-1 font-sans text-lg font-bold text-[#0A3660]">{episode.title}</p>
-            <p className="mt-2 flex flex-wrap gap-4 font-sans text-sm font-bold">
+            <p className="mt-2 flex flex-wrap gap-4 font-sans text-base font-bold">
               <a className="text-[#0A3660] underline" href={APPLE_PODCAST_URL}>
                 Listen on Apple Podcasts
               </a>

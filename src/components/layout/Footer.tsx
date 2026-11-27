@@ -49,7 +49,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="font-sans text-sm font-bold uppercase tracking-wide text-white">On this site</p>
+          <p className="font-sans text-base font-bold uppercase tracking-[0.14em] text-white">On this site</p>
           <ul className="mt-4 space-y-1">
             <li>
               <Link href="/need-help-now" className="inline-flex min-h-11 items-center font-sans text-base font-bold text-white underline">
@@ -73,7 +73,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/15">
-        <p className="mx-auto max-w-[1280px] px-6 py-6 font-sans text-sm text-white md:px-8">
+        <p className="mx-auto max-w-[1280px] px-6 py-6 font-sans text-base text-white md:px-8">
           © {new Date().getFullYear()} Postpartum OT LLC.
         </p>
       </div>

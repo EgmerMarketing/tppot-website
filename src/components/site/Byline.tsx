@@ -5,7 +5,7 @@ import { LearnMore } from "@/components/site/Scan";
 export default function Byline() {
   return (
     <div className="mt-10 border-t border-[#0A3660]/15 pt-6">
-      <p className="font-sans text-sm font-bold text-[#0A3660]">
+      <p className="font-sans text-base font-bold text-[#0A3660]">
         By Melissa O&apos;Neal, OTR/L
       </p>
       <p className="mt-1 font-serif text-base text-black">

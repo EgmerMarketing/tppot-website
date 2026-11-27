@@ -47,7 +47,7 @@ export default function YoutubeFacade({
         aria-hidden="true"
         className="absolute inset-0 flex items-center justify-center bg-[#0A3660]/20"
       >
-        <span className="inline-flex min-h-11 items-center rounded-full bg-white px-5 font-sans text-sm font-bold text-[#0A3660]">
+        <span className="inline-flex min-h-11 items-center rounded-full bg-white px-5 font-sans text-base font-bold text-[#0A3660]">
           Play
         </span>
       </span>

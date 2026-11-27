@@ -39,7 +39,7 @@ export default function ContactPage() {
           <a href="mailto:hello@thepostpartumot.com" className="flex items-center gap-4">
             <Mail className="h-6 w-6 text-[#0A3660]" aria-hidden="true" />
             <span>
-              <span className="block font-sans text-sm font-bold text-[#0A3660]">Email</span>
+              <span className="block font-sans text-base font-bold text-[#0A3660]">Email</span>
               <span className="font-serif text-base text-black underline">hello@thepostpartumot.com</span>
             </span>
           </a>

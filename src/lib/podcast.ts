@@ -5,6 +5,8 @@ export const APPLE_PODCAST_URL =
   "https://podcasts.apple.com/us/podcast/functional-fourth-trimester/id1881077069";
 export const SPOTIFY_PODCAST_URL = "https://open.spotify.com/show/0yuF6uerJGVWdhgysa7Ug3";
 export const YOUTUBE_CHANNEL_URL = "https://www.youtube.com/@thepostpartumot";
+export const FFT_SITE_URL = "https://www.functionalfourthtrimester.com";
+export const FFT_YOUTUBE_URL = "https://www.youtube.com/@FunctionalFourthTrimester";
 
 export type Episode = {
   number: number;
@@ -68,7 +70,7 @@ export const episodes: Episode[] = [
     number: 1,
     title: "Welcome to Functional Fourth Trimester: Rethinking Daily Life After Birth",
     date: "2026-02-28",
-    duration: "6 min",
+    duration: "20 min",
     notesUrl: `${FFT}/episodes/welcome-to-functional-fourth-trimester`,
     topics: ["daily", "recovery"],
   },

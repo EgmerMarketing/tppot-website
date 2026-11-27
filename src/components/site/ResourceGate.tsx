@@ -50,7 +50,7 @@ export default function ResourceGate({
     return (
       <p className="mt-3 font-serif text-base text-black">
         The note is on its way to Melissa. There is no email series.{" "}
-        <a className="font-sans text-sm font-bold text-[#0A3660] underline" href={downloadUrl}>
+        <a className="font-sans text-base font-bold text-[#0A3660] underline" href={downloadUrl}>
           Download {title}
         </a>
       </p>
@@ -74,7 +74,7 @@ export default function ResourceGate({
           <input id={`${id}-hp`} name="hp_field" type="text" tabIndex={-1} autoComplete="off" defaultValue="" />
         </div>
         <div>
-          <label htmlFor={nameId} className="mb-1 block font-sans text-sm font-bold text-[#0A3660]">
+          <label htmlFor={nameId} className="mb-1 block font-sans text-base font-bold text-[#0A3660]">
             Name <span className="font-normal text-black">(optional)</span>
           </label>
           <input
@@ -87,7 +87,7 @@ export default function ResourceGate({
           />
         </div>
         <div>
-          <label htmlFor={emailId} className="mb-1 block font-sans text-sm font-bold text-[#0A3660]">
+          <label htmlFor={emailId} className="mb-1 block font-sans text-base font-bold text-[#0A3660]">
             Email <span className="text-black">(required)</span>
           </label>
           <input
@@ -107,14 +107,14 @@ export default function ResourceGate({
           Melissa may receive my email address and the name of this file.
         </label>
         {status === "error" && (
-          <p id={errorId} role="alert" className="rounded-lg border border-[#0A3660] bg-white p-3 font-sans text-sm text-black">
+          <p id={errorId} role="alert" className="rounded-lg border border-[#0A3660] bg-white p-3 font-sans text-base text-black">
             {error}
           </p>
         )}
         <button
           type="submit"
           disabled={status === "loading"}
-          className="btn-solid inline-flex min-h-11 items-center justify-center rounded-xl px-5 py-3 font-sans text-sm font-bold disabled:opacity-60"
+          className="btn-solid inline-flex min-h-11 items-center justify-center rounded-xl px-5 py-3 font-sans text-base font-bold disabled:opacity-60"
         >
           {status === "loading" ? "Sending…" : "Email me the download"}
         </button>

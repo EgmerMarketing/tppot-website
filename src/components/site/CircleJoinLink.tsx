@@ -9,7 +9,7 @@ export default function CircleJoinLink() {
           href={CIRCLE_FACEBOOK_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex min-h-11 items-center justify-center rounded-xl border-2 border-[#0A3660] bg-white px-5 py-3 font-sans text-sm font-bold text-[#0A3660]"
+          className="inline-flex min-h-11 items-center justify-center rounded-xl border-2 border-[#0A3660] bg-white px-5 py-3 font-sans text-base font-bold text-[#0A3660]"
         >
           Request to join
         </a>

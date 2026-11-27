@@ -42,7 +42,7 @@ export default function ResourcesPage() {
           ))}
         </ul>
         <p className="mt-4">
-          <a className="font-sans text-sm font-bold text-[#0A3660] underline" href="/resources/tips-to-travel-postpartum.pdf">
+          <a className="font-sans text-base font-bold text-[#0A3660] underline" href="/resources/tips-to-travel-postpartum.pdf">
             Download the travel handout. No email.
           </a>
         </p>

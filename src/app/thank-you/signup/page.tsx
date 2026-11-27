@@ -17,11 +17,11 @@ export default function SignupThanksPage() {
         you to double-confirm, are waiting on the email tool she chooses. You are not on an
         automated list yet.
       </p>
-      <p className="mt-4 font-sans text-sm font-bold text-[#0A3660]">
+      <p className="mt-4 font-sans text-base font-bold text-[#0A3660]">
         [NEEDS MELISSA: email tool, send frequency, and the welcome email.]
       </p>
       <p className="mt-6">
-        <Link href="/podcast" className="font-sans text-sm font-bold text-[#0A3660] underline">
+        <Link href="/podcast" className="font-sans text-base font-bold text-[#0A3660] underline">
           Listen to the podcast while you wait
         </Link>
       </p>

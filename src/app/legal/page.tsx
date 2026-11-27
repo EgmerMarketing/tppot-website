@@ -75,10 +75,10 @@ export default function LegalPage() {
               <h2 className="font-serif font-bold text-[#0A3660] text-xl mb-2">
                 {page.title}
               </h2>
-              <p className="font-serif text-[#6B6560] text-sm mb-4">
+              <p className="font-serif text-[#6B6560] text-base mb-4">
                 {page.description}
               </p>
-              <span className="text-[#0A3660] font-sans font-bold text-sm">
+              <span className="text-[#0A3660] font-sans font-bold text-base">
                 Read more
               </span>
             </Link>

@@ -15,7 +15,6 @@ const lora = Lora({
   variable: "--font-lora",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
 });
 
 export const viewport: Viewport = {

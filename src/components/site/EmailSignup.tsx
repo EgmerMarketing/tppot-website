@@ -71,7 +71,7 @@ export default function EmailSignup({
       </div>
 
       <div>
-        <label htmlFor={nameId} className="mb-1 block font-sans text-sm font-bold text-[#0A3660]">
+        <label htmlFor={nameId} className="mb-1 block font-sans text-base font-bold text-[#0A3660]">
           First name <span className="font-normal text-black">(optional)</span>
         </label>
         <input
@@ -84,7 +84,7 @@ export default function EmailSignup({
         />
       </div>
       <div>
-        <label htmlFor={emailId} className="mb-1 block font-sans text-sm font-bold text-[#0A3660]">
+        <label htmlFor={emailId} className="mb-1 block font-sans text-base font-bold text-[#0A3660]">
           Email <span className="text-black">(required)</span>
         </label>
         <input
@@ -100,7 +100,7 @@ export default function EmailSignup({
         />
       </div>
       <fieldset className="space-y-3">
-        <legend className="mb-2 font-sans text-sm font-bold text-[#0A3660]">
+        <legend className="mb-2 font-sans text-base font-bold text-[#0A3660]">
           What should we send? Both start unchecked.
         </legend>
         <label htmlFor={communityId} className="flex min-h-11 items-start gap-3 font-serif text-base text-black">
@@ -112,7 +112,7 @@ export default function EmailSignup({
           Send me new podcast episodes and handouts
         </label>
       </fieldset>
-      <p className="font-serif text-sm leading-relaxed text-black">
+      <p className="font-serif text-base leading-relaxed text-black">
         <Link href="/legal/privacy-policy" className="font-bold text-[#0A3660] underline">
           Privacy policy
         </Link>
@@ -130,14 +130,14 @@ export default function EmailSignup({
         </div>
       </details>
       {status === "error" && (
-        <p id={errorId} role="alert" className="rounded-lg border border-[#0A3660] bg-white p-3 font-sans text-sm text-black">
+        <p id={errorId} role="alert" className="rounded-lg border border-[#0A3660] bg-white p-3 font-sans text-base text-black">
           {error}
         </p>
       )}
       <button
         type="submit"
         disabled={status === "loading"}
-        className="inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0A3660] px-5 py-3 font-sans text-sm font-bold text-white disabled:opacity-60"
+        className="inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0A3660] px-5 py-3 font-sans text-base font-bold text-white disabled:opacity-60"
       >
         {status === "loading" ? "Sending…" : "Join the waitlist"}
       </button>

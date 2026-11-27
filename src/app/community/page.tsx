@@ -29,9 +29,9 @@ export default function CommunityPage() {
       />
       <Wave from="#2f6b6a" to="#FAF7F2" />
       <div className="mx-auto max-w-[760px] px-6 py-8 md:px-8">
-        <p className="font-serif text-3xl font-semibold italic leading-snug text-[#0A3660] md:text-4xl">
-          You&apos;re not alone in this.
-        </p>
+        <h2 className="max-w-[70ch] font-serif text-3xl font-semibold leading-snug text-[#0A3660] md:text-4xl">
+          You&apos;re <span className="font-bold text-[#2f6b6a]">not alone</span> in this.
+        </h2>
         <p className="mt-3 font-serif text-lg text-black">
           If you need someone now, call or text 988. A group is not a crisis line.
         </p>

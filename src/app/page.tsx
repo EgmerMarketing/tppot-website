@@ -77,7 +77,7 @@ export default function Home() {
             <Eyebrow>For new parents</Eyebrow>
             <h1 className="mt-3 font-serif text-4xl font-semibold leading-tight text-[#0A3660] md:text-6xl">
               {HOME_H1.slice(0, HOME_H1.indexOf("Moms and Dads"))}
-              <span className="italic">Moms and Dads</span>
+              <span className="font-bold text-[#2f6b6a]">Moms and Dads</span>
               {HOME_H1.slice(HOME_H1.indexOf("Moms and Dads") + "Moms and Dads".length)}
             </h1>
             <Squiggle />
@@ -105,7 +105,7 @@ export default function Home() {
         <Blob className="pointer-events-none absolute -right-10 bottom-0 h-36 w-36 text-white/10" />
         <Eyebrow onDark>Start with one thing</Eyebrow>
         <h2 id="home-topics" className="mt-3 max-w-3xl font-serif text-4xl font-semibold leading-tight text-white">
-          Postpartum help for the things that feel hardest <span className="italic">right now</span>
+          Postpartum help for the things that feel hardest <span className="font-bold text-white">right now</span>
         </h2>
         <Reveal>
           <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -131,7 +131,7 @@ export default function Home() {
           episodes={episodes.slice(0, 3)}
         />
         <p className="mt-4">
-          <Link href="/podcast" className="font-sans text-sm font-bold text-[#0A3660] underline">
+          <Link href="/podcast" className="font-sans text-base font-bold text-[#0A3660] underline">
             All episodes on this site
           </Link>
         </p>
@@ -139,9 +139,9 @@ export default function Home() {
       </Section>
       <section className="bg-cream">
         <div className="mx-auto max-w-[760px] px-6 py-12 md:px-8">
-          <p className="font-serif text-3xl font-semibold italic leading-snug text-[#0A3660] md:text-4xl">
-            You&apos;re not alone in this.
-          </p>
+          <h2 className="max-w-[70ch] font-serif text-3xl font-semibold leading-snug text-[#0A3660] md:text-4xl">
+            You&apos;re <span className="font-bold text-[#2f6b6a]">not alone</span> in this.
+          </h2>
           <p className="mt-3 font-serif text-lg text-black">
             If you need someone now, call or text 988. A group is not a crisis line.
           </p>
@@ -183,7 +183,7 @@ export default function Home() {
           Family guides and a travel handout are ready. Other files are not. Crisis pages never ask for email.
         </p>
         <p className="mt-4">
-          <Link href="/resources" className="font-sans text-sm font-bold text-[#0A3660] underline">
+          <Link href="/resources" className="font-sans text-base font-bold text-[#0A3660] underline">
             Open the resources library
           </Link>
         </p>
@@ -210,7 +210,7 @@ export default function Home() {
                 [Melissa&apos;s story here. Third person, in her own words. Do not publish a years-of-experience number, her child&apos;s name, or an Ability Village role until she approves them.]
               </NeedsMelissa>
             </LearnMore>
-            <Link href="/about" className="font-sans text-sm font-bold text-white underline">
+            <Link href="/about" className="font-sans text-base font-bold text-white underline">
               About Melissa
             </Link>
           </div>
@@ -231,7 +231,7 @@ export default function Home() {
           ))}
         </div>
         <p className="mt-6">
-          <Link href="/faq" className="font-sans text-sm font-bold text-[#0A3660] underline">
+          <Link href="/faq" className="font-sans text-base font-bold text-[#0A3660] underline">
             More questions
           </Link>
         </p>
@@ -244,7 +244,7 @@ export default function Home() {
           </h2>
           <CrisisLines compact />
           <p className="mt-4">
-            <Link href="/need-help-now" className="font-sans text-sm font-bold text-[#0A3660] underline">
+            <Link href="/need-help-now" className="font-sans text-base font-bold text-[#0A3660] underline">
               All of the lines, including Postpartum Support International
             </Link>
           </p>

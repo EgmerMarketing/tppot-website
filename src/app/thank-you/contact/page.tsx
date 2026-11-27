@@ -19,11 +19,11 @@ export default function ContactThanksPage() {
         Your note is on its way to Melissa. This form is not monitored as an emergency line.
         If you need help now, call or text 988, or call 911.
       </p>
-      <p className="mt-4 font-sans text-sm font-bold text-[#0A3660]">
+      <p className="mt-4 font-sans text-base font-bold text-[#0A3660]">
         [NEEDS MELISSA: how soon you reply. No response-time promise is made.]
       </p>
       <p className="mt-6">
-        <Link href="/" className="font-sans text-sm font-bold text-[#0A3660] underline">
+        <Link href="/" className="font-sans text-base font-bold text-[#0A3660] underline">
           Back to the home page
         </Link>
       </p>

@@ -124,7 +124,7 @@ export default function FaqPage() {
                 <p>{faq.answer}</p>
               </LearnMore>
               <p className="mt-2">
-                <Link href={faq.href} className="font-sans text-sm font-bold text-[#0A3660] underline">
+                <Link href={faq.href} className="font-sans text-base font-bold text-[#0A3660] underline">
                   {faq.hrefLabel}
                 </Link>
               </p>

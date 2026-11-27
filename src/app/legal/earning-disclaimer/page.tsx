@@ -28,7 +28,7 @@ export default function EarningDisclaimerPage() {
       />
       <article className="max-w-[720px] mx-auto px-6 md:px-12 py-24 md:py-32">
         <nav aria-label="Breadcrumb" className="mb-10">
-          <ol className="flex items-center gap-2 text-sm font-sans text-[#6B6560]">
+          <ol className="flex items-center gap-2 text-base font-sans text-[#6B6560]">
             <li>
               <Link href="/" className="text-[#0A3660] underline">
                 Home

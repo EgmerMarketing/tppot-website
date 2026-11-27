@@ -1,5 +1,5 @@
 import { SITE_URL } from "@/lib/site";
-import { APPLE_PODCAST_URL, SPOTIFY_PODCAST_URL, YOUTUBE_CHANNEL_URL } from "@/lib/podcast";
+import { APPLE_PODCAST_URL, FFT_SITE_URL, FFT_YOUTUBE_URL, SPOTIFY_PODCAST_URL, YOUTUBE_CHANNEL_URL } from "@/lib/podcast";
 
 const BASE_URL = SITE_URL;
 
@@ -154,16 +154,16 @@ export function podcastSeriesSchema() {
     "@context": "https://schema.org",
     "@type": "PodcastSeries",
     name: "Functional Fourth Trimester",
-    url: `${BASE_URL}/podcast`,
-    image: `${BASE_URL}/images/postpartumot-podcast-cover.jpg`,
+    url: FFT_SITE_URL,
+    image: `${BASE_URL}/images/fft/fft-cover-1600.webp`,
     description:
-      "Rethinking daily life after birth. Hosted by Melissa O'Neal, OTR/L.",
+      "Functional Fourth Trimester is the podcast hosted by occupational therapist Melissa O'Neal, OTR/L, helping new parents figure out how daily life actually works after a baby arrives.",
     author: {
       "@id": `${BASE_URL}/#melissa-oneal`,
     },
     publisher: {
       "@id": `${BASE_URL}/#organization`,
     },
-    sameAs: [APPLE_PODCAST_URL, SPOTIFY_PODCAST_URL, YOUTUBE_CHANNEL_URL],
+    sameAs: [APPLE_PODCAST_URL, SPOTIFY_PODCAST_URL, FFT_YOUTUBE_URL, `${BASE_URL}/podcast`],
   };
 }

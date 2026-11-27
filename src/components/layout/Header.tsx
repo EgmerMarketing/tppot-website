@@ -11,7 +11,7 @@ export default function Header() {
 
   return (
     <header className="no-print sticky top-0 z-50 border-b-4 border-teal-deep bg-cream/95 backdrop-blur">
-      <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-4 px-4 py-3 md:px-8">
+      <div className="mx-auto flex max-w-[1280px] flex-wrap items-center justify-between gap-4 px-4 py-3 md:px-8">
         <Link href="/" className="inline-flex shrink-0 items-center">
           <Image
             src="/images/logo-long.png"
@@ -27,7 +27,7 @@ export default function Header() {
         <div className="flex items-center gap-3">
           <Link
             href="/need-help-now"
-            className="inline-flex min-h-11 items-center font-sans text-sm font-bold text-[#0A3660] underline underline-offset-4"
+            className="inline-flex min-h-11 items-center font-sans text-base font-bold text-[#0A3660] underline underline-offset-4"
           >
             Need help now
           </Link>
@@ -48,7 +48,7 @@ export default function Header() {
           <Link
             key={link.href}
             href={link.href}
-            className="inline-flex min-h-11 items-center font-sans text-sm font-bold text-[#0A3660] underline-offset-4 hover:underline"
+            className="inline-flex min-h-11 items-center font-sans text-base font-bold text-[#0A3660] underline-offset-4 hover:underline"
           >
             {link.label}
           </Link>

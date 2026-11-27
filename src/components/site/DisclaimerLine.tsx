@@ -9,7 +9,7 @@ export default function DisclaimerLine({
 }) {
   return (
     <p
-      className={`mt-4 max-w-3xl font-serif text-base leading-relaxed ${
+      className={`mt-4 max-w-[70ch] font-serif text-lg font-normal leading-[1.6] ${
         tone === "onDark" ? "text-white" : "text-black"
       }`}
     >

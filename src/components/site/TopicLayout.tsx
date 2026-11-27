@@ -77,7 +77,7 @@ export default function TopicLayout({
       <div className="mx-auto max-w-[760px] px-6 md:px-8">
         <p className="mb-4 flex items-center gap-3">
           <TopicIcon name={topicIconFor(path)} />
-          <span className="font-sans text-sm font-bold uppercase tracking-[0.14em] text-[#2f6b6a]">{crumb}</span>
+          <span className="font-sans text-base font-bold text-[#2f6b6a]">{crumb}</span>
         </p>
         <CtaRow primary={primary} />
         {help}
@@ -89,7 +89,7 @@ export default function TopicLayout({
             Family guides on this site are free to read. One travel handout is a direct download. Other files are still placeholders. Safety pages are never behind a signup.
           </p>
           {guides && guides.length > 0 && (
-            <ul className="mt-3 space-y-2 font-sans text-sm font-bold">
+            <ul className="mt-3 space-y-2 font-sans text-base font-bold">
               {guides.map((guide) => (
                 <li key={guide.href}>
                   <Link href={guide.href} className="text-[#0A3660] underline">
@@ -100,7 +100,7 @@ export default function TopicLayout({
             </ul>
           )}
           <p className="mt-3">
-            <Link href="/resources" className="font-sans text-sm font-bold text-[#0A3660] underline">
+            <Link href="/resources" className="font-sans text-base font-bold text-[#0A3660] underline">
               Open the library
             </Link>
           </p>

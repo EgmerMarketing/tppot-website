@@ -36,15 +36,15 @@ function formatContent(content: string): string {
     .replace(/<h2>/g, '<h2 class="text-2xl font-bold text-[#0A3660] mt-10 mb-4 font-sans">')
     .replace(/<h3>/g, '<h3 class="text-xl font-bold text-[#0A3660] mt-8 mb-3 font-sans">')
     .replace(/<h4>/g, '<h4 class="text-lg font-bold text-[#0A3660] mt-6 mb-2 font-sans">')
-    .replace(/<p>/g, '<p class="text-black leading-relaxed mb-6 font-serif">')
+    .replace(/<p>/g, '<p class="max-w-[70ch] text-lg font-normal leading-[1.6] text-black mb-6 font-serif">')
     .replace(/<ul>/g, '<ul class="list-disc list-inside mb-6 space-y-2">')
     .replace(/<ol>/g, '<ol class="list-decimal list-inside mb-6 space-y-2">')
     .replace(/<li>/g, '<li class="text-black font-serif">')
     .replace(/<strong>/g, '<strong class="text-[#0A3660] font-semibold">')
     .replace(/<a href="/g, '<a class="text-[#0A3660] underline" href="')
     .replace(/<hr>/g, '<hr class="my-8 border-[#E6F0F0]">')
-    .replace(/<em>/g, '<em class="text-[#0A3660]/80">')
-    .replace(/<blockquote>/g, '<blockquote class="border-l-2 border-[#469695] pl-5 my-6 italic">')
+    .replace(/<em>/g, '<em class="font-bold not-italic text-[#2f6b6a]">')
+    .replace(/<blockquote>/g, '<blockquote class="max-w-[70ch] border-l-2 border-[#469695] pl-5 my-6 text-lg font-normal leading-[1.6]">')
 }
 
 export default async function BlogPostPage({ params }: PageProps) {
@@ -88,7 +88,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         <div className="relative max-w-[720px] mx-auto px-6">
           <Link
             href="/blog"
-            className="mb-6 inline-flex min-h-11 items-center font-sans text-sm font-bold text-white underline"
+            className="mb-6 inline-flex min-h-11 items-center font-sans text-base font-bold text-white underline"
           >
             <svg className="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -97,7 +97,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           </Link>
 
           <div className="mb-5">
-            <span className="rounded bg-white px-3 py-1 font-sans text-xs font-bold text-[#0A3660]">
+            <span className="rounded bg-white px-3 py-1 font-sans text-base font-bold text-[#0A3660]">
               {post.category}
             </span>
           </div>
@@ -109,7 +109,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             Educational information, not medical or professional advice.
           </p>
 
-          <div className="flex items-center gap-3 font-sans text-sm text-white">
+          <div className="flex items-center gap-3 font-sans text-base text-white">
             <span>By Melissa O&apos;Neal, OTR/L</span>
             <span aria-hidden="true">|</span>
             <time dateTime={post.date}>
@@ -164,7 +164,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                   className="bg-white rounded-2xl shadow-sm shadow-[#0A3660]/4 hover:shadow-md transition-shadow overflow-hidden"
                 >
                   <div className="p-6">
-                    <p className="text-xs text-[#6B6560] font-sans mb-2">
+                    <p className="text-base text-[#6B6560] font-sans mb-2">
                       {new Date(relatedPost.date).toLocaleDateString("en-US", {
                         month: "short",
                         day: "numeric",
@@ -176,7 +176,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                         {relatedPost.title}
                       </h3>
                     </Link>
-                    <p className="font-serif text-[#6B6560] text-sm line-clamp-3">
+                    <p className="font-serif text-[#6B6560] text-base line-clamp-3">
                       {relatedPost.excerpt}
                     </p>
                   </div>

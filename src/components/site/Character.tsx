@@ -34,7 +34,7 @@ export function Squiggle({ className = "text-[#469695]" }: { className?: string 
 
 export function Eyebrow({ children, onDark = false }: { children: React.ReactNode; onDark?: boolean }) {
   return (
-    <p className={`font-sans text-sm font-bold uppercase tracking-[0.14em] ${onDark ? "text-white" : "text-[#2f6b6a]"}`}>
+    <p className={`font-sans text-base font-bold uppercase tracking-[0.14em] ${onDark ? "text-white" : "text-[#2f6b6a]"}`}>
       {children}
     </p>
   );
@@ -50,7 +50,7 @@ export function NextStep({
   onDark?: boolean;
 }) {
   return (
-    <p className="mt-8 font-sans text-sm font-bold">
+    <p className="mt-8 font-sans text-base font-bold">
       <Link href={href} className={`underline underline-offset-4 ${onDark ? "text-white" : "text-[#0A3660]"}`}>
         {children}
       </Link>
@@ -92,7 +92,7 @@ export function StepTrail({ steps }: { steps: string[] }) {
       </svg>
       {steps.map((step, index) => (
         <li key={step} className="relative flex items-start gap-4">
-          <span className="z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#0A3660] font-sans text-sm font-bold text-white">
+          <span className="z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#0A3660] font-sans text-base font-bold text-white">
             {index + 1}
           </span>
           <p className="pt-1 font-serif text-lg leading-snug text-black">{step}</p>

@@ -50,10 +50,30 @@
   --font-serif: var(--font-lora);
 }
 
+html {
+  overflow-x: clip;
+}
+
 body {
   background: var(--background);
   color: #000000;
   font-family: var(--font-lora), Georgia, serif;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+em {
+  font-style: normal;
+  font-weight: 700;
+  color: #2f6b6a;
+}
+
+.band-navy em,
+.band-teal em,
+.band-teal-deep em,
+.fft-banner em {
+  color: #ffffff;
 }
 
 h1, h2, h3 {
@@ -154,8 +174,10 @@ h1, h2, h3 {
 .family-copy p,
 .family-copy li {
   margin-top: 0.75rem;
+  max-width: 70ch;
   font-size: 1.125rem;
-  line-height: 1.7;
+  font-weight: 400;
+  line-height: 1.6;
   color: #000000;
 }
 
@@ -219,7 +241,7 @@ details.learn-more > summary {
   cursor: pointer;
   padding: 0.75rem 1rem;
   font-family: var(--font-lato), system-ui, sans-serif;
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #0a3660;
 }
@@ -235,6 +257,35 @@ details.learn-more > summary::-webkit-details-marker {
 
 .fft-banner :focus-visible {
   outline-color: #ffffff;
+}
+
+.fft-page {
+  font-family: var(--font-fft-body), "Nunito", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.fft-page .fft-display {
+  font-family: var(--font-fft-display), "Playfair Display", serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.fft-page h1.fft-display {
+  font-size: clamp(2rem, 4vw, 3.25rem);
+}
+
+.fft-page .fft-label,
+.fft-page a,
+.fft-page button,
+.fft-page summary {
+  font-family: var(--font-fft-body), "Nunito", sans-serif;
+}
+
+.fft-page p {
+  max-width: 70ch;
 }
 
 @media (prefers-reduced-motion: no-preference) {
