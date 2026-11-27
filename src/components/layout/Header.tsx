@@ -1,98 +1,173 @@
 "use client";
 
-import { useState } from "react";
+import { useLayoutEffect, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
+import { Menu, Moon, Pause, Play, Sun, X } from "lucide-react";
+import { mainNav } from "@/lib/site";
 
-const navLinks = [
-  { label: "About", href: "/about" },
-  { label: "Resources", href: "/resources" },
-  { label: "Podcast", href: "/podcast" },
-  { label: "Community", href: "https://www.facebook.com/groups/1967522367025806" },
-  { label: "Blog", href: "/blog" },
-];
+function subscribeClass(onChange: () => void) {
+  const observer = new MutationObserver(onChange);
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+  return () => observer.disconnect();
+}
+
+function useHtmlClass(name: string) {
+  return useSyncExternalStore(
+    subscribeClass,
+    () => document.documentElement.classList.contains(name),
+    () => false,
+  );
+}
+
+function applyTheme(dark: boolean) {
+  document.documentElement.classList.toggle("dark", dark);
+  document.documentElement.style.colorScheme = dark ? "dark" : "light";
+  try {
+    localStorage.setItem("tppot-theme", dark ? "dark" : "light");
+  } catch {
+    /* private browsing */
+  }
+}
+
+function applyMotion(on: boolean) {
+  document.documentElement.classList.toggle("no-motion", !on);
+  try {
+    localStorage.setItem("tppot-motion", on ? "on" : "off");
+  } catch {
+    /* private browsing */
+  }
+  window.dispatchEvent(new Event("tppot-motion"));
+}
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [status, setStatus] = useState("");
+  const dark = useHtmlClass("dark");
+  const paused = useHtmlClass("no-motion");
+
+  useLayoutEffect(() => {
+    let theme: string | null = null;
+    let motion: string | null = null;
+    try {
+      theme = localStorage.getItem("tppot-theme");
+      motion = localStorage.getItem("tppot-motion");
+    } catch {
+      /* private browsing */
+    }
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isDark = theme === "dark" || (theme !== "light" && prefersDark);
+    const isPaused = motion === "off" || (motion !== "on" && reduce);
+    const root = document.documentElement;
+    root.classList.toggle("dark", isDark);
+    root.classList.toggle("no-motion", isPaused);
+    root.style.colorScheme = isDark ? "dark" : "light";
+    root.classList.add("js");
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 bg-[#FAF7F2]/90 backdrop-blur">
-      <div className="mx-auto flex h-[72px] max-w-[1280px] items-center justify-between px-6 md:px-12 lg:px-16">
-        {/* Logo */}
-        <Link href="/" aria-label="The Postpartum OT home">
+    <header className="no-print sticky top-0 z-50 border-b-4 border-teal-deep bg-cream/95 backdrop-blur">
+      <div className="mx-auto flex max-w-[1280px] flex-wrap items-center justify-between gap-4 px-4 py-3 md:px-8">
+        <Link href="/" className="light-chip inline-flex shrink-0 items-center rounded-xl bg-[#FAF7F2] p-1">
           <Image
-            src="/images/logo-primary.png"
+            src="/images/logo-long.png"
             alt="The Postpartum OT"
-            width={180}
-            height={48}
+            width={1933}
+            height={471}
             priority
-            className="h-10 w-auto"
+            sizes="(max-width: 768px) 148px, 197px"
+            className="h-9 w-[148px] md:h-12 md:w-[197px]"
           />
         </Link>
 
-        {/* Desktop nav */}
-        <nav aria-label="Main navigation" className="hidden items-center gap-8 lg:flex">
-          {navLinks.map((link) => (
+        <div className="flex items-center gap-2 sm:gap-3">
+          <Link
+            href="/need-help-now"
+            className="inline-flex min-h-11 items-center font-sans text-base font-bold text-[#0A3660] underline underline-offset-4"
+          >
+            Need help now
+          </Link>
+          <button
+            type="button"
+            className="theme-toggle"
+            aria-label="Dark mode"
+            aria-pressed={dark}
+            onClick={() => {
+              const next = !document.documentElement.classList.contains("dark");
+              applyTheme(next);
+              setStatus(next ? "Dark mode on" : "Dark mode off");
+            }}
+          >
+            <Moon className="theme-icon theme-icon-moon h-5 w-5" aria-hidden="true" />
+            <Sun className="theme-icon theme-icon-sun h-5 w-5" aria-hidden="true" />
+            <span className="theme-toggle-label">Dark mode</span>
+          </button>
+          <button
+            type="button"
+            className="motion-toggle"
+            aria-label="Motion"
+            aria-pressed={!paused}
+            onClick={() => {
+              const next = document.documentElement.classList.contains("no-motion");
+              applyMotion(next);
+              setStatus(next ? "Motion on" : "Motion off");
+            }}
+          >
+            <Pause className="motion-icon motion-icon-pause h-5 w-5" aria-hidden="true" />
+            <Play className="motion-icon motion-icon-play h-5 w-5" aria-hidden="true" />
+            <span className="motion-toggle-label">Motion</span>
+          </button>
+          <p className="sr-only" aria-live="polite">{status}</p>
+          <button
+            type="button"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
+            onClick={() => setMobileOpen((open) => !open)}
+            className="inline-flex min-h-11 min-w-11 items-center justify-center xl:hidden"
+          >
+            {mobileOpen ? <X className="h-6 w-6 text-[#0A3660]" /> : <Menu className="h-6 w-6 text-[#0A3660]" />}
+          </button>
+        </div>
+      </div>
+
+      <nav aria-label="Main" className="mx-auto hidden max-w-[1280px] flex-wrap gap-x-5 gap-y-2 px-8 pb-3 xl:flex">
+        {mainNav.map((link) => {
+          const prominent = link.href === "/for-moms" || link.href === "/for-dads";
+          return (
             <Link
               key={link.href}
               href={link.href}
-              className="font-sans text-[13px] font-bold uppercase tracking-wider text-[#0A3660] transition hover:text-[#357574]"
+              className={
+                prominent
+                  ? "nav-prominent inline-flex min-h-11 items-center rounded-full bg-[#0A3660] px-4 font-sans text-base font-bold text-white"
+                  : "inline-flex min-h-11 items-center font-sans text-base font-bold text-[#0A3660] underline-offset-4 hover:underline"
+              }
             >
               {link.label}
             </Link>
-          ))}
-          <Link
-            href="/contact"
-            className="ml-2 inline-flex min-h-[44px] items-center rounded-xl bg-[#357574] px-6 py-3 font-sans text-[15px] font-bold text-white transition hover:bg-[#0A3660]"
-          >
-            Book a Call
-          </Link>
-        </nav>
+          );
+        })}
+      </nav>
 
-        {/* Mobile menu button */}
-        <button
-          type="button"
-          aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          aria-expanded={mobileOpen}
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center lg:hidden"
-        >
-          {mobileOpen ? (
-            <X className="h-6 w-6 text-[#0A3660]" />
-          ) : (
-            <Menu className="h-6 w-6 text-[#0A3660]" />
-          )}
-        </button>
-      </div>
-
-      {/* Mobile nav */}
       {mobileOpen && (
-        <nav
-          aria-label="Mobile navigation"
-          className="border-t border-[#0A3660]/10 bg-[#FAF7F2] px-6 pb-6 pt-4 lg:hidden"
-        >
-          <ul className="flex flex-col gap-4">
-            {navLinks.map((link) => (
+        <nav aria-label="Mobile" className="border-t border-[#0A3660]/10 px-4 py-2 xl:hidden">
+          <ul>
+            {mainNav.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="font-sans text-[13px] font-bold uppercase tracking-wider text-[#0A3660] transition hover:text-[#357574]"
+                  className={
+                    link.href === "/for-moms" || link.href === "/for-dads"
+                      ? "nav-prominent my-1 flex min-h-11 items-center rounded-full bg-[#0A3660] px-4 font-sans text-base font-bold text-white"
+                      : "flex min-h-11 items-center font-sans text-base font-bold text-[#0A3660]"
+                  }
                 >
                   {link.label}
                 </Link>
               </li>
             ))}
-            <li>
-              <Link
-                href="/contact"
-                onClick={() => setMobileOpen(false)}
-                className="inline-flex min-h-[44px] items-center rounded-xl bg-[#357574] px-6 py-3 font-sans text-[15px] font-bold text-white transition hover:bg-[#0A3660]"
-              >
-                Book a Call
-              </Link>
-            </li>
           </ul>
         </nav>
       )}

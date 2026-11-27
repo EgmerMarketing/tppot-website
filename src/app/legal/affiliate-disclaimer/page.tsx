@@ -28,15 +28,15 @@ export default function AffiliateDisclaimerPage() {
       />
       <article className="max-w-[720px] mx-auto px-6 md:px-12 py-24 md:py-32">
         <nav aria-label="Breadcrumb" className="mb-10">
-          <ol className="flex items-center gap-2 text-sm font-sans text-[#6B6560]">
+          <ol className="flex items-center gap-2 text-base font-sans text-[#6B6560]">
             <li>
-              <Link href="/" className="text-[#469695] hover:underline">
+              <Link href="/" className="text-[#0A3660] underline">
                 Home
               </Link>
             </li>
             <li aria-hidden="true">/</li>
             <li>
-              <Link href="/legal" className="text-[#469695] hover:underline">
+              <Link href="/legal" className="text-[#0A3660] underline">
                 Legal
               </Link>
             </li>
@@ -45,7 +45,7 @@ export default function AffiliateDisclaimerPage() {
           </ol>
         </nav>
 
-        <h1 className="text-4xl md:text-5xl font-bold text-[#0A3660] mb-4 font-serif">
+        <h1 className="text-4xl md:text-5xl font-bold text-[#0A3660] mb-4 font-sans">
           Affiliate Marketing Disclaimer
         </h1>
         <p className="text-[#6B6560] font-serif mb-12">
@@ -83,7 +83,7 @@ export default function AffiliateDisclaimerPage() {
           3. Your Support Matters
         </h2>
         <p className="font-serif text-[#6B6560] leading-relaxed mb-4">
-          When you use our affiliate links, you are supporting The Postpartum OT at no extra cost to yourself. The commissions we earn help us continue creating free content, resources, and community support for occupational therapists who are building postpartum practices.
+          When you use our affiliate links, you are supporting The Postpartum OT at no extra cost to yourself. The commissions we earn help us continue creating content, resources, and community support for occupational therapists who are building postpartum practices.
         </p>
         <p className="font-serif text-[#6B6560] leading-relaxed mb-4">
           You are never obligated to use our affiliate links. If you prefer to navigate directly to a website or find a product on your own, we fully support that decision.
@@ -100,7 +100,7 @@ export default function AffiliateDisclaimerPage() {
             <strong className="text-[#0A3660]">Email:</strong>{" "}
             <a
               href="mailto:melissa@thepostpartumot.com"
-              className="text-[#469695] hover:underline"
+              className="text-[#0A3660] underline"
             >
               melissa@thepostpartumot.com
             </a>

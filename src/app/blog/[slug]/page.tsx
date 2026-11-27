@@ -27,21 +27,33 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
+function pullQuote(content: string): string | null {
+  const stripped = content.replace(/^#\s+[^\n]+\n+/, "").replace(/[#*_>`]/g, "").trim();
+  const paragraph = stripped.split(/\n\n+/)[0]?.replace(/\s+/g, " ").trim();
+  if (!paragraph) return null;
+  const sentence = paragraph.split(/(?<=\.)\s/)[0] ?? paragraph;
+  if (sentence.length < 40 || sentence.length > 280) return null;
+  return sentence;
+}
+
 function formatContent(content: string): string {
-  const html = marked(content, { async: false }) as string;
+  // The page already renders the post title as the only H1. Drop a leading
+  // markdown title so the article body does not add a second one.
+  const withoutLeadingTitle = content.replace(/^#\s+[^\n]+\n+/, "");
+  const html = marked(withoutLeadingTitle, { async: false }) as string;
   return html
-    .replace(/<h2>/g, '<h2 class="text-2xl font-bold text-[#0A3660] mt-10 mb-4 font-serif">')
-    .replace(/<h3>/g, '<h3 class="text-xl font-bold text-[#0A3660] mt-8 mb-3 font-serif">')
+    .replace(/<h2>/g, '<h2 class="text-2xl font-bold text-[#0A3660] mt-10 mb-4 font-sans">')
+    .replace(/<h3>/g, '<h3 class="text-xl font-bold text-[#0A3660] mt-8 mb-3 font-sans">')
     .replace(/<h4>/g, '<h4 class="text-lg font-bold text-[#0A3660] mt-6 mb-2 font-sans">')
-    .replace(/<p>/g, '<p class="text-[#6B6560] leading-relaxed mb-6 font-serif">')
+    .replace(/<p>/g, '<p class="max-w-[70ch] text-lg font-normal leading-[1.6] text-black mb-6 font-serif">')
     .replace(/<ul>/g, '<ul class="list-disc list-inside mb-6 space-y-2">')
     .replace(/<ol>/g, '<ol class="list-decimal list-inside mb-6 space-y-2">')
-    .replace(/<li>/g, '<li class="text-[#6B6560] font-serif">')
+    .replace(/<li>/g, '<li class="text-black font-serif">')
     .replace(/<strong>/g, '<strong class="text-[#0A3660] font-semibold">')
-    .replace(/<a href="/g, '<a class="text-[#469695] hover:text-[#357574] underline" href="')
+    .replace(/<a href="/g, '<a class="text-[#0A3660] underline" href="')
     .replace(/<hr>/g, '<hr class="my-8 border-[#E6F0F0]">')
-    .replace(/<em>/g, '<em class="text-[#0A3660]/80">')
-    .replace(/<blockquote>/g, '<blockquote class="border-l-2 border-[#469695] pl-5 my-6 italic">')
+    .replace(/<em>/g, '<em class="font-bold not-italic text-[#2f6b6a]">')
+    .replace(/<blockquote>/g, '<blockquote class="max-w-[70ch] border-l-2 border-[#469695] pl-5 my-6 text-lg font-normal leading-[1.6]">')
 }
 
 export default async function BlogPostPage({ params }: PageProps) {
@@ -76,15 +88,16 @@ export default async function BlogPostPage({ params }: PageProps) {
         description: post.excerpt,
         datePublished: post.date,
         dateModified: post.date,
+        url: `https://thepostpartumot.com/blog/${slug}`,
         keywords: [post.category, "postpartum", "occupational therapy"],
       })) }} />
 
       {/* Hero */}
-      <section className="relative pt-28 pb-20 lg:pt-32 lg:pb-28 bg-[#061D37]">
-        <div className="relative max-w-[720px] mx-auto px-6">
+      <section className="relative overflow-hidden bg-teal-50 pb-12 pt-12 lg:pb-16 lg:pt-16">
+        <div className="relative mx-auto max-w-[720px] px-6">
           <Link
             href="/blog"
-            className="inline-flex items-center text-[#469695] hover:text-white mb-6 transition-colors font-sans text-sm font-bold"
+            className="mb-6 inline-flex min-h-11 items-center font-sans text-base font-bold text-[#0A3660] underline"
           >
             <svg className="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -93,17 +106,20 @@ export default async function BlogPostPage({ params }: PageProps) {
           </Link>
 
           <div className="mb-5">
-            <span className="text-xs text-[#469695] font-sans font-bold bg-[#469695]/10 px-3 py-1 rounded">
+            <span className="rounded-full bg-white px-3 py-1 font-sans text-base font-bold text-[#0A3660]">
               {post.category}
             </span>
           </div>
 
-          <h1 className="text-3xl lg:text-4xl font-bold text-white mb-6 font-serif leading-tight">
+          <h1 className="mb-4 font-serif text-4xl font-semibold leading-tight text-[#0A3660] lg:text-5xl">
             {post.title}
           </h1>
+          <p className="mb-6 max-w-[70ch] font-serif text-lg leading-[1.6] text-black">
+            Educational information, not medical or professional advice.
+          </p>
 
-          <div className="flex items-center gap-3 text-[#FAF7F2]/50 font-sans text-sm">
-            <span>By Melissa O&apos;Neal, OTR/L, PCES</span>
+          <div className="flex flex-wrap items-center gap-3 font-sans text-base text-[#0A3660]">
+            <span>By Melissa O&apos;Neal, OTR/L</span>
             <span aria-hidden="true">|</span>
             <time dateTime={post.date}>
               {new Date(post.date).toLocaleDateString("en-US", {
@@ -116,6 +132,14 @@ export default async function BlogPostPage({ params }: PageProps) {
         </div>
       </section>
 
+      {pullQuote(post.content) && (
+        <blockquote className="bg-[#eef6f6]">
+          <p className="mx-auto max-w-[70ch] px-6 py-10 font-serif text-2xl font-semibold leading-snug text-[#0A3660] md:text-3xl">
+            {pullQuote(post.content)}
+          </p>
+        </blockquote>
+      )}
+
       {/* Content */}
       <section className="py-12 lg:py-16">
         <div className="max-w-[720px] mx-auto px-6">
@@ -126,14 +150,14 @@ export default async function BlogPostPage({ params }: PageProps) {
 
           {/* CTA */}
           <div className="mt-12 p-8 bg-[#E6F0F0] rounded-2xl">
-            <p className="text-[#0A3660] text-lg mb-4 font-serif font-medium">
-              Ready to take the next step in your postpartum OT journey?
+            <p className="mb-4 font-serif text-lg text-black">
+              Listen to the podcast, or join the waitlist for the parent community.
             </p>
             <Link
-              href="/contact"
-              className="inline-flex items-center px-6 py-3 bg-[#357574] hover:bg-[#0A3660] text-white font-bold rounded-xl transition-colors font-sans"
+              href="/podcast"
+              className="inline-flex min-h-11 items-center rounded-xl bg-[#0A3660] px-6 py-3 font-sans font-bold text-white"
             >
-              Book a Free Strategy Call
+              Listen to the podcast
               <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
@@ -157,7 +181,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                   className="bg-white rounded-2xl shadow-sm shadow-[#0A3660]/4 hover:shadow-md transition-shadow overflow-hidden"
                 >
                   <div className="p-6">
-                    <p className="text-xs text-[#6B6560] font-sans mb-2">
+                    <p className="text-base text-[#6B6560] font-sans mb-2">
                       {new Date(relatedPost.date).toLocaleDateString("en-US", {
                         month: "short",
                         day: "numeric",
@@ -165,11 +189,11 @@ export default async function BlogPostPage({ params }: PageProps) {
                       })}
                     </p>
                     <Link href={`/blog/${relatedPost.slug}`}>
-                      <h3 className="font-serif text-[#0A3660] font-bold text-base mb-2 hover:text-[#469695] transition-colors leading-snug">
+                      <h3 className="mb-2 font-sans text-base font-bold leading-snug text-[#0A3660] underline">
                         {relatedPost.title}
                       </h3>
                     </Link>
-                    <p className="font-serif text-[#6B6560] text-sm line-clamp-3">
+                    <p className="font-serif text-[#6B6560] text-base line-clamp-3">
                       {relatedPost.excerpt}
                     </p>
                   </div>

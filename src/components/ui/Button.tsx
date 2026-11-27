@@ -14,12 +14,9 @@ interface ButtonProps {
 }
 
 const variantStyles: Record<ButtonVariant, string> = {
-  primary:
-    "bg-[#357574] text-white hover:bg-[#0A3660] rounded-xl",
-  secondary:
-    "border-2 border-[#357574] text-[#357574] hover:bg-[#E6F0F0] rounded-xl",
-  dark:
-    "bg-[#061D37] text-white hover:bg-[#0A3660] rounded-xl",
+  primary: "btn-solid rounded-xl",
+  secondary: "btn-outline rounded-xl",
+  dark: "btn-solid rounded-xl",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {

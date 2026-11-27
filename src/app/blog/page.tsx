@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import { breadcrumbSchema } from "@/lib/schema";
 import { blogPosts } from "@/content/blog";
 import BlogFilter from "@/components/blog/BlogFilter";
+import PageHeader from "@/components/site/PageHeader";
+import { WhereNext } from "@/components/site/Character";
 
 export const metadata: Metadata = {
-  title: "Blog",
+  title: "Postpartum Questions, Answered by an Occupational Therapist",
   description:
-    "Insights for OTs building postpartum practices. Articles on clinical practice, business strategy, and maternal health.",
+    "Notes from Melissa O'Neal, OTR/L. Some earlier posts were written for occupational therapists and are unchanged. Newer pages on this site are for parents.",
 };
 
 export default function BlogPage() {
@@ -20,23 +22,21 @@ export default function BlogPage() {
     date: p.date,
     excerpt: p.excerpt,
     category: p.category,
+    minutes: Math.max(1, Math.round(p.content.split(/\s+/).length / 200)),
   }));
 
   return (
-    <main className="bg-[#FAF7F2]">
+    <main className="bg-cream">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([{ name: "Home", url: "https://thepostpartumot.com" }, { name: "Blog", url: "https://thepostpartumot.com/blog" }])) }} />
-      <section className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16 py-24 md:py-32">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-[#0A3660] mb-4 font-serif">
-            Blog
-          </h1>
-          <p className="text-lg text-[#6B6560] font-serif max-w-lg mx-auto">
-            Insights for OTs building postpartum practices
-          </p>
-        </div>
-
+      <PageHeader
+        title="Postpartum Questions, Answered by an Occupational Therapist"
+        emphasis="Questions"
+        lede="By Melissa O'Neal, OTR/L. Older posts for occupational therapists are unchanged. If you need help now, use Need help now."
+      />
+      <section className="mx-auto max-w-[1280px] px-6 py-12 md:px-12 md:py-16">
         <BlogFilter posts={posts} categories={categories} />
       </section>
+      <WhereNext links={[{ href: "/start-here", label: "Start here" }, { href: "/podcast", label: "Functional Fourth Trimester" }]} />
     </main>
   );
 }

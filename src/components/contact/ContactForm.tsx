@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
+import { useRouter } from "next/navigation";
 import { Send, CheckCircle } from "lucide-react";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
@@ -10,6 +11,7 @@ const fieldClass =
   "w-full min-h-12 border rounded-lg px-3 py-3 text-[#0A3660] font-sans text-base bg-white outline-none transition-colors focus:ring-2";
 
 export default function ContactForm() {
+  const router = useRouter();
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [errorField, setErrorField] = useState<ContactField | null>(null);
@@ -68,6 +70,7 @@ export default function ContactForm() {
 
       setStatus("success");
       form.reset();
+      router.push("/thank-you/contact");
     } catch (err) {
       setStatus("error");
       setErrorMessage(
@@ -111,13 +114,13 @@ export default function ContactForm() {
         >
           Message Sent
         </h2>
-        <p className="text-[15px] text-[#6B6560] font-serif leading-relaxed max-w-sm mx-auto">
-          Thank you for reaching out. Melissa will get back to you within 24 hours.
+        <p className="text-[15px] text-black font-serif leading-relaxed max-w-sm mx-auto">
+          Thank you. Your message is on its way. If you need help now, call or text 988.
         </p>
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-6 text-sm font-bold text-[#469695] font-sans hover:text-[#0A3660] transition-colors"
+          className="mt-6 text-base font-bold text-[#0A3660] font-sans underline"
         >
           Send another message
         </button>
@@ -127,12 +130,13 @@ export default function ContactForm() {
 
   return (
     <div className="relative bg-white rounded-2xl shadow-sm shadow-[#0A3660]/4 p-8 md:p-10">
-      <h2 className="text-xl font-bold text-[#0A3660] mb-2 font-serif">
-        Or Send a Message
+      <h2 className="text-xl font-bold text-[#0A3660] mb-2 font-sans">
+        Send a message
       </h2>
-      <p className="text-sm text-[#6B6560] font-serif mb-6">
+      <p className="text-base text-black font-serif mb-6">
         Fields marked with <span aria-hidden="true">*</span>
-        <span className="sr-only">an asterisk</span> are required.
+        <span className="sr-only">an asterisk</span> are required. Please do not include
+        personal health details. For urgent help, call or text 988.
       </p>
       <form
         onSubmit={handleSubmit}
@@ -155,9 +159,9 @@ export default function ContactForm() {
         <div>
           <label
             htmlFor="name"
-            className="block text-sm font-bold text-[#0A3660] mb-2 font-sans"
+            className="block text-base font-bold text-[#0A3660] mb-2 font-sans"
           >
-            Name <span aria-hidden="true" className="text-[#469695]">*</span>
+            Name <span aria-hidden="true">*</span>
           </label>
           <input
             type="text"
@@ -175,9 +179,9 @@ export default function ContactForm() {
         <div>
           <label
             htmlFor="email"
-            className="block text-sm font-bold text-[#0A3660] mb-2 font-sans"
+            className="block text-base font-bold text-[#0A3660] mb-2 font-sans"
           >
-            Email <span aria-hidden="true" className="text-[#469695]">*</span>
+            Email <span aria-hidden="true">*</span>
           </label>
           <input
             type="email"
@@ -196,9 +200,9 @@ export default function ContactForm() {
         <div>
           <label
             htmlFor="journey"
-            className="block text-sm font-bold text-[#0A3660] mb-2 font-sans"
+            className="block text-base font-bold text-[#0A3660] mb-2 font-sans"
           >
-            Where are you in your mentorship journey?
+            What is this about?
           </label>
           <select
             id="journey"
@@ -207,21 +211,23 @@ export default function ContactForm() {
             {...fieldProps("journey", { describedBy: "journey-hint" })}
           >
             <option value="">Select one (optional)</option>
-            <option value="curious">Curious Clinician</option>
-            <option value="launching">Confident Launcher</option>
-            <option value="growing">Growing Practitioner</option>
+            <option value="family">I&apos;m a parent or caregiver</option>
+            <option value="podcast">The podcast</option>
+            <option value="community">The community waitlist</option>
+            <option value="professional">I&apos;m a healthcare professional</option>
+            <option value="other">Something else</option>
           </select>
-          <p id="journey-hint" className="mt-2 text-xs text-[#6B6560] font-serif">
-            Optional. It helps Melissa meet you where you are.
+          <p id="journey-hint" className="mt-2 text-base text-black font-serif">
+            Optional. This is not a health question.
           </p>
         </div>
 
         <div>
           <label
             htmlFor="message"
-            className="block text-sm font-bold text-[#0A3660] mb-2 font-sans"
+            className="block text-base font-bold text-[#0A3660] mb-2 font-sans"
           >
-            Message <span aria-hidden="true" className="text-[#469695]">*</span>
+            Message <span aria-hidden="true">*</span>
           </label>
           <textarea
             id="message"
@@ -230,7 +236,7 @@ export default function ContactForm() {
             required
             aria-required="true"
             maxLength={5000}
-            placeholder="Tell me a little about what you're looking for..."
+            placeholder="What would you like Melissa to know? Please leave out health details."
             {...fieldProps("message", { className: "resize-y" })}
           />
         </div>
@@ -243,14 +249,14 @@ export default function ContactForm() {
             className="bg-red-50 border border-red-200 rounded-lg p-4 outline-none"
             role="alert"
           >
-            <p className="text-sm text-red-700 font-sans">{errorMessage}</p>
+            <p className="text-base text-red-700 font-sans">{errorMessage}</p>
           </div>
         )}
 
         <button
           type="submit"
           disabled={status === "loading"}
-          className="inline-flex items-center gap-2.5 bg-[#357574] text-white px-7 py-4 rounded-xl font-bold text-[15px] hover:bg-[#0A3660] transition-colors font-sans w-full justify-center min-h-12 disabled:opacity-60 disabled:cursor-not-allowed"
+          className="inline-flex items-center gap-2.5 bg-[#0A3660] text-white px-7 py-4 rounded-xl font-bold text-[15px] hover:bg-[#061D37] transition-colors font-sans w-full justify-center min-h-12 disabled:opacity-60 disabled:cursor-not-allowed"
         >
           <Send className="w-4 h-4" strokeWidth={2} />
           {status === "loading" ? "Sending..." : "Send Message"}

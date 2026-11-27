@@ -62,5 +62,5 @@ The most important thing we can do for families navigating infant sleep is to no
 
 Hold both of these truths at the same time. Validate the exhaustion. Offer practical tools. And always, always bring it back to the relationship between parent and child, because that relationship is the foundation on which everything else is built.
 
-**Download our free sleep guide** for a comprehensive resource you can share with the families you serve. It includes age appropriate wake windows, sample routines, troubleshooting tips, and guidance for when to seek additional support.`,
+**Download our sleep guide** for a comprehensive resource you can share with the families you serve. It includes age appropriate wake windows, sample routines, troubleshooting tips, and guidance for when to seek additional support.`,
 };

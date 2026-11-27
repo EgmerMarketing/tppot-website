@@ -1,380 +1,268 @@
-import Image from "next/image";
-import {
-  Award,
-  BookOpen,
-  Calendar,
-  ChevronRight,
-  Download,
-  Headphones,
-  Mic,
-  Sparkles,
-  Star,
-  Users,
-} from "lucide-react";
-import { breadcrumbSchema } from "@/lib/schema";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ACTIVE_HERO_OPTION, HERO_OPTIONS } from "@/lib/hero";
+import { episodes } from "@/lib/podcast";
+import { DISCLAIMER_CRISIS, HOME_H1, SITE_URL, topicLinks } from "@/lib/site";
+import { breadcrumbSchema, faqSchema } from "@/lib/schema";
+import JsonLd from "@/components/site/JsonLd";
+import Section from "@/components/ui/Section";
+import CrisisLines from "@/components/site/CrisisLines";
+import EmailSignup from "@/components/site/EmailSignup";
+import CircleJoinLink from "@/components/site/CircleJoinLink";
+import EpisodeList from "@/components/site/EpisodeList";
+import NeedsMelissa from "@/components/site/NeedsMelissa";
+import { LearnMore } from "@/components/site/Scan";
+import { Eyebrow, NextStep, Squiggle, TopicIcon, Wave, topicIconFor } from "@/components/site/Character";
+import Portrait from "@/components/site/Portrait";
+import Reveal from "@/components/site/Reveal";
+export const metadata: Metadata = {
+  title: {
+    absolute: `${HOME_H1} | The Postpartum OT`,
+  },
+  description:
+    "Postpartum support for new moms and dads from occupational therapist Melissa O'Neal, OTR/L. Sleep, feeding, recovery, and daily life. Educational information, not medical advice.",
+};
 
-/* ─── Hero ─── */
-function Hero() {
-  return (
-    <section className="relative bg-[#061D37] overflow-hidden min-h-[90vh] flex items-center">
-      {/* Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#061D37] via-[#0A3660] to-[#0d4a82]" />
-      {/* Decorative arc into cream */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-[#FAF7F2]" style={{ borderRadius: '50% 50% 0 0 / 100% 100% 0 0' }} />
+const homeFaqs = [
+  {
+    question: "How long does postpartum recovery take?",
+    short: "There is no single clock.",
+    answer:
+      "There is no single clock. Some daily tasks ease in a few weeks, and some take longer. A checkup is a visit, not a finish line. Your own provider can say what fits your body.",
+  },
+  {
+    question: "When does it get easier with a newborn?",
+    short: "In pieces, not on one date.",
+    answer:
+      "Easier usually shows up in pieces: a longer sleep stretch, a feeding rhythm, or a day that feels familiar. It is not a date you can miss. If you are suffering, not just tired, use Need Help Now.",
+  },
+  {
+    question: "How do I get anything done with a newborn?",
+    short: "Feed, diaper, eat, and one rest.",
+    answer:
+      "Shrink the day to feeding, diapers, your own food, and one rest. A routine is a short list you can repeat, not a perfect schedule.",
+  },
+  {
+    question: "How can a partner help postpartum?",
+    short: "Take a real shift, including at night.",
+    answer:
+      "Take a real shift, including at night, and handle a task without waiting to be assigned every step. Partners can call or text 988, and family members can use 1-833-TLC-MAMA.",
+  },
+  {
+    question: "What is postpartum occupational therapy?",
+    short: "Help with the daily jobs after birth.",
+    answer:
+      "Occupational therapy helps people do the daily activities that matter to them. After birth, that can include sleep, feeding routines, and getting through the day. It is not a substitute for your own medical provider.",
+  },
+];
 
-      <div className="relative max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16 pt-12 pb-40 md:pt-16 md:pb-48 w-full">
-        <div className="grid md:grid-cols-[45fr_55fr] gap-8 md:gap-12 items-end">
-          <div className="relative z-10 pb-8">
-            <p className="text-[#469695] font-bold text-xs tracking-[0.2em] uppercase mb-6 font-sans">
-              Mentorship for Postpartum OTs
-            </p>
-            <h1 className="text-4xl md:text-5xl lg:text-[52px] font-bold leading-[1.08] text-white mb-8 font-serif">
-              Build Your
-              <br />Postpartum Practice
-              <br /><span className="text-[#469695]">With Someone Who
-              <br />Has Done It</span>
-            </h1>
-            <p className="text-base md:text-lg text-white/60 leading-relaxed mb-10 max-w-md font-serif">
-              Moms deserve more than a six week checkup. You know that. Personal mentorship from a clinician with 10+ years in the trenches.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a href="/contact" className="inline-flex items-center justify-center gap-2.5 bg-white text-[#0A3660] px-7 py-4 rounded-xl font-bold text-[15px] hover:bg-[#E6F0F0] transition-all shadow-lg shadow-black/20 font-sans">
-                <Calendar className="w-4 h-4" strokeWidth={2} />
-                Book Your Free Strategy Call
-              </a>
-              <a href="/resources" className="inline-flex items-center justify-center gap-2.5 border-2 border-white/30 text-white px-7 py-4 rounded-xl font-bold text-[15px] hover:bg-white/10 hover:border-white/50 transition-all font-sans">
-                <Download className="w-4 h-4" strokeWidth={2} />
-                Get the Starter Kit
-              </a>
-            </div>
-          </div>
+const cards = [
+  { href: "/podcast", title: "Podcast", text: "Functional Fourth Trimester" },
+  { href: "/community", title: "Community", text: "Waitlist first. Three questions to join." },
+  { href: "/resources", title: "Resources", text: "Family guides and one travel handout are ready." },
+];
 
-          {/* Melissa's photo with organic shape */}
-          <div className="relative z-10 flex justify-end">
-            <div className="relative w-full max-w-[420px]">
-              <div className="aspect-[3/4] rounded-[2rem_2rem_6rem_2rem] overflow-hidden shadow-2xl shadow-black/30">
-                <Image
-                  src="/images/melissa-portrait-1.jpg"
-                  alt="Melissa O'Neal, OTR/L, PCES, founder of The Postpartum OT"
-                  fill
-                  className="object-cover object-top"
-                  priority
-                />
-              </div>
-              {/* Floating credential badge */}
-              <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl shadow-[#0A3660]/10 p-4 pr-6 flex items-center gap-3">
-                <Image src="/images/pces-seal.png" alt="PCES Certification Seal" width={44} height={44} />
-                <div>
-                  <p className="text-[13px] font-bold text-[#0A3660] font-sans">Melissa O&apos;Neal</p>
-                  <p className="text-[11px] text-[#469695] font-bold font-sans">OTR/L, PCES</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ─── Social Proof ─── */
-function SocialProof() {
-  return (
-    <section className="bg-[#FAF7F2] relative -mt-8 z-20">
-      <div className="max-w-[900px] mx-auto px-6">
-        <div className="bg-white rounded-2xl shadow-lg shadow-[#0A3660]/8 p-6 md:p-8 grid grid-cols-2 md:grid-cols-4 gap-6">
-          {[
-            { value: "10+", label: "Years Experience", icon: Star },
-            { value: "600+", label: "OTs in Community", icon: Users },
-            { value: "PCES", label: "Certified Specialist", icon: Award },
-            { value: "Live", label: "Weekly Podcast", icon: Mic },
-          ].map((s) => (
-            <div key={s.label} className="text-center">
-              <s.icon className="w-5 h-5 text-[#469695] mx-auto mb-2" strokeWidth={1.5} />
-              <p className="text-2xl font-bold text-[#0A3660] font-sans">{s.value}</p>
-              <p className="text-xs text-[#6B6560] mt-0.5 font-serif">{s.label}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ─── Problem Statement ─── */
-function ProblemStatement() {
-  return (
-    <section className="bg-[#FAF7F2]">
-      <div className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16 py-24 md:py-32">
-        <div className="grid md:grid-cols-[55fr_45fr] gap-16 items-center">
-          <div>
-            <p className="text-[#469695] font-bold text-xs tracking-[0.2em] uppercase mb-6 font-sans">The Challenge</p>
-            <h2 className="text-3xl md:text-[40px] font-bold leading-[1.15] text-[#0A3660] mb-8 font-serif">
-              You want to help
-              <br />postpartum families.
-            </h2>
-            <div className="space-y-5 font-serif">
-              <p className="text-[17px] text-[#6B6560] leading-relaxed">
-                OT school didn&apos;t prepare you for this. You know you could make a
-                difference for new moms, but every time you try to figure out how
-                to build a postpartum practice, you hit the same wall.
-              </p>
-              <p className="text-[17px] text-[#6B6560] leading-relaxed">
-                You&apos;ve Googled at midnight. You&apos;ve considered certifications
-                that cost thousands. You&apos;ve scrolled through courses that promise
-                everything and deliver a login to a video library.
-              </p>
-              <p className="text-[17px] text-[#0A3660] font-medium leading-relaxed border-l-2 border-[#469695] pl-5">
-                What you actually need is someone who has built the practice you
-                want to build, who can look at your specific situation and say:
-                &ldquo;Here&apos;s what I&apos;d do.&rdquo;
-              </p>
-            </div>
-          </div>
-          <div className="relative">
-            <div className="aspect-square rounded-[2rem_6rem_2rem_6rem] overflow-hidden">
-              <Image src="/images/homepage-hero-2.jpg" alt="Mother and baby receiving postpartum OT care" fill className="object-cover" />
-            </div>
-            <div className="absolute -top-4 -right-4 w-24 h-24 rounded-full bg-[#469695]/10" />
-            <div className="absolute -bottom-6 -left-6 w-16 h-16 rounded-full bg-[#0A3660]/5" />
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ─── Journey ─── */
-function Journey() {
-  const stages = [
-    { number: "01", title: "Curious Clinician", desc: "You're exploring postpartum OT. Questions, maybe some doubt, and a growing sense that this is where you belong.", icon: Sparkles, color: "bg-[#469695]/8" },
-    { number: "02", title: "Confident Launcher", desc: "You're ready to formalize your practice. You need a clear plan and someone who has done this before.", icon: BookOpen, color: "bg-[#061D37]" },
-    { number: "03", title: "Growing Practitioner", desc: "You've started but hit a plateau. You need strategic guidance to scale, not just clinical knowledge.", icon: Star, color: "bg-[#469695]/8" },
-  ];
-  return (
-    <section className="bg-[#E6F0F0]" id="journey">
-      <div className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16 py-24 md:py-32">
-        <div className="max-w-xl mb-16">
-          <p className="text-[#469695] font-bold text-xs tracking-[0.2em] uppercase mb-4 font-sans">Your Path</p>
-          <h2 className="text-3xl md:text-[40px] font-bold leading-[1.15] text-[#0A3660] mb-4 font-serif">The mentorship journey</h2>
-          <p className="text-[17px] text-[#6B6560] font-serif">Wherever you are, there&apos;s a clear next step.</p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-0 md:gap-0">
-          {stages.map((s, i) => (
-            <div key={s.number} className={`relative p-10 md:p-12 ${i === 1 ? "bg-[#061D37] text-white md:rounded-3xl md:shadow-2xl md:shadow-[#0A3660]/30 md:-my-4 md:z-10" : ""} ${i === 0 ? "md:rounded-l-3xl" : ""} ${i === 2 ? "md:rounded-r-3xl" : ""} ${i !== 1 ? "bg-white" : ""}`}>
-              <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-8 ${i === 1 ? "bg-[#469695]" : "bg-[#469695]/10"}`}>
-                <s.icon className={`w-5 h-5 ${i === 1 ? "text-white" : "text-[#469695]"}`} strokeWidth={1.5} />
-              </div>
-              <p className="text-xs font-bold tracking-wider uppercase mb-3 text-[#469695] font-sans">{s.number}</p>
-              <h3 className={`text-2xl font-bold mb-4 font-serif ${i === 1 ? "text-white" : "text-[#0A3660]"}`}>{s.title}</h3>
-              <p className={`text-[15px] leading-relaxed mb-8 font-serif ${i === 1 ? "text-white/60" : "text-[#6B6560]"}`}>{s.desc}</p>
-              <a href="/contact" className="inline-flex items-center gap-1 text-sm font-bold text-[#469695] hover:gap-2 transition-all font-sans">
-                Learn more <ChevronRight className="w-4 h-4" strokeWidth={2} />
-              </a>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ─── Mentor vs Module ─── */
-function MentorVsModule() {
-  return (
-    <section className="bg-[#FAF7F2]" id="about">
-      <div className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16 py-24 md:py-32">
-        <div className="grid md:grid-cols-[45fr_55fr] gap-16 items-center">
-          <div className="order-2 md:order-1">
-            <div className="relative">
-              <div className="aspect-[4/5] rounded-[6rem_2rem_2rem_2rem] overflow-hidden">
-                <Image src="/images/melissa-portrait-2.jpg" alt="Melissa O'Neal mentoring OT practitioners" fill className="object-cover" />
-              </div>
-            </div>
-          </div>
-          <div className="order-1 md:order-2">
-            <p className="text-[#469695] font-bold text-xs tracking-[0.2em] uppercase mb-6 font-sans">The Difference</p>
-            <h2 className="text-3xl md:text-[40px] font-bold leading-[1.15] text-[#0A3660] mb-10 font-serif">
-              A mentor,
-              <br />not a module.
-            </h2>
-
-            <div className="space-y-5 mb-10">
-              {[
-                "Direct access to someone who has built this practice",
-                "Guidance tailored to your market, your skills, your goals",
-                "Real answers when you need them, not next semester",
-                "A mentor who knows your name and your situation",
-              ].map((item) => (
-                <div key={item} className="flex gap-4 items-start">
-                  <div className="w-6 h-6 rounded-full bg-[#469695]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8L6.5 11.5L13 4.5" stroke="#469695" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                  </div>
-                  <p className="text-[15px] text-[#6B6560] leading-relaxed font-serif">{item}</p>
-                </div>
-              ))}
-            </div>
-
-            <a href="/contact" className="inline-flex items-center gap-2.5 bg-[#061D37] text-white px-7 py-4 rounded-xl font-bold text-[15px] hover:bg-[#0A3660] transition-colors font-sans">
-              <Calendar className="w-4 h-4" strokeWidth={2} />
-              Book Your Free Strategy Call
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ─── Testimonials ─── */
-function Testimonials() {
-  const testimonials = [
-    { quote: "Melissa helped me see the path I couldn't find on my own. Within three months, I had my first postpartum clients and a plan I actually believed in.", name: "Sarah K.", credential: "OTR/L" },
-    { quote: "I'd taken two certifications before finding Melissa. They gave me knowledge. She gave me direction. There's a huge difference.", name: "Jennifer M.", credential: "OTR/L, PCES" },
-    { quote: "Not another course. Not another module. An actual person who answers my actual questions. That's what I needed.", name: "Rachel T.", credential: "OTD, OTR/L" },
-  ];
-  return (
-    <section className="bg-[#E6F0F0]">
-      <div className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16 py-24 md:py-32">
-        <div className="text-center mb-16">
-          <p className="text-[#469695] font-bold text-xs tracking-[0.2em] uppercase mb-4 font-sans">Real Stories</p>
-          <h2 className="text-3xl md:text-[40px] font-bold leading-[1.15] text-[#0A3660] font-serif">From clinicians who took the step</h2>
-          <p className="text-sm text-[#6B6560] mt-3 font-serif">[Placeholder quotes. Real testimonials coming soon.]</p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-6">
-          {testimonials.map((t, i) => (
-            <div key={t.name} className={`rounded-2xl p-8 md:p-10 ${i === 1 ? "bg-[#469695] md:-translate-y-4 shadow-xl shadow-[#469695]/20" : "bg-white shadow-md shadow-[#0A3660]/6"}`}>
-              <div className="flex gap-1 mb-6">
-                {[...Array(5)].map((_, j) => (<Star key={j} className={`w-3.5 h-3.5 ${i === 1 ? "text-white fill-white" : "text-[#469695] fill-[#469695]"}`} strokeWidth={0} />))}
-              </div>
-              <blockquote className={`text-[15px] leading-relaxed mb-8 font-serif ${i === 1 ? "text-white" : "text-[#6B6560]"}`}>
-                &ldquo;{t.quote}&rdquo;
-              </blockquote>
-              <div>
-                <p className={`text-sm font-bold font-sans ${i === 1 ? "text-white" : "text-[#0A3660]"}`}>{t.name}</p>
-                <p className={`text-xs font-sans ${i === 1 ? "text-white/60" : "text-[#6B6560]"}`}>{t.credential}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ─── Podcast Preview ─── */
-function PodcastSection() {
-  const episodes = [
-    "Building Confidence in Your First Postpartum Cases",
-    "What OT School Didn't Teach You About Maternal Mental Health",
-    "The Business Side: Pricing, Insurance, and Getting Paid",
-  ];
-  return (
-    <section className="bg-[#FAF7F2]" id="podcast">
-      <div className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16 py-24 md:py-32">
-        <div className="grid md:grid-cols-[55fr_45fr] gap-16 items-center">
-          <div>
-            <p className="text-[#469695] font-bold text-xs tracking-[0.2em] uppercase mb-6 font-sans">The Podcast</p>
-            <h2 className="text-3xl md:text-[40px] font-bold leading-[1.15] text-[#0A3660] mb-6 font-serif">
-              The Functional
-              <br />Fourth Trimester
-            </h2>
-            <p className="text-[17px] text-[#6B6560] leading-relaxed mb-10 max-w-md font-serif">
-              Weekly conversations about building a postpartum practice that
-              makes a real difference. Clinical insights, business strategy,
-              and honest talk.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <a href="https://podcasts.apple.com/us/podcast/functional-fourth-trimester/id1881077069" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-[#061D37] text-white px-5 py-3 rounded-xl text-sm font-bold hover:bg-[#0A3660] transition-colors font-sans">
-                <Headphones className="w-4 h-4" strokeWidth={2} />Apple Podcasts
-              </a>
-              <a href="https://open.spotify.com/show/0yuF6uerJGVWdhgysa7Ug3" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border-2 border-[#0A3660]/15 text-[#0A3660] px-5 py-3 rounded-xl text-sm font-bold hover:border-[#0A3660]/30 transition-colors font-sans">
-                <Headphones className="w-4 h-4" strokeWidth={2} />Spotify
-              </a>
-            </div>
-          </div>
-          <div className="space-y-4">
-            {episodes.map((ep, i) => (
-              <div key={ep} className="group rounded-2xl p-6 bg-white shadow-sm shadow-[#0A3660]/4 hover:shadow-md hover:shadow-[#0A3660]/8 transition-shadow cursor-pointer flex items-center gap-5">
-                <div className="w-14 h-14 rounded-xl bg-[#061D37] flex items-center justify-center flex-shrink-0 group-hover:bg-[#469695] transition-colors">
-                  <Mic className="w-6 h-6 text-white" strokeWidth={1.5} />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-[11px] text-[#469695] font-bold tracking-wider uppercase mb-1 font-sans">Episode {i + 1}</p>
-                  <p className="text-[15px] font-bold text-[#0A3660] font-sans">{ep}</p>
-                </div>
-                <ChevronRight className="w-5 h-5 text-[#0A3660]/20 group-hover:text-[#469695] transition-colors flex-shrink-0" strokeWidth={2} />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ─── Community (Dark Navy Section) ─── */
-function Community() {
-  return (
-    <section className="relative bg-[#061D37] overflow-hidden" id="community">
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-[#469695]" />
-        <div className="absolute bottom-10 right-20 w-48 h-48 rounded-full bg-[#469695]" />
-      </div>
-      <div className="relative max-w-[800px] mx-auto px-6 py-24 md:py-32 text-center">
-        <p className="text-[#469695] font-bold text-xs tracking-[0.2em] uppercase mb-8 font-sans">You&apos;re not alone in this</p>
-        <p className="text-[100px] md:text-[160px] font-bold text-white leading-none tracking-tight font-serif">600<span className="text-[#469695]">+</span></p>
-        <h2 className="text-xl md:text-2xl font-bold text-[#FAF7F2]/80 mt-2 mb-6 font-sans">
-          occupational therapists building postpartum practices together
-        </h2>
-        <p className="text-[15px] text-[#FAF7F2]/40 max-w-md mx-auto mb-10 font-serif">
-          A community of clinicians who share resources, ask real questions,
-          celebrate wins, and support each other through the hard parts.
-        </p>
-        <a href="https://www.facebook.com/groups/1967522367025806" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2.5 bg-white text-[#0A3660] px-7 py-4 rounded-xl font-bold text-[15px] hover:bg-[#E6F0F0] transition-all shadow-lg shadow-black/20 font-sans">
-          <Users className="w-4 h-4" strokeWidth={2} />Join the Community
-        </a>
-      </div>
-    </section>
-  );
-}
-
-/* ─── Final CTA ─── */
-function FinalCTA() {
-  return (
-    <section className="bg-[#E6F0F0]" id="contact">
-      <div className="max-w-[700px] mx-auto px-6 py-24 md:py-32 text-center">
-        <p className="text-[#469695] font-bold text-xs tracking-[0.2em] uppercase mb-6 font-sans">Take the first step</p>
-        <h2 className="text-3xl md:text-[40px] font-bold leading-[1.15] text-[#0A3660] mb-6 font-serif">
-          Ready to build your postpartum practice?
-        </h2>
-        <p className="text-[17px] text-[#6B6560] leading-relaxed mb-10 font-serif">
-          Book a free 15 minute strategy call. No pressure, no pitch. Just a conversation about where you are and where you want to go.
-        </p>
-        <a href="/contact" className="inline-flex items-center gap-2.5 bg-[#357574] text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-[#0A3660] transition-all shadow-lg shadow-[#0A3660]/15 font-sans">
-          <Calendar className="w-5 h-5" strokeWidth={2} />Book Your Free Strategy Call
-        </a>
-      </div>
-    </section>
-  );
-}
-
-/* ─── Page ─── */
 export default function Home() {
+  const hero = HERO_OPTIONS[ACTIVE_HERO_OPTION];
+
   return (
-    <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([{ name: "Home", url: "https://thepostpartumot.com" }])) }} />
-      <Hero />
-      <SocialProof />
-      <ProblemStatement />
-      <Journey />
-      <MentorVsModule />
-      <Testimonials />
-      <PodcastSection />
-      <Community />
-      <FinalCTA />
-    </>
+    <div>
+      <JsonLd data={breadcrumbSchema([{ name: "Home", url: SITE_URL }])} />
+      <JsonLd data={faqSchema(homeFaqs)} />
+
+      <section className="hero-home mint-surface relative bg-teal-50">
+        <div className="mx-auto max-w-[1120px] px-6 pb-1 pt-5 md:px-8 md:pt-6">
+          <Eyebrow>For new parents</Eyebrow>
+          <h1 className="mt-1 font-serif text-[1.7rem] font-semibold leading-[1.15] text-[#0A3660] sm:text-4xl sm:leading-tight lg:text-5xl">
+            Postpartum Support for New{" "}
+            <span className="hero-accent">
+              Moms and Dads
+              <Squiggle className="text-[#2f6b6a]" />
+            </span>{" "}
+            from an Occupational Therapist
+          </h1>
+          <p className="mt-3 max-w-[68ch] font-serif text-base leading-snug text-black sm:text-lg sm:leading-relaxed">{hero.text}</p>
+          <div className="mt-4 grid gap-3 sm:max-w-xl sm:grid-cols-2">
+            <Link href="/for-moms" className="btn-solid inline-flex min-h-12 items-center justify-center rounded-xl px-5 text-center font-sans text-lg font-bold">
+              I&apos;m a mom
+            </Link>
+            <Link href="/for-dads" className="btn-solid inline-flex min-h-12 items-center justify-center rounded-xl px-5 text-center font-sans text-lg font-bold">
+              I&apos;m a dad or partner
+            </Link>
+          </div>
+          <p className="mt-2 max-w-[68ch] font-serif text-base leading-snug text-black">{DISCLAIMER_CRISIS}</p>
+        </div>
+        <div className="hero-flow">
+          <svg className="hero-flow-shape" viewBox="0 0 1440 280" preserveAspectRatio="none" aria-hidden="true">
+            <path className="hero-flow-mint" d="M0,54 C260,8 520,78 780,36 C1040,0 1240,64 1440,28 L1440,78 C1220,112 1000,58 760,92 C500,124 240,70 0,104 Z" />
+            <path className="hero-flow-teal" d="M0,88 C280,36 540,120 820,64 C1080,16 1280,96 1440,48 L1440,280 L0,280 Z" />
+          </svg>
+          <ul className="hero-cards">
+            {cards.map((card) => (
+              <li key={card.href}>
+                <Link href={card.href} className="hero-card surface-card block h-full rounded-[1.25rem] bg-white p-4 shadow-[0_10px_24px_rgb(10_54_96/0.14)]">
+                  <p className="font-sans text-lg font-bold text-[#0A3660]">{card.title}</p>
+                  <p className="mt-1 font-serif text-base leading-snug text-black">{card.text}</p>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+      <Wave from="#469695" to="#0A3660" />
+
+      <Section variant="navy" aria-labelledby="home-topics" className="relative overflow-hidden">
+        <Eyebrow onDark>Start with one thing</Eyebrow>
+        <h2 id="home-topics" className="mt-3 max-w-3xl font-serif text-4xl font-semibold leading-tight text-white">
+          Postpartum help for the things that feel hardest <span className="font-bold text-white">right now</span>
+        </h2>
+        <Reveal>
+          <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {topicLinks.map((topic, index) => {
+              const icon = topicIconFor(topic.href);
+              return (
+              <li key={topic.href} className={index % 2 === 1 ? "lg:mt-8" : ""}>
+                <Link href={topic.href} className="surface-card flex h-full flex-col rounded-[1.75rem] bg-white p-5">
+                  {icon ? <TopicIcon name={icon} /> : null}
+                  <p className={`${icon ? "mt-3" : ""} font-serif text-xl font-semibold text-[#0A3660]`}>{topic.title}</p>
+                  <p className="mt-2 font-serif text-base leading-relaxed text-black">{topic.text}</p>
+                </Link>
+              </li>
+              );
+            })}
+          </ul>
+        </Reveal>
+        <NextStep onDark href="/start-here">Next: the fourth trimester, week by week</NextStep>
+      </Section>
+      <Wave from="#0A3660" to="#18355D" />
+
+      <section className="bg-[#18355D] py-12 text-white md:py-16">
+        <div className="mx-auto max-w-[1120px] px-6 md:px-8">
+          <EpisodeList
+            heading="The Functional Fourth Trimester postpartum podcast"
+            episodes={episodes.slice(0, 3)}
+            wave
+            onDark
+          />
+          <p className="mt-4">
+            <Link href="/podcast" className="font-sans text-base font-bold text-white underline">
+              All episodes on this site
+            </Link>
+          </p>
+          <NextStep onDark href="/podcast">Next: Functional Fourth Trimester</NextStep>
+        </div>
+      </section>
+      <Wave from="#18355D" to="#eef6f6" />
+      <section className="mint-surface bg-[#eef6f6]">
+        <div className="mx-auto max-w-[760px] px-6 py-12 md:px-8">
+          <h2 className="max-w-[70ch] font-serif text-3xl font-semibold leading-snug text-[#0A3660] md:text-4xl">
+            You&apos;re <span className="font-bold text-[#2f6b6a]">not alone</span> in this.
+          </h2>
+          <p className="mt-3 font-serif text-lg text-black">
+            If you need someone now, call or text 988. A group is not a crisis line.
+          </p>
+          <NextStep href="/need-help-now">Next: Need Help Now</NextStep>
+        </div>
+      </section>
+      <Wave from="#eef6f6" to="#469695" />
+
+      <Section variant="teal" id="waitlist" width="prose" aria-labelledby="home-circle">
+        <h2 id="home-circle" className="font-sans text-3xl font-bold leading-tight text-white">
+          The Functional Fourth Trimester Circle
+        </h2>
+        <div className="surface-card mt-6 rounded-2xl bg-white p-6 text-black">
+          <p className="font-serif text-lg leading-relaxed text-black">
+            The Circle is a private Facebook group that started November 18, 2026. The email waitlist is how you hear what is still unconfirmed.
+          </p>
+          <LearnMore summary="Live sessions and open details">
+            <p>
+              Live sessions are listed for Wednesdays, 11:00 to 11:30 AM Mountain Time. The platform and cost are not confirmed.
+            </p>
+            <NeedsMelissa>
+              [NEEDS MELISSA: whether a member count may be shown. Live session platform, start date, price, sign-up, and replays.]
+            </NeedsMelissa>
+          </LearnMore>
+          <div className="mt-6">
+            <EmailSignup
+              idPrefix="home"
+              heading="Join the waitlist for the Functional Fourth Trimester community"
+            />
+            <CircleJoinLink />
+          </div>
+        </div>
+      </Section>
+      <Wave from="#469695" to="#FAF7F2" />
+
+      <Section variant="cream">
+        <h2 className="font-serif text-4xl font-semibold text-[#0A3660]">Where are the postpartum resources?</h2>
+        <p className="mt-2 max-w-2xl font-serif text-base text-black">
+          Family guides and a travel handout are ready. Other files are not. Crisis pages never ask for email.
+        </p>
+        <p className="mt-4">
+          <Link href="/resources" className="font-sans text-base font-bold text-[#0A3660] underline">
+            Open the resources library
+          </Link>
+        </p>
+      </Section>
+
+      <Section variant="navy">
+        <div className="grid items-center gap-8 md:grid-cols-[300px_1fr]">
+          <Link href="/about" className="block max-w-[280px]">
+            <Portrait
+              src="/images/melissa/melissa-autumn-creek.webp"
+              alt="Melissa O'Neal, occupational therapist, smiling outdoors in an autumn creek setting"
+              sizes="(max-width: 640px) 260px, 280px"
+              frame="teal"
+              position="center 12%"
+            />
+          </Link>
+          <div>
+            <h2 className="font-sans text-3xl font-bold leading-tight text-white">
+              Meet Melissa O&apos;Neal, OTR/L, postpartum occupational therapist
+            </h2>
+            <p className="mt-2 font-serif text-lg leading-[1.6] text-white">
+              Melissa O&apos;Neal, OTR/L, is an occupational therapist and the founder of The Postpartum OT. Her story is on the About page.
+            </p>
+            <Link href="/about" className="font-sans text-base font-bold text-white underline">
+              About Melissa
+            </Link>
+          </div>
+        </div>
+      </Section>
+
+      <Section variant="cream" width="prose">
+        <h2 className="font-sans text-3xl font-bold text-[#0A3660]">Postpartum questions new parents ask</h2>
+        <div className="mt-6 space-y-8">
+          {homeFaqs.map((faq) => (
+            <div key={faq.question}>
+              <h3 className="font-sans text-xl font-bold text-[#0A3660]">{faq.question}</h3>
+              <p className="mt-2 font-serif text-base text-black">{faq.short}</p>
+              <LearnMore>
+                <p>{faq.answer}</p>
+              </LearnMore>
+            </div>
+          ))}
+        </div>
+        <p className="mt-6">
+          <Link href="/faq" className="font-sans text-base font-bold text-[#0A3660] underline">
+            More questions
+          </Link>
+        </p>
+      </Section>
+
+      <section className="band-white border-t-4 border-teal-deep bg-white" aria-labelledby="home-help">
+        <div className="mx-auto max-w-[760px] px-6 py-10 md:px-8">
+          <h2 id="home-help" className="font-sans text-3xl font-bold text-[#0A3660]">
+            Need help now
+          </h2>
+          <CrisisLines compact />
+          <p className="mt-4">
+            <Link href="/need-help-now" className="font-sans text-base font-bold text-[#0A3660] underline">
+              All of the lines, including Postpartum Support International
+            </Link>
+          </p>
+        </div>
+      </section>
+    </div>
   );
 }

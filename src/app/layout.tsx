@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Lato, Lora } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -14,16 +14,31 @@ const lato = Lato({
 const lora = Lora({
   variable: "--font-lora",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   title: {
     template: "%s | The Postpartum OT",
-    default: "The Postpartum OT | Melissa O'Neal",
+    default: "Postpartum Support for New Moms and Dads from an Occupational Therapist",
   },
   description:
-    "Personal mentorship for occupational therapists building postpartum practices. 10+ years of clinical experience. 600+ OT community.",
+    "Postpartum support for new moms, dads, and caregivers from Melissa O'Neal, OTR/L. Educational information about sleep, feeding, recovery, and daily life. Not medical advice.",
+  openGraph: {
+    images: [
+      {
+        url: "/images/melissa/melissa-og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Melissa O'Neal, occupational therapist, smiling outdoors in a teal shirt",
+      },
+    ],
+  },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -42,8 +57,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${lato.variable} ${lora.variable} h-full antialiased`}>
+    <html lang="en" className={`${lato.variable} ${lora.variable} h-full antialiased`} suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var r=document.documentElement,t=null,m=null;try{t=localStorage.getItem("tppot-theme");m=localStorage.getItem("tppot-motion");}catch(e){}var dark=t==="dark"||(t!=="light"&&window.matchMedia("(prefers-color-scheme: dark)").matches);var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;var paused=m==="off"||(m!=="on"&&reduce);r.classList.toggle("dark",dark);r.classList.toggle("no-motion",paused);r.style.colorScheme=dark?"dark":"light";r.classList.add("js");})();`,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema()) }}
@@ -57,10 +77,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema()) }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-[#FAF7F2] text-[#0A3660]">
+      <body className="min-h-full flex flex-col bg-[#FAF7F2] text-black">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-xl focus:bg-[#357574] focus:px-6 focus:py-3 focus:font-sans focus:text-[15px] focus:font-bold focus:text-white"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-xl focus:bg-[#0A3660] focus:px-6 focus:py-3 focus:font-sans focus:text-[15px] focus:font-bold focus:text-white"
         >
           Skip to content
         </a>

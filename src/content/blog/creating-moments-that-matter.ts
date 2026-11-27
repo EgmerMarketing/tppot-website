@@ -60,5 +60,5 @@ The most impactful moments in healthcare happen when we remember that we're not 
 
 Every interaction is an opportunity to create a moment that matters. It doesn't require a special technique or an expensive tool. It requires presence, curiosity, and a genuine desire to understand what this mother's life actually looks like from the inside.
 
-**Join our free Facebook community** to connect with other healthcare providers who are committed to showing up for families in this way. Together, we can transform the standard of postpartum care, one meaningful moment at a time.`,
+**Join our Facebook community** to connect with other healthcare providers who are committed to showing up for families in this way. Together, we can transform the standard of postpartum care, one meaningful moment at a time.`,
 };

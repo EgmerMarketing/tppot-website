@@ -10,6 +10,7 @@ interface BlogPost {
   date: string;
   excerpt: string;
   category: string;
+  minutes?: number;
 }
 
 interface BlogFilterProps {
@@ -57,10 +58,10 @@ export default function BlogFilter({ posts, categories }: BlogFilterProps) {
         <div className="flex flex-wrap justify-center gap-2">
           <button
             onClick={() => setActiveCategory("All")}
-            className={`px-4 py-2 rounded-xl text-sm font-bold font-sans transition-colors ${
+            className={`min-h-11 rounded-xl px-4 py-2 font-sans text-base font-bold ${
               activeCategory === "All"
-                ? "bg-[#469695] text-white"
-                : "bg-white text-[#6B6560] border border-[#E6F0F0] hover:border-[#469695] hover:text-[#469695]"
+                ? "bg-[#0A3660] text-white"
+                : "border border-[#0A3660] bg-white text-black"
             }`}
           >
             All
@@ -69,11 +70,11 @@ export default function BlogFilter({ posts, categories }: BlogFilterProps) {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 rounded-xl text-sm font-bold font-sans transition-colors ${
-                activeCategory === cat
-                  ? "bg-[#469695] text-white"
-                  : "bg-white text-[#6B6560] border border-[#E6F0F0] hover:border-[#469695] hover:text-[#469695]"
-              }`}
+            className={`min-h-11 rounded-xl px-4 py-2 font-sans text-base font-bold ${
+              activeCategory === cat
+                ? "bg-[#0A3660] text-white"
+                : "border border-[#0A3660] bg-white text-black"
+            }`}
             >
               {cat}
             </button>
@@ -92,40 +93,45 @@ export default function BlogFilter({ posts, categories }: BlogFilterProps) {
               setSearch("");
               setActiveCategory("All");
             }}
-            className="mt-4 text-[#469695] font-sans font-bold text-sm hover:text-[#357574] transition-colors"
+            className="mt-4 inline-flex min-h-11 items-center font-sans text-base font-bold text-[#0A3660] underline"
           >
             Clear filters
           </button>
         </div>
       ) : (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredPosts.map((post) => (
+          {filteredPosts.map((post, index) => (
             <article
               key={post.slug}
-              className="bg-white rounded-2xl shadow-sm shadow-[#0A3660]/4 hover:shadow-md transition-shadow overflow-hidden flex flex-col"
+              className={`surface-card flex flex-col overflow-hidden rounded-[1.75rem] bg-white ${index === 0 ? "md:col-span-2 lg:col-span-2" : index % 2 === 0 ? "lg:mt-8" : ""}`}
             >
               <div className="p-7 flex flex-col flex-1">
-                <div className="flex items-center gap-3 mb-3">
-                  <p className="text-xs text-[#6B6560] font-sans">
+                <div className="flex flex-wrap items-center gap-3 mb-3">
+                  <p className="text-base text-[#6B6560] font-sans">
                     {new Date(post.date).toLocaleDateString("en-US", {
                       month: "long",
                       day: "numeric",
                       year: "numeric",
                     })}
                   </p>
-                  <span className="text-xs text-[#469695] font-sans font-bold bg-[#469695]/10 px-2 py-0.5 rounded">
+                  <span className="rounded-full bg-[#eef6f6] px-3 py-1 font-sans text-base font-bold text-[#2f6b6a]">
                     {post.category}
                   </span>
+                  {post.minutes ? (
+                    <span className="rounded-full bg-white px-3 py-1 font-sans text-base font-bold text-[#0A3660]">
+                      {post.minutes} min read
+                    </span>
+                  ) : null}
                 </div>
-                <h2 className="font-serif text-[#0A3660] font-bold text-lg mb-3 leading-snug">
+                <h2 className={`font-serif font-bold text-[#0A3660] mb-3 leading-snug ${index === 0 ? "text-3xl" : "text-lg"}`}>
                   {post.title}
                 </h2>
-                <p className="font-serif text-[#6B6560] text-sm leading-relaxed line-clamp-3 flex-1">
+                <p className="flex-1 font-serif text-base leading-relaxed text-black line-clamp-3">
                   {post.excerpt}
                 </p>
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="text-[#469695] font-sans font-bold text-sm mt-5 inline-block hover:text-[#357574] transition-colors"
+                  className="mt-5 inline-flex min-h-11 items-center font-sans text-base font-bold text-[#0A3660] underline"
                 >
                   Read more
                 </Link>
@@ -136,7 +142,7 @@ export default function BlogFilter({ posts, categories }: BlogFilterProps) {
       )}
 
       {/* Count */}
-      <p className="text-center text-sm text-[#6B6560] font-sans mt-8">
+      <p className="text-center text-base text-[#6B6560] font-sans mt-8">
         Showing {filteredPosts.length} of {posts.length} articles
       </p>
     </>

@@ -1,165 +1,232 @@
 import type { Metadata } from "next";
-import { Headphones, Play, ChevronRight } from "lucide-react";
+import Image from "next/image";
+import { Nunito, Playfair_Display } from "next/font/google";
+import Byline from "@/components/site/Byline";
+import Portrait from "@/components/site/Portrait";
+import SoundWave from "@/components/site/SoundWave";
+import EmailSignup from "@/components/site/EmailSignup";
+import JsonLd from "@/components/site/JsonLd";
 import { breadcrumbSchema, podcastSeriesSchema } from "@/lib/schema";
+import {
+  APPLE_PODCAST_URL,
+  FFT_SITE_URL,
+  FFT_YOUTUBE_URL,
+  SPOTIFY_PODCAST_URL,
+} from "@/lib/podcast";
+import { DISCLAIMER_SHORT, SITE_URL } from "@/lib/site";
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  variable: "--font-fft-display",
+});
+
+const nunito = Nunito({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-fft-body",
+});
+
+const SHOW_NAME = "Functional Fourth Trimester";
+const ONE_LINE =
+  "Functional Fourth Trimester is the podcast hosted by occupational therapist Melissa O'Neal, OTR/L, helping new parents figure out how daily life actually works after a baby arrives.";
 
 export const metadata: Metadata = {
-  title: "The Functional Fourth Trimester Podcast | The Postpartum OT",
-  description:
-    "Weekly conversations about building a postpartum OT practice. Clinical insights, business strategy, and honest talk with Melissa O'Neal.",
+  title: SHOW_NAME,
+  description: ONE_LINE,
+  openGraph: {
+    images: [
+      {
+        url: "/images/fft/fft-cover-1600.webp",
+        width: 1600,
+        height: 1600,
+        alt: "Functional Fourth Trimester cover. Navy field, cream FFT badge, and sound-wave marks.",
+      },
+    ],
+  },
 };
 
-const FFT = "https://functionalfourthtrimester.com";
-
-const episodes = [
+const recent = [
   {
-    number: 7,
-    title: "Tummy Time and Milestones: What to Expect in the Early Months",
-    date: "Mar 19, 2026",
-    duration: "27 min",
-    blog: `${FFT}/episodes/tummy-time-milestones-early-months`,
+    number: 25,
+    title: "You Have Choices: Feeding Goals That Fit Real Family Life",
+    guest: "Kelly McLeod",
+    duration: "30 min",
+    href: `${FFT_SITE_URL}/episodes/you-have-choices-feeding-goals-that-fit-real-family-life`,
+    summary:
+      "Occupational therapist and lactation consultant Kelly McLeod joins host Melissa O'Neal for a full-circle conversation about what helps families with infant feeding, at home and after the NICU.",
   },
   {
-    number: 6,
-    title: "Beyond Outnumbered: Practical Survival Strategies for Parents of Multiples",
-    date: "Mar 15, 2026",
-    duration: "29 min",
-    blog: `${FFT}/episodes/beyond-outnumbered-survival-strategies-parents-multiples`,
+    number: 24,
+    title: "Paula's Story: Preeclampsia, HELLP Syndrome, and Two Christmas C-Sections",
+    guest: "Paula",
+    duration: "36 min",
+    href: `${FFT_SITE_URL}/episodes/paulas-story-preeclampsia-hellp-and-two-christmas-c-sections`,
+    summary:
+      "Paula describes preeclampsia and HELLP syndrome, two Christmas C-sections, and what helped afterward, including her husband's support and counseling.",
   },
   {
-    number: 5,
-    title: "The Power of Touch: How Infant Massage Supports Regulation and Bonding",
-    date: "Mar 8, 2026",
-    duration: "24 min",
-    blog: `${FFT}/episodes/power-of-touch-infant-massage-regulation-bonding`,
-  },
-  {
-    number: 4,
-    title: "From Chaos to Calm: Simple Sleep Strategies for New Parents",
-    date: "Feb 28, 2026",
-    duration: "19 min",
-    blog: `${FFT}/episodes/from-chaos-to-calm-sleep-strategies-new-parents`,
-  },
-  {
-    number: 3,
-    title: "Wired and Tired: How the Nervous System Shapes Infant Sleep",
-    date: "Feb 28, 2026",
-    duration: "18 min",
-    blog: `${FFT}/episodes/wired-and-tired-nervous-system-infant-sleep`,
-  },
-  {
-    number: 2,
-    title: "More Than Baby Blues: Understanding Postpartum Mood and Anxiety Disorders",
-    date: "Feb 28, 2026",
+    number: 23,
+    title: "Coming Home Empty-Handed: Two NICU Stays in One Year",
+    guest: "Audrianna",
     duration: "28 min",
-    blog: `${FFT}/episodes/more-than-baby-blues-postpartum-mood-anxiety`,
-  },
-  {
-    number: 1,
-    title: "Welcome to Functional Fourth Trimester: Rethinking Daily Life After Birth",
-    date: "Feb 28, 2026",
-    duration: "6 min",
-    blog: `${FFT}/episodes/welcome-to-functional-fourth-trimester`,
+    href: `${FFT_SITE_URL}/episodes/coming-home-empty-handed-two-nicu-stays`,
+    summary:
+      "Audrianna talks about two different NICU stays in one year, coming home without the baby, and the support that helped the second time.",
   },
 ];
 
+const catalog: { number: number; title: string; href: string }[] = [
+  { number: 25, title: recent[0].title, href: recent[0].href },
+  { number: 24, title: recent[1].title, href: recent[1].href },
+  { number: 23, title: recent[2].title, href: recent[2].href },
+  { number: 22, title: "The Pediatric Pelvic Floor: What Every Parent Should Know About Peeing and Pooping", href: `${FFT_SITE_URL}/episodes/pediatric-pelvic-floor-what-parents-should-know` },
+  { number: 21, title: "You Can't Pour From an Empty Cup: The Power of Postpartum Self-Care", href: `${FFT_SITE_URL}/episodes/postpartum-self-care-cant-pour-from-empty-cup` },
+  { number: 20, title: "The Return to Work Transition: Creating a Sustainable Pumping Plan", href: `${FFT_SITE_URL}/episodes/return-to-work-sustainable-pumping-plan` },
+  { number: 19, title: "When Birth Doesn't Go As Planned: Grieving the Vision and Trusting Your Body", href: `${FFT_SITE_URL}/episodes/grieving-the-birth-you-planned-trusting-your-body` },
+  { number: 18, title: "Navigating the NICU: A Nurse's Guide for Parents", href: `${FFT_SITE_URL}/episodes/navigating-the-nicu-nurses-guide-for-parents` },
+  { number: 17, title: "The Postpartum Gap: Building Support and Connection for New Parents", href: `${FFT_SITE_URL}/episodes/postpartum-gap-building-support-connection-new-parents` },
+  { number: 16, title: "The Best Toy Is You: Simple Ways to Support Infant Development", href: `${FFT_SITE_URL}/episodes/best-toy-is-you-simple-ways-support-infant-development` },
+  { number: 15, title: "When Birth Doesn't Go as Planned: Navigating Trauma and Healing After the Unexpected", href: `${FFT_SITE_URL}/episodes/when-birth-doesnt-go-as-planned-navigating-trauma-healing` },
+  { number: 14, title: "Exclusively Pumping: The Reality, the Challenges, and the Wins", href: `${FFT_SITE_URL}/episodes/exclusively-pumping-reality-challenges-wins` },
+  { number: 13, title: "Postpartum and Beyond: The Hormonal Link to Longevity and Future Wellness", href: `${FFT_SITE_URL}/episodes/postpartum-hormonal-link-longevity-wellness` },
+  { number: 12, title: "Movement Over Exercise: Small, Daily Shifts for Postpartum Mental Wellness", href: `${FFT_SITE_URL}/episodes/movement-over-exercise-postpartum-mental-wellness` },
+  { number: 11, title: "C-Section Recovery: What to Expect Beyond the Hospital", href: `${FFT_SITE_URL}/episodes/c-section-recovery-what-to-expect-beyond-the-hospital` },
+  { number: 10, title: "Pelvic Floor Recovery: Why 'Just Rest' Isn't Enough", href: `${FFT_SITE_URL}/episodes/pelvic-floor-recovery-why-just-rest-isnt-enough` },
+  { number: 9, title: "Breastfeeding and Food Intolerances: How Mom's Diet Affects Baby", href: `${FFT_SITE_URL}/episodes/breastfeeding-food-intolerances-map-my-milk` },
+  { number: 8, title: "Breastfeeding Challenges: Normalizing the Struggle", href: `${FFT_SITE_URL}/episodes/breastfeeding-challenges-support-amy-wise` },
+  { number: 7, title: "Tummy Time and Milestones: What to Expect in the Early Months", href: `${FFT_SITE_URL}/episodes/tummy-time-milestones-early-months` },
+  { number: 6, title: "Beyond Outnumbered: Practical Survival Strategies for Parents of Multiples", href: `${FFT_SITE_URL}/episodes/beyond-outnumbered-survival-strategies-parents-multiples` },
+  { number: 5, title: "The Power of Touch: How Infant Massage Supports Regulation and Bonding", href: `${FFT_SITE_URL}/episodes/power-of-touch-infant-massage-regulation-bonding` },
+  { number: 4, title: "From Chaos to Calm: Simple Sleep Strategies for New Parents", href: `${FFT_SITE_URL}/episodes/from-chaos-to-calm-sleep-strategies-new-parents` },
+  { number: 3, title: "Wired and Tired: How the Nervous System Shapes Infant Sleep", href: `${FFT_SITE_URL}/episodes/wired-and-tired-nervous-system-infant-sleep` },
+  { number: 2, title: "More Than Baby Blues: Understanding Postpartum Mood and Anxiety Disorders", href: `${FFT_SITE_URL}/episodes/more-than-baby-blues-postpartum-mood-anxiety` },
+  { number: 1, title: "Welcome to Functional Fourth Trimester: Rethinking Daily Life After Birth", href: `${FFT_SITE_URL}/episodes/welcome-to-functional-fourth-trimester` },
+];
+
+const listen = [
+  ["Apple Podcasts", APPLE_PODCAST_URL],
+  ["Spotify", SPOTIFY_PODCAST_URL],
+  ["YouTube", FFT_YOUTUBE_URL],
+] as const;
+
 export default function PodcastPage() {
   return (
-    <main className="bg-[#FAF7F2]">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([{ name: "Home", url: "https://thepostpartumot.com" }, { name: "Podcast", url: "https://thepostpartumot.com/podcast" }])) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(podcastSeriesSchema()) }} />
-      <section className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16 py-24 md:py-32">
-        <div className="max-w-2xl mb-16">
-          <p className="text-[#469695] font-bold text-xs tracking-[0.2em] uppercase mb-6 font-sans">
-            The Podcast
-          </p>
-          <h1 className="text-4xl md:text-5xl font-bold text-[#0A3660] mb-6 font-serif">
-            The Functional Fourth Trimester
-          </h1>
-          <p className="text-[17px] text-[#6B6560] leading-relaxed font-serif">
-            Weekly conversations about building a postpartum practice that makes
-            a real difference. Clinical insights, business strategy, and honest
-            talk from someone who has been in the trenches for over a decade.
-            New episodes every week.
-          </p>
-        </div>
-
-        {/* Platform Links */}
-        <div className="flex flex-wrap gap-4 mb-16">
-          <a
-            href="https://podcasts.apple.com/us/podcast/functional-fourth-trimester/id1881077069"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2.5 bg-[#061D37] text-white px-6 py-3.5 rounded-xl font-bold text-sm hover:bg-[#0A3660] transition-colors font-sans"
-          >
-            <Headphones className="w-4 h-4" strokeWidth={2} />
-            Apple Podcasts
-          </a>
-          <a
-            href="https://open.spotify.com/show/0yuF6uerJGVWdhgysa7Ug3"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2.5 border-2 border-[#0A3660]/15 text-[#0A3660] px-6 py-3.5 rounded-xl font-bold text-sm hover:border-[#0A3660]/30 transition-colors font-sans"
-          >
-            <Headphones className="w-4 h-4" strokeWidth={2} />
-            Spotify
-          </a>
-        </div>
-
-        {/* Episode List */}
-        <div className="space-y-4 mb-16">
-          {episodes.map((ep) => (
-            <div
-              key={ep.number}
-              className="bg-white rounded-2xl shadow-sm shadow-[#0A3660]/4 hover:shadow-md hover:shadow-[#0A3660]/8 transition-shadow p-6 flex items-center gap-5"
-            >
-              <a
-                href="https://podcasts.apple.com/us/podcast/functional-fourth-trimester/id1881077069"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Listen to Episode ${ep.number} on Apple Podcasts`}
-                className="group w-14 h-14 rounded-xl bg-[#469695]/10 flex items-center justify-center flex-shrink-0 hover:bg-[#469695] transition-colors"
-              >
-                <Play
-                  className="w-6 h-6 text-[#469695] group-hover:text-white transition-colors"
-                  strokeWidth={1.5}
-                />
-              </a>
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-3 mb-1">
-                  <p className="text-[11px] text-[#469695] font-bold tracking-wider uppercase font-sans">
-                    Episode {ep.number}
-                  </p>
-                  <span className="text-[11px] text-[#6B6560] font-sans">{ep.date}</span>
-                  <span className="text-[11px] text-[#6B6560] font-sans">{ep.duration}</span>
-                </div>
-                <a href={ep.blog} target="_blank" rel="noopener noreferrer" className="text-[15px] font-bold text-[#0A3660] font-sans hover:text-[#469695] transition-colors">
-                  {ep.title}
-                </a>
-              </div>
-              <a href={ep.blog} target="_blank" rel="noopener noreferrer" aria-label="Read show notes" className="text-[11px] text-[#469695] font-sans font-bold hover:text-[#357574] transition-colors flex-shrink-0 hidden md:block">
-                Show Notes
-              </a>
+    <article className={`${playfair.variable} ${nunito.variable} fft-page bg-[#A8B8A2]`}>
+      <JsonLd data={breadcrumbSchema([{ name: "Home", url: SITE_URL }, { name: "Podcast", url: `${SITE_URL}/podcast` }])} />
+      <JsonLd data={podcastSeriesSchema()} />
+      <header className="fft-banner relative overflow-hidden bg-[#18355D] text-white">
+        <svg aria-hidden="true" className="pointer-events-none absolute -right-16 top-6 h-64 w-64 opacity-30" viewBox="0 0 200 200">
+          <circle cx="100" cy="100" r="28" fill="none" stroke="#A8B8A2" strokeWidth="3" />
+          <circle cx="100" cy="100" r="48" fill="none" stroke="#469695" strokeWidth="2" />
+          <circle cx="100" cy="100" r="70" fill="none" stroke="#F5F0E8" strokeWidth="1.5" />
+        </svg>
+        <div className="relative mx-auto grid max-w-[1120px] items-center gap-8 px-6 py-12 md:grid-cols-[minmax(0,320px)_minmax(0,1fr)] md:px-8 md:py-16">
+          <Image
+            src="/images/fft/fft-cover-1600.webp"
+            alt="Functional Fourth Trimester cover. Navy field, cream FFT badge, sound-wave marks, and the line New episodes every Thursday."
+            width={1600}
+            height={1600}
+            priority
+            sizes="(max-width: 768px) 100vw, 320px"
+            className="mx-auto aspect-square w-full max-w-[320px] rounded-[2rem]"
+          />
+          <div>
+            <div className="light-chip inline-block max-w-full rounded-2xl bg-[#F5F0E8] px-4 py-3">
+              <img
+                src="/images/fft/fft-horizontal-no-descriptor.svg"
+                alt=""
+                className="h-12 w-auto max-w-full md:h-14"
+              />
             </div>
-          ))}
+            <div className="podcast-heading mt-5">
+              <h1 className="fft-display max-w-[70ch] text-white">{SHOW_NAME}</h1>
+              <SoundWave className="sound-wave-slot mb-4 h-16 w-auto max-w-full" />
+            </div>
+            <p className="mt-4 text-lg font-normal leading-[1.6] text-white">{ONE_LINE}</p>
+            <p className="fft-label mt-4 inline-flex min-h-11 items-center rounded-full bg-[#F5F0E8] px-4 text-[#18355D]">
+              New episodes every Thursday
+            </p>
+            <p className="mt-4 text-lg font-normal leading-[1.6] text-white">{DISCLAIMER_SHORT}</p>
+            <ul className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              {listen.map(([label, href]) => (
+                <li key={href}>
+                  <a className="fft-label inline-flex min-h-11 items-center justify-center rounded-full bg-[#F5F0E8] px-5 text-[#18355D]" href={href}>
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-4 text-lg leading-[1.6]">
+              <a className="font-bold text-white underline" href={FFT_SITE_URL}>
+                Visit the podcast site
+              </a>
+            </p>
+          </div>
         </div>
+      </header>
 
-        {/* CTA */}
-        <div className="bg-[#E6F0F0] rounded-2xl p-8 md:p-12 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#0A3660] mb-4 font-serif">
-            Have a topic suggestion?
-          </h2>
-          <p className="text-[17px] text-[#6B6560] leading-relaxed mb-8 max-w-lg mx-auto font-serif">
-            The best episodes come from real questions. If there&apos;s something
-            you want to hear about, let us know.
+      <div className="mx-auto max-w-[760px] px-6 py-12 md:px-8">
+        <h2 className="fft-display text-[#18355D]">Recent episodes</h2>
+        <p className="mt-3 text-lg leading-[1.6] text-[#2C3A47]">
+          Three recent conversations from the podcast site. Each link opens the episode there.
+        </p>
+        <ul className="mt-6 space-y-4">
+          {recent.map((episode) => (
+            <li key={episode.number} className="rounded-[1.75rem] bg-[#F5F0E8] p-5 text-[#2C3A47]">
+              <p className="fft-label text-[#3F6A83]">
+                Episode {episode.number} · {episode.guest} · {episode.duration}
+              </p>
+              <h3 className="mt-2 text-lg font-bold leading-[1.6] text-[#18355D]">{episode.title}</h3>
+              <p className="mt-2 text-lg leading-[1.6]">{episode.summary}</p>
+              <p className="mt-3">
+                <a className="fft-label text-[#18355D] underline" href={episode.href}>
+                  Listen on the podcast site
+                </a>
+              </p>
+            </li>
+          ))}
+        </ul>
+
+        <h2 className="fft-display mt-12 text-[#18355D]">All episodes on the podcast site</h2>
+        <ol className="mt-4 space-y-3">
+          {catalog.map((episode) => (
+            <li key={episode.number} className="rounded-2xl bg-[#F5F0E8] px-4 py-3">
+              <a className="text-lg font-bold leading-[1.6] text-[#18355D] underline" href={episode.href}>
+                {episode.number}. {episode.title}
+              </a>
+            </li>
+          ))}
+        </ol>
+
+        <div className="mt-12 grid items-start gap-8 md:grid-cols-[280px_1fr]">
+          <Portrait
+            src="/images/melissa/melissa-seated-blue-step.webp"
+            alt="Melissa O'Neal, occupational therapist, seated on a blue step and smiling"
+            sizes="(max-width: 768px) 80vw, 280px"
+            frame="navy"
+            position="center 16%"
+          />
+          <div>
+        <h2 className="fft-display text-[#18355D]">Meet Your Host</h2>
+        <div className="mt-4 max-w-[70ch] space-y-4 text-lg font-normal leading-[1.6] text-[#2C3A47]">
+          <p>
+            Melissa O&apos;Neal is an occupational therapist and the founder of The Postpartum OT. For more than 15 years, she has supported families in the weeks and months after birth, work that began with her own journey as a new mom.
           </p>
-          <a
-            href="/contact"
-            className="inline-flex items-center gap-2.5 bg-[#357574] text-white px-7 py-4 rounded-xl font-bold text-[15px] hover:bg-[#0A3660] transition-colors font-sans"
-          >
-            Contact Us
-          </a>
+          <p>
+            On <strong className="font-bold">The Functional Fourth Trimester</strong>, Melissa talks with experts, clinicians, and parents about what the postpartum season really looks like and what actually helps. Each episode focuses on practical ways to build routines around sleep, feeding, mental health, and connection, so moms and the professionals who support them leave with something they can use right away.
+          </p>
+          <p>
+            Melissa is also the Director of the Women&apos;s Health and Postpartum Hub on Ability Village and is building the Functional Fourth Trimester Circle, a community where new moms get real support. As a Certified Disability Rights and Accessibility Consultant, she makes sure every conversation keeps all families in mind.
+          </p>
         </div>
-      </section>
-    </main>
+          </div>
+        </div>
+        <Byline />
+        <div className="mt-10 rounded-[1.75rem] bg-[#F5F0E8] p-6 text-[#2C3A47]">
+          <EmailSignup idPrefix="podcast" heading="Get new episodes in your inbox" />
+        </div>
+      </div>
+    </article>
   );
 }

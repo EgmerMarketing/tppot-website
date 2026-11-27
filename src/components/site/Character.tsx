@@ -1,0 +1,153 @@
+import Link from "next/link";
+import { Heart, Moon, Users } from "lucide-react";
+import SoundWave from "@/components/site/SoundWave";
+
+export function Wave({ from, to }: { from: string; to: string }) {
+  return (
+    <div className="wave-divider relative -mt-px leading-[0]" data-from={from} data-to={to} aria-hidden="true">
+      <svg viewBox="0 0 1440 72" preserveAspectRatio="none" className="block h-12 w-full md:h-16" style={{ background: from }}>
+        <path
+          className="wave-fill"
+          fill={to}
+          d="M0,36 C180,72 360,0 540,28 C720,56 900,8 1080,32 C1260,56 1360,20 1440,36 L1440,72 L0,72 Z"
+        />
+      </svg>
+    </div>
+  );
+}
+
+export function Squiggle({ className = "text-[#469695]" }: { className?: string }) {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 120 10" preserveAspectRatio="none" className={`mt-1 h-2 w-24 ${className}`}>
+      <path d="M2 7 Q 16 1 30 7 T 58 7 T 86 7 T 118 6" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+export function Eyebrow({ children, onDark = false }: { children: React.ReactNode; onDark?: boolean }) {
+  return (
+    <p className={`font-sans text-base font-bold uppercase tracking-[0.14em] ${onDark ? "text-white" : "text-[#2f6b6a]"}`}>
+      {children}
+    </p>
+  );
+}
+
+export function NextStep({
+  href,
+  children,
+  onDark = false,
+}: {
+  href: string;
+  children: React.ReactNode;
+  onDark?: boolean;
+}) {
+  return (
+    <p className="mt-8 font-sans text-base font-bold">
+      <Link href={href} className={`underline underline-offset-4 ${onDark ? "text-white" : "text-[#0A3660]"}`}>
+        {children}
+      </Link>
+    </p>
+  );
+}
+
+const topicIcons = {
+  sleep: Moon,
+  mood: Heart,
+  dads: Users,
+} as const;
+
+export type TopicIconName = keyof typeof topicIcons;
+
+export function TopicIcon({ name }: { name: TopicIconName }) {
+  const Icon = topicIcons[name];
+  return <Icon aria-hidden="true" className="h-8 w-8 shrink-0 text-[#0A3660]" strokeWidth={1.75} />;
+}
+
+/** Only meanings that read at a glance. Feeding, recovery, daily life, and mental load have no icon. */
+export function topicIconFor(href: string): TopicIconName | null {
+  if (href.includes("sleep")) return "sleep";
+  if (href.includes("dads")) return "dads";
+  return null;
+}
+
+export function EmphasisTitle({
+  title,
+  emphasis,
+  accentClass = "font-bold text-[#2f6b6a]",
+}: {
+  title: string;
+  emphasis?: string;
+  accentClass?: string;
+}) {
+  if (!emphasis || !title.includes(emphasis)) {
+    return (
+      <>
+        {title}
+        <Squiggle />
+      </>
+    );
+  }
+  const index = title.indexOf(emphasis);
+  return (
+    <>
+      {title.slice(0, index)}
+      <span className={accentClass}>{emphasis}</span>
+      {title.slice(index + emphasis.length)}
+      <Squiggle />
+    </>
+  );
+}
+
+export function WhereNext({ links }: { links: { href: string; label: string }[] }) {
+  const seen = new Set<string>();
+  const items = [
+    ...links,
+    { href: "/podcast", label: "Functional Fourth Trimester" },
+    { href: "/community#waitlist", label: "Join the waitlist" },
+  ].filter((item) => {
+    if (seen.has(item.href)) return false;
+    seen.add(item.href);
+    return true;
+  });
+
+  return (
+    <section className="mint-surface bg-[#eef6f6]">
+      <div className="mx-auto max-w-[1120px] px-6 py-12 md:px-8">
+        <Eyebrow>Keep going</Eyebrow>
+        <h2 className="mt-2 font-serif text-3xl font-semibold text-[#0A3660] md:text-4xl">Where to next</h2>
+        <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {items.map((item, index) => (
+            <li key={item.href} className={index % 2 === 1 ? "sm:translate-y-3" : ""}>
+              <Link href={item.href} className="surface-card block h-full rounded-[1.5rem] bg-white p-5 font-serif text-lg font-semibold leading-snug text-[#0A3660]">
+                <span>{item.label}</span>
+                {item.href === "/podcast" ? (
+                  <span className="sound-wave-slot mt-3 block rounded-xl bg-[#18355D] px-3 py-2">
+                    <SoundWave className="h-10 w-auto max-w-full" />
+                  </span>
+                ) : null}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+export function StepTrail({ steps }: { steps: string[] }) {
+  return (
+    <ol className="relative mt-8 space-y-6">
+      <svg aria-hidden="true" className="absolute left-[1.15rem] top-6 h-[calc(100%-3rem)] w-6 text-[#469695]" viewBox="0 0 24 200" preserveAspectRatio="none">
+        <path d="M12 0 C 22 40 2 70 12 100 C 22 130 2 160 12 200" fill="none" stroke="currentColor" strokeWidth="2" />
+      </svg>
+      {steps.map((step, index) => (
+        <li key={step} className="relative flex items-start gap-4">
+          <span className="z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#0A3660] font-sans text-base font-bold text-white">
+            {index + 1}
+          </span>
+          <p className="pt-1 font-serif text-lg leading-snug text-black">{step}</p>
+        </li>
+      ))}
+    </ol>
+  );
+}

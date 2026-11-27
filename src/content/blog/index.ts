@@ -22,10 +22,11 @@ import { post11 } from './why-knowing-what-to-do-isnt-enough';
 import { post12 } from './how-to-stop-second-guessing';
 import { post14 } from './how-the-nervous-system-impacts-infant-sleep';
 import { post15 } from './more-than-baby-blues';
+import { postTravel } from './tips-to-travel-postpartum';
 
 export const blogPosts: BlogPost[] = [
   post1, post2, post3, post4, post5, post6, post7, post8, post9,
-  post10, post11, post12, post14, post15,
+  post10, post11, post12, post14, post15, postTravel,
 ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 export function getBlogBySlug(slug: string): BlogPost | undefined {
