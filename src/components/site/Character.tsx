@@ -84,6 +84,57 @@ export function topicIconFor(href: string): keyof typeof icons {
   return "daily";
 }
 
+export function EmphasisTitle({ title, emphasis }: { title: string; emphasis?: string }) {
+  if (!emphasis || !title.includes(emphasis)) {
+    return (
+      <>
+        {title}
+        <Squiggle />
+      </>
+    );
+  }
+  const index = title.indexOf(emphasis);
+  return (
+    <>
+      {title.slice(0, index)}
+      <span className="font-bold text-[#2f6b6a]">{emphasis}</span>
+      {title.slice(index + emphasis.length)}
+      <Squiggle />
+    </>
+  );
+}
+
+export function WhereNext({ links }: { links: { href: string; label: string }[] }) {
+  const seen = new Set<string>();
+  const items = [
+    ...links,
+    { href: "/podcast", label: "Listen to Functional Fourth Trimester" },
+    { href: "/community#waitlist", label: "Join the waitlist" },
+  ].filter((item) => {
+    if (seen.has(item.href)) return false;
+    seen.add(item.href);
+    return true;
+  });
+
+  return (
+    <section className="bg-[#eef6f6]">
+      <div className="mx-auto max-w-[1120px] px-6 py-12 md:px-8">
+        <Eyebrow>Keep going</Eyebrow>
+        <h2 className="mt-2 font-serif text-3xl font-semibold text-[#0A3660] md:text-4xl">Where to next</h2>
+        <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {items.map((item, index) => (
+            <li key={item.href} className={index % 2 === 1 ? "sm:translate-y-3" : ""}>
+              <Link href={item.href} className="surface-card block h-full rounded-[1.5rem] bg-white p-5 font-serif text-lg font-semibold leading-snug text-[#0A3660]">
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
 export function StepTrail({ steps }: { steps: string[] }) {
   return (
     <ol className="relative mt-8 space-y-6">

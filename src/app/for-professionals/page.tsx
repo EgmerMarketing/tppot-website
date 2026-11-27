@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHeader from "@/components/site/PageHeader";
+import { WhereNext } from "@/components/site/Character";
 import NeedsMelissa from "@/components/site/NeedsMelissa";
 import { LearnMore } from "@/components/site/Scan";
 import YoutubeFacade from "@/components/site/YoutubeFacade";
@@ -76,6 +77,7 @@ export default function ForProfessionalsPage() {
       <PageHeader
         title={title}
         lede="This page is for occupational therapists and other clinicians. Nothing here is a live checkout."
+        emphasis="Professionals"
       />
       <div className="family-copy mx-auto max-w-[760px] px-6 md:px-8">
         <h2>What has Melissa shared?</h2>
@@ -126,7 +128,10 @@ export default function ForProfessionalsPage() {
         <p>One file is a direct download. The others are free with your email. Melissa gets your address and the file name. There is no email series.</p>
         <ul className="panel-navy mt-4 grid gap-3 rounded-2xl bg-navy p-3">
           {PROFESSIONAL_HANDOUTS.map((handout) => (
-            <li key={handout.id} className="surface-card rounded-xl bg-white p-4">
+            <li key={handout.id} className="surface-card rounded-[1.5rem] bg-white p-4">
+              <span className="mb-2 inline-flex rounded-full bg-[#eef6f6] px-3 py-1 font-sans text-base font-bold text-[#2f6b6a]">
+                {handout.gated ? "Free with email" : "PDF"}
+              </span>
               <p className="font-sans text-lg font-bold text-[#0A3660]">{handout.title}</p>
               <p className="mt-1 font-serif text-base text-black">{handout.summary}</p>
               {handout.gated ? (
@@ -183,6 +188,7 @@ export default function ForProfessionalsPage() {
           </NeedsMelissa>
         </LearnMore>
       </div>
+      <WhereNext links={[{ href: "/resources", label: "Family resources" }, { href: "/contact", label: "Contact" }]} />
     </article>
   );
 }

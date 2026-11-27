@@ -10,6 +10,7 @@ interface BlogPost {
   date: string;
   excerpt: string;
   category: string;
+  minutes?: number;
 }
 
 interface BlogFilterProps {
@@ -99,13 +100,13 @@ export default function BlogFilter({ posts, categories }: BlogFilterProps) {
         </div>
       ) : (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredPosts.map((post) => (
+          {filteredPosts.map((post, index) => (
             <article
               key={post.slug}
-              className="bg-white rounded-2xl shadow-sm shadow-[#0A3660]/4 hover:shadow-md transition-shadow overflow-hidden flex flex-col"
+              className={`surface-card flex flex-col overflow-hidden rounded-[1.75rem] bg-white ${index === 0 ? "md:col-span-2 lg:col-span-2" : index % 2 === 0 ? "lg:mt-8" : ""}`}
             >
               <div className="p-7 flex flex-col flex-1">
-                <div className="flex items-center gap-3 mb-3">
+                <div className="flex flex-wrap items-center gap-3 mb-3">
                   <p className="text-base text-[#6B6560] font-sans">
                     {new Date(post.date).toLocaleDateString("en-US", {
                       month: "long",
@@ -113,11 +114,16 @@ export default function BlogFilter({ posts, categories }: BlogFilterProps) {
                       year: "numeric",
                     })}
                   </p>
-                  <span className="rounded bg-[#eef6f6] px-2 py-0.5 font-sans text-base font-bold text-[#2f6b6a]">
+                  <span className="rounded-full bg-[#eef6f6] px-3 py-1 font-sans text-base font-bold text-[#2f6b6a]">
                     {post.category}
                   </span>
+                  {post.minutes ? (
+                    <span className="rounded-full bg-white px-3 py-1 font-sans text-base font-bold text-[#0A3660]">
+                      {post.minutes} min read
+                    </span>
+                  ) : null}
                 </div>
-                <h2 className="font-serif text-[#0A3660] font-bold text-lg mb-3 leading-snug">
+                <h2 className={`font-serif font-bold text-[#0A3660] mb-3 leading-snug ${index === 0 ? "text-3xl" : "text-lg"}`}>
                   {post.title}
                 </h2>
                 <p className="flex-1 font-serif text-base leading-relaxed text-black line-clamp-3">

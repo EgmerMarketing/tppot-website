@@ -5,6 +5,7 @@ import CtaRow from "@/components/site/CtaRow";
 import Byline from "@/components/site/Byline";
 import NeedsMelissa from "@/components/site/NeedsMelissa";
 import { KeyPoints, LearnMore } from "@/components/site/Scan";
+import { TopicIcon, WhereNext } from "@/components/site/Character";
 import EpisodeList from "@/components/site/EpisodeList";
 import JsonLd from "@/components/site/JsonLd";
 import { articleSchema, breadcrumbSchema } from "@/lib/schema";
@@ -26,7 +27,36 @@ export default function WhatIsPage() {
       <PageHeader
         title={title}
         lede="An occupational therapist looks at the daily jobs after birth: sleep, feeding, washing, and getting out the door. It is education, not a diagnosis."
+        emphasis="OT"
       />
+      <div className="mx-auto max-w-[1120px] px-6 py-8 md:px-8">
+        <p className="font-sans text-base font-bold text-[#2f6b6a]">OT helps with</p>
+        <ul className="mt-4 flex flex-wrap gap-3">
+          {([
+            ["sleep", "Sleep"],
+            ["feeding", "Feeding"],
+            ["daily", "The day"],
+            ["recovery", "Recovery"],
+            ["mood", "Mood"],
+            ["dads", "Partners"],
+          ] as const).map(([name, label]) => (
+            <li key={name} className="surface-card flex items-center gap-2 rounded-full bg-white px-4 py-2">
+              <TopicIcon name={name} />
+              <span className="font-sans text-base font-bold text-[#0A3660]">{label}</span>
+            </li>
+          ))}
+        </ul>
+        <div className="mt-8 grid gap-4 md:grid-cols-2">
+          <div className="rounded-[1.75rem] bg-white p-6">
+            <h2 className="font-serif text-2xl font-semibold text-[#0A3660]">Occupational therapy</h2>
+            <p className="mt-2 max-w-[70ch] font-serif text-lg leading-[1.6] text-black">Occupational therapy here is about how you do the day.</p>
+          </div>
+          <div className="rounded-[1.75rem] bg-[#eef6f6] p-6 md:mt-8">
+            <h2 className="font-serif text-2xl font-semibold text-[#0A3660]">Pelvic floor physical therapy</h2>
+            <p className="mt-2 max-w-[70ch] font-serif text-lg leading-[1.6] text-black">Pelvic floor care is a different service. This site does not teach those exercises.</p>
+          </div>
+        </div>
+      </div>
       <div className="family-copy mx-auto max-w-[760px] px-6 md:px-8">
         <KeyPoints
           items={[
@@ -88,6 +118,7 @@ export default function WhatIsPage() {
         </p>
         <Byline />
       </div>
+      <WhereNext links={[{ href: "/start-here", label: "Start here" }, { href: "/resources/your-top-postpartum-questions", label: "Your top postpartum questions" }]} />
     </article>
   );
 }

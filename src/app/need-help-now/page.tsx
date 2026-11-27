@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHeader from "@/components/site/PageHeader";
+import { WhereNext } from "@/components/site/Character";
 import CrisisLines from "@/components/site/CrisisLines";
 import { ClinicianReview } from "@/components/site/NeedsMelissa";
 import { LearnMore } from "@/components/site/Scan";
@@ -97,6 +98,7 @@ export default function NeedHelpNowPage() {
           </LearnMore>
         </section>
       </div>
+      <WhereNext links={[{ href: "/topics/postpartum-mental-load-identity", label: "Mental load and identity" }, { href: "/community", label: "Community" }]} />
     </article>
   );
 }

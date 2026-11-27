@@ -9,7 +9,7 @@ import JsonLd from "@/components/site/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 import { SITE_URL } from "@/lib/site";
 import Section from "@/components/ui/Section";
-import { NextStep, Wave } from "@/components/site/Character";
+import { NextStep, WhereNext } from "@/components/site/Character";
 
 const title = "Online Postpartum Support Group for New Parents: Functional Fourth Trimester Circle";
 
@@ -26,8 +26,9 @@ export default function CommunityPage() {
       <PageHeader
         title={title}
         lede="Parents, caregivers, and healthcare and birth professionals can request to join. If you need someone now, use Need Help Now first."
+        emphasis="Circle"
+        icon="dads"
       />
-      <Wave from="#2f6b6a" to="#FAF7F2" />
       <div className="mx-auto max-w-[760px] px-6 py-8 md:px-8">
         <h2 className="max-w-[70ch] font-serif text-3xl font-semibold leading-snug text-[#0A3660] md:text-4xl">
           You&apos;re <span className="font-bold text-[#2f6b6a]">not alone</span> in this.
@@ -64,8 +65,8 @@ export default function CommunityPage() {
         </p>
 
       </div>
-      <Section variant="navy" width="prose" id="waitlist" aria-labelledby="community-waitlist">
-        <h2 id="community-waitlist" className="font-sans text-3xl font-bold text-white">
+      <Section variant="teal" width="prose" id="waitlist" aria-labelledby="community-waitlist">
+        <h2 id="community-waitlist" className="font-serif text-4xl font-semibold text-white">
           Join the waitlist
         </h2>
         <div className="surface-card mt-6 rounded-2xl bg-white p-6 text-black">
@@ -85,6 +86,7 @@ export default function CommunityPage() {
           </NeedsMelissa>
         </LearnMore>
       </div>
+      <WhereNext links={[{ href: "/topics/dads-and-partners", label: "Dads and partners" }, { href: "/need-help-now", label: "Need Help Now" }]} />
     </article>
   );
 }

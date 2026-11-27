@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHeader from "@/components/site/PageHeader";
+import { WhereNext } from "@/components/site/Character";
 import EmailSignup from "@/components/site/EmailSignup";
 import ResourceLibrary from "@/components/site/ResourceLibrary";
 import JsonLd from "@/components/site/JsonLd";
@@ -22,6 +23,7 @@ export default function ResourcesPage() {
       <PageHeader
         title={title}
         lede="Family guides below are free to read. The travel sheet is a free download. Other files in the library are still placeholders. Safety information never asks for your email."
+        emphasis="Resources"
       />
       <div className="mx-auto max-w-[1120px] px-6 py-8 md:px-8">
         <ul className="panel-navy grid gap-3 rounded-2xl bg-navy p-3 sm:grid-cols-2 sm:p-4">
@@ -34,7 +36,10 @@ export default function ResourcesPage() {
             ["/blog/tips-to-travel-postpartum", "Tips for traveling postpartum", "Breastfeeding on an airplane, from the handout. The PDF is a free download."],
           ].map(([href, label, text]) => (
             <li key={href}>
-              <Link href={href} className="surface-card flex h-full flex-col rounded-2xl bg-white p-5">
+              <Link href={href} className={`surface-card flex h-full flex-col rounded-[1.5rem] bg-white p-5 ${href.includes("night") ? "sm:mt-4" : ""}`}>
+                <span className="mb-2 inline-flex w-fit rounded-full bg-[#eef6f6] px-3 py-1 font-sans text-base font-bold text-[#2f6b6a]">
+                  {href.includes("travel") ? "PDF story" : "Page"}
+                </span>
                 <p className="font-sans text-lg font-bold text-[#0A3660]">{label}</p>
                 <p className="mt-2 font-serif text-base text-black">{text}</p>
               </Link>
@@ -53,6 +58,7 @@ export default function ResourcesPage() {
           <EmailSignup idPrefix="resources" heading="Optional: tell me when handouts are ready" />
         </aside>
       </div>
+      <WhereNext links={[{ href: "/blog/tips-to-travel-postpartum", label: "Travel tips" }, { href: "/topics", label: "Postpartum topics" }]} />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHeader from "@/components/site/PageHeader";
+import { WhereNext } from "@/components/site/Character";
 import CtaRow from "@/components/site/CtaRow";
 import JsonLd from "@/components/site/JsonLd";
 import NeedsMelissa from "@/components/site/NeedsMelissa";
@@ -112,13 +113,14 @@ export default function FaqPage() {
       <PageHeader
         title={title}
         lede="A short answer first. Open a question for the rest. Nothing here is a diagnosis."
+        emphasis="Questions"
       />
       <div className="mx-auto max-w-[760px] px-6 md:px-8">
         <CtaRow primary="podcast" />
         <div className="mt-10 space-y-8">
           {faqs.map((faq) => (
-            <section key={faq.question}>
-              <h2 className="font-sans text-2xl font-bold text-[#0A3660]">{faq.question}</h2>
+            <section key={faq.question} className="rounded-[1.75rem] bg-white p-5">
+              <h2 className="font-serif text-2xl font-semibold text-[#0A3660]">{faq.question}</h2>
               <p className="mt-2 font-serif text-base text-black">{faq.short}</p>
               <LearnMore>
                 <p>{faq.answer}</p>
@@ -135,6 +137,7 @@ export default function FaqPage() {
           [NEEDS MELISSA: anonymized questions from parents or the Circle, if you want them added. None are invented here.]
         </NeedsMelissa>
       </div>
+      <WhereNext links={[{ href: "/start-here", label: "Start here" }, { href: "/need-help-now", label: "Need Help Now" }]} />
     </article>
   );
 }

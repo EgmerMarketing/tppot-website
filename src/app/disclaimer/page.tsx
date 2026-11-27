@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHeader from "@/components/site/PageHeader";
+import { WhereNext } from "@/components/site/Character";
 import NeedsMelissa from "@/components/site/NeedsMelissa";
 import { LearnMore } from "@/components/site/Scan";
 import JsonLd from "@/components/site/JsonLd";
@@ -19,7 +20,7 @@ export default function DisclaimerPage() {
   return (
     <article className="bg-[#FAF7F2] pb-16">
       <JsonLd data={breadcrumbSchema([{ name: "Home", url: SITE_URL }, { name: "Disclaimer", url: `${SITE_URL}/disclaimer` }])} />
-      <PageHeader title={title} disclaimer={DISCLAIMER_FULL} />
+      <PageHeader title={title} disclaimer={DISCLAIMER_FULL} emphasis="Education" />
       <div className="family-copy mx-auto max-w-[760px] px-6 md:px-8">
         <h2>What is this site?</h2>
         <p>Education about daily life after birth for moms, dads, and caregivers. Not medical care.</p>
@@ -44,6 +45,7 @@ export default function DisclaimerPage() {
           <Link href="/need-help-now">Need Help Now</Link>. Do not use the contact form for urgent help.
         </p>
       </div>
+      <WhereNext links={[{ href: "/need-help-now", label: "Need Help Now" }, { href: "/accessibility", label: "Accessibility" }]} />
     </article>
   );
 }

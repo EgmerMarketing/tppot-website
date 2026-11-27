@@ -9,7 +9,7 @@ import { SITE_URL, UPDATED } from "@/lib/site";
 import type { Episode } from "@/lib/podcast";
 import EpisodeList from "@/components/site/EpisodeList";
 import Section from "@/components/ui/Section";
-import { NextStep, TopicIcon, Wave, topicIconFor } from "@/components/site/Character";
+import { TopicIcon, WhereNext, topicIconFor } from "@/components/site/Character";
 
 function nextTopic(path: string): { href: string; label: string } {
   const order = [
@@ -72,15 +72,31 @@ export default function TopicLayout({
         title={title}
         crumbs={[{ name: "Postpartum Topics", href: "/topics" }]}
         lede={capsule}
+        emphasis={crumb.split(" ")[0]}
+        icon={topicIconFor(path)}
       />
-      <Wave from="#2f6b6a" to="#FAF7F2" />
+      <div className="mx-auto grid max-w-[1120px] gap-8 px-6 py-10 md:px-8 lg:grid-cols-[1.2fr_0.8fr]">
+        <div>
+          <p className="mb-4 flex items-center gap-3">
+            <TopicIcon name={topicIconFor(path)} />
+            <span className="font-sans text-base font-bold text-[#2f6b6a]">What you might be feeling</span>
+          </p>
+          <blockquote className="rounded-[1.75rem] bg-[#eef6f6] px-6 py-6">
+            <div className="max-w-[70ch] font-serif text-2xl font-semibold leading-snug text-[#0A3660]">{capsule}</div>
+          </blockquote>
+          <CtaRow primary={primary} />
+        </div>
+        <div>
+          <p className="font-sans text-base font-bold text-[#2f6b6a]">When to reach out</p>
+          {help ?? (
+            <p className="mt-3 max-w-[70ch] font-serif text-lg leading-[1.6] text-black">
+              If you need someone now, use Need Help Now. Call or text 988. Call 911 in an emergency.
+            </p>
+          )}
+        </div>
+      </div>
       <div className="mx-auto max-w-[760px] px-6 md:px-8">
-        <p className="mb-4 flex items-center gap-3">
-          <TopicIcon name={topicIconFor(path)} />
-          <span className="font-sans text-base font-bold text-[#2f6b6a]">{crumb}</span>
-        </p>
-        <CtaRow primary={primary} />
-        {help}
+        <p className="font-sans text-base font-bold text-[#2f6b6a]">Small things that help</p>
         <div className="family-copy">{children}</div>
         {episodes && episodes.length > 0 && <EpisodeList episodes={episodes} />}
         <section className="mt-10">
@@ -106,8 +122,13 @@ export default function TopicLayout({
           </p>
         </section>
         <Byline />
-        <NextStep href={nextTopic(path).href}>{nextTopic(path).label}</NextStep>
       </div>
+      <WhereNext
+        links={[
+          { href: nextTopic(path).href, label: nextTopic(path).label.replace(/^Next: /, "") },
+          ...(guides ?? []).slice(0, 2),
+        ]}
+      />
       <Section variant="navy" width="prose" id="signup">
         <div className="surface-card rounded-2xl bg-white p-6 text-black">
           <EmailSignup idPrefix={`topic-${path.replace(/\W+/g, "-")}`} />

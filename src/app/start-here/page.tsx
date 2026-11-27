@@ -6,7 +6,7 @@ import Byline from "@/components/site/Byline";
 import EmailSignup from "@/components/site/EmailSignup";
 import EpisodeList from "@/components/site/EpisodeList";
 import { LearnMore } from "@/components/site/Scan";
-import { StepTrail, Wave } from "@/components/site/Character";
+import { StepTrail, WhereNext } from "@/components/site/Character";
 import JsonLd from "@/components/site/JsonLd";
 import { articleSchema, breadcrumbSchema } from "@/lib/schema";
 import { episodes } from "@/lib/podcast";
@@ -28,8 +28,9 @@ export default function StartHerePage() {
       <PageHeader
         title={title}
         lede="People often use “fourth trimester” for about the first 12 weeks after birth. It is a map, not a test."
+        emphasis="Fourth"
+        icon="daily"
       />
-      <Wave from="#2f6b6a" to="#FAF7F2" />
       <div className="mx-auto max-w-[760px] px-6 md:px-8">
         <StepTrail
           steps={[
@@ -118,6 +119,12 @@ export default function StartHerePage() {
           <EmailSignup idPrefix="start-here" />
         </div>
       </Section>
+      <WhereNext
+        links={[
+          { href: "/topics", label: "Postpartum topics" },
+          { href: "/what-is-postpartum-occupational-therapy", label: "What is postpartum OT?" },
+        ]}
+      />
     </article>
   );
 }

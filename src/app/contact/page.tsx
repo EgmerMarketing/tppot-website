@@ -4,6 +4,7 @@ import { Mail } from "lucide-react";
 import { breadcrumbSchema } from "@/lib/schema";
 import ContactForm from "@/components/contact/ContactForm";
 import PageHeader from "@/components/site/PageHeader";
+import { WhereNext } from "@/components/site/Character";
 import NeedsMelissa from "@/components/site/NeedsMelissa";
 import JsonLd from "@/components/site/JsonLd";
 import { SITE_URL } from "@/lib/site";
@@ -26,6 +27,7 @@ export default function ContactPage() {
       <PageHeader
         title="Contact Melissa O'Neal at The Postpartum OT"
         lede="Write with a question about the podcast, the community waitlist, or the site. Leave health details out. This inbox is not an emergency line."
+        emphasis="Melissa"
       />
       <div className="mx-auto max-w-[1120px] px-6 md:px-8">
         <NeedsMelissa>
@@ -56,6 +58,7 @@ export default function ContactPage() {
           </p>
         </div>
       </section>
+      <WhereNext links={[{ href: "/need-help-now", label: "Need Help Now" }, { href: "/faq", label: "FAQ" }]} />
     </div>
   );
 }

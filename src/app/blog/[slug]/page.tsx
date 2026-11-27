@@ -27,6 +27,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
+function pullQuote(content: string): string | null {
+  const stripped = content.replace(/^#\s+[^\n]+\n+/, "").replace(/[#*_>`]/g, "").trim();
+  const paragraph = stripped.split(/\n\n+/)[0]?.replace(/\s+/g, " ").trim();
+  if (!paragraph) return null;
+  const sentence = paragraph.split(/(?<=\.)\s/)[0] ?? paragraph;
+  if (sentence.length < 40 || sentence.length > 280) return null;
+  return sentence;
+}
+
 function formatContent(content: string): string {
   // The page already renders the post title as the only H1. Drop a leading
   // markdown title so the article body does not add a second one.
@@ -84,11 +93,11 @@ export default async function BlogPostPage({ params }: PageProps) {
       })) }} />
 
       {/* Hero */}
-      <section className="band-teal-deep relative bg-teal-deep pb-20 pt-16 lg:pb-28 lg:pt-20">
-        <div className="relative max-w-[720px] mx-auto px-6">
+      <section className="relative overflow-hidden bg-teal-50 pb-12 pt-12 lg:pb-16 lg:pt-16">
+        <div className="relative mx-auto max-w-[720px] px-6">
           <Link
             href="/blog"
-            className="mb-6 inline-flex min-h-11 items-center font-sans text-base font-bold text-white underline"
+            className="mb-6 inline-flex min-h-11 items-center font-sans text-base font-bold text-[#0A3660] underline"
           >
             <svg className="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -97,19 +106,19 @@ export default async function BlogPostPage({ params }: PageProps) {
           </Link>
 
           <div className="mb-5">
-            <span className="rounded bg-white px-3 py-1 font-sans text-base font-bold text-[#0A3660]">
+            <span className="rounded-full bg-white px-3 py-1 font-sans text-base font-bold text-[#0A3660]">
               {post.category}
             </span>
           </div>
 
-          <h1 className="mb-4 font-sans text-3xl font-bold leading-tight text-white lg:text-4xl">
+          <h1 className="mb-4 font-serif text-4xl font-semibold leading-tight text-[#0A3660] lg:text-5xl">
             {post.title}
           </h1>
-          <p className="mb-6 font-serif text-base text-white">
+          <p className="mb-6 max-w-[70ch] font-serif text-lg leading-[1.6] text-black">
             Educational information, not medical or professional advice.
           </p>
 
-          <div className="flex items-center gap-3 font-sans text-base text-white">
+          <div className="flex flex-wrap items-center gap-3 font-sans text-base text-[#0A3660]">
             <span>By Melissa O&apos;Neal, OTR/L</span>
             <span aria-hidden="true">|</span>
             <time dateTime={post.date}>
@@ -122,6 +131,14 @@ export default async function BlogPostPage({ params }: PageProps) {
           </div>
         </div>
       </section>
+
+      {pullQuote(post.content) && (
+        <blockquote className="bg-[#eef6f6]">
+          <p className="mx-auto max-w-[70ch] px-6 py-10 font-serif text-2xl font-semibold leading-snug text-[#0A3660] md:text-3xl">
+            {pullQuote(post.content)}
+          </p>
+        </blockquote>
+      )}
 
       {/* Content */}
       <section className="py-12 lg:py-16">

@@ -5,6 +5,7 @@ import CtaRow from "@/components/site/CtaRow";
 import Byline from "@/components/site/Byline";
 import NeedsMelissa from "@/components/site/NeedsMelissa";
 import { KeyPoints, LearnMore } from "@/components/site/Scan";
+import { WhereNext } from "@/components/site/Character";
 import JsonLd from "@/components/site/JsonLd";
 import { breadcrumbSchema, personSchema } from "@/lib/schema";
 import { SHOW_ABILITY_VILLAGE, SITE_URL } from "@/lib/site";
@@ -25,6 +26,7 @@ export default function AboutPage() {
       <PageHeader
         title={title}
         lede="Melissa O'Neal, OTR/L, is the occupational therapist behind this site. Her story and any other credential are not filled in yet."
+        emphasis="Melissa"
       />
       <div className="mx-auto grid max-w-[1120px] gap-10 px-6 md:px-8 lg:grid-cols-[220px_1fr]">
         <div
@@ -88,6 +90,7 @@ export default function AboutPage() {
           <Byline />
         </div>
       </div>
+      <WhereNext links={[{ href: "/podcast", label: "Functional Fourth Trimester" }, { href: "/what-is-postpartum-occupational-therapy", label: "What is postpartum OT?" }]} />
     </article>
   );
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHeader from "@/components/site/PageHeader";
+import { WhereNext } from "@/components/site/Character";
 import NeedsMelissa from "@/components/site/NeedsMelissa";
 import { KeyPoints, LearnMore } from "@/components/site/Scan";
 import JsonLd from "@/components/site/JsonLd";
@@ -27,6 +28,7 @@ export default function AccessibilityPage() {
       <PageHeader
         title={title}
         lede="The aim is a site parents can resize, read, and use with a keyboard. This is not an audit or a certification."
+        emphasis="Accessibility"
       />
       <div className="family-copy mx-auto max-w-[760px] px-6 md:px-8">
         <h2>What are we aiming for?</h2>
@@ -60,6 +62,7 @@ export default function AccessibilityPage() {
           Please leave out health details.
         </p>
       </div>
+      <WhereNext links={[{ href: "/contact", label: "Contact" }, { href: "/disclaimer", label: "Disclaimer" }]} />
     </article>
   );
 }
