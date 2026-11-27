@@ -4,7 +4,7 @@ export function GET() {
 > Educational postpartum support for moms, dads, and caregivers from Melissa O'Neal, OTR/L. Not medical advice.
 
 ## About
-Melissa O'Neal, OTR/L, is the occupational therapist behind The Postpartum OT (Postpartum OT LLC). The site helps parents and caregivers with the ordinary hard parts of life after birth: sleep, feeding routines, recovery, daily life, mental load, and support from partners and family. It does not publish a years-of-experience number, prices, or a client count.
+Melissa O'Neal, OTR/L, is an occupational therapist and the founder of The Postpartum OT (Postpartum OT LLC). For more than 15 years she has helped parents after birth. She is a Certified Disability Rights and Accessibility Consultant and Director of the Women's Health and Postpartum Hub on Ability Village (https://abilityvillage.com/). The site helps parents and caregivers with sleep, feeding routines, recovery, daily life, mental load, and support from partners and family. It does not publish prices or a client count.
 
 ## Important
 This is education, not medical or professional advice. In a crisis, call or text 988. In an emergency, call 911. The National Maternal Mental Health Hotline, 1-833-852-6262 (1-833-TLC-MAMA), is a 24/7 support line, not a crisis line. Postpartum Support International's HelpLine is 1-800-944-4773. You leave a message and a volunteer returns it. See https://thepostpartumot.com/need-help-now

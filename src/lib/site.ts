@@ -1,8 +1,8 @@
 /**
- * Family-first site facts. Unconfirmed offers, years, and credentials stay out.
- * Ability Village stays off until Melissa and the partner approve public wording.
+ * Family-first site facts. Unconfirmed offers and credentials stay out.
+ * Melissa approved the Ability Village director title and the official emblem.
  */
-export const SHOW_ABILITY_VILLAGE = false;
+export const ABILITY_VILLAGE_URL = "https://abilityvillage.com/";
 
 export const SITE_URL = "https://thepostpartumot.com";
 

@@ -4,18 +4,19 @@ import PageHeader from "@/components/site/PageHeader";
 import CtaRow from "@/components/site/CtaRow";
 import Byline from "@/components/site/Byline";
 import NeedsMelissa from "@/components/site/NeedsMelissa";
-import { KeyPoints, LearnMore } from "@/components/site/Scan";
+import { LearnMore } from "@/components/site/Scan";
 import { WhereNext } from "@/components/site/Character";
 import JsonLd from "@/components/site/JsonLd";
 import { breadcrumbSchema, personSchema } from "@/lib/schema";
-import { SHOW_ABILITY_VILLAGE, SITE_URL } from "@/lib/site";
+import { ABILITY_VILLAGE_URL, SITE_URL } from "@/lib/site";
+import Image from "next/image";
 
 const title = "Melissa O'Neal, OTR/L: Postpartum Occupational Therapist Behind The Postpartum OT";
 
 export const metadata: Metadata = {
   title,
   description:
-    "Melissa O'Neal, OTR/L, is the occupational therapist behind The Postpartum OT. Her story, other credentials, and photos are waiting on her approval.",
+    "Melissa O'Neal is an occupational therapist and the founder of The Postpartum OT. For more than 15 years she has helped parents after birth.",
 };
 
 export default function AboutPage() {
@@ -25,7 +26,7 @@ export default function AboutPage() {
       <JsonLd data={personSchema()} />
       <PageHeader
         title={title}
-        lede="Melissa O'Neal, OTR/L, is the occupational therapist behind this site. Her story and any other credential are not filled in yet."
+        lede="Occupational therapist and founder of The Postpartum OT."
         emphasis="Melissa"
       />
       <div className="mx-auto grid max-w-[1120px] gap-10 px-6 md:px-8 lg:grid-cols-[220px_1fr]">
@@ -37,49 +38,26 @@ export default function AboutPage() {
           <span className="font-sans text-5xl font-bold text-[#0A3660]" aria-hidden="true">MO</span>
         </div>
         <div className="family-copy">
-          <KeyPoints
-            items={[
-              "Credential shown: OTR/L.",
-              "Daily life after birth: sleep, feeding routines, household jobs.",
-              "No photo yet. The header uses the transparent logo.",
-              "She hosts Functional Fourth Trimester.",
-            ]}
-          />
-          <LearnMore summary="Photo, logo, and story notes">
+          <p>Hi, I&apos;m Melissa O&apos;Neal, an occupational therapist and the founder of The Postpartum OT. My work with new families started the way a lot of good things do: with my own experience as a new mom. I learned firsthand that the weeks and months after birth change everything. Your days, your body, your relationships, and your sense of who you are all shift at once, and nobody hands you a plan for that.</p>
+          <p>For more than 15 years, I&apos;ve helped parents through that season. As an OT, I don&apos;t just look at one piece of the puzzle. I look at your whole day and help you build roles and routines that fit the life you have now, not the one you had before. That includes sleep, feeding, mental health, and staying connected to yourself and the people you love.</p>
+          <p>I&apos;m also a Certified Disability Rights and Accessibility Consultant, so I care deeply that support works for every family, including parents with disabilities and families whose needs don&apos;t fit the usual mold.</p>
+          <p>You don&apos;t have to figure out this season alone. Let&apos;s build a fourth trimester that works for you.</p>
+          <p className="flex flex-wrap items-center gap-4">
+            <a href={ABILITY_VILLAGE_URL} className="inline-flex rounded-xl bg-white p-2">
+              <Image
+                src="/images/ability-village-emblem.webp"
+                alt="Ability Village"
+                width={1200}
+                height={800}
+                className="h-16 w-auto"
+              />
+            </a>
+            <span className="font-sans text-lg font-bold leading-snug text-[#0A3660]">Director, Women&apos;s Health and Postpartum Hub on Ability Village</span>
+          </p>
+          <LearnMore summary="Photo still needed">
             <NeedsMelissa>
               [NEEDS MELISSA: a headshot you approve. Personal photos already on the old site are not used. No stock or AI photo. Initials are the fallback.]
             </NeedsMelissa>
-            <NeedsMelissa>
-              [NEEDS MELISSA: an SVG logo, if you want one. The header uses the long horizontal PNG.]
-            </NeedsMelissa>
-            <NeedsMelissa>
-              [Melissa&apos;s story here. Third person, from her own answers. Do not publish the unapproved draft, her child&apos;s name, or any years-of-experience number.]
-            </NeedsMelissa>
-          </LearnMore>
-
-          <h2>Why does Melissa focus on daily life after birth?</h2>
-          <p>A fuller story waits on her own words. What is public is the daily work of a household after birth.</p>
-
-          <h2>Which credentials are shown?</h2>
-          <p>OTR/L only.</p>
-          <LearnMore summary="Credentials still to confirm">
-            <NeedsMelissa>
-              [NEEDS MELISSA: which state licenses may appear, CDRAC, OT degree and school, Certified Breastfeeding Specialist, and PCES. None of those are shown. PCES seals from the old site are not displayed.]
-            </NeedsMelissa>
-          </LearnMore>
-
-          <h2>Is a partnership listed?</h2>
-          <p>No. Nothing is cleared to publish.</p>
-          <LearnMore summary="Partnership placeholder">
-            {SHOW_ABILITY_VILLAGE ? (
-              <NeedsMelissa>
-                [NEEDS MELISSA: the flag is on, but there is still no approved Ability Village sentence or badge in the code. Do not publish a title.]
-              </NeedsMelissa>
-            ) : (
-              <NeedsMelissa>
-                [PENDING: Ability Village wording is not cleared. Do not publish a badge, a Director title, or the partner name as a live partnership until Melissa and Adam approve. This block is the placeholder. The public badge is off.]
-              </NeedsMelissa>
-            )}
           </LearnMore>
 
           <h2>Where can I hear her?</h2>

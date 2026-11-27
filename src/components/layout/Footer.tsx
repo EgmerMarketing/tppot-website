@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import EmailSignup from "@/components/site/EmailSignup";
-import { DISCLAIMER_FULL, footerNav } from "@/lib/site";
+import { ABILITY_VILLAGE_URL, DISCLAIMER_FULL, footerNav } from "@/lib/site";
 
 export default function Footer() {
   const pathname = usePathname();
@@ -64,6 +64,16 @@ export default function Footer() {
               </li>
             ))}
           </ul>
+          <p className="mt-8 font-sans text-base font-bold uppercase tracking-[0.14em] text-white">Affiliation</p>
+          <a href={ABILITY_VILLAGE_URL} className="mt-3 inline-flex rounded-xl bg-[#FAF7F2] p-2">
+            <Image
+              src="/images/ability-village-emblem.webp"
+              alt="Ability Village"
+              width={1200}
+              height={800}
+              className="h-16 w-auto"
+            />
+          </a>
           <p className="mt-6 font-serif text-base text-white">
             <a className="underline" href="mailto:hello@thepostpartumot.com">
               hello@thepostpartumot.com

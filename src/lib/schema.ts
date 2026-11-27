@@ -30,10 +30,23 @@ export function personSchema() {
     "@id": `${BASE_URL}/#melissa-oneal`,
     name: "Melissa O'Neal",
     jobTitle: "Occupational Therapist",
-    hasCredential: {
-      "@type": "EducationalOccupationalCredential",
-      credentialCategory: "professional license",
-      name: "OTR/L",
+    description:
+      "Melissa O'Neal is an occupational therapist and the founder of The Postpartum OT. For more than 15 years she has helped parents through the weeks and months after birth. She is a Certified Disability Rights and Accessibility Consultant and Director of the Women's Health and Postpartum Hub on Ability Village.",
+    hasCredential: [
+      {
+        "@type": "EducationalOccupationalCredential",
+        credentialCategory: "professional license",
+        name: "OTR/L",
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        name: "Certified Disability Rights and Accessibility Consultant",
+      },
+    ],
+    affiliation: {
+      "@type": "Organization",
+      name: "Ability Village",
+      url: "https://abilityvillage.com/",
     },
     knowsAbout: [
       "Postpartum daily routines",

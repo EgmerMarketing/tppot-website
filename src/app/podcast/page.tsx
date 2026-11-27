@@ -3,8 +3,6 @@ import Image from "next/image";
 import { Nunito, Playfair_Display } from "next/font/google";
 import Byline from "@/components/site/Byline";
 import EmailSignup from "@/components/site/EmailSignup";
-import NeedsMelissa from "@/components/site/NeedsMelissa";
-import { LearnMore } from "@/components/site/Scan";
 import JsonLd from "@/components/site/JsonLd";
 import { breadcrumbSchema, podcastSeriesSchema } from "@/lib/schema";
 import {
@@ -186,15 +184,18 @@ export default function PodcastPage() {
           ))}
         </ol>
 
-        <h2 className="fft-display mt-12 text-[#18355D]">Who is the host?</h2>
-        <p className="mt-3 text-lg leading-[1.6] text-[#2C3A47]">
-          Melissa O&apos;Neal, OTR/L, is a licensed occupational therapist and the founder of The Postpartum OT. She helps new parents rebuild daily life after birth.
-        </p>
-        <LearnMore summary="Host bio still waiting on her wording">
-          <NeedsMelissa>
-            [Melissa&apos;s story here. Host bio in the third person. No years-of-experience number until she confirms one.]
-          </NeedsMelissa>
-        </LearnMore>
+        <h2 className="fft-display mt-12 text-[#18355D]">Meet Your Host</h2>
+        <div className="mt-4 max-w-[70ch] space-y-4 text-lg font-normal leading-[1.6] text-[#2C3A47]">
+          <p>
+            Melissa O&apos;Neal is an occupational therapist and the founder of The Postpartum OT. For more than 15 years, she has supported families in the weeks and months after birth, work that began with her own journey as a new mom.
+          </p>
+          <p>
+            On <strong className="font-bold">The Functional Fourth Trimester</strong>, Melissa talks with experts, clinicians, and parents about what the postpartum season really looks like and what actually helps. Each episode focuses on practical ways to build routines around sleep, feeding, mental health, and connection, so moms and the professionals who support them leave with something they can use right away.
+          </p>
+          <p>
+            Melissa is also the Director of the Women&apos;s Health and Postpartum Hub on Ability Village and is building the Functional Fourth Trimester Circle, a community where new moms get real support. As a Certified Disability Rights and Accessibility Consultant, she makes sure every conversation keeps all families in mind.
+          </p>
+        </div>
         <Byline />
         <div className="mt-10 rounded-[1.75rem] bg-[#F5F0E8] p-6 text-[#2C3A47]">
           <EmailSignup idPrefix="podcast" heading="Get new episodes in your inbox" />

@@ -202,14 +202,9 @@ export default function Home() {
             <h2 className="font-sans text-3xl font-bold leading-tight text-white">
               Meet Melissa O&apos;Neal, OTR/L, postpartum occupational therapist
             </h2>
-            <p className="mt-2 font-serif text-base text-white">
-              Melissa O&apos;Neal, OTR/L, shares education for daily life after birth. Her story is not published yet.
+            <p className="mt-2 font-serif text-lg leading-[1.6] text-white">
+              Melissa O&apos;Neal, OTR/L, is an occupational therapist and the founder of The Postpartum OT. Her story is on the About page.
             </p>
-            <LearnMore summary="Story placeholder">
-              <NeedsMelissa>
-                [Melissa&apos;s story here. Third person, in her own words. Do not publish a years-of-experience number, her child&apos;s name, or an Ability Village role until she approves them.]
-              </NeedsMelissa>
-            </LearnMore>
             <Link href="/about" className="font-sans text-base font-bold text-white underline">
               About Melissa
             </Link>
