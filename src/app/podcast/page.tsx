@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Nunito, Playfair_Display } from "next/font/google";
 import Byline from "@/components/site/Byline";
+import Portrait from "@/components/site/Portrait";
+import SoundWave from "@/components/site/SoundWave";
 import EmailSignup from "@/components/site/EmailSignup";
 import JsonLd from "@/components/site/JsonLd";
 import { breadcrumbSchema, podcastSeriesSchema } from "@/lib/schema";
@@ -32,6 +34,16 @@ const ONE_LINE =
 export const metadata: Metadata = {
   title: SHOW_NAME,
   description: ONE_LINE,
+  openGraph: {
+    images: [
+      {
+        url: "/images/fft/fft-cover-1600.webp",
+        width: 1600,
+        height: 1600,
+        alt: "Functional Fourth Trimester cover. Navy field, cream FFT badge, and sound-wave marks.",
+      },
+    ],
+  },
 };
 
 const recent = [
@@ -120,14 +132,17 @@ export default function PodcastPage() {
             className="mx-auto aspect-square w-full max-w-[320px] rounded-[2rem]"
           />
           <div>
-            <div className="inline-block max-w-full rounded-2xl bg-[#F5F0E8] px-4 py-3">
+            <div className="light-chip inline-block max-w-full rounded-2xl bg-[#F5F0E8] px-4 py-3">
               <img
                 src="/images/fft/fft-horizontal-no-descriptor.svg"
                 alt=""
                 className="h-12 w-auto max-w-full md:h-14"
               />
             </div>
-            <h1 className="fft-display mt-5 max-w-[70ch] text-white">{SHOW_NAME}</h1>
+            <div className="podcast-heading mt-5">
+              <h1 className="fft-display max-w-[70ch] text-white">{SHOW_NAME}</h1>
+              <SoundWave className="sound-wave-slot mb-4 h-16 w-auto max-w-full" />
+            </div>
             <p className="mt-4 text-lg font-normal leading-[1.6] text-white">{ONE_LINE}</p>
             <p className="fft-label mt-4 inline-flex min-h-11 items-center rounded-full bg-[#F5F0E8] px-4 text-[#18355D]">
               New episodes every Thursday
@@ -184,7 +199,16 @@ export default function PodcastPage() {
           ))}
         </ol>
 
-        <h2 className="fft-display mt-12 text-[#18355D]">Meet Your Host</h2>
+        <div className="mt-12 grid items-start gap-8 md:grid-cols-[280px_1fr]">
+          <Portrait
+            src="/images/melissa/melissa-seated-blue-step.webp"
+            alt="Melissa O'Neal, occupational therapist, seated on a blue step and smiling"
+            sizes="(max-width: 768px) 80vw, 280px"
+            frame="navy"
+            position="center 16%"
+          />
+          <div>
+        <h2 className="fft-display text-[#18355D]">Meet Your Host</h2>
         <div className="mt-4 max-w-[70ch] space-y-4 text-lg font-normal leading-[1.6] text-[#2C3A47]">
           <p>
             Melissa O&apos;Neal is an occupational therapist and the founder of The Postpartum OT. For more than 15 years, she has supported families in the weeks and months after birth, work that began with her own journey as a new mom.
@@ -195,6 +219,8 @@ export default function PodcastPage() {
           <p>
             Melissa is also the Director of the Women&apos;s Health and Postpartum Hub on Ability Village and is building the Functional Fourth Trimester Circle, a community where new moms get real support. As a Certified Disability Rights and Accessibility Consultant, she makes sure every conversation keeps all families in mind.
           </p>
+        </div>
+          </div>
         </div>
         <Byline />
         <div className="mt-10 rounded-[1.75rem] bg-[#F5F0E8] p-6 text-[#2C3A47]">

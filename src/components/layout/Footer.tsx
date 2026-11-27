@@ -24,7 +24,7 @@ export default function Footer() {
 
       <div className="mx-auto grid max-w-[1280px] gap-10 px-6 py-12 md:px-8 lg:grid-cols-[1.2fr_0.8fr]">
         <div>
-          <Link href="/" className="mb-6 inline-flex rounded-xl bg-[#FAF7F2] p-2">
+          <Link href="/" className="light-chip mb-6 inline-flex rounded-xl bg-[#FAF7F2] p-2">
             <Image
               src="/images/logo-long.png"
               alt="The Postpartum OT"
@@ -65,7 +65,7 @@ export default function Footer() {
             ))}
           </ul>
           <p className="mt-8 font-sans text-base font-bold uppercase tracking-[0.14em] text-white">Affiliation</p>
-          <a href={ABILITY_VILLAGE_URL} className="mt-3 inline-flex rounded-xl bg-[#FAF7F2] p-2">
+          <a href={ABILITY_VILLAGE_URL} className="light-chip mt-3 inline-flex rounded-xl bg-[#FAF7F2] p-2">
             <Image
               src="/images/ability-village-emblem.webp"
               alt="Ability Village"

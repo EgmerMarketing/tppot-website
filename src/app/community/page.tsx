@@ -10,6 +10,7 @@ import { breadcrumbSchema } from "@/lib/schema";
 import { SITE_URL } from "@/lib/site";
 import Section from "@/components/ui/Section";
 import { NextStep, WhereNext } from "@/components/site/Character";
+import Portrait from "@/components/site/Portrait";
 
 const title = "Online Postpartum Support Group for New Parents: Functional Fourth Trimester Circle";
 
@@ -29,7 +30,15 @@ export default function CommunityPage() {
         emphasis="Circle"
         icon="dads"
       />
-      <div className="mx-auto max-w-[760px] px-6 py-8 md:px-8">
+      <div className="mx-auto grid max-w-[1120px] items-center gap-8 px-6 py-8 md:grid-cols-[280px_1fr] md:px-8">
+        <Portrait
+          src="/images/melissa/melissa-mauve-brick-wall.webp"
+          alt="Melissa O'Neal, occupational therapist, smiling in a mauve shirt against a brick wall"
+          sizes="(max-width: 768px) 80vw, 280px"
+          frame="teal"
+          position="center 14%"
+        />
+        <div>
         <h2 className="max-w-[70ch] font-serif text-3xl font-semibold leading-snug text-[#0A3660] md:text-4xl">
           You&apos;re <span className="font-bold text-[#2f6b6a]">not alone</span> in this.
         </h2>
@@ -37,6 +46,7 @@ export default function CommunityPage() {
           If you need someone now, call or text 988. A group is not a crisis line.
         </p>
         <NextStep href="/need-help-now">Next: Need Help Now</NextStep>
+        </div>
       </div>
       <div className="family-copy mx-auto max-w-[760px] px-6 md:px-8">
         <h2>What is the Functional Fourth Trimester Circle?</h2>

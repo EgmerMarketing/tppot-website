@@ -10,6 +10,7 @@ import { PROFESSIONAL_HANDOUTS } from "@/lib/handouts";
 import JsonLd from "@/components/site/JsonLd";
 import { breadcrumbSchema, videoObjectSchema } from "@/lib/schema";
 import { SITE_URL } from "@/lib/site";
+import Portrait from "@/components/site/Portrait";
 
 const youtubeTitle =
   "Website Accessibility and Occupational Therapy | Melissa O’Neal | The Modern Healthcare Lab";
@@ -79,6 +80,18 @@ export default function ForProfessionalsPage() {
         lede="This page is for occupational therapists and other clinicians. Nothing here is a live checkout."
         emphasis="Professionals"
       />
+      <div className="mx-auto grid max-w-[1120px] items-center gap-8 px-6 py-10 md:grid-cols-[280px_1fr] md:px-8">
+        <Portrait
+          src="/images/melissa/melissa-barn-door.webp"
+          alt="Melissa O'Neal, occupational therapist, smiling beside a weathered barn door"
+          sizes="(max-width: 768px) 80vw, 280px"
+          frame="teal"
+          position="center 12%"
+        />
+        <p className="font-serif text-lg leading-[1.6] text-black">
+          Melissa O&apos;Neal, OTR/L, shares these resources for occupational therapists and other clinicians. The rest of this site is for families.
+        </p>
+      </div>
       <div className="family-copy mx-auto max-w-[760px] px-6 md:px-8">
         <h2>What has Melissa shared?</h2>
         <p>Three items from other sites. Titles are copied from those pages.</p>

@@ -29,6 +29,16 @@ export const metadata: Metadata = {
   },
   description:
     "Postpartum support for new moms, dads, and caregivers from Melissa O'Neal, OTR/L. Educational information about sleep, feeding, recovery, and daily life. Not medical advice.",
+  openGraph: {
+    images: [
+      {
+        url: "/images/melissa/melissa-og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Melissa O'Neal, occupational therapist, smiling outdoors in a teal shirt",
+      },
+    ],
+  },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -47,9 +57,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${lato.variable} ${lora.variable} h-full antialiased`}>
+    <html lang="en" className={`${lato.variable} ${lora.variable} h-full antialiased`} suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var r=document.documentElement,t=null,m=null;try{t=localStorage.getItem("tppot-theme");m=localStorage.getItem("tppot-motion");}catch(e){}var dark=t==="dark"||(t!=="light"&&window.matchMedia("(prefers-color-scheme: dark)").matches);var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;var paused=m==="off"||(m!=="on"&&reduce);r.classList.toggle("dark",dark);r.classList.toggle("no-motion",paused);r.style.colorScheme=dark?"dark":"light";r.classList.add("js");})();`,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema()) }}

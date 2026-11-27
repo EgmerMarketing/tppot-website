@@ -1,10 +1,12 @@
 import Link from "next/link";
+import SoundWave from "@/components/site/SoundWave";
 
 export function Wave({ from, to }: { from: string; to: string }) {
   return (
-    <div className="relative -mt-px leading-[0]" aria-hidden="true">
+    <div className="wave-divider relative -mt-px leading-[0]" data-from={from} data-to={to} aria-hidden="true">
       <svg viewBox="0 0 1440 72" preserveAspectRatio="none" className="block h-12 w-full md:h-16" style={{ background: from }}>
         <path
+          className="wave-fill"
           fill={to}
           d="M0,36 C180,72 360,0 540,28 C720,56 900,8 1080,32 C1260,56 1360,20 1440,36 L1440,72 L0,72 Z"
         />
@@ -108,7 +110,7 @@ export function WhereNext({ links }: { links: { href: string; label: string }[] 
   const seen = new Set<string>();
   const items = [
     ...links,
-    { href: "/podcast", label: "Listen to Functional Fourth Trimester" },
+    { href: "/podcast", label: "Functional Fourth Trimester" },
     { href: "/community#waitlist", label: "Join the waitlist" },
   ].filter((item) => {
     if (seen.has(item.href)) return false;
@@ -125,7 +127,12 @@ export function WhereNext({ links }: { links: { href: string; label: string }[] 
           {items.map((item, index) => (
             <li key={item.href} className={index % 2 === 1 ? "sm:translate-y-3" : ""}>
               <Link href={item.href} className="surface-card block h-full rounded-[1.5rem] bg-white p-5 font-serif text-lg font-semibold leading-snug text-[#0A3660]">
-                {item.label}
+                <span>{item.label}</span>
+                {item.href === "/podcast" ? (
+                  <span className="sound-wave-slot mt-3 block rounded-xl bg-[#18355D] px-3 py-2">
+                    <SoundWave className="h-10 w-auto max-w-full" />
+                  </span>
+                ) : null}
               </Link>
             </li>
           ))}

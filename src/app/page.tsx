@@ -14,6 +14,7 @@ import EpisodeList from "@/components/site/EpisodeList";
 import NeedsMelissa from "@/components/site/NeedsMelissa";
 import { LearnMore } from "@/components/site/Scan";
 import { Blob, Eyebrow, NextStep, Squiggle, TopicIcon, Wave, topicIconFor } from "@/components/site/Character";
+import Portrait from "@/components/site/Portrait";
 import Reveal from "@/components/site/Reveal";
 export const metadata: Metadata = {
   title: {
@@ -122,21 +123,25 @@ export default function Home() {
         </Reveal>
         <NextStep onDark href="/start-here">Next: the fourth trimester, week by week</NextStep>
       </Section>
-      <Wave from="#0A3660" to="#FAF7F2" />
+      <Wave from="#0A3660" to="#18355D" />
 
-      <Section variant="cream">
-        <Eyebrow>Listen</Eyebrow>
-        <EpisodeList
-          heading="Listen to the Functional Fourth Trimester postpartum podcast"
-          episodes={episodes.slice(0, 3)}
-        />
-        <p className="mt-4">
-          <Link href="/podcast" className="font-sans text-base font-bold text-[#0A3660] underline">
-            All episodes on this site
-          </Link>
-        </p>
-        <NextStep href="/podcast">Next: Functional Fourth Trimester</NextStep>
-      </Section>
+      <section className="bg-[#18355D] py-12 text-white md:py-16">
+        <div className="mx-auto max-w-[1120px] px-6 md:px-8">
+          <EpisodeList
+            heading="The Functional Fourth Trimester postpartum podcast"
+            episodes={episodes.slice(0, 3)}
+            wave
+            onDark
+          />
+          <p className="mt-4">
+            <Link href="/podcast" className="font-sans text-base font-bold text-white underline">
+              All episodes on this site
+            </Link>
+          </p>
+          <NextStep onDark href="/podcast">Next: Functional Fourth Trimester</NextStep>
+        </div>
+      </section>
+      <Wave from="#18355D" to="#FAF7F2" />
       <section className="bg-cream">
         <div className="mx-auto max-w-[760px] px-6 py-12 md:px-8">
           <h2 className="max-w-[70ch] font-serif text-3xl font-semibold leading-snug text-[#0A3660] md:text-4xl">
@@ -190,14 +195,16 @@ export default function Home() {
       </Section>
 
       <Section variant="navy">
-        <div className="grid items-center gap-8 md:grid-cols-[180px_1fr]">
-          <div
-            className="surface-card flex aspect-[4/5] w-full max-w-[180px] items-center justify-center rounded-2xl bg-white"
-            role="img"
-            aria-label="Photo of Melissa O'Neal is not on the site yet"
-          >
-            <span className="font-sans text-4xl font-bold text-[#0A3660]" aria-hidden="true">MO</span>
-          </div>
+        <div className="grid items-center gap-8 md:grid-cols-[300px_1fr]">
+          <Link href="/about" className="block max-w-[280px]">
+            <Portrait
+              src="/images/melissa/melissa-autumn-creek.webp"
+              alt="Melissa O'Neal, occupational therapist, smiling outdoors in an autumn creek setting"
+              sizes="(max-width: 768px) 80vw, 280px"
+              frame="sage"
+              position="center 12%"
+            />
+          </Link>
           <div>
             <h2 className="font-sans text-3xl font-bold leading-tight text-white">
               Meet Melissa O&apos;Neal, OTR/L, postpartum occupational therapist
