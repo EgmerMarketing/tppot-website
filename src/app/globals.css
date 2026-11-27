@@ -432,88 +432,47 @@ html:not(.no-motion) .motion-icon-play {
   font-weight: inherit;
 }
 
-.hero-orbit {
+.hero-flow {
   position: relative;
-  align-self: center;
-  width: min(100%, 520px);
-  height: 520px;
-  margin-inline: auto;
+  margin-top: 0.25rem;
+  padding: 2rem 1.5rem 1rem;
 }
 
-.hero-circle {
+.hero-flow-shape {
   position: absolute;
-  top: 40px;
-  left: calc(50% - 220px);
-  width: 440px;
-  height: 440px;
-  border-radius: 50%;
-  background: #469695;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
-.hero-ring {
-  position: absolute;
-  top: 8px;
-  left: calc(50% - 250px);
-  width: 500px;
-  height: 500px;
-  color: #0A3660;
-  pointer-events: none;
-}
+.hero-flow-teal { fill: #469695; }
+.hero-flow-mint { fill: #eef6f6; }
 
 .hero-cards {
   position: relative;
   z-index: 1;
-  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: start;
+  max-width: 1120px;
+  margin-inline: auto;
 }
 
-.hero-cards li {
-  position: absolute;
-  width: min(230px, 62%);
-}
-
-.hero-cards li:nth-child(1) { top: 18px; left: 0; }
-.hero-cards li:nth-child(2) { top: 190px; right: 0; }
-.hero-cards li:nth-child(3) { bottom: 18px; left: 18px; }
+.hero-cards li:nth-child(2) { margin-top: 1.25rem; }
+.hero-cards li:nth-child(3) { margin-top: 0.4rem; }
 
 .hero-card {
   min-height: 44px;
 }
 
-@media (max-width: 1023px) {
-  .hero-orbit {
-    height: auto;
-    min-height: 0;
-    width: 100%;
-    margin-top: 2.5rem;
-    padding-block: 1.25rem;
-  }
-
-  .hero-circle {
-    top: 8%;
-    bottom: 8%;
-    left: 0;
-    width: 100%;
-    height: auto;
-    border-radius: 999px;
-  }
-
-  .hero-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    height: auto;
-  }
-
-  .hero-cards li {
-    position: static;
-    width: 100%;
-  }
-}
-
-@media (max-width: 479px) {
-  .hero-ring {
-    display: none;
-  }
+@media (max-width: 639px) {
+  .hero-flow { padding: 1.35rem 1rem 0.75rem; }
+  .hero-cards { gap: 0.5rem; }
+  .hero-cards li:nth-child(2) { margin-top: 0.7rem; }
+  .hero-cards li:nth-child(3) { margin-top: 0.25rem; }
+  .hero-card { padding: 0.65rem 0.7rem; }
 }
 
 html.dark {
@@ -535,13 +494,8 @@ html.dark {
   --accent: #469695;
 }
 
-html.dark .hero-circle {
-  background: #2f6b6a;
-}
-
-html.dark .hero-ring {
-  color: #8ec5c3;
-}
+html.dark .hero-flow-teal { fill: #2f6b6a; }
+html.dark .hero-flow-mint { fill: #eef6f6; }
 
 html.dark .nav-prominent {
   background-color: #2f6b6a;

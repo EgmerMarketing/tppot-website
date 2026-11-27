@@ -6,7 +6,6 @@ import { DISCLAIMER_CRISIS, HOME_H1, SITE_URL, topicLinks } from "@/lib/site";
 import { breadcrumbSchema, faqSchema } from "@/lib/schema";
 import JsonLd from "@/components/site/JsonLd";
 import Section from "@/components/ui/Section";
-import CtaRow from "@/components/site/CtaRow";
 import CrisisLines from "@/components/site/CrisisLines";
 import EmailSignup from "@/components/site/EmailSignup";
 import CircleJoinLink from "@/components/site/CircleJoinLink";
@@ -14,7 +13,6 @@ import EpisodeList from "@/components/site/EpisodeList";
 import NeedsMelissa from "@/components/site/NeedsMelissa";
 import { LearnMore } from "@/components/site/Scan";
 import { Eyebrow, NextStep, Squiggle, TopicIcon, Wave, topicIconFor } from "@/components/site/Character";
-import DraftBadge from "@/components/site/DraftBadge";
 import Portrait from "@/components/site/Portrait";
 import Reveal from "@/components/site/Reveal";
 export const metadata: Metadata = {
@@ -72,41 +70,46 @@ export default function Home() {
       <JsonLd data={breadcrumbSchema([{ name: "Home", url: SITE_URL }])} />
       <JsonLd data={faqSchema(homeFaqs)} />
 
-      <section className="hero-home mint-surface relative overflow-hidden bg-teal-50">
-        <div className="hero-home-grid relative mx-auto grid max-w-[1120px] items-center gap-12 px-6 py-16 md:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(280px,520px)] lg:gap-16 lg:py-24">
-          <div>
-            <Eyebrow>For new parents</Eyebrow>
-            <h1 className="mt-3 font-serif text-4xl font-semibold leading-tight text-[#0A3660] md:text-6xl">
-              Postpartum Support for New{" "}
-              <span className="hero-accent">
-                Moms and Dads
-                <Squiggle className="text-[#2f6b6a]" />
-              </span>{" "}
-              from an Occupational Therapist
-            </h1>
-            <p className="mt-6 font-serif text-lg leading-relaxed text-black">{hero.text}</p>
-            <CtaRow primary="waitlist" />
-            <p className="mt-4 font-serif text-base leading-relaxed text-black">{DISCLAIMER_CRISIS}</p>
+      <section className="hero-home mint-surface relative bg-teal-50">
+        <div className="mx-auto max-w-[1120px] px-6 pb-1 pt-5 md:px-8 md:pt-6">
+          <Eyebrow>For new parents</Eyebrow>
+          <h1 className="mt-1 font-serif text-[1.7rem] font-semibold leading-[1.15] text-[#0A3660] sm:text-4xl sm:leading-tight lg:text-5xl">
+            Postpartum Support for New{" "}
+            <span className="hero-accent">
+              Moms and Dads
+              <Squiggle className="text-[#2f6b6a]" />
+            </span>{" "}
+            from an Occupational Therapist
+          </h1>
+          <p className="mt-3 max-w-[68ch] font-serif text-base leading-snug text-black sm:text-lg sm:leading-relaxed">{hero.text}</p>
+          <div className="mt-4 grid gap-3 sm:max-w-xl sm:grid-cols-2">
+            <Link href="/for-moms" className="btn-solid inline-flex min-h-12 items-center justify-center rounded-xl px-5 text-center font-sans text-lg font-bold">
+              I&apos;m a mom
+            </Link>
+            <Link href="/for-dads" className="btn-solid inline-flex min-h-12 items-center justify-center rounded-xl px-5 text-center font-sans text-lg font-bold">
+              I&apos;m a dad or partner
+            </Link>
           </div>
-          <div className="hero-orbit">
-            <div className="hero-circle" aria-hidden="true" />
-            <svg className="hero-ring" viewBox="0 0 100 100" aria-hidden="true">
-              <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeDasharray="78 220" transform="rotate(-40 50 50)" />
-            </svg>
-            <ul className="hero-cards">
-              {cards.map((card) => (
-                <li key={card.href}>
-                  <Link href={card.href} className="hero-card surface-card block rounded-[1.25rem] bg-white p-4 shadow-[0_12px_28px_rgb(10_54_96/0.16)]">
-                    <p className="font-sans text-lg font-bold text-[#0A3660]">{card.title}</p>
-                    <p className="mt-1 font-serif text-base text-black">{card.text}</p>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <p className="mt-2 max-w-[68ch] font-serif text-base leading-snug text-black">{DISCLAIMER_CRISIS}</p>
+        </div>
+        <div className="hero-flow">
+          <svg className="hero-flow-shape" viewBox="0 0 1440 280" preserveAspectRatio="none" aria-hidden="true">
+            <path className="hero-flow-mint" d="M0,54 C260,8 520,78 780,36 C1040,0 1240,64 1440,28 L1440,78 C1220,112 1000,58 760,92 C500,124 240,70 0,104 Z" />
+            <path className="hero-flow-teal" d="M0,88 C280,36 540,120 820,64 C1080,16 1280,96 1440,48 L1440,280 L0,280 Z" />
+          </svg>
+          <ul className="hero-cards">
+            {cards.map((card) => (
+              <li key={card.href}>
+                <Link href={card.href} className="hero-card surface-card block h-full rounded-[1.25rem] bg-white p-4 shadow-[0_10px_24px_rgb(10_54_96/0.14)]">
+                  <p className="font-sans text-lg font-bold text-[#0A3660]">{card.title}</p>
+                  <p className="mt-1 font-serif text-base leading-snug text-black">{card.text}</p>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
-      <Wave from="#eef6f6" to="#0A3660" />
+      <Wave from="#469695" to="#0A3660" />
 
       <Section variant="navy" aria-labelledby="home-topics" className="relative overflow-hidden">
         <Eyebrow onDark>Start with one thing</Eyebrow>
@@ -159,23 +162,6 @@ export default function Home() {
             If you need someone now, call or text 988. A group is not a crisis line.
           </p>
           <NextStep href="/need-help-now">Next: Need Help Now</NextStep>
-        </div>
-      </section>
-      <section className="mint-surface bg-[#eef6f6]">
-        <div className="mx-auto max-w-[760px] px-6 py-12 md:px-8">
-          <DraftBadge />
-          <h2 className="font-serif text-3xl font-semibold text-[#0A3660] md:text-4xl">Who are you here for?</h2>
-          <p className="mt-3 max-w-[70ch] font-serif text-lg leading-[1.6] text-black">
-            Two paths through the same site. Partners are welcome on the dads page.
-          </p>
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <Link href="/for-moms" className="btn-solid inline-flex min-h-11 items-center justify-center rounded-xl px-5 py-3 font-sans text-base font-bold">
-              For Moms
-            </Link>
-            <Link href="/for-dads" className="btn-outline inline-flex min-h-11 items-center justify-center rounded-xl px-5 py-3 font-sans text-base font-bold">
-              For Dads
-            </Link>
-          </div>
         </div>
       </section>
       <Wave from="#eef6f6" to="#469695" />
