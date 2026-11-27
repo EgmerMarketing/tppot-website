@@ -240,3 +240,12 @@ p {
   scrollbar-color: var(--line-strong) transparent;
   scroll-padding-inline: 1rem;
 }
+
+/* Line the first handout up with the page container on wide screens while
+   the rail still bleeds to the right edge. */
+@media (min-width: 1024px) {
+  .rail {
+    padding-inline: max(2.5rem, calc((100vw - 84rem) / 2 + 2.5rem));
+    scroll-padding-inline: max(2.5rem, calc((100vw - 84rem) / 2 + 2.5rem));
+  }
+}

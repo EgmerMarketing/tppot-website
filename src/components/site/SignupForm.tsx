@@ -53,7 +53,7 @@ export default function SignupForm({ source, submitLabel = "Join the waitlist" }
         </span>
         <div>
           <p className="font-sans text-[1.05rem] font-bold text-heading">You&apos;re on the list.</p>
-          <p className="mt-1 text-muted">Thank you. Melissa will email you with the boxes you picked.</p>
+          <p className="mt-1 text-muted">Thank you. You&apos;ll hear from Melissa when there&apos;s something to send.</p>
         </div>
       </div>
     );

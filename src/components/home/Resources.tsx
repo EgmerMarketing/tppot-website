@@ -34,7 +34,7 @@ export default function Resources() {
         <ul
           aria-label="Free handouts"
           tabIndex={0}
-          className="rail mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-6 sm:px-6 lg:px-[max(2.5rem,calc((100vw_-_84rem)/2_+_2.5rem))]"
+          className="rail mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-6 sm:px-6"
         >
           {handouts.map((handout) => (
             <li key={handout.title} className="shrink-0 snap-start">
