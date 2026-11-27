@@ -26,9 +26,10 @@ export const HOME_H1 =
   "Postpartum Support for New Moms and Dads from an Occupational Therapist";
 
 export const mainNav = [
+  { label: "For Moms", href: "/for-moms" },
+  { label: "For Dads", href: "/for-dads" },
   { label: "Start Here", href: "/start-here" },
-  { label: "Postpartum Topics", href: "/topics" },
-  { label: "What Is Postpartum OT?", href: "/what-is-postpartum-occupational-therapy" },
+  { label: "Topics", href: "/topics" },
   { label: "Podcast", href: "/podcast" },
   { label: "Community", href: "/community" },
   { label: "Resources", href: "/resources" },
@@ -36,6 +37,7 @@ export const mainNav = [
 ] as const;
 
 export const footerNav = [
+  { label: "What is postpartum OT?", href: "/what-is-postpartum-occupational-therapy" },
   { label: "For Professionals", href: "/for-professionals" },
   { label: "FAQ", href: "/faq" },
   { label: "Blog", href: "/blog" },

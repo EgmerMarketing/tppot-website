@@ -27,16 +27,17 @@ export default function CommunityPage() {
       <PageHeader
         title={title}
         lede="Parents, caregivers, and healthcare and birth professionals can request to join. If you need someone now, use Need Help Now first."
-        emphasis="Circle"
-        icon="dads"
+        emphasis="Functional Fourth Trimester Circle"
+        accentClass="name-accent"
+        ink
       />
       <div className="mx-auto grid max-w-[1120px] items-center gap-8 px-6 py-8 md:grid-cols-[280px_1fr] md:px-8">
         <Portrait
           src="/images/melissa/melissa-mauve-brick-wall.webp"
           alt="Melissa O'Neal, occupational therapist, smiling in a mauve shirt against a brick wall"
-          sizes="(max-width: 768px) 80vw, 280px"
-          frame="teal"
-          position="center 14%"
+          sizes="(max-width: 640px) 260px, 280px"
+          frame="navy"
+          position="center 12%"
         />
         <div>
         <h2 className="max-w-[70ch] font-serif text-3xl font-semibold leading-snug text-[#0A3660] md:text-4xl">
@@ -64,7 +65,7 @@ export default function CommunityPage() {
             [NEEDS MELISSA: whether a member count may be shown, and the exact wording of the three questions if it should be published. Do not send people to the old professional Facebook group.]
           </NeedsMelissa>
           <NeedsMelissa>
-            [NEEDS MELISSA: platform, start date, free or paid, how to sign up, whether replays exist, and guest experts.]
+            [NEEDS MELISSA: platform, start date, whether there is a charge, how to sign up, whether replays exist, and guest experts.]
           </NeedsMelissa>
         </LearnMore>
 

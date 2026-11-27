@@ -80,7 +80,7 @@ If you or someone you know is experiencing symptoms of a perinatal mood or anxie
 
 **Postpartum Support International (PSI)** offers a helpline, online support groups, and a provider directory. Visit postpartum.net for more information.
 
-**The National Maternal Mental Health Hotline** is available 24 hours a day, 7 days a week, at **1-833-852-6262**. This free, confidential service provides support in English and Spanish with access to interpreters for additional languages.
+**The National Maternal Mental Health Hotline** is available 24 hours a day, 7 days a week, at **1-833-852-6262**. This confidential service provides support in English and Spanish with access to interpreters for additional languages.
 
 **Talk to your doctor or midwife.** Be honest about what you are experiencing. If you feel dismissed, seek a second opinion. Your mental health matters and you deserve to be taken seriously.
 

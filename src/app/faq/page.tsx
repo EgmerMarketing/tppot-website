@@ -72,15 +72,15 @@ const faqs = [
     question: "How do I join the community?",
     short: "Join the email waitlist, or request to join and answer three questions.",
     answer:
-      "The Functional Fourth Trimester Circle is a private Facebook group that started November 18, 2026. It welcomes parents, caregivers, and healthcare and birth professionals. Join the email waitlist to hear from Melissa. You can also request to join. Answering three quick questions is required for approval, so the group stays safe and promotion-free. Live sessions are listed for Wednesdays, 11:00 to 11:30 AM Mountain Time. Platform and price are not confirmed.",
+      "The Functional Fourth Trimester Circle is a private Facebook group that started November 18, 2026. It welcomes parents, caregivers, and healthcare and birth professionals. Join the email waitlist to hear from Melissa. You can also request to join. Answering three quick questions is required for approval, so the group stays safe and without promotion. Live sessions are listed for Wednesdays, 11:00 to 11:30 AM Mountain Time. Platform and price are not confirmed.",
     href: "/community",
     hrefLabel: "Community",
   },
   {
-    question: "Where are the free handouts?",
-    short: "On the resources page. Family guides are free to read.",
+    question: "Where are the handouts?",
+    short: "On the resources page. Family guides are there to read.",
     answer:
-      "The resources page lists free family guides and a free travel handout. Other family files are still placeholders. Professional PDFs are on For Professionals. Four of those ask for an email before the link appears. Safety information is never behind a signup.",
+      "The resources page lists family guides and a travel handout. Other family files are still placeholders. Professional PDFs are on For Professionals. Four of those ask for an email before the link appears. Safety information is never behind a signup.",
     href: "/resources",
     hrefLabel: "Resources",
   },

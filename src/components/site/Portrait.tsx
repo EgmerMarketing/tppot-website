@@ -1,10 +1,10 @@
 import Image from "next/image";
 
 const frames = {
-  teal: "bg-[#469695]",
-  navy: "bg-[#18355D]",
-  sage: "bg-[#A8B8A2]",
-  cream: "bg-[#F5F0E8]",
+  teal: "portrait-frame-teal bg-[#469695]",
+  navy: "portrait-frame-navy bg-[#0A3660]",
+  sage: "portrait-frame-sage bg-[#A8B8A2]",
+  cream: "portrait-frame-cream bg-[#F5F0E8]",
 } as const;
 
 export default function Portrait({
@@ -13,6 +13,7 @@ export default function Portrait({
   sizes,
   priority = false,
   frame = "teal",
+  wide = false,
   position = "center 18%",
 }: {
   src: string;
@@ -20,25 +21,24 @@ export default function Portrait({
   sizes: string;
   priority?: boolean;
   frame?: keyof typeof frames;
+  wide?: boolean;
   position?: string;
 }) {
   return (
-    <div className="relative w-full max-w-[280px] pr-3 pb-3">
-      <div
-        aria-hidden="true"
-        className={`absolute top-3 right-0 bottom-0 left-3 ${frames[frame]}`}
-        style={{ borderRadius: "46% 54% 42% 58% / 40% 48% 52% 60%" }}
-      />
-      <div className="relative aspect-[4/5] overflow-hidden" style={{ borderRadius: "58% 42% 52% 48% / 46% 58% 42% 54%" }}>
-        <Image
-          src={src}
-          alt={alt}
-          fill
-          priority={priority}
-          sizes={sizes}
-          className="object-cover"
-          style={{ objectPosition: position }}
-        />
+    <div className={`portrait relative w-full self-start pr-[18px] pb-[18px] ${wide ? "max-w-[318px] sm:max-w-[398px]" : "max-w-[298px]"}`}>
+      <div className="relative aspect-[4/5] w-full">
+        <div aria-hidden="true" className={`absolute inset-0 translate-x-[18px] translate-y-[18px] rounded-[28px] ${frames[frame]}`} />
+        <div className="absolute inset-0 overflow-hidden rounded-[28px]">
+          <Image
+            src={src}
+            alt={alt}
+            fill
+            priority={priority}
+            sizes={sizes}
+            className="object-cover"
+            style={{ objectPosition: position }}
+          />
+        </div>
       </div>
     </div>
   );

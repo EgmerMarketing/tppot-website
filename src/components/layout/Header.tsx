@@ -132,15 +132,22 @@ export default function Header() {
       </div>
 
       <nav aria-label="Main" className="mx-auto hidden max-w-[1280px] flex-wrap gap-x-5 gap-y-2 px-8 pb-3 xl:flex">
-        {mainNav.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            className="inline-flex min-h-11 items-center font-sans text-base font-bold text-[#0A3660] underline-offset-4 hover:underline"
-          >
-            {link.label}
-          </Link>
-        ))}
+        {mainNav.map((link) => {
+          const prominent = link.href === "/for-moms" || link.href === "/for-dads";
+          return (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={
+                prominent
+                  ? "nav-prominent inline-flex min-h-11 items-center rounded-full bg-[#0A3660] px-4 font-sans text-base font-bold text-white"
+                  : "inline-flex min-h-11 items-center font-sans text-base font-bold text-[#0A3660] underline-offset-4 hover:underline"
+              }
+            >
+              {link.label}
+            </Link>
+          );
+        })}
       </nav>
 
       {mobileOpen && (
@@ -151,7 +158,11 @@ export default function Header() {
                 <Link
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="flex min-h-11 items-center font-sans text-base font-bold text-[#0A3660]"
+                  className={
+                    link.href === "/for-moms" || link.href === "/for-dads"
+                      ? "nav-prominent my-1 flex min-h-11 items-center rounded-full bg-[#0A3660] px-4 font-sans text-base font-bold text-white"
+                      : "flex min-h-11 items-center font-sans text-base font-bold text-[#0A3660]"
+                  }
                 >
                   {link.label}
                 </Link>

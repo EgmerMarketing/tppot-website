@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Heart, Moon, Users } from "lucide-react";
 import SoundWave from "@/components/site/SoundWave";
 
 export function Wave({ from, to }: { from: string; to: string }) {
@@ -12,17 +13,6 @@ export function Wave({ from, to }: { from: string; to: string }) {
         />
       </svg>
     </div>
-  );
-}
-
-export function Blob({ className }: { className?: string }) {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 200 200" className={className}>
-      <path
-        fill="currentColor"
-        d="M46,78 C42,28 96,8 128,42 C168,12 198,62 172,104 C204,156 148,198 102,172 C48,204 8,148 46,78 Z"
-      />
-    </svg>
   );
 }
 
@@ -60,33 +50,35 @@ export function NextStep({
   );
 }
 
-const icons = {
-  sleep: "M4 14c2-6 6-8 8-8s4 4 8 4 6-2 8-6",
-  feeding: "M8 4c4 6 4 10 0 16M16 4c-4 6-4 10 0 16",
-  daily: "M4 16h16M8 8h8M6 20h12",
-  recovery: "M12 4v16M6 10c2 4 4 6 6 6s4-2 6-6",
-  mood: "M6 14c2 3 10 3 12 0M8 9h.1M16 9h.1",
-  dads: "M7 18v-4a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v4M12 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5",
-};
+const topicIcons = {
+  sleep: Moon,
+  mood: Heart,
+  dads: Users,
+} as const;
 
-export function TopicIcon({ name }: { name: keyof typeof icons }) {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-8 w-8 text-[#0A3660]" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round">
-      <path d={icons[name]} />
-    </svg>
-  );
+export type TopicIconName = keyof typeof topicIcons;
+
+export function TopicIcon({ name }: { name: TopicIconName }) {
+  const Icon = topicIcons[name];
+  return <Icon aria-hidden="true" className="h-8 w-8 shrink-0 text-[#0A3660]" strokeWidth={1.75} />;
 }
 
-export function topicIconFor(href: string): keyof typeof icons {
+/** Only meanings that read at a glance. Feeding, recovery, daily life, and mental load have no icon. */
+export function topicIconFor(href: string): TopicIconName | null {
   if (href.includes("sleep")) return "sleep";
-  if (href.includes("feeding")) return "feeding";
-  if (href.includes("recovery")) return "recovery";
-  if (href.includes("mental")) return "mood";
   if (href.includes("dads")) return "dads";
-  return "daily";
+  return null;
 }
 
-export function EmphasisTitle({ title, emphasis }: { title: string; emphasis?: string }) {
+export function EmphasisTitle({
+  title,
+  emphasis,
+  accentClass = "font-bold text-[#2f6b6a]",
+}: {
+  title: string;
+  emphasis?: string;
+  accentClass?: string;
+}) {
   if (!emphasis || !title.includes(emphasis)) {
     return (
       <>
@@ -99,7 +91,7 @@ export function EmphasisTitle({ title, emphasis }: { title: string; emphasis?: s
   return (
     <>
       {title.slice(0, index)}
-      <span className="font-bold text-[#2f6b6a]">{emphasis}</span>
+      <span className={accentClass}>{emphasis}</span>
       {title.slice(index + emphasis.length)}
       <Squiggle />
     </>
@@ -119,7 +111,7 @@ export function WhereNext({ links }: { links: { href: string; label: string }[] 
   });
 
   return (
-    <section className="bg-[#eef6f6]">
+    <section className="mint-surface bg-[#eef6f6]">
       <div className="mx-auto max-w-[1120px] px-6 py-12 md:px-8">
         <Eyebrow>Keep going</Eyebrow>
         <h2 className="mt-2 font-serif text-3xl font-semibold text-[#0A3660] md:text-4xl">Where to next</h2>

@@ -24,7 +24,7 @@ export function LearnMore({
   children: React.ReactNode;
 }) {
   return (
-    <details className="learn-more mt-3 rounded-[1.25rem] border border-[#0A3660]/15 bg-[#eef6f6]">
+    <details className="learn-more mint-surface mt-3 rounded-[1.25rem] border border-[#0A3660]/15 bg-[#eef6f6]">
       <summary>{summary}</summary>
       <div className="space-y-3 px-4 pb-4 font-serif text-base leading-relaxed text-black">{children}</div>
     </details>

@@ -56,7 +56,7 @@ Instead of "I need to know everything first," try: "I need to know enough to be 
 
 **Be transparent.** Families do not expect perfection. They expect honesty, effort, and genuine care. Telling a family, "I'm going to research that and get back to you" is not a weakness. It is a strength. It shows integrity and a commitment to providing the best possible care.
 
-**Create your own experience.** Volunteer at a local birthing center. Offer a free workshop at a community center. Start a social media account where you share evidence based tips. Every interaction builds your confidence and your skill set simultaneously.
+**Create your own experience.** Volunteer at a local birthing center. Offer a workshop at a community center. Start a social media account where you share evidence based tips. Every interaction builds your confidence and your skill set simultaneously.
 
 ## Why Waiting for "Enough" Experience Is Impossible
 

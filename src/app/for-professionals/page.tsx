@@ -41,11 +41,11 @@ const offers = [
   },
   {
     name: "Apply to lead a support group session",
-    note: "[NEEDS MELISSA: whether clinicians can apply to lead a session, and whether applying is free. That has not been confirmed.]",
+    note: "[NEEDS MELISSA: whether clinicians can apply to lead a session, and whether there is a charge. That has not been confirmed.]",
   },
   {
     name: "Apply to be a podcast guest",
-    note: "[NEEDS MELISSA: whether clinicians can apply to be a podcast guest, and whether applying is free. That has not been confirmed.]",
+    note: "[NEEDS MELISSA: whether clinicians can apply to be a podcast guest, and whether there is a charge. That has not been confirmed.]",
   },
 ];
 
@@ -138,12 +138,12 @@ export default function ForProfessionalsPage() {
         </ul>
 
         <h2>Handouts</h2>
-        <p>One file is a direct download. The others are free with your email. Melissa gets your address and the file name. There is no email series.</p>
+        <p>One file is a direct download. The others are complimentary with your email. Melissa gets your address and the file name. There is no email series.</p>
         <ul className="panel-navy mt-4 grid gap-3 rounded-2xl bg-navy p-3">
           {PROFESSIONAL_HANDOUTS.map((handout) => (
             <li key={handout.id} className="surface-card rounded-[1.5rem] bg-white p-4">
               <span className="mb-2 inline-flex rounded-full bg-[#eef6f6] px-3 py-1 font-sans text-base font-bold text-[#2f6b6a]">
-                {handout.gated ? "Free with email" : "PDF"}
+                {handout.gated ? "Complimentary with your email" : "PDF"}
               </span>
               <p className="font-sans text-lg font-bold text-[#0A3660]">{handout.title}</p>
               <p className="mt-1 font-serif text-base text-black">{handout.summary}</p>

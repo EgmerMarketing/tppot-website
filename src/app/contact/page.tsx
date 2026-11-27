@@ -27,7 +27,6 @@ export default function ContactPage() {
       <PageHeader
         title="Contact Melissa O'Neal at The Postpartum OT"
         lede="Write with a question about the podcast, the community waitlist, or the site. Leave health details out. This inbox is not an emergency line."
-        emphasis="Melissa"
       />
       <div className="mx-auto max-w-[1120px] px-6 md:px-8">
         <NeedsMelissa>

@@ -15,7 +15,7 @@ export default function CircleJoinLink() {
         </a>
       </p>
       <p className="mt-3 font-serif text-base leading-relaxed text-black">
-        Answer three quick questions so we can keep the group safe and promotion-free. Approval depends on those answers. Parents, caregivers, and healthcare and birth professionals are welcome.
+        Answer three quick questions so we can keep the group safe and without promotion. Approval depends on those answers. Parents, caregivers, and healthcare and birth professionals are welcome.
       </p>
     </div>
   );

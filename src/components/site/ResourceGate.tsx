@@ -64,7 +64,7 @@ export default function ResourceGate({
 
   return (
     <details className="learn-more mt-3 rounded-xl border border-[#0A3660]/20 bg-[#FAF7F2]">
-      <summary>Free with your email</summary>
+      <summary>Complimentary with your email</summary>
       <form onSubmit={onSubmit} className="space-y-3 px-4 pb-4" noValidate={false}>
         <p className="font-serif text-base text-black">
           Email is required so Melissa can see who asked for this file. Checking the box is that permission. This does not add you to a newsletter, and no email series is running.

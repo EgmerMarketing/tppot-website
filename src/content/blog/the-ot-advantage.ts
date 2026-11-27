@@ -46,11 +46,11 @@ Group classes are one of the smartest ways to build a postpartum OT practice. Th
 
 A single weekly class can become the foundation of a thriving practice. Families talk. They share recommendations. They post about their experiences. One great class leads to a full class leads to a waitlist leads to a second offering. The growth is organic and sustainable because it's built on genuine value and real relationships.
 
-## Free Training Available
+## Training available
 
 If you're an OT who has been thinking about starting mom and baby classes but aren't sure where to begin, you don't have to figure it out alone.
 
-**Register for The OT Advantage free webinar** where Melissa walks you through everything you need to know to plan, launch, and grow a successful mom and baby class program. You'll learn how to structure your classes, what topics to cover, how to price your offerings, and how to market your program to fill seats.
+**Register for The OT Advantage webinar** where Melissa walks you through everything you need to know to plan, launch, and grow a successful mom and baby class program. You'll learn how to structure your classes, what topics to cover, how to price your offerings, and how to market your program to fill seats.
 
 This is the training that transforms "I've been thinking about it" into "I'm doing it." Because the families in your community are waiting. They need what you have to offer. And the only thing standing between where you are and where you want to be is the decision to take the first step.
 

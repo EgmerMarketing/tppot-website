@@ -28,8 +28,7 @@ export default function StartHerePage() {
       <PageHeader
         title={title}
         lede="People often use “fourth trimester” for about the first 12 weeks after birth. It is a map, not a test."
-        emphasis="Fourth"
-        icon="daily"
+        emphasis="Fourth Trimester"
       />
       <div className="mx-auto max-w-[760px] px-6 md:px-8">
         <StepTrail

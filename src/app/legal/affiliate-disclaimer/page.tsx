@@ -83,7 +83,7 @@ export default function AffiliateDisclaimerPage() {
           3. Your Support Matters
         </h2>
         <p className="font-serif text-[#6B6560] leading-relaxed mb-4">
-          When you use our affiliate links, you are supporting The Postpartum OT at no extra cost to yourself. The commissions we earn help us continue creating free content, resources, and community support for occupational therapists who are building postpartum practices.
+          When you use our affiliate links, you are supporting The Postpartum OT at no extra cost to yourself. The commissions we earn help us continue creating content, resources, and community support for occupational therapists who are building postpartum practices.
         </p>
         <p className="font-serif text-[#6B6560] leading-relaxed mb-4">
           You are never obligated to use our affiliate links. If you prefer to navigate directly to a website or find a product on your own, we fully support that decision.

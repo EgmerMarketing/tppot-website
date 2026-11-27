@@ -64,5 +64,5 @@ Give expectant parents language they can use with each other: "What felt hard to
 
 We've created a **Conversation Starter guide** specifically for healthcare professionals working with postpartum families. It includes evidence based questions organized by topic, guidance on how to create emotional safety, tips for responding when a mother opens up, and red flags that indicate the need for immediate referral.
 
-**Download the free Conversation Starter guide** and start transforming the way you connect with the families you serve. Because the right question, asked at the right time, in the right way, can change everything.`,
+**Download the Conversation Starter guide** and start transforming the way you connect with the families you serve. Because the right question, asked at the right time, in the right way, can change everything.`,
 };

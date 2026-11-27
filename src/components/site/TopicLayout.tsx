@@ -50,6 +50,7 @@ export default function TopicLayout({
   children: React.ReactNode;
 }) {
   const url = `${SITE_URL}${path}`;
+  const icon = topicIconFor(path);
 
   return (
     <article className="bg-cream">
@@ -72,16 +73,16 @@ export default function TopicLayout({
         title={title}
         crumbs={[{ name: "Postpartum Topics", href: "/topics" }]}
         lede={capsule}
-        emphasis={crumb.split(" ")[0]}
-        icon={topicIconFor(path)}
+        emphasis={crumb.includes(" ") ? undefined : crumb}
+        icon={icon}
       />
       <div className="mx-auto grid max-w-[1120px] gap-8 px-6 py-10 md:px-8 lg:grid-cols-[1.2fr_0.8fr]">
         <div>
           <p className="mb-4 flex items-center gap-3">
-            <TopicIcon name={topicIconFor(path)} />
+            {icon ? <TopicIcon name={icon} /> : null}
             <span className="font-sans text-base font-bold text-[#2f6b6a]">What you might be feeling</span>
           </p>
-          <blockquote className="rounded-[1.75rem] bg-[#eef6f6] px-6 py-6">
+          <blockquote className="mint-surface rounded-[1.75rem] bg-[#eef6f6] px-6 py-6">
             <div className="max-w-[70ch] font-serif text-2xl font-semibold leading-snug text-[#0A3660]">{capsule}</div>
           </blockquote>
           <CtaRow primary={primary} />
@@ -100,9 +101,9 @@ export default function TopicLayout({
         <div className="family-copy">{children}</div>
         {episodes && episodes.length > 0 && <EpisodeList episodes={episodes} />}
         <section className="mt-10">
-          <h2 className="font-sans text-2xl font-bold text-[#0A3660]">Where are the free handouts?</h2>
+          <h2 className="font-sans text-2xl font-bold text-[#0A3660]">Where are the handouts?</h2>
           <p className="mt-2 font-serif text-base text-black">
-            Family guides on this site are free to read. One travel handout is a direct download. Other files are still placeholders. Safety pages are never behind a signup.
+            Family guides on this site are ready to read. One travel handout is a direct download. Other files are still placeholders. Safety pages are never behind a signup.
           </p>
           {guides && guides.length > 0 && (
             <ul className="mt-3 space-y-2 font-sans text-base font-bold">

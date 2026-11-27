@@ -26,16 +26,16 @@ export default function AboutPage() {
       <PageHeader
         title={title}
         lede="Occupational therapist and founder of The Postpartum OT."
-        emphasis="Melissa"
       />
-      <div className="mx-auto grid max-w-[1120px] gap-10 px-6 md:px-8 lg:grid-cols-[300px_1fr]">
+      <div className="mx-auto grid max-w-[1120px] items-start gap-10 px-6 md:px-8 lg:grid-cols-[minmax(0,420px)_1fr]">
         <Portrait
           src="/images/melissa/melissa-teal-field-headshot.webp"
           alt="Melissa O'Neal, occupational therapist, smiling outdoors in a teal shirt in a green field"
-          sizes="(max-width: 1024px) 80vw, 280px"
+          sizes="(max-width: 640px) 300px, 380px"
           priority
+          wide
           frame="teal"
-          position="center 20%"
+          position="center center"
         />
         <div className="family-copy">
           <p>Hi, I&apos;m Melissa O&apos;Neal, an occupational therapist and the founder of The Postpartum OT. My work with new families started the way a lot of good things do: with my own experience as a new mom. I learned firsthand that the weeks and months after birth change everything. Your days, your body, your relationships, and your sense of who you are all shift at once, and nobody hands you a plan for that.</p>

@@ -42,7 +42,7 @@ The Postpartum OT is more than a brand. It's a movement. It's a call to every oc
 
 We are just getting started, and there is room for you here.
 
-**Join our free Facebook community** to connect with like minded professionals, access resources, and become part of the change that postpartum care so desperately needs. Together, we can make sure no mother has to sit alone in that dark nursery wondering why no one told her it would be this hard.
+**Join our Facebook community** to connect with like minded professionals, access resources, and become part of the change that postpartum care so desperately needs. Together, we can make sure no mother has to sit alone in that dark nursery wondering why no one told her it would be this hard.
 
 Because when we show up for mothers, we show up for entire families. And that changes everything.`,
 };

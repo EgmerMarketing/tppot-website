@@ -10,7 +10,7 @@ export default function CrisisLines({ compact = false }: CrisisLinesProps) {
           <strong className="font-sans text-[#0A3660]">Crisis:</strong>{" "}
           <a className="font-bold text-[#0A3660] underline" href="tel:988">Call 988</a> or{" "}
           <a className="font-bold text-[#0A3660] underline" href="sms:988">text 988</a>.
-          Free and confidential, 24/7.
+          Confidential, 24/7.
         </li>
         <li>
           <strong className="font-sans text-[#0A3660]">Emergency:</strong>{" "}
@@ -31,8 +31,7 @@ export default function CrisisLines({ compact = false }: CrisisLinesProps) {
       <li>
         <p className="font-sans text-2xl font-bold text-[#0A3660]">Call or text 988</p>
         <p className="mt-2">
-          The 988 Suicide &amp; Crisis Lifeline is free, confidential, and available 24/7.
-          Call or text 988, or start a chat on the official site.{" "}
+          The 988 Suicide &amp; Crisis Lifeline is confidential and available 24/7. Call or text 988, any time, or start a chat on the official site.{" "}
           <a className="font-bold text-[#0A3660] underline" href="tel:988">Call 988</a>
           {" · "}
           <a className="font-bold text-[#0A3660] underline" href="sms:988">Text 988</a>
@@ -48,7 +47,7 @@ export default function CrisisLines({ compact = false }: CrisisLinesProps) {
         </p>
         <p className="mt-2">
           Call or text 1-833-TLC-MAMA (1-833-852-6262). This is a support line, not a crisis line.
-          If you are in crisis, use 988. HRSA describes the hotline as free, confidential, and
+          If you are in crisis, use 988. HRSA describes the hotline as confidential and
           available 24/7 in English and Spanish, for pregnant people, new parents, and family
           members. TTY users can use their relay service or dial 711, then 1-833-852-6262.{" "}
           <a className="font-bold text-[#0A3660] underline" href="tel:18338526262">Call 1-833-852-6262</a>

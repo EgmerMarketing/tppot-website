@@ -8,12 +8,12 @@ import JsonLd from "@/components/site/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 import { SITE_URL } from "@/lib/site";
 
-const title = "Free Postpartum Resources: Plans, Checklists and Handouts for New Parents";
+const title = "Postpartum Resources: Plans, Checklists and Handouts for New Parents";
 
 export const metadata: Metadata = {
   title,
   description:
-    "Free family guides and a travel handout for new parents. Other library files are still being added. Crisis resources are always open.",
+    "Family guides and a travel handout for new parents. Other library files are still being added. Crisis resources are always open.",
 };
 
 export default function ResourcesPage() {
@@ -22,7 +22,7 @@ export default function ResourcesPage() {
       <JsonLd data={breadcrumbSchema([{ name: "Home", url: SITE_URL }, { name: "Resources", url: `${SITE_URL}/resources` }])} />
       <PageHeader
         title={title}
-        lede="Family guides below are free to read. The travel sheet is a free download. Other files in the library are still placeholders. Safety information never asks for your email."
+        lede="Family guides below are ready to read. The travel sheet is a download. Other files in the library are still placeholders. Safety information never asks for your email."
         emphasis="Resources"
       />
       <div className="mx-auto max-w-[1120px] px-6 py-8 md:px-8">
@@ -33,7 +33,7 @@ export default function ResourcesPage() {
             ["/resources/better-questions", "Better questions than how are you?", "Questions partners, family, and friends can ask a new mom."],
             ["/resources/adhd-and-new-parenthood", "ADHD and new parenthood: practical support", "Routines, room setup, fatigue, sensory load, and getting a task started."],
             ["/resources/adhd-postpartum-check-in", "ADHD postpartum check-in", "A reflection to print and bring to a provider. Not a diagnosis or a screening tool."],
-            ["/blog/tips-to-travel-postpartum", "Tips for traveling postpartum", "Breastfeeding on an airplane, from the handout. The PDF is a free download."],
+            ["/blog/tips-to-travel-postpartum", "Tips for traveling postpartum", "Breastfeeding on an airplane, from the handout. The PDF is a download."],
           ].map(([href, label, text]) => (
             <li key={href}>
               <Link href={href} className={`surface-card flex h-full flex-col rounded-[1.5rem] bg-white p-5 ${href.includes("night") ? "sm:mt-4" : ""}`}>

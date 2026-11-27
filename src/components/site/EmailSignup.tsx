@@ -9,7 +9,7 @@ type Status = "idle" | "loading" | "error";
 
 export default function EmailSignup({
   idPrefix,
-  heading = "Get new episodes, free handouts and the community launch date",
+  heading = "Get new episodes, handouts and the community launch date",
 }: {
   idPrefix: string;
   heading?: string;

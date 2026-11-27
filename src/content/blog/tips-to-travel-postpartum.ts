@@ -39,6 +39,6 @@ Some airlines train their staff to assist breastfeeding mothers.
 
 TSA and other airport security agencies typically allow reasonable quantities of breast milk through screening, even when it is over the usual liquid limit.
 
-The handout is a free download: [Tips to travel postpartum](/resources/tips-to-travel-postpartum.pdf).
+The handout is a download: [Tips to travel postpartum](/resources/tips-to-travel-postpartum.pdf).
 `,
 };

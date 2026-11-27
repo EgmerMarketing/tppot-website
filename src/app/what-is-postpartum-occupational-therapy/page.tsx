@@ -34,14 +34,14 @@ export default function WhatIsPage() {
         <ul className="mt-4 flex flex-wrap gap-3">
           {([
             ["sleep", "Sleep"],
-            ["feeding", "Feeding"],
-            ["daily", "The day"],
-            ["recovery", "Recovery"],
+            [null, "Feeding"],
+            [null, "The day"],
+            [null, "Recovery"],
             ["mood", "Mood"],
             ["dads", "Partners"],
           ] as const).map(([name, label]) => (
-            <li key={name} className="surface-card flex items-center gap-2 rounded-full bg-white px-4 py-2">
-              <TopicIcon name={name} />
+            <li key={label} className="surface-card flex items-center gap-2 rounded-full bg-white px-4 py-2">
+              {name ? <TopicIcon name={name} /> : null}
               <span className="font-sans text-base font-bold text-[#0A3660]">{label}</span>
             </li>
           ))}
