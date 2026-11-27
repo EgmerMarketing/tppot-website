@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import PageHeader from "@/components/site/PageHeader";
+import Image from "next/image";
+import DisclaimerLine from "@/components/site/DisclaimerLine";
+import { Wave } from "@/components/site/Character";
 import Byline from "@/components/site/Byline";
 import EmailSignup from "@/components/site/EmailSignup";
 import EpisodeList from "@/components/site/EpisodeList";
@@ -16,12 +18,12 @@ import {
 import { SITE_URL } from "@/lib/site";
 import Section from "@/components/ui/Section";
 
-const title = "The Postpartum Podcast for New Parents: Functional Fourth Trimester";
+const SHOW_NAME = "Functional Fourth Trimester";
 
 export const metadata: Metadata = {
-  title,
+  title: SHOW_NAME,
   description:
-    "Functional Fourth Trimester, a podcast for new parents hosted by Melissa O'Neal, OTR/L. Listen on Apple Podcasts, Spotify, or YouTube.",
+    "Rethinking daily life after birth. Functional Fourth Trimester is hosted by Melissa O'Neal, OTR/L.",
 };
 
 const groups: { heading: string; numbers: number[] }[] = [
@@ -32,14 +34,50 @@ const groups: { heading: string; numbers: number[] }[] = [
 
 export default function PodcastPage() {
   return (
-    <article className="bg-cream">
+    <article className="bg-[#FAF6F0]">
       <JsonLd data={breadcrumbSchema([{ name: "Home", url: SITE_URL }, { name: "Podcast", url: `${SITE_URL}/podcast` }])} />
       <JsonLd data={podcastSeriesSchema()} />
-      <PageHeader
-        title={title}
-        lede="Melissa O'Neal, OTR/L, hosts Functional Fourth Trimester. These are the episodes already linked from this site."
-      />
-      <div className="mx-auto max-w-[760px] px-6 md:px-8">
+      <header className="fft-banner bg-[#18355D] text-white">
+        <div className="mx-auto grid max-w-[1120px] items-center gap-8 px-6 py-12 md:grid-cols-[280px_1fr] md:px-8 md:py-16">
+          <div className="relative mx-auto aspect-square w-full max-w-[280px] overflow-hidden rounded-[2rem]">
+            <Image
+              src="/images/postpartumot-podcast-cover.jpg"
+              alt="Podcast artwork file: a wide photo with the Postpartum OT wordmark centered. It is not a round Functional Fourth Trimester logo."
+              fill
+              priority
+              sizes="280px"
+              className="object-cover object-center"
+            />
+          </div>
+          <div>
+            <h1 className="font-serif text-4xl font-semibold leading-tight text-white md:text-6xl">
+              {SHOW_NAME}
+            </h1>
+            <p className="mt-4 max-w-xl font-serif text-xl leading-snug text-white md:text-2xl">
+              Rethinking daily life after birth.
+            </p>
+            <DisclaimerLine tone="onDark" />
+            <ul className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              {[
+                ["Apple Podcasts", APPLE_PODCAST_URL],
+                ["Spotify", SPOTIFY_PODCAST_URL],
+                ["YouTube", YOUTUBE_CHANNEL_URL],
+              ].map(([label, href]) => (
+                <li key={href}>
+                  <a
+                    className="inline-flex min-h-11 items-center justify-center rounded-full bg-[#FAF6F0] px-5 py-3 font-sans text-sm font-bold text-[#18355D]"
+                    href={href}
+                  >
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </header>
+      <Wave from="#18355D" to="#FAF6F0" />
+      <div className="mx-auto max-w-[760px] px-6 py-10 md:px-8">
         <LearnMore summary="Publishing notes">
           <NeedsMelissa>
             [NEEDS MELISSA: how often new episodes come out, and whether functionalfourthtrimester.com stays separate or folds into this page. Show notes still link there.]
@@ -49,14 +87,6 @@ export default function PodcastPage() {
           </NeedsMelissa>
         </LearnMore>
 
-        <h2 className="mt-8 font-sans text-2xl font-bold text-[#0A3660]">
-          Listen on Apple Podcasts, Spotify or YouTube
-        </h2>
-        <ul className="mt-4 space-y-3 font-sans text-base font-bold">
-          <li><a className="text-[#0A3660] underline" href={APPLE_PODCAST_URL}>Apple Podcasts</a></li>
-          <li><a className="text-[#0A3660] underline" href={SPOTIFY_PODCAST_URL}>Spotify</a></li>
-          <li><a className="text-[#0A3660] underline" href={YOUTUBE_CHANNEL_URL}>YouTube</a></li>
-        </ul>
         <EpisodeList heading="What are the latest episodes?" episodes={episodes.slice(0, 3)} />
 
         <h2 className="mt-10 font-sans text-2xl font-bold text-[#0A3660]">

@@ -9,6 +9,22 @@ import { SITE_URL, UPDATED } from "@/lib/site";
 import type { Episode } from "@/lib/podcast";
 import EpisodeList from "@/components/site/EpisodeList";
 import Section from "@/components/ui/Section";
+import { NextStep, TopicIcon, Wave, topicIconFor } from "@/components/site/Character";
+
+function nextTopic(path: string): { href: string; label: string } {
+  const order = [
+    { href: "/topics/postpartum-recovery", label: "Next: recovery" },
+    { href: "/topics/postpartum-sleep", label: "Next: sleep" },
+    { href: "/topics/feeding-routines", label: "Next: feeding routines" },
+    { href: "/topics/newborn-daily-routine", label: "Next: the daily routine" },
+    { href: "/topics/postpartum-mental-load-identity", label: "Next: mental load" },
+    { href: "/topics/dads-and-partners", label: "Next: dads and partners" },
+  ];
+  const index = order.findIndex((item) => item.href === path);
+  if (index === -1) return { href: "/topics", label: "Next: all topics" };
+  if (index === order.length - 1) return { href: "/community", label: "Next: the Circle" };
+  return order[index + 1];
+}
 
 export default function TopicLayout({
   title,
@@ -57,7 +73,12 @@ export default function TopicLayout({
         crumbs={[{ name: "Postpartum Topics", href: "/topics" }]}
         lede={capsule}
       />
+      <Wave from="#2f6b6a" to="#FAF7F2" />
       <div className="mx-auto max-w-[760px] px-6 md:px-8">
+        <p className="mb-4 flex items-center gap-3">
+          <TopicIcon name={topicIconFor(path)} />
+          <span className="font-sans text-sm font-bold uppercase tracking-[0.14em] text-[#2f6b6a]">{crumb}</span>
+        </p>
         <CtaRow primary={primary} />
         {help}
         <div className="family-copy">{children}</div>
@@ -85,6 +106,7 @@ export default function TopicLayout({
           </p>
         </section>
         <Byline />
+        <NextStep href={nextTopic(path).href}>{nextTopic(path).label}</NextStep>
       </div>
       <Section variant="navy" width="prose" id="signup">
         <div className="surface-card rounded-2xl bg-white p-6 text-black">

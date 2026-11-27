@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ACTIVE_HERO_OPTION, HERO_OPTIONS, HOME_H1 } from "@/lib/hero";
+import { ACTIVE_HERO_OPTION, HERO_OPTIONS } from "@/lib/hero";
 import { episodes } from "@/lib/podcast";
-import { SITE_URL, topicLinks } from "@/lib/site";
+import { DISCLAIMER_CRISIS, HOME_H1, SITE_URL, topicLinks } from "@/lib/site";
 import { breadcrumbSchema, faqSchema } from "@/lib/schema";
 import JsonLd from "@/components/site/JsonLd";
 import Section from "@/components/ui/Section";
@@ -13,8 +13,8 @@ import CircleJoinLink from "@/components/site/CircleJoinLink";
 import EpisodeList from "@/components/site/EpisodeList";
 import NeedsMelissa from "@/components/site/NeedsMelissa";
 import { LearnMore } from "@/components/site/Scan";
-import { DISCLAIMER_CRISIS } from "@/lib/site";
-
+import { Blob, Eyebrow, NextStep, Squiggle, TopicIcon, Wave, topicIconFor } from "@/components/site/Character";
+import Reveal from "@/components/site/Reveal";
 export const metadata: Metadata = {
   title: {
     absolute: `${HOME_H1} | The Postpartum OT`,
@@ -70,21 +70,26 @@ export default function Home() {
       <JsonLd data={breadcrumbSchema([{ name: "Home", url: SITE_URL }])} />
       <JsonLd data={faqSchema(homeFaqs)} />
 
-      <section className="band-teal-deep bg-teal-deep text-white">
-        <div className="mx-auto grid max-w-[1120px] gap-10 px-6 py-12 md:px-8 md:py-16 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
+      <section className="relative overflow-hidden bg-teal-50">
+        <Blob className="pointer-events-none absolute -left-16 top-8 h-40 w-40 text-[#469695]/15" />
+        <div className="relative mx-auto grid max-w-[1120px] gap-10 px-6 py-12 md:px-8 md:py-16 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
           <div>
-            <h1 className="font-sans text-4xl font-bold leading-tight text-white md:text-5xl">
-              {HOME_H1}
+            <Eyebrow>For new parents</Eyebrow>
+            <h1 className="mt-3 font-serif text-4xl font-semibold leading-tight text-[#0A3660] md:text-6xl">
+              {HOME_H1.slice(0, HOME_H1.indexOf("Moms and Dads"))}
+              <span className="italic">Moms and Dads</span>
+              {HOME_H1.slice(HOME_H1.indexOf("Moms and Dads") + "Moms and Dads".length)}
             </h1>
-            <p className="mt-6 font-serif text-lg leading-relaxed text-white">{hero.text}</p>
+            <Squiggle />
+            <p className="mt-6 font-serif text-lg leading-relaxed text-black">{hero.text}</p>
             <CtaRow primary="waitlist" />
-            <p className="mt-4 font-serif text-base leading-relaxed text-white">{DISCLAIMER_CRISIS}</p>
+            <p className="mt-4 font-serif text-base leading-relaxed text-black">{DISCLAIMER_CRISIS}</p>
           </div>
-          <div>
+          <div className="rounded-[2rem] bg-teal p-4 sm:p-5">
             <ul className="grid gap-3">
               {cards.map((card) => (
                 <li key={card.href}>
-                  <Link href={card.href} className="surface-card block rounded-2xl bg-white p-5">
+                  <Link href={card.href} className="surface-card block rounded-[1.5rem] bg-white p-5">
                     <p className="font-sans text-lg font-bold text-[#0A3660]">{card.title}</p>
                     <p className="mt-1 font-serif text-base text-black">{card.text}</p>
                   </Link>
@@ -94,24 +99,33 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <Wave from="#eef6f6" to="#0A3660" />
 
-      <Section variant="navy" aria-labelledby="home-topics">
-        <h2 id="home-topics" className="max-w-3xl font-sans text-3xl font-bold leading-tight text-white">
-          Postpartum help for the things that feel hardest right now
+      <Section variant="navy" aria-labelledby="home-topics" className="relative overflow-hidden">
+        <Blob className="pointer-events-none absolute -right-10 bottom-0 h-36 w-36 text-white/10" />
+        <Eyebrow onDark>Start with one thing</Eyebrow>
+        <h2 id="home-topics" className="mt-3 max-w-3xl font-serif text-4xl font-semibold leading-tight text-white">
+          Postpartum help for the things that feel hardest <span className="italic">right now</span>
         </h2>
-        <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {topicLinks.map((topic) => (
-            <li key={topic.href}>
-              <Link href={topic.href} className="surface-card flex h-full flex-col rounded-2xl bg-white p-5">
-                <p className="font-sans text-lg font-bold text-[#0A3660]">{topic.title}</p>
-                <p className="mt-2 font-serif text-base leading-relaxed text-black">{topic.text}</p>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <Reveal>
+          <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {topicLinks.map((topic, index) => (
+              <li key={topic.href} className={index % 2 === 1 ? "lg:mt-8" : ""}>
+                <Link href={topic.href} className="surface-card flex h-full flex-col rounded-[1.75rem] bg-white p-5">
+                  <TopicIcon name={topicIconFor(topic.href)} />
+                  <p className="mt-3 font-serif text-xl font-semibold text-[#0A3660]">{topic.title}</p>
+                  <p className="mt-2 font-serif text-base leading-relaxed text-black">{topic.text}</p>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+        <NextStep onDark href="/start-here">Next: the fourth trimester, week by week</NextStep>
       </Section>
+      <Wave from="#0A3660" to="#FAF7F2" />
 
       <Section variant="cream">
+        <Eyebrow>Listen</Eyebrow>
         <EpisodeList
           heading="Listen to the Functional Fourth Trimester postpartum podcast"
           episodes={episodes.slice(0, 3)}
@@ -121,7 +135,20 @@ export default function Home() {
             All episodes on this site
           </Link>
         </p>
+        <NextStep href="/podcast">Next: Functional Fourth Trimester</NextStep>
       </Section>
+      <section className="bg-cream">
+        <div className="mx-auto max-w-[760px] px-6 py-12 md:px-8">
+          <p className="font-serif text-3xl font-semibold italic leading-snug text-[#0A3660] md:text-4xl">
+            You&apos;re not alone in this.
+          </p>
+          <p className="mt-3 font-serif text-lg text-black">
+            If you need someone now, call or text 988. A group is not a crisis line.
+          </p>
+          <NextStep href="/need-help-now">Next: Need Help Now</NextStep>
+        </div>
+      </section>
+      <Wave from="#FAF7F2" to="#469695" />
 
       <Section variant="teal" id="waitlist" width="prose" aria-labelledby="home-circle">
         <h2 id="home-circle" className="font-sans text-3xl font-bold leading-tight text-white">
@@ -148,9 +175,10 @@ export default function Home() {
           </div>
         </div>
       </Section>
+      <Wave from="#469695" to="#FAF7F2" />
 
       <Section variant="cream">
-        <h2 className="font-sans text-3xl font-bold text-[#0A3660]">Where are the free postpartum resources?</h2>
+        <h2 className="font-serif text-4xl font-semibold text-[#0A3660]">Where are the free postpartum resources?</h2>
         <p className="mt-2 max-w-2xl font-serif text-base text-black">
           Family guides and a travel handout are ready. Other files are not. Crisis pages never ask for email.
         </p>

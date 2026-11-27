@@ -9,6 +9,7 @@ import JsonLd from "@/components/site/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 import { SITE_URL } from "@/lib/site";
 import Section from "@/components/ui/Section";
+import { NextStep, Wave } from "@/components/site/Character";
 
 const title = "Online Postpartum Support Group for New Parents: Functional Fourth Trimester Circle";
 
@@ -26,6 +27,16 @@ export default function CommunityPage() {
         title={title}
         lede="Parents, caregivers, and healthcare and birth professionals can request to join. If you need someone now, use Need Help Now first."
       />
+      <Wave from="#2f6b6a" to="#FAF7F2" />
+      <div className="mx-auto max-w-[760px] px-6 py-8 md:px-8">
+        <p className="font-serif text-3xl font-semibold italic leading-snug text-[#0A3660] md:text-4xl">
+          You&apos;re not alone in this.
+        </p>
+        <p className="mt-3 font-serif text-lg text-black">
+          If you need someone now, call or text 988. A group is not a crisis line.
+        </p>
+        <NextStep href="/need-help-now">Next: Need Help Now</NextStep>
+      </div>
       <div className="family-copy mx-auto max-w-[760px] px-6 md:px-8">
         <h2>What is the Functional Fourth Trimester Circle?</h2>
         <KeyPoints

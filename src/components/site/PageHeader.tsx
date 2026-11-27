@@ -36,7 +36,7 @@ export default function PageHeader({
             </ol>
           </nav>
         )}
-        <h1 className="font-sans text-3xl font-bold leading-tight text-white md:text-[2.6rem]">
+        <h1 className="font-serif text-4xl font-semibold leading-tight text-white md:text-5xl">
           {title}
         </h1>
         <DisclaimerLine tone="onDark">{disclaimer}</DisclaimerLine>

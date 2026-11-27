@@ -14,7 +14,8 @@ const lato = Lato({
 const lora = Lora({
   variable: "--font-lora",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
 });
 
 export const viewport: Viewport = {
@@ -49,6 +50,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${lato.variable} ${lora.variable} h-full antialiased`}>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema()) }}

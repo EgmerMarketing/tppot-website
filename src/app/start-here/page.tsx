@@ -5,7 +5,8 @@ import CtaRow from "@/components/site/CtaRow";
 import Byline from "@/components/site/Byline";
 import EmailSignup from "@/components/site/EmailSignup";
 import EpisodeList from "@/components/site/EpisodeList";
-import { KeyPoints, LearnMore } from "@/components/site/Scan";
+import { LearnMore } from "@/components/site/Scan";
+import { StepTrail, Wave } from "@/components/site/Character";
 import JsonLd from "@/components/site/JsonLd";
 import { articleSchema, breadcrumbSchema } from "@/lib/schema";
 import { episodes } from "@/lib/podcast";
@@ -28,9 +29,10 @@ export default function StartHerePage() {
         title={title}
         lede="People often use “fourth trimester” for about the first 12 weeks after birth. It is a map, not a test."
       />
+      <Wave from="#2f6b6a" to="#FAF7F2" />
       <div className="mx-auto max-w-[760px] px-6 md:px-8">
-        <KeyPoints
-          items={[
+        <StepTrail
+          steps={[
             "Weeks 0 to 6: short sleeps, frequent feeding, a smaller list.",
             "Weeks 6 to 12: easier is not a date you missed.",
             "Months 3 to 12: change the routine when it stops fitting.",

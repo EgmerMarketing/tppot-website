@@ -155,8 +155,9 @@ export function podcastSeriesSchema() {
     "@type": "PodcastSeries",
     name: "Functional Fourth Trimester",
     url: `${BASE_URL}/podcast`,
+    image: `${BASE_URL}/images/postpartumot-podcast-cover.jpg`,
     description:
-      "The Functional Fourth Trimester podcast for new parents, hosted by Melissa O'Neal, OTR/L. Educational conversations about daily life after birth.",
+      "Rethinking daily life after birth. Hosted by Melissa O'Neal, OTR/L.",
     author: {
       "@id": `${BASE_URL}/#melissa-oneal`,
     },
